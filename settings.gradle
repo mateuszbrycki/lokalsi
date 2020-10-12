@@ -1,0 +1,4 @@
+rootProject.name = 'lokalsi'
+
+include 'application'
+include 'common'

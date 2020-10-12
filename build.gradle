@@ -1,0 +1,18 @@
+plugins {
+    id 'java'
+}
+
+group = 'cc.lokalsi'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '14'
+
+
+subprojects {
+    version = '1.0'
+}
+
+allprojects {
+    repositories {
+        mavenCentral()
+    }
+}
