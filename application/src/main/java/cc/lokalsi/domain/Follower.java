@@ -1,4 +1,3 @@
 package cc.lokalsi.domain;
 
-public class Follower {
-}
+public class Follower {}

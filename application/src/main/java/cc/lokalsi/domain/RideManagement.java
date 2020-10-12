@@ -7,11 +7,11 @@ import lombok.Value;
 
 public interface RideManagement extends InputPort {
 
-    Try<Void> createRide(CreateRideRequest createRideRequest);
+  Try<Void> createRide(CreateRideRequest createRideRequest);
 
-    @Value
-    @Builder
-    class CreateRideRequest {
-        private String name;
-    }
+  @Value
+  @Builder
+  class CreateRideRequest {
+    private String name;
+  }
 }

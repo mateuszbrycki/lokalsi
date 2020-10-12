@@ -1,4 +1,3 @@
 package cc.lokalsi.domain;
 
-public class Participant {
-}
+public class Participant {}
