@@ -8,9 +8,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class RideService implements RideManagement {
 
-    @Override
-    public Try<Void> createRide(CreateRideRequest createRideRequest) {
-        log.info("The ride successfully created.");
-        return null;
-    }
+  @Override
+  public Try<Void> createRide(CreateRideRequest createRideRequest) {
+    log.info("The ride successfully created.");
+    return null;
+  }
 }

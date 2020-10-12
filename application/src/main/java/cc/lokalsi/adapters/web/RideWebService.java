@@ -17,22 +17,22 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/ride")
 public class RideWebService {
 
-    private final Gate gate;
+  private final Gate gate;
 
-    @PostMapping
-    public ResponseEntity<String> createRide(@RequestBody CreateRideRequest request) {
+  @PostMapping
+  public ResponseEntity<String> createRide(@RequestBody CreateRideRequest request) {
 
-        Try<Object> dispatch = gate.dispatch(CreateRideCommand.builder().name(request.getName()).build());
+    Try<Object> dispatch =
+        gate.dispatch(CreateRideCommand.builder().name(request.getName()).build());
 
-        HttpStatus status = dispatch.map(result -> HttpStatus.CREATED)
-                .getOrElse(HttpStatus.BAD_REQUEST);
+    HttpStatus status =
+        dispatch.map(result -> HttpStatus.CREATED).getOrElse(HttpStatus.BAD_REQUEST);
 
-        return new ResponseEntity<>(status);
-    }
+    return new ResponseEntity<>(status);
+  }
 
-    @Value
-    static class CreateRideRequest {
-        String name;
-    }
-
+  @Value
+  static class CreateRideRequest {
+    String name;
+  }
 }

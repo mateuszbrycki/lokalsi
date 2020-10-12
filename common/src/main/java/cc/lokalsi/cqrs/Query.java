@@ -1,4 +1,3 @@
 package cc.lokalsi.cqrs;
 
-public interface Query {
-}
+public interface Query {}

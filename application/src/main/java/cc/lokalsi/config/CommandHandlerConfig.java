@@ -8,17 +8,17 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.List;
 
-
 @Configuration
 public class CommandHandlerConfig {
 
-    @Bean
-    public CommandHandlerRegistry commandHandlerRegistry(List<CommandHandler> handlers) {
-        return new CommandHandlerRegistry.SimpleCommandHandlerRegistry(io.vavr.collection.List.ofAll(handlers));
-    }
+  @Bean
+  public CommandHandlerRegistry commandHandlerRegistry(List<CommandHandler> handlers) {
+    return new CommandHandlerRegistry.SimpleCommandHandlerRegistry(
+        io.vavr.collection.List.ofAll(handlers));
+  }
 
-    @Bean
-    public Gate gate(CommandHandlerRegistry registry) {
-        return new Gate.NaiveGate(registry);
-    }
+  @Bean
+  public Gate gate(CommandHandlerRegistry registry) {
+    return new Gate.NaiveGate(registry);
+  }
 }

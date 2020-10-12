@@ -5,40 +5,40 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 public interface Gate {
-    <T> Try<T> dispatch(Command command);
-    void dispatchAsync(Command command);
+  <T> Try<T> dispatch(Command command);
 
-    <T> Try<T> dispatch(Query query);
-    void dispatchAsync(Query query);
+  void dispatchAsync(Command command);
 
-    @Slf4j
-    @AllArgsConstructor
-    class NaiveGate implements Gate {
+  <T> Try<T> dispatch(Query query);
 
-        private final CommandHandlerRegistry registry;
+  void dispatchAsync(Query query);
 
-        @Override
-        public <T> Try<T> dispatch(Command command) {
-            return Try.of(() -> registry.handlerFor(command))
-                    .map(handler -> (T) handler.handle(command));
-        }
+  @Slf4j
+  @AllArgsConstructor
+  class NaiveGate implements Gate {
 
-        @Override
-        public void dispatchAsync(Command command) {
-            Try.of(() -> registry.handlerFor(command))
-                    .map(handler -> handler.handle(command))
-                    .onFailure(exception -> log.error("Cannot handle command " + command.toString()));
-        }
+    private final CommandHandlerRegistry registry;
 
-        @Override
-        public <T> Try<T> dispatch(Query query) {
-            throw new UnsupportedOperationException();
-        }
-
-        @Override
-        public void dispatchAsync(Query query) {
-            throw new UnsupportedOperationException();
-        }
+    @Override
+    public <T> Try<T> dispatch(Command command) {
+      return Try.of(() -> registry.handlerFor(command)).map(handler -> (T) handler.handle(command));
     }
 
+    @Override
+    public void dispatchAsync(Command command) {
+      Try.of(() -> registry.handlerFor(command))
+          .map(handler -> handler.handle(command))
+          .onFailure(exception -> log.error("Cannot handle command " + command.toString()));
+    }
+
+    @Override
+    public <T> Try<T> dispatch(Query query) {
+      throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public void dispatchAsync(Query query) {
+      throw new UnsupportedOperationException();
+    }
+  }
 }
