@@ -2,6 +2,7 @@ package cc.lokalsi.cqrs;
 
 import io.vavr.collection.List;
 import io.vavr.collection.Map;
+import io.vavr.control.Try;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
@@ -9,7 +10,9 @@ import java.util.function.Function;
 
 public interface CommandHandlerRegistry {
 
-  CommandHandler handlerFor(Command command);
+  Try<CommandHandler> handlerFor(Command command);
+
+  Function<Class<?>, String> getClassName = Class::getName;
 
   class SimpleCommandHandlerRegistry implements CommandHandlerRegistry {
 
@@ -18,7 +21,7 @@ public interface CommandHandlerRegistry {
     public SimpleCommandHandlerRegistry(List<CommandHandler> handlers) {
       this.handlers =
           handlers.toMap(
-              handler -> getHandledCommandType(handler.getClass()).toString(), Function.identity());
+              handler -> getClassName.apply(getHandledCommandType(handler.getClass())), Function.identity());
     }
 
     private Class<?> getHandledCommandType(Class<?> clazz) {
@@ -36,15 +39,14 @@ public interface CommandHandlerRegistry {
           }
         }
       }
-      throw new RuntimeException(); // TODO find a better exception
+      throw new RuntimeException(); //TODO mbrycki find a better exception
     }
 
     @Override
-    public CommandHandler handlerFor(Command command) {
-      Class<? extends Command> commandClass = command.getClass();
-      return handlers
-          .get(commandClass.toString())
-          .getOrElseThrow(() -> new CannotFindCommandHandler(commandClass.getSimpleName()));
+    public Try<CommandHandler> handlerFor(Command command) {
+      var commandClassName = getClassName.apply(command.getClass());
+      return handlers.get(commandClassName)
+              .toTry(() -> new CannotFindCommandHandler(commandClassName));
     }
   }
 

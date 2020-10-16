@@ -9,6 +9,20 @@ sourceCompatibility = '14'
 
 subprojects {
     version = '1.0'
+    apply plugin: 'java'
+    apply from: file("../setupTestReports.gradle")
+
+
+    ext {
+        jUnitVersion = "5.7.0"
+        mockitoVersion = "3.5.13"
+        assertJVersion = "3.17.2"
+
+        slf4jVersion = "1.7.30"
+        logbackVersion = "1.2.3"
+        lombokVersion = "1.18.14"
+        vavrVersion = "0.10.3"
+    }
 }
 
 allprojects {

@@ -1,0 +1,7 @@
+PUT http://localhost:8080/ride
+Content-Type: application/json
+
+{
+  "name": "new ride",
+  "rideTime": "2020-10-17 10:00"
+}

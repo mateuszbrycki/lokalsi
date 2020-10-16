@@ -1,5 +1,7 @@
 package cc.lokalsi.cqrs;
 
+import io.vavr.control.Try;
+
 public interface CommandHandler<R extends Command, T> {
-  T handle(R command);
+  Try<T> handle(R command);
 }

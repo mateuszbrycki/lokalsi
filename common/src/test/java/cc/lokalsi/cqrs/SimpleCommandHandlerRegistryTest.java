@@ -1,12 +1,13 @@
 package cc.lokalsi.cqrs;
 
 import io.vavr.collection.List;
+import io.vavr.control.Try;
 import org.junit.jupiter.api.Test;
 
+import static io.vavr.API.Success;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-class CommandHandlerRegistryTest {
+class SimpleCommandHandlerRegistryTest {
 
   @Test
   void throwsExceptionWhenNoHandlersRegistered() {
@@ -14,9 +15,11 @@ class CommandHandlerRegistryTest {
     var simpleCommandHandlerRegistry =
         new CommandHandlerRegistry.SimpleCommandHandlerRegistry(List.empty());
 
-    assertThatThrownBy(() -> simpleCommandHandlerRegistry.handlerFor(new FakeCommand()))
+    var commandHandler = simpleCommandHandlerRegistry.handlerFor(new FakeCommand());
+    assertThat(commandHandler.isFailure()).isTrue();
+    assertThat(commandHandler.getCause())
         .isInstanceOf(CommandHandlerRegistry.CannotFindCommandHandler.class)
-        .hasMessage("Cannot find a command handler for FakeCommand");
+        .hasMessage("Cannot find a command handler for " + FakeCommand.class.getName());
   }
 
   @Test
@@ -24,9 +27,12 @@ class CommandHandlerRegistryTest {
     var simpleCommandHandlerRegistry =
         new CommandHandlerRegistry.SimpleCommandHandlerRegistry(List.of(new FakeCommandHandler()));
 
-    assertThatThrownBy(() -> simpleCommandHandlerRegistry.handlerFor(new FakeCommand2()))
+    Try<CommandHandler> commandHandler =
+        simpleCommandHandlerRegistry.handlerFor(new FakeCommand2());
+    assertThat(commandHandler.isFailure()).isTrue();
+    assertThat(commandHandler.getCause())
         .isInstanceOf(CommandHandlerRegistry.CannotFindCommandHandler.class)
-        .hasMessage("Cannot find a command handler for FakeCommand2");
+        .hasMessage("Cannot find a command handler for " + FakeCommand2.class.getName());
   }
 
   @Test
@@ -35,9 +41,8 @@ class CommandHandlerRegistryTest {
     var simpleCommandHandlerRegistry =
         new CommandHandlerRegistry.SimpleCommandHandlerRegistry(List.of(fakeCommandHandler));
 
-    assertThat(simpleCommandHandlerRegistry.handlerFor(new FakeCommand()))
-        .isNotNull()
-        .isEqualTo(fakeCommandHandler);
+    Try<CommandHandler> commandHandler = simpleCommandHandlerRegistry.handlerFor(new FakeCommand());
+    assertThat(commandHandler.get()).isEqualTo(fakeCommandHandler);
   }
 
   class FakeCommand implements Command {}
@@ -46,8 +51,8 @@ class CommandHandlerRegistryTest {
 
   class FakeCommandHandler implements CommandHandler<FakeCommand, Boolean> {
     @Override
-    public Boolean handle(FakeCommand fakeCommand) {
-      return true;
+    public Try<Boolean> handle(FakeCommand fakeCommand) {
+      return Success(true);
     }
   }
 }
