@@ -10,8 +10,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 @Slf4j
-@AllArgsConstructor
 @Component
+@AllArgsConstructor
 public class CreateRideCommandHandler implements CommandHandler<CreateRideCommand, Void> {
 
   private final RideManagement rideManagement;

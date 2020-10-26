@@ -60,4 +60,46 @@ class RideServiceTest {
     verify(rideBuilder, times(1)).build(ANY_NAME, ANY_RIDE_TIME, ANY_CREATOR);
     verify(rideEventLog, times(1)).store(any());
   }
+
+  @Test
+  public void returnsErrorOnNameValidation() {
+    Try<Void> ride =
+        rideService.createRide(
+            RideManagement.CreateRideRequest.builder()
+                .rideTime(ANY_RIDE_TIME)
+                .creator(ANY_CREATOR)
+                .build());
+
+    assertThat(ride.isFailure()).isTrue();
+    assertThat(ride.getCause())
+        .isInstanceOf(RideManagement.RideService.CreateRideRequestValidationException.class)
+        .hasMessage("Ride name cannot be empty");
+  }
+
+  @Test
+  public void returnsErrorOnCreatorValidation() {
+    Try<Void> ride =
+        rideService.createRide(
+            RideManagement.CreateRideRequest.builder()
+                .name(ANY_NAME)
+                .rideTime(ANY_RIDE_TIME)
+                .build());
+
+    assertThat(ride.isFailure()).isTrue();
+    assertThat(ride.getCause())
+        .isInstanceOf(RideManagement.RideService.CreateRideRequestValidationException.class)
+        .hasMessage("Ride creator cannot be empty");
+  }
+
+  @Test
+  public void returnsErrorOnRideTimeValidation() {
+    Try<Void> ride =
+        rideService.createRide(
+            RideManagement.CreateRideRequest.builder().name(ANY_NAME).creator(ANY_CREATOR).build());
+
+    assertThat(ride.isFailure()).isTrue();
+    assertThat(ride.getCause())
+        .isInstanceOf(RideManagement.RideService.CreateRideRequestValidationException.class)
+        .hasMessage("Ride time cannot be empty");
+  }
 }

@@ -3,8 +3,8 @@ package cc.lokalsi.adapters.web;
 import cc.lokalsi.command.CreateRideCommand;
 import cc.lokalsi.cqrs.Gate;
 import io.vavr.control.Try;
-import lombok.AllArgsConstructor;
-import lombok.Value;
+import lombok.*;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,14 +16,15 @@ import java.util.UUID;
 @RestController
 @AllArgsConstructor
 @RequestMapping("/ride")
+@Slf4j
 public class RideWebService {
 
   private final Gate gate;
 
   @PutMapping
-  public ResponseEntity<String> createRide(@RequestBody CreateRideRequest request) {
+  public ResponseEntity<?> createRide(@RequestBody CreateRideRequest request) {
 
-    Try<Object> dispatch =
+    Try<Void> dispatch =
         gate.dispatch(
             CreateRideCommand.builder()
                 .rideTime(toLocalDateTime(request.getRideTime()))
@@ -31,10 +32,15 @@ public class RideWebService {
                 .creator(UUID.randomUUID())
                 .build());
 
-    HttpStatus status =
-        dispatch.map(result -> HttpStatus.CREATED).getOrElse(HttpStatus.BAD_REQUEST);
+    return toResponseEntity(dispatch);
+  }
 
-    return new ResponseEntity<>(status);
+  private ResponseEntity<?> toResponseEntity(Try<?> execution) {
+    return execution
+        .onFailure(
+            err -> log.error("Error", err))
+        .map(result -> new ResponseEntity(HttpStatus.CREATED))
+        .getOrElseGet(ex -> new ResponseEntity(ex.getMessage(), HttpStatus.BAD_REQUEST));
   }
 
   private LocalDateTime toLocalDateTime(String rideTime) {
@@ -42,7 +48,12 @@ public class RideWebService {
     return LocalDateTime.parse(rideTime, formatter);
   }
 
-  @Value
+  @NoArgsConstructor
+  @AllArgsConstructor
+  @EqualsAndHashCode
+  @Getter
+  @Setter
+  @ToString
   static class CreateRideRequest {
     String name;
     String rideTime;

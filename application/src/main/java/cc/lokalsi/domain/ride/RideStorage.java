@@ -1,8 +1,6 @@
 package cc.lokalsi.domain.ride;
 
 import cc.lokalsi.OutputPort;
-import lombok.AllArgsConstructor;
-import lombok.ToString;
 import lombok.Value;
 
 public interface RideStorage {

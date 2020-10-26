@@ -21,13 +21,16 @@ public interface Gate {
 
     @Override
     public <T> Try<T> dispatch(Command command) {
-      return registry.handlerFor(command).flatMap(maybeHandler -> maybeHandler.handle(command));
+      return registry
+          .handlerFor(command)
+          .flatMap(maybeHandler -> maybeHandler.handle(command));
     }
 
     @Override
     public void dispatchAsync(Command command) {
       dispatch(command)
-          .onFailure(exception -> log.error("Error when handling command " + command.toString()));
+          .onFailure(
+              exception -> log.error("Error when handling command ", command.toString(), exception));
     }
 
     @Override
