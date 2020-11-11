@@ -1,12 +1,13 @@
 package cc.lokalsi.domain.ride;
 
 import cc.lokalsi.OutputPort;
+import io.vavr.control.Try;
 import lombok.Value;
 
 public interface RideStorage {
 
   interface EventLog extends OutputPort {
-    void store(Event event);
+    Try<Void> store(Event event);
   }
 
   abstract class Event {}

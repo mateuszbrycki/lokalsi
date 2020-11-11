@@ -29,11 +29,7 @@ public interface RideManagement extends InputPort {
           .map(
               request ->
                   rideBuilder.build(request.getName(), request.getRideTime(), request.getCreator()))
-          .map( // TODO mbrycki find a more elegant way of handling null
-              ride -> {
-                eventLog.store(new RideStorage.RideSaved(ride));
-                return null;
-              });
+          .flatMap(ride -> eventLog.store(new RideStorage.RideSaved(ride)));
     }
 
     private Try<CreateRideRequest> validate(CreateRideRequest createRideRequest) {

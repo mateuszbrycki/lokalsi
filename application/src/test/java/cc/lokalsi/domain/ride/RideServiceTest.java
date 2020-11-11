@@ -10,6 +10,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+import static io.vavr.API.Success;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
 
@@ -45,7 +46,7 @@ class RideServiceTest {
 
   @Test
   public void buildsRideWithBuilderStoresEven() {
-    doNothing().when(rideEventLog).store(any());
+    doReturn(Success(null)).when(rideEventLog).store(any());
 
     Try<Void> ride =
         rideService.createRide(
