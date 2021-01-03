@@ -18,6 +18,7 @@ import static org.mockito.Mockito.*;
 class RideServiceTest {
 
   @Mock RideStorage.EventLog rideEventLog;
+  @Mock RideStorage.Repository repository;
 
   @InjectMocks private RideManagement.RideService rideService;
 
@@ -105,5 +106,17 @@ class RideServiceTest {
     assertThat(ride.getCause())
         .isInstanceOf(RideManagement.RideService.CreateRideRequestValidationException.class)
         .hasMessage("Ride time cannot be empty");
+  }
+
+  @Test
+  public void returnsAllRidesFromRepository() {
+    var rides =
+        List.of(Ride.of(new Ride.RideId(UUID.randomUUID()), ANY_NAME, ANY_RIDE_TIME, ANY_CREATOR));
+    when(repository.findAll()).thenReturn(rides);
+
+    var maybeRides = rideService.findAllRides();
+
+    assertThat(maybeRides.isSuccess()).isTrue();
+    assertThat(maybeRides.get()).isEqualTo(rides);
   }
 }

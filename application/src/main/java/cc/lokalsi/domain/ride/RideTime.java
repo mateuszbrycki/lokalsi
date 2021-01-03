@@ -15,6 +15,10 @@ public class RideTime {
     this.time = time;
   }
 
+  public LocalDateTime toLocalDateTime() {
+    return this.time;
+  }
+
   public static RideTime of(LocalDateTime time) {
     return new RideTime(time);
   }

@@ -1,6 +1,7 @@
 package cc.lokalsi.domain.ride;
 
 import cc.lokalsi.InputPort;
+import io.vavr.collection.List;
 import io.vavr.control.Option;
 import io.vavr.control.Try;
 import lombok.AllArgsConstructor;
@@ -15,18 +16,26 @@ public interface RideManagement extends InputPort {
 
   Try<Ride> createRide(CreateRideRequest createRideRequest);
 
+  Try<List<Ride>> findAllRides();
+
   @AllArgsConstructor
   @Slf4j
   @Component
   class RideService implements RideManagement {
 
     private final RideStorage.EventLog eventLog;
+    private final RideStorage.Repository repository;
 
     @Override
     public Try<Ride> createRide(CreateRideRequest createRideRequest) {
       return validate(createRideRequest)
           .map(request -> Ride.of(request.getName(), request.getRideTime(), request.getCreator()))
           .andThen(ride -> eventLog.store(ride.id(), new RideStorage.RideSaved(ride)));
+    }
+
+    @Override
+    public Try<List<Ride>> findAllRides() {
+      return Try.of(repository::findAll);
     }
 
     private Try<CreateRideRequest> validate(CreateRideRequest createRideRequest) {

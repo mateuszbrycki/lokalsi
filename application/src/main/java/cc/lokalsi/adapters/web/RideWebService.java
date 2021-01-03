@@ -2,6 +2,8 @@ package cc.lokalsi.adapters.web;
 
 import cc.lokalsi.command.CreateRideCommand;
 import cc.lokalsi.cqrs.Gate;
+import cc.lokalsi.domain.ride.Ride;
+import cc.lokalsi.query.ListAllRidesQuery;
 import io.vavr.control.Try;
 import lombok.*;
 import lombok.extern.slf4j.Slf4j;
@@ -15,12 +17,12 @@ import java.util.UUID;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("/ride")
 @Slf4j
 public class RideWebService {
 
   private final Gate gate;
 
+  @RequestMapping("/ride")
   @PutMapping
   public ResponseEntity<?> createRide(@RequestBody CreateRideRequest request) {
 
@@ -35,10 +37,30 @@ public class RideWebService {
     return toResponseEntity(dispatch);
   }
 
+  @RequestMapping("/rides")
+  @GetMapping
+  public ResponseEntity<?> listAllRides() {
+    var maybeRides =
+        gate.<io.vavr.collection.List<Ride>>dispatch(ListAllRidesQuery.builder().build());
+    return maybeRides
+        .onFailure(err -> log.error("Error", err))
+        .map(
+            result ->
+                ResponseEntity.ok(
+                    result
+                        .map(
+                            ride ->
+                                new RideListResponse(
+                                    ride.id().toString(),
+                                    ride.name(),
+                                    ride.rideTime().toLocalDateTime().toString()))
+                        .toJavaList()))
+        .getOrElseGet(ex -> new ResponseEntity(ex.getMessage(), HttpStatus.BAD_REQUEST));
+  }
+
   private ResponseEntity<?> toResponseEntity(Try<?> execution) {
     return execution
-        .onFailure(
-            err -> log.error("Error", err))
+        .onFailure(err -> log.error("Error", err))
         .map(result -> new ResponseEntity(HttpStatus.CREATED))
         .getOrElseGet(ex -> new ResponseEntity(ex.getMessage(), HttpStatus.BAD_REQUEST));
   }
@@ -55,6 +77,17 @@ public class RideWebService {
   @Setter
   @ToString
   static class CreateRideRequest {
+    String name;
+    String rideTime;
+  }
+
+  @NoArgsConstructor
+  @AllArgsConstructor
+  @EqualsAndHashCode
+  @Getter
+  @ToString
+  static class RideListResponse {
+    String id;
     String name;
     String rideTime;
   }

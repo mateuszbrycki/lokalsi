@@ -36,4 +36,9 @@ public class InMemoryRideStorage implements RideStorage.EventLog, RideStorage.Re
     List<RideStorage.Event> events = getEvents(id);
     return Ride.recreate(events);
   }
+
+  @Override
+  public List<Ride> findAll() {
+    return events.keySet().map(this::findById).toList();
+  }
 }

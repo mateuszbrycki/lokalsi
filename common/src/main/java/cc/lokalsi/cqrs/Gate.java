@@ -17,11 +17,12 @@ public interface Gate {
   @AllArgsConstructor
   class NaiveGate implements Gate {
 
-    private final CommandHandlerRegistry registry;
+    private final CommandHandlerRegistry commandHandlerRegistry;
+    private final QueryHandlerRegistry queryHandlerRegistry;
 
     @Override
     public <T> Try<T> dispatch(Command command) {
-      return registry
+      return commandHandlerRegistry
           .handlerFor(command)
           .flatMap(maybeHandler -> maybeHandler.handle(command));
     }
@@ -30,12 +31,15 @@ public interface Gate {
     public void dispatchAsync(Command command) {
       dispatch(command)
           .onFailure(
-              exception -> log.error("Error when handling command ", command.toString(), exception));
+              exception ->
+                  log.error("Error when handling command ", command.toString(), exception));
     }
 
     @Override
     public <T> Try<T> dispatch(Query query) {
-      throw new UnsupportedOperationException();
+      return queryHandlerRegistry
+          .handlerFor(query)
+          .flatMap(maybeHandler -> maybeHandler.handle(query));
     }
 
     @Override

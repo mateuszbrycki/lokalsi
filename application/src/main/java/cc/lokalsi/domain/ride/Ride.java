@@ -172,5 +172,10 @@ public class Ride {
   @EqualsAndHashCode
   public static class RideId {
     private final UUID id;
+
+    @Override
+    public String toString() {
+      return id.toString();
+    }
   }
 }
