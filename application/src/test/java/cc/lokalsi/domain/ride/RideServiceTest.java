@@ -1,6 +1,6 @@
 package cc.lokalsi.domain.ride;
 
-import io.vavr.control.Try;
+import io.vavr.collection.List;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -17,7 +17,6 @@ import static org.mockito.Mockito.*;
 @ExtendWith(MockitoExtension.class)
 class RideServiceTest {
 
-  @Mock RideBuilder rideBuilder;
   @Mock RideStorage.EventLog rideEventLog;
 
   @InjectMocks private RideManagement.RideService rideService;
@@ -28,9 +27,9 @@ class RideServiceTest {
 
   @Test
   public void failsWhenSavingEvent() {
-    doThrow(new RuntimeException("cannot store event")).when(rideEventLog).store(any());
+    doThrow(new RuntimeException("cannot store event")).when(rideEventLog).store(any(), any());
 
-    Try<Void> ride =
+    var ride =
         rideService.createRide(
             RideManagement.CreateRideRequest.builder()
                 .name(ANY_NAME)
@@ -46,9 +45,9 @@ class RideServiceTest {
 
   @Test
   public void buildsRideWithBuilderStoresEven() {
-    doReturn(Success(null)).when(rideEventLog).store(any());
+    doReturn(Success(null)).when(rideEventLog).store(any(), any());
 
-    Try<Void> ride =
+    var ride =
         rideService.createRide(
             RideManagement.CreateRideRequest.builder()
                 .name(ANY_NAME)
@@ -58,13 +57,17 @@ class RideServiceTest {
 
     assertThat(ride.isSuccess()).isTrue();
 
-    verify(rideBuilder, times(1)).build(ANY_NAME, ANY_RIDE_TIME, ANY_CREATOR);
-    verify(rideEventLog, times(1)).store(any());
+    verify(rideEventLog, times(1))
+        .store(
+            any(),
+            eq(
+                new RideStorage.RideSaved(
+                    Ride.of(ride.get().id(), ANY_NAME, ANY_RIDE_TIME, ANY_CREATOR))));
   }
 
   @Test
   public void returnsErrorOnNameValidation() {
-    Try<Void> ride =
+    var ride =
         rideService.createRide(
             RideManagement.CreateRideRequest.builder()
                 .rideTime(ANY_RIDE_TIME)
@@ -79,7 +82,7 @@ class RideServiceTest {
 
   @Test
   public void returnsErrorOnCreatorValidation() {
-    Try<Void> ride =
+    var ride =
         rideService.createRide(
             RideManagement.CreateRideRequest.builder()
                 .name(ANY_NAME)
@@ -94,7 +97,7 @@ class RideServiceTest {
 
   @Test
   public void returnsErrorOnRideTimeValidation() {
-    Try<Void> ride =
+    var ride =
         rideService.createRide(
             RideManagement.CreateRideRequest.builder().name(ANY_NAME).creator(ANY_CREATOR).build());
 

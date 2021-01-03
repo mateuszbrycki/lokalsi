@@ -1,13 +1,20 @@
 package cc.lokalsi.domain.ride;
 
+import cc.lokalsi.InputPort;
 import cc.lokalsi.OutputPort;
 import io.vavr.control.Try;
 import lombok.Value;
 
+import java.util.UUID;
+
 public interface RideStorage {
 
   interface EventLog extends OutputPort {
-    Try<Void> store(Event event);
+    Try<Void> store(Ride.RideId id, Event event);
+  }
+
+  interface Repository extends InputPort {
+    Ride findById(Ride.RideId id);
   }
 
   abstract class Event {}

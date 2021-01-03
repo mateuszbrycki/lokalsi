@@ -2,6 +2,7 @@ package cc.lokalsi.command;
 
 import cc.lokalsi.cqrs.CommandHandler;
 import cc.lokalsi.domain.ride.Creator;
+import cc.lokalsi.domain.ride.Ride;
 import cc.lokalsi.domain.ride.RideManagement;
 import cc.lokalsi.domain.ride.RideTime;
 import io.vavr.control.Try;
@@ -12,20 +13,20 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 @AllArgsConstructor
-public class CreateRideCommandHandler implements CommandHandler<CreateRideCommand, Void> {
+public class CreateRideCommandHandler implements CommandHandler<CreateRideCommand, Ride> {
 
   private final RideManagement rideManagement;
 
   @Override
-  public Try<Void> handle(CreateRideCommand command) {
+  public Try<Ride> handle(CreateRideCommand command) {
     return rideManagement.createRide(of(command));
   }
 
   private RideManagement.CreateRideRequest of(CreateRideCommand command) {
     return RideManagement.CreateRideRequest.builder()
-            .name(command.getName())
-            .rideTime(RideTime.of(command.getRideTime()))
-            .creator(Creator.of(command.getCreator()))
-            .build();
+        .name(command.getName())
+        .rideTime(RideTime.of(command.getRideTime()))
+        .creator(Creator.of(command.getCreator()))
+        .build();
   }
 }

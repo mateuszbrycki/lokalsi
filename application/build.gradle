@@ -19,6 +19,9 @@ dependencies {
 
     testCompileOnly("org.projectlombok:lombok:${lombokVersion}")
     testAnnotationProcessor("org.projectlombok:lombok:${lombokVersion}")
+    compile group: 'org.codehaus.groovy', name: 'groovy', version: '3.0.6'
+    testCompile group: 'org.spockframework', name: 'spock-core', version: '2.0-M4-groovy-3.0'
+
 }
 
 test {

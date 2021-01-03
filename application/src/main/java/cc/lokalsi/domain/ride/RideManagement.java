@@ -13,23 +13,20 @@ import static io.vavr.API.For;
 
 public interface RideManagement extends InputPort {
 
-  Try<Void> createRide(CreateRideRequest createRideRequest);
+  Try<Ride> createRide(CreateRideRequest createRideRequest);
 
   @AllArgsConstructor
   @Slf4j
   @Component
   class RideService implements RideManagement {
 
-    private final RideBuilder rideBuilder;
     private final RideStorage.EventLog eventLog;
 
     @Override
-    public Try<Void> createRide(CreateRideRequest createRideRequest) {
+    public Try<Ride> createRide(CreateRideRequest createRideRequest) {
       return validate(createRideRequest)
-          .map(
-              request ->
-                  rideBuilder.build(request.getName(), request.getRideTime(), request.getCreator()))
-          .flatMap(ride -> eventLog.store(new RideStorage.RideSaved(ride)));
+          .map(request -> Ride.of(request.getName(), request.getRideTime(), request.getCreator()))
+          .andThen(ride -> eventLog.store(ride.id(), new RideStorage.RideSaved(ride)));
     }
 
     private Try<CreateRideRequest> validate(CreateRideRequest createRideRequest) {
