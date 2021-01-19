@@ -1,0 +1,14 @@
+spring:
+    security:
+        oauth2:
+            client:
+                registration:
+                    strava:
+                        client-id: 59578
+                        client-secret: 652aa700f69521fc91236972a439283e8655b648
+                        authorization-grant-type: 'authorization_code'
+                        redirect-uri: '{baseUrl}/login/oauth2/code/strava'
+                provider:
+                    strava:
+                        authorization-uri: https://www.strava.com/oauth/authorize
+                        token-uri: https://www.strava.com/oauth/token

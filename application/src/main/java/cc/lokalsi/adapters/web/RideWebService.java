@@ -9,10 +9,14 @@ import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Collections;
+import java.util.Map;
 import java.util.UUID;
 
 @RestController
@@ -56,6 +60,11 @@ public class RideWebService {
                                     ride.rideTime().toLocalDateTime().toString()))
                         .toJavaList()))
         .getOrElseGet(ex -> new ResponseEntity(ex.getMessage(), HttpStatus.BAD_REQUEST));
+  }
+
+  @GetMapping("/user")
+  public Map<String, Object> user(@AuthenticationPrincipal OAuth2User principal) {
+    return Collections.singletonMap("name", principal.getAttribute("name"));
   }
 
   private ResponseEntity<?> toResponseEntity(Try<?> execution) {
