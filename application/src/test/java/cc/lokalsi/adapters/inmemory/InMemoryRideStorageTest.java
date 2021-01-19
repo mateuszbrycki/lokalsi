@@ -36,6 +36,7 @@ class InMemoryRideStorageTest {
     assertThat(rides.size()).isEqualTo(2);
     assertThat(rides.map(Ride::id)).containsAll(List.of(ANY_UUID, ANY_UUID_2));
   }
+
+  class TestEvent extends RideStorage.Event {}
 }
 
-class TestEvent extends RideStorage.Event {}
