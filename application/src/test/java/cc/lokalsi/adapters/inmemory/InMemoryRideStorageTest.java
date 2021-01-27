@@ -28,8 +28,8 @@ class InMemoryRideStorageTest {
 
   @Test
   public void shouldReturnAllSavedRides() {
-    underTest.store(ANY_UUID, new RideStorage.RideSaved(Ride.of(ANY_UUID, null, null, null)));
-    underTest.store(ANY_UUID_2, new RideStorage.RideSaved(Ride.of(ANY_UUID_2, null, null, null)));
+    underTest.store(ANY_UUID, new RideStorage.RideSaved(Ride.of(ANY_UUID, null, null, null, null, null)));
+    underTest.store(ANY_UUID_2, new RideStorage.RideSaved(Ride.of(ANY_UUID_2, null, null, null, null, null)));
 
     List<Ride> rides = underTest.findAll();
 

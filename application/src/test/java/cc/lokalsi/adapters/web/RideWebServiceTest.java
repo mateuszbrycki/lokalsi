@@ -34,7 +34,9 @@ class RideWebServiceTest {
                   """
                     {
                       "name": "new ride",
-                      "rideTime": "2020-10-17 10:00"
+                      "rideTime": "2020-10-17 10:00",
+                      "description": "New Ride description",
+                      "advancementLevel": "FIRST"
                     } 
                   """))
         .andDo(print())
@@ -50,7 +52,9 @@ class RideWebServiceTest {
                 .content(
                   """
                     {
-                      "rideTime": "2020-10-17 10:00"
+                      "rideTime": "2020-10-17 10:00",
+                      "description": "New Ride description",
+                      "advancementLevel": "FIRST"
                     } 
                   """))
         .andDo(print())

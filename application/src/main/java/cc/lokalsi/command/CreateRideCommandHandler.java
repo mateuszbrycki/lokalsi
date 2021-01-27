@@ -1,10 +1,7 @@
 package cc.lokalsi.command;
 
 import cc.lokalsi.cqrs.CommandHandler;
-import cc.lokalsi.domain.ride.Creator;
-import cc.lokalsi.domain.ride.Ride;
-import cc.lokalsi.domain.ride.RideManagement;
-import cc.lokalsi.domain.ride.RideTime;
+import cc.lokalsi.domain.ride.*;
 import io.vavr.control.Try;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -27,6 +24,8 @@ public class CreateRideCommandHandler implements CommandHandler<CreateRideComman
         .name(command.getName())
         .rideTime(RideTime.of(command.getRideTime()))
         .creator(Creator.of(command.getCreator()))
+        .advancementLevel(AdvancementLevel.valueOf(command.getAdvancementLevel()))
+        .description(Description.of(command.getDescription()))
         .build();
   }
 }

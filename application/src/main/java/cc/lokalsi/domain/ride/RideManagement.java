@@ -29,7 +29,7 @@ public interface RideManagement extends InputPort {
     @Override
     public Try<Ride> createRide(CreateRideRequest createRideRequest) {
       return validate(createRideRequest)
-          .map(request -> Ride.of(request.getName(), request.getRideTime(), request.getCreator()))
+          .map(request -> Ride.of(request.getName(), request.getRideTime(), request.getCreator(), request.getDescription(), request.getAdvancementLevel()))
           .andThen(ride -> eventLog.store(ride.id(), new RideStorage.RideSaved(ride)));
     }
 
@@ -71,5 +71,7 @@ public interface RideManagement extends InputPort {
     String name;
     RideTime rideTime;
     Creator creator;
+    Description description;
+    AdvancementLevel advancementLevel;
   }
 }

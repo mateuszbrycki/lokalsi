@@ -52,6 +52,18 @@ public interface RideStorage {
   }
 
   @Value
+  class RideDescriptionUpdated extends Event {
+    private final Description description;
+    private final Description newDescription;
+  }
+
+  @Value
+  class RideAdvancementLevelUpdated extends Event {
+    private final AdvancementLevel advancementLevel;
+    private final AdvancementLevel newAdvancementLevel;
+  }
+
+  @Value
   class RideSaved extends Event {
     private final Ride ride;
   }

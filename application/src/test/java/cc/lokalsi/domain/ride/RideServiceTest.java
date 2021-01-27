@@ -25,6 +25,8 @@ class RideServiceTest {
   private final String ANY_NAME = "any-ride-name";
   private final RideTime ANY_RIDE_TIME = RideTime.of(LocalDateTime.of(2020, 10, 15, 15, 0));
   private final Creator ANY_CREATOR = Creator.of(UUID.randomUUID());
+  private final Description ANY_DESCRIPTION = Description.of("any-description");
+  private final AdvancementLevel ANY_ADVANCEMENT_LEVEL = AdvancementLevel.FIFTH;
 
   @Test
   public void failsWhenSavingEvent() {
@@ -36,6 +38,8 @@ class RideServiceTest {
                 .name(ANY_NAME)
                 .rideTime(ANY_RIDE_TIME)
                 .creator(ANY_CREATOR)
+                .description(ANY_DESCRIPTION)
+                .advancementLevel(ANY_ADVANCEMENT_LEVEL)
                 .build());
 
     assertThat(ride.isFailure()).isTrue();
@@ -54,6 +58,8 @@ class RideServiceTest {
                 .name(ANY_NAME)
                 .rideTime(ANY_RIDE_TIME)
                 .creator(ANY_CREATOR)
+                .description(ANY_DESCRIPTION)
+                .advancementLevel(ANY_ADVANCEMENT_LEVEL)
                 .build());
 
     assertThat(ride.isSuccess()).isTrue();
@@ -63,7 +69,13 @@ class RideServiceTest {
             any(),
             eq(
                 new RideStorage.RideSaved(
-                    Ride.of(ride.get().id(), ANY_NAME, ANY_RIDE_TIME, ANY_CREATOR))));
+                    Ride.of(
+                        ride.get().id(),
+                        ANY_NAME,
+                        ANY_RIDE_TIME,
+                        ANY_CREATOR,
+                        ANY_DESCRIPTION,
+                        ANY_ADVANCEMENT_LEVEL))));
   }
 
   @Test
@@ -111,7 +123,14 @@ class RideServiceTest {
   @Test
   public void returnsAllRidesFromRepository() {
     var rides =
-        List.of(Ride.of(new Ride.RideId(UUID.randomUUID()), ANY_NAME, ANY_RIDE_TIME, ANY_CREATOR));
+        List.of(
+            Ride.of(
+                new Ride.RideId(UUID.randomUUID()),
+                ANY_NAME,
+                ANY_RIDE_TIME,
+                ANY_CREATOR,
+                ANY_DESCRIPTION,
+                ANY_ADVANCEMENT_LEVEL));
     when(repository.findAll()).thenReturn(rides);
 
     var maybeRides = rideService.findAllRides();

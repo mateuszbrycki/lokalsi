@@ -8,7 +8,7 @@ import io.vavr.collection.List;
 class RideTest extends Specification {
 
     RideTime rideTime = RideTime.of(LocalDateTime.of(2020, 11, 13, 0, 0))
-    Ride ride = Ride.of("ride name", rideTime, Creator.of(UUID.randomUUID()));
+    Ride ride = Ride.of("ride name", rideTime, Creator.of(UUID.randomUUID()), Description.of("just a description"), AdvancementLevel.FIRST)
 
     def 'can rename ride'() {
         given:
@@ -26,6 +26,20 @@ class RideTest extends Specification {
             ride.reschedule(newRideTime)
         then:
             ride.rideTime() == newRideTime
+    }
+
+    def 'can change ride description'() {
+        when:
+            ride.updateDescription(Description.of("new description"))
+        then:
+            ride.description() == Description.of("new description")
+    }
+
+    def 'can change ride advancement level'() {
+        when:
+            ride.updateAdvancementLevel(AdvancementLevel.THIRD)
+        then:
+            ride.advancementLevel() == AdvancementLevel.THIRD
     }
 
     def 'can follow ride'() {
@@ -93,8 +107,12 @@ class RideTest extends Specification {
             RideStorage.RideNameUpdated rideNameUpdated = new RideStorage.RideNameUpdated("old name","ride name updated")
         and:
             RideStorage.RideTimeUpdated rideTimeUpdated = new RideStorage.RideTimeUpdated(rideTime, RideTime.of(LocalDateTime.of(2020, 11, 14, 0, 0)))
+        and:
+            RideStorage.RideDescriptionUpdated rideDescriptionUpdated = new RideStorage.RideDescriptionUpdated(Description.of("old description"),Description.of("new fancy ride description"))
+        and:
+            RideStorage.RideAdvancementLevelUpdated rideAdvancementLevelUpdated = new RideStorage.RideAdvancementLevelUpdated(AdvancementLevel.FIFTH, AdvancementLevel.FOURTH)
         when:
-            Ride recreated = Ride.recreate(List.of(participantAdded, participant2Added, participant2Removed, followerAdded, follower2Added, follower2Removed, rideNameUpdated, rideTimeUpdated))
+            Ride recreated = Ride.recreate(List.of(participantAdded, participant2Added, participant2Removed, followerAdded, follower2Added, follower2Removed, rideNameUpdated, rideTimeUpdated, rideDescriptionUpdated, rideAdvancementLevelUpdated))
         then:
             recreated.participants() == List.of(participant)
         and:
@@ -103,5 +121,9 @@ class RideTest extends Specification {
             recreated.name() == "ride name updated"
         and:
             recreated.rideTime() == RideTime.of(LocalDateTime.of(2020, 11, 14, 0, 0))
+        and:
+            recreated.description() == Description.of("new fancy ride description")
+        and:
+            recreated.advancementLevel() == AdvancementLevel.FOURTH
     }
 }

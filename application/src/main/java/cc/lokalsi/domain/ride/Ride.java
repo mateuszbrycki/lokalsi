@@ -20,6 +20,8 @@ public class Ride {
   private List<Participant> participants = List.empty();
   private List<Follower> followers = List.empty();
   private Creator creator;
+  private Description description;
+  private AdvancementLevel advancementLevel;
 
   private List<RideStorage.Event> events = List.empty();
 
@@ -28,9 +30,19 @@ public class Ride {
       RideTime time,
       List<Participant> participants,
       List<Follower> followers,
-      Creator creator) {
-    //TODO mbrycki shouldn't this UUID.randomUUID be extracted to a UUID supplier?
-    this(new RideId(UUID.randomUUID()), name, time, participants, followers, creator);
+      Creator creator,
+      Description description,
+      AdvancementLevel advancementLevel) {
+    // TODO mbrycki shouldn't this UUID.randomUUID be extracted to a UUID supplier?
+    this(
+        new RideId(UUID.randomUUID()),
+        name,
+        time,
+        participants,
+        followers,
+        creator,
+        description,
+        advancementLevel);
   }
 
   private Ride(
@@ -39,16 +51,20 @@ public class Ride {
       RideTime time,
       List<Participant> participants,
       List<Follower> followers,
-      Creator creator) {
+      Creator creator,
+      Description description,
+      AdvancementLevel advancementLevel) {
     this.id = rideId;
     this.name = name;
     this.time = time;
     this.participants = participants;
     this.followers = followers;
     this.creator = creator;
+    this.description = description;
+    this.advancementLevel = advancementLevel;
   }
 
-  Ride() {}
+  private Ride() {}
 
   private Ride handleRideSaved(RideStorage.RideSaved event) {
     return event.getRide();
@@ -64,6 +80,14 @@ public class Ride {
 
   public RideTime rideTime() {
     return this.time;
+  }
+
+  public Description description() {
+    return this.description;
+  }
+
+  public AdvancementLevel advancementLevel() {
+    return this.advancementLevel;
   }
 
   public List<Participant> participants() {
@@ -95,7 +119,7 @@ public class Ride {
   }
 
   public void follow(Follower follower) {
-    //TODO mbrycki can follow if it is not due
+    // TODO mbrycki can follow if it is not due
     handleFollowerAdded(new RideStorage.FollowerAdded(follower));
   }
 
@@ -135,13 +159,47 @@ public class Ride {
     return this;
   }
 
-  public static Ride of(String name, RideTime time, Creator creator) {
-    return new Ride(name, time, List.empty(), List.empty(), creator);
+  public void updateDescription(Description newDescription) {
+    handleUpdateDescription(
+        new RideStorage.RideDescriptionUpdated(this.description, newDescription));
   }
 
-  //TODO mbrycki used only in tests
-  public static Ride of(RideId rideId, String name, RideTime time, Creator creator) {
-    return new Ride(rideId, name, time, List.empty(), List.empty(), creator);
+  private Ride handleUpdateDescription(RideStorage.RideDescriptionUpdated event) {
+    description = event.getNewDescription();
+    this.events = events.append(event);
+    return this;
+  }
+
+  public void updateAdvancementLevel(AdvancementLevel advancementLevel) {
+    handleUpdateAdvancementLevel(
+        new RideStorage.RideAdvancementLevelUpdated(this.advancementLevel, advancementLevel));
+  }
+
+  private Ride handleUpdateAdvancementLevel(RideStorage.RideAdvancementLevelUpdated event) {
+    advancementLevel = event.getNewAdvancementLevel();
+    this.events = events.append(event);
+    return this;
+  }
+
+  public static Ride of(
+      String name,
+      RideTime time,
+      Creator creator,
+      Description description,
+      AdvancementLevel advancementLevel) {
+    return new Ride(name, time, List.empty(), List.empty(), creator, description, advancementLevel);
+  }
+
+  // TODO mbrycki used only in tests
+  public static Ride of(
+      RideId rideId,
+      String name,
+      RideTime time,
+      Creator creator,
+      Description description,
+      AdvancementLevel advancementLevel) {
+    return new Ride(
+        rideId, name, time, List.empty(), List.empty(), creator, description, advancementLevel);
   }
 
   public static Ride recreate(List<RideStorage.Event> events) {
@@ -161,6 +219,12 @@ public class Ride {
             Case($(instanceOf(RideStorage.RideNameUpdated.class)), ride::handleRideRenamed),
             Case($(instanceOf(RideStorage.RideSaved.class)), ride::handleRideSaved),
             Case($(instanceOf(RideStorage.RideTimeUpdated.class)), ride::handleRideTimeUpdated),
+            Case(
+                $(instanceOf(RideStorage.RideDescriptionUpdated.class)),
+                ride::handleUpdateDescription),
+            Case(
+                $(instanceOf(RideStorage.RideAdvancementLevelUpdated.class)),
+                ride::handleUpdateAdvancementLevel),
             Case(
                 $(),
                 t -> {

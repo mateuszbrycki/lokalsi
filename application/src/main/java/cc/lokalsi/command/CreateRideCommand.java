@@ -14,5 +14,7 @@ import java.util.UUID;
 public class CreateRideCommand implements Command {
   private String name;
   private LocalDateTime rideTime;
+  private String advancementLevel;
+  private String description;
   private UUID creator;
 }

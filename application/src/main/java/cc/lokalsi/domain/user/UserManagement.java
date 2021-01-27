@@ -50,12 +50,24 @@ public interface UserManagement extends InputPort {
                           "Repeated password cannot be empty"));
 
       var maybePasswordsAreEqual =
-          registerUserRequest.getPassword().equals(registerUserRequest.getRepeatedPassword())
-              ? Success(null)
-              : Failure(new RegisterUserRequestValidationException("Passwords are not equal"));
+          Try.of(
+                  () ->
+                      registerUserRequest
+                          .getPassword()
+                          .equals(registerUserRequest.getRepeatedPassword()))
+              .flatMapTry(
+                  v ->
+                      v
+                          ? Success(null)
+                          : Failure(
+                              new RegisterUserRequestValidationException(
+                                  "Passwords are not equal")));
 
-      return For(maybeEmail, maybePassword, maybeRepeatedPassword, maybePasswordsAreEqual)
-          .yield((email, password, repeatedPassword, passwordsAreEqual) -> registerUserRequest);
+      return maybeEmail
+          .flatMap(v -> maybePassword)
+          .flatMap(v -> maybeRepeatedPassword)
+          .flatMap(v -> maybePasswordsAreEqual)
+          .map(v -> registerUserRequest);
     }
 
     static class RegisterUserRequestValidationException extends Exception {

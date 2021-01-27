@@ -1,8 +1,6 @@
 package cc.lokalsi.command;
 
-import cc.lokalsi.domain.ride.Creator;
-import cc.lokalsi.domain.ride.RideManagement;
-import cc.lokalsi.domain.ride.RideTime;
+import cc.lokalsi.domain.ride.*;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -21,6 +19,8 @@ class CreateRideCommandHandlerTest {
   @InjectMocks CreateRideCommandHandler handler;
 
   private static final String ANY_NAME = "any-name";
+  private static final String ANY_DESCRIPTION = "any-description";
+  private static final String ANY_ADVANCEMENT_LEVEL = AdvancementLevel.FIFTH.name();
   private static final UUID ANY_CREATOR_UUID = UUID.randomUUID();
   private static final LocalDateTime ANY_RIDE_TIME = LocalDateTime.of(2020, 10, 14, 15, 0);
 
@@ -32,6 +32,8 @@ class CreateRideCommandHandlerTest {
             .name(ANY_NAME)
             .rideTime(ANY_RIDE_TIME)
             .creator(ANY_CREATOR_UUID)
+            .description(ANY_DESCRIPTION)
+            .advancementLevel(ANY_ADVANCEMENT_LEVEL)
             .build();
 
     handler.handle(command);
@@ -42,6 +44,8 @@ class CreateRideCommandHandlerTest {
                 .creator(Creator.of(ANY_CREATOR_UUID))
                 .rideTime(RideTime.of(ANY_RIDE_TIME))
                 .name(ANY_NAME)
+                .description(Description.of(ANY_DESCRIPTION))
+                .advancementLevel(AdvancementLevel.FIFTH)
                 .build());
   }
 }

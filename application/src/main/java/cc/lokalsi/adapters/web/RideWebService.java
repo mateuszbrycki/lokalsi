@@ -32,6 +32,8 @@ public class RideWebService {
                 .rideTime(toLocalDateTime(request.getRideTime()))
                 .name(request.getName())
                 .creator(UUID.randomUUID())
+                .description(request.getDescription())
+                .advancementLevel(request.getAdvancementLevel())
                 .build());
 
     return toResponseEntity(dispatch);
@@ -79,6 +81,8 @@ public class RideWebService {
   static class CreateRideRequest {
     String name;
     String rideTime;
+    String advancementLevel;
+    String description;
   }
 
   @NoArgsConstructor
