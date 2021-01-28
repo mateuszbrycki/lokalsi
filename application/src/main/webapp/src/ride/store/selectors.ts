@@ -1,0 +1,18 @@
+import {createSelector} from 'reselect'
+import {State} from "../../store/state";
+import {RidesListState, RidesState} from "./state";
+
+const getRidesState = (state: State): RidesState => state.ridesState
+const getRidesListState = createSelector(
+    getRidesState,
+    (state: RidesState) => state.ridesList
+)
+
+const getText = createSelector(
+    getRidesListState,
+    (state: RidesListState) => state.text
+)
+
+export {
+    getText
+}
