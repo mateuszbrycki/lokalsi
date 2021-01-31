@@ -1,11 +1,14 @@
 import {connect, MapDispatchToProps, MapStateToProps} from "react-redux";
-import {App, AppDispatchProps, AppProps} from "./App";
+import {App, AppActionsProps, AppProps} from "./App";
 import {State} from "./store/state";
+import {isUserLoggedIn} from './user/store/selectors'
 
-const mapStateToProps: MapStateToProps<AppProps, { }, State> = () => {
-    return {}
-}
-const mapDispatchToProps: MapDispatchToProps<AppDispatchProps, { }> = () => ({
+
+const mapStateToProps: MapStateToProps<AppProps, { }, State> = (state) => ({
+    isUserLoggedIn: isUserLoggedIn(state)
+})
+
+const mapDispatchToProps: MapDispatchToProps<AppActionsProps, { }> = () => ({
 
 })
 

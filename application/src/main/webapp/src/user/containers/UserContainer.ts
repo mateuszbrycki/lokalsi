@@ -2,19 +2,19 @@ import {connect, MapDispatchToProps, MapStateToProps} from 'react-redux'
 import {State} from 'store/state'
 import {getText} from '../store/selectors'
 import {ChangeNameAction} from "../store/actions";
-import UserView, {UserViewActionProps, UserViewProps} from "../components/UserView";
+import UserView, {ProfileViewActionProps, ProfileViewProps} from "../components/ProfileView";
 
-const mapStateToProps: MapStateToProps<UserViewProps, {}, State> = (state: State) => ({
+const mapStateToProps: MapStateToProps<ProfileViewProps, {}, State> = (state: State) => ({
     text: getText(state)
 })
 
-const mapDispatchToProps: MapDispatchToProps<UserViewActionProps, {}> = (dispatch) => ({
+const mapDispatchToProps: MapDispatchToProps<ProfileViewActionProps, {}> = (dispatch) => ({
     onClick: () => dispatch(ChangeNameAction("New Name"))
 })
 
-const RidesContainer = connect(
+const ProfileContainer = connect(
     mapStateToProps,
     mapDispatchToProps
 )(UserView)
 
-export default RidesContainer
+export default ProfileContainer

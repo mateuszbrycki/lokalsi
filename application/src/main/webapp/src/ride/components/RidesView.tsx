@@ -7,13 +7,9 @@ export interface RidesViewActionProps {
     readonly onClick: () => void
 }
 
-const RidesView: React.FC<RideViewProps & RidesViewActionProps> = (props) => {
-    const {text, onClick} = props
+const RidesView: React.FC<RideViewProps & RidesViewActionProps> = () => {
     return <>
-        {text}
-        <br />
-        <button type="button" onClick={onClick}>Change me!</button>
-
+        Rides View
         </>
 }
 

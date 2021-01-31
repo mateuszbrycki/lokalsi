@@ -1,4 +1,4 @@
-import {initialProfileState, ProfileState, UserState} from "./state";
+import {AuthorizationState, initialAuthorizationState, initialProfileState, ProfileState, UserState} from "./state";
 import {Action, combineReducers, Reducer} from "redux";
 import {ChangeName, Types} from "./actions";
 
@@ -21,8 +21,20 @@ const profileReducer = (
     }
 }
 
+const authorizationReducer = (
+    state: AuthorizationState | undefined = initialAuthorizationState,
+    incomingAction: Action,
+): AuthorizationState => {
+    const action = incomingAction as ProfileActions
+    switch (action.type) {
+        default:
+            return state
+    }
+}
+
 const userReducer: Reducer<UserState> = combineReducers({
-        profile: profileReducer
+        profile: profileReducer,
+        authorization: authorizationReducer
     }
 )
 

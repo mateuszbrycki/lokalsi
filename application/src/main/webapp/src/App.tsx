@@ -1,28 +1,39 @@
 import React from 'react';
-import {BrowserRouter, Route} from 'react-router-dom'
+import {Route, Link, Switch, Redirect} from 'react-router-dom'
 import './App.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 import RidesContainer from "./ride/containers/RidesContainer";
-import UserContainer from "./user/containers/UserContainer";
+import ProfileContainer from "./user/containers/UserContainer";
+import AuthorizationContainer from "./user/containers/AuthorizationContainer";
 
-const ridesComponent: React.ComponentType = RidesContainer
-const userComponent: React.ComponentType = UserContainer
-
-export interface AppDispatchProps {
-
+export interface AppActionsProps {
 }
 
 export interface AppProps {
-
+    readonly isUserLoggedIn: boolean;
 }
 
-const App: React.FunctionComponent<AppProps> = () => {
+const App: React.FunctionComponent<AppProps> = (props) => {
+    const {isUserLoggedIn} = props
+
     return (
-        <BrowserRouter>
-            <>
-                <Route path="/" exact component={ridesComponent}/>
-                <Route path="/user" exact component={userComponent}/>
-            </>
-        </BrowserRouter>
+        <>
+            <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                <a className="navbar-brand" href="/">lokalsi.cc</a>
+
+                {isUserLoggedIn ? <Link to={"/profile"} className="nav-link">Profile</Link> : <></>}
+            </nav>
+            <div className="container-fluid">
+                <Switch>
+                    <Route exact path={["/", "/home"]}>
+                        {isUserLoggedIn ? <RidesContainer/> : <AuthorizationContainer/>}
+                    </Route>
+                    <Route exact path="/profile">
+                        {isUserLoggedIn ? <ProfileContainer/> : <Redirect to="/"/>}
+                    </Route>
+                </Switch>
+            </div>
+        </>
     );
 }
 
