@@ -1,15 +1,15 @@
 import {connect, MapDispatchToProps, MapStateToProps} from 'react-redux'
 import RidesView, {RidesViewActionProps, RideViewProps} from '../components/RidesView'
 import {State} from 'store/state'
-import {getText} from '../store/selectors'
-import {ChangeTextAction} from "../store/actions";
+import {getRides} from '../store/selectors'
+import {LoadRidesAction} from "../store/actions";
 
 const mapStateToProps: MapStateToProps<RideViewProps, {}, State> = (state: State) => ({
-    text: getText(state)
+    rides: getRides(state)
 })
 
 const mapDispatchToProps: MapDispatchToProps<RidesViewActionProps, {}> = (dispatch) => ({
-    onClick: () => dispatch(ChangeTextAction("New Name"))
+    loadRides: () => dispatch(LoadRidesAction())
 })
 
 const RidesContainer = connect(

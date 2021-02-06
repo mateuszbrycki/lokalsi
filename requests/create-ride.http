@@ -3,5 +3,7 @@ Content-Type: application/json
 
 {
   "name": "new ride 2",
-  "rideTime": "2020-10-17 10:00"
+  "rideTime": "2020-10-17 10:00",
+  "description": "test ride",
+  "advancementLevel": "FIRST"
 }

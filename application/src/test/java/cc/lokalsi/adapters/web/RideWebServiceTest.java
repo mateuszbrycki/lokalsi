@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
@@ -16,6 +17,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest
+@ActiveProfiles("test")
 @Import(HandlersConfig.class)
 class RideWebServiceTest {
   @Autowired private MockMvc mockMvc;
@@ -37,7 +39,7 @@ class RideWebServiceTest {
                       "rideTime": "2020-10-17 10:00",
                       "description": "New Ride description",
                       "advancementLevel": "FIRST"
-                    } 
+                    }
                   """))
         .andDo(print())
         .andExpect(status().isCreated());
@@ -55,7 +57,7 @@ class RideWebServiceTest {
                       "rideTime": "2020-10-17 10:00",
                       "description": "New Ride description",
                       "advancementLevel": "FIRST"
-                    } 
+                    }
                   """))
         .andDo(print())
         .andExpect(status().isBadRequest())
@@ -71,6 +73,10 @@ class RideWebServiceTest {
             .andDo(print())
             .andExpect(status().isOk())
             .andExpect(
-                    MockMvcResultMatchers.jsonPath("$.[0].name").value("new ride"));
+                    MockMvcResultMatchers.jsonPath("$.[0].name").value("new ride"))
+            .andExpect(
+                    MockMvcResultMatchers.jsonPath("$.[0].description").value("New Ride description"))
+            .andExpect(
+                    MockMvcResultMatchers.jsonPath("$.[0].advancementLevel").value("FIRST"));
   }
 }

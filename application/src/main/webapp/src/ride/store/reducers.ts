@@ -1,9 +1,10 @@
 import {initialRidesListState, RidesListState, RidesState} from "./state";
 import {Action, combineReducers, Reducer} from "redux";
-import {ChangeText, Types} from "./actions";
+import {LoadRides, RidesLoaded, Types} from "./actions";
 
 type RidesListActions =
-    | ChangeText
+    | LoadRides
+    | RidesLoaded
 
 const ridesListReducer = (
     state: RidesListState | undefined = initialRidesListState,
@@ -11,10 +12,10 @@ const ridesListReducer = (
 ): RidesListState => {
     const action = incomingAction as RidesListActions
     switch (action.type) {
-        case Types.ChangeText:
+        case Types.RidesLoaded:
             return {
                 ...state,
-                text: action.payload.text
+                rides: action.payload.rides
             }
         default:
             return state

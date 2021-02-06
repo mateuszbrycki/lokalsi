@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
-@ToString
 @EqualsAndHashCode
 @AllArgsConstructor
 public class Description {
@@ -12,5 +11,10 @@ public class Description {
 
   public static Description of(String description) {
     return new Description(description);
+  }
+
+  @Override
+  public String toString() {
+    return description;
   }
 }

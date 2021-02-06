@@ -8,11 +8,11 @@ const getRidesListState = createSelector(
     (state: RidesState) => state.ridesList
 )
 
-const getText = createSelector(
+const getRides = createSelector(
     getRidesListState,
-    (state: RidesListState) => state.text
+    (state: RidesListState) => state.rides
 )
 
 export {
-    getText
+    getRides
 }

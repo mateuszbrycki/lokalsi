@@ -1,5 +1,8 @@
+import {Ride} from "../../types";
+import {List} from "immutable";
+
 export interface RidesListState {
-    readonly text: string
+    readonly rides: List<Ride>
 }
 
 export interface RidesState {
@@ -7,7 +10,7 @@ export interface RidesState {
 }
 
 const initialRidesListState: RidesListState = {
-    text: "ELDOOO"
+    rides: List()
 }
 
 

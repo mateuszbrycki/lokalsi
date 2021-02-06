@@ -1,16 +1,33 @@
+import React from "react";
+import {Ride} from "../../types";
+import {List} from "immutable";
+import SingleRide from "./SingleRide";
+import NoRides from "./NoRides";
 
 export interface RideViewProps {
-    readonly text: string
+    readonly rides: List<Ride>
 }
 
 export interface RidesViewActionProps {
-    readonly onClick: () => void
+    readonly loadRides: () => void
+
 }
 
-const RidesView: React.FC<RideViewProps & RidesViewActionProps> = () => {
+const RidesView: React.FC<RideViewProps & RidesViewActionProps> = (props) => {
+
+    const {rides, loadRides} = props
+    const mount = (): void => {
+        loadRides()
+    }
+
+    React.useEffect(mount, [])
+
     return <>
-        Rides View
-        </>
+        <h1>Rides</h1>
+        {rides.size === 0 ? <NoRides /> :rides.map(ride =>
+            <SingleRide ride={ride}/>
+        )}
+    </>
 }
 
 export default RidesView

@@ -41,6 +41,7 @@ public class RideWebService {
 
   @RequestMapping("/rides")
   @GetMapping
+  @CrossOrigin(origins = "http://localhost:3000")
   public ResponseEntity<?> listAllRides() {
     var maybeRides =
         gate.<io.vavr.collection.List<Ride>>dispatch(ListAllRidesQuery.builder().build());
@@ -55,7 +56,9 @@ public class RideWebService {
                                 new RideListResponse(
                                     ride.id().toString(),
                                     ride.name(),
-                                    ride.rideTime().toLocalDateTime().toString()))
+                                    ride.rideTime().toLocalDateTime().toString(),
+                                    ride.description().toString(),
+                                    ride.advancementLevel().toString()))
                         .toJavaList()))
         .getOrElseGet(ex -> new ResponseEntity(ex.getMessage(), HttpStatus.BAD_REQUEST));
   }
@@ -94,5 +97,7 @@ public class RideWebService {
     String id;
     String name;
     String rideTime;
+    String description;
+    String advancementLevel;
   }
 }

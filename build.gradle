@@ -6,7 +6,6 @@ group = 'cc.lokalsi'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '14'
 
-
 subprojects {
     version = '1.0'
     apply plugin: 'java'
@@ -35,5 +34,8 @@ allprojects {
     }
     tasks.withType(Test) {
         jvmArgs += "--enable-preview"
+    }
+    tasks.withType(JavaExec) {
+        jvmArgs += '--enable-preview'
     }
 }

@@ -155,3 +155,11 @@ gradle-app.setting
 
 
 # End of https://www.toptal.com/developers/gitignore/api/java,gradle,intellij
+
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+
+*.iml
+/.idea

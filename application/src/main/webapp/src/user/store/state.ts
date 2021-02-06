@@ -17,7 +17,7 @@ const initialProfileState: ProfileState = {
 }
 
 const initialAuthorizationState: AuthorizationState = {
-    token: undefined
+    token: "undefined"
 }
 
 
