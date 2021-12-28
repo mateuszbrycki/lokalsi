@@ -13,10 +13,10 @@ ENV NODE_ENV production
 COPY package.json ./
 COPY package-lock.json ./
 RUN npm ci --only=production
-RUN npm install react-scripts@5.0.0 -g --silent
+RUN #npm install react-scripts@5.0.0 -g --silent
 
 # add app
 COPY .. ./
 
 # start app
-CMD ["dumb-init", "npm", "start"]
+CMD ["npm", "start"]
