@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: lokalsi-front-service
+  namespace: lokalsi-front
+  labels:
+    app: lokalsi-front
+spec:
+  ports:
+    - port: 80
+      targetPort: 3000
+  selector:
+    app: lokalsi-front
+    tier: lokalsi-front
+  type: LoadBalancer
