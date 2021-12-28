@@ -8,4 +8,10 @@ docker build -t $DOCKER_TAG .
 echo "Pushing $APP_VERSION"
 docker push $DOCKER_TAG
 
-kubectl apply -f _k8s/01-deployment.yaml
+echo "Deploying $APP_VERSION to GKE"
+mkdir _tmp
+cp _k8s/01-deployment.yaml _tmp/01-deployment.yaml
+sed -i '' -e "s/APP_VERSION/$APP_VERSION/g" _tmp/01-deployment.yaml
+kubectl apply -f _tmp/01-deployment.yaml
+rm -rf _tmp
+
