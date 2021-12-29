@@ -1,38 +1,35 @@
 body {
-    background-color: #073f5d;
-    font-family: koliko-regular,sans-serif;
+    background-color: #073f5d !important;
+    color: #fff;
 }
 
-h1 {
+a.navbar-brand {
     color: #fff;
-    font-size: 60px;
+    font-size: 40px;
+    font-family: koliko-bold,sans-serif;
     letter-spacing: 6px;
 }
 
-p {
+a:hover.navbar-brand {
     color: #fff;
 }
 
-.content {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    text-align: center;
+a.nav-link {
+    color: #fff !important;
 }
 
-#name {
-    border-bottom: 3px solid #f0622f;
+a:hover.nav-link {
+    text-decoration: underline;
 }
 
-#slogan {
-    font-size: 30px;
-    font-family: koliko-light,sans-serif;
-    letter-spacing: 3px;
+.navbar {
+    border-bottom: 2px solid #f0622f;
 }
 
-#map {
-    margin-top: 200px;
-    height: 400px;
+#map, .all-rides-container {
+    height: 600px;
+}
+
+.rides-list-container ul{
+    list-style-type: none;
 }

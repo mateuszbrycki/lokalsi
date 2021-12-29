@@ -1,0 +1,75 @@
+import {List} from "immutable";
+import {Ride} from "../../types";
+
+export interface RideHttpApi {
+    readonly getRides: () => List<Ride>
+}
+
+const Api: RideHttpApi = {
+    getRides: () =>
+         List.of(
+            {
+                id: "1",
+                name: "Pierwsza ustawka",
+                time: "16:00",
+                day: "Poniedziałek",
+                description: "Pierwsza poniedziałkowa ustawka",
+                url: "",
+                startingPoint: {
+                    latitude: 50.059319,
+                    longitude: 19.923351
+                }
+            },
+            {
+                id: "2",
+                name: "Druga ustawka",
+                time: "15:00",
+                day: "Wtorek",
+                description: "Pierwsza wtorkowa ustawka",
+                url: "",
+                startingPoint: {
+                    latitude: 50.045210,
+                    longitude: 19.922492
+                }
+            },
+            {
+                id: "3",
+                name: "Trzecia ustawka",
+                time: "17:00",
+                day: "Środa",
+                description: "Pierwsza środowa ustawka",
+                url: "",
+                startingPoint: {
+                    latitude: 50.019552,
+                    longitude: 19.932342
+                }
+            },
+            {
+                id: "4",
+                name: "Czwarta ustawka",
+                time: "18:00",
+                day: "Czwartek",
+                description: "Pierwsza czwartkowa ustawka",
+                url: "",
+                startingPoint: {
+                    latitude: 50.052917,
+                    longitude: 20.049306
+                }
+            },
+            {
+                id: "5",
+                name: "Piąta ustawka",
+                time: "13:00",
+                day: "Piątek",
+                description: "Pierwsza piątkowa ustawka",
+                url: "",
+                startingPoint: {
+                    latitude: 50.062602,
+                    longitude: 19.902552
+                }
+            }
+
+        )
+}
+
+export {Api as RideApi}
