@@ -14,7 +14,7 @@ COPY package-lock.json ./
 RUN npm ci --only=production
 
 # add app
-COPY .. ./
+COPY . ./
 
 # start app
 CMD ["npm", "start"]
