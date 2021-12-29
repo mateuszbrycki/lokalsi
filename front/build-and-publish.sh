@@ -14,4 +14,3 @@ cp _k8s/01-deployment.yaml _tmp/01-deployment.yaml
 sed -i '' -e "s/APP_VERSION/$APP_VERSION/g" _tmp/01-deployment.yaml
 kubectl apply -f _tmp/01-deployment.yaml
 rm -rf _tmp
-

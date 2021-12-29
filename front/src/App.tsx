@@ -9,7 +9,7 @@ function App() {
           <h1>lokalsi.cc</h1>
         </div>
         <div id="slogan">
-          <p>Od teraz wszystkie ustawki kolarskie w jednym miejscu!</p>
+          <p>Wszystkie ustawki kolarskie w jednym miejscu!</p>
         </div>
       </div>
   );
