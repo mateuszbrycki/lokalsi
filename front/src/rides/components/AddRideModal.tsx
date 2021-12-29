@@ -1,6 +1,4 @@
 import React, {useState} from 'react'
-import {Ride} from "../../types";
-import {Marker, Popup} from "react-leaflet";
 import {Button, Modal} from "react-bootstrap";
 
 export interface AddRideModalProps {
