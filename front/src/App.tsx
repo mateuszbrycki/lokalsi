@@ -6,7 +6,7 @@ function App() {
   return (
       <div className="content">
         <div id="name">
-          <h1>lokalsi.cc - Siema Seba!!!</h1>
+          <h1>lokalsi.cc</h1>
         </div>
         <div id="slogan">
           <p>Wszystkie ustawki kolarskie w jednym miejscu!</p>
