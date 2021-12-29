@@ -1,7 +1,7 @@
 steps:
   # build the container image
   - name: "gcr.io/cloud-builders/docker"
-    args: ["build", "-t", "europe-central2-docker.pkg.dev/$PROJECT_ID/lokalsi/lokalsi-front:$SHORT_SHA", ".", "-f", "front/Dockerfile"]
+    args: ["build", "-t", "europe-central2-docker.pkg.dev/$PROJECT_ID/lokalsi/lokalsi-front:$SHORT_SHA", "./front"]
     # push container image
   - name: "gcr.io/cloud-builders/docker"
     args: ["push", "europe-central2-docker.pkg.dev/$PROJECT_ID/lokalsi/lokalsi-front:$SHORT_SHA"]
