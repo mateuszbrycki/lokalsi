@@ -9,7 +9,7 @@ steps:
   - name: "gcr.io/cloud-builders/gke-deploy"
     args:
       - run
-      - --filename=front/_k8s/01-deployment.yaml
+      - --filename=_k8s/01-deployment.yaml
       - --image=europe-central2-docker.pkg.dev/lokalsi-336415/lokalsi/lokalsi-front:$SHORT_SHA
       - --location=europe-central2
       - --cluster=lokalsi-cluster-1
