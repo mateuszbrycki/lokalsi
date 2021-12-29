@@ -17,7 +17,7 @@ const AllRidesView: React.FC<AllRidesProps & AllRidesActionProps> = (props) => {
     return <>
         <div className="container all-rides-container">
             <div className="row h-100">
-                <div className="col-8 h-100 p-0">
+                <div className="col-sm-8 h-sm-25 p-0">
                     <RidesMapView
                         centerPoint={{
                             latitude: 50.061060,
@@ -26,7 +26,7 @@ const AllRidesView: React.FC<AllRidesProps & AllRidesActionProps> = (props) => {
                         zoom={11}
                         rides={rides}/>
                 </div>
-                <div className="col-4 overflow-auto h-100 p-0 bg-light">
+                <div className="col-sm-4 overflow-auto h-100 p-0 bg-light">
                     <RidesList rides={rides}/>
                 </div>
 
