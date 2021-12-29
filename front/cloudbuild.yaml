@@ -1,0 +1,15 @@
+steps:
+  # build the container image
+  - name: "gcr.io/cloud-builders/docker"
+    args: ["build", "-t", "europe-central2-docker.pkg.dev/$PROJECT_ID/lokalsi/lokalsi-front:$SHORT_SHA", "."]
+    # push container image
+  - name: "gcr.io/cloud-builders/docker"
+    args: ["push", "europe-central2-docker.pkg.dev/$PROJECT_ID/lokalsi/lokalsi-front:$SHORT_SHA"]
+    # deploy container image to GKE
+  - name: "gcr.io/cloud-builders/gke-deploy"
+    args:
+      - run
+      - --filename=front/_k8s/01-deployment.yaml
+      - --image=europe-central2-docker.pkg.dev/lokalsi-336415/lokalsi/lokalsi-front:$SHORT_SHA
+      - --location=europe-central2
+      - --cluster=lokalsi-cluster-1
