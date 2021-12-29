@@ -13,3 +13,4 @@ steps:
       - --image=europe-central2-docker.pkg.dev/lokalsi-336415/lokalsi/lokalsi-front:$SHORT_SHA
       - --location=europe-central2
       - --cluster=lokalsi-cluster-1
+      - --timeout=10m0s
