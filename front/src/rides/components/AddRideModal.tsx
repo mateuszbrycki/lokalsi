@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import {Button, Modal} from "react-bootstrap";
+import {Plus} from "react-bootstrap-icons";
 
 export interface AddRideModalProps {
 }
@@ -17,7 +18,8 @@ const AddRideModal: React.FC<AddRideModalProps & AddRideModalActionProps> = (pro
     return (
         <>
             <Button variant="success" onClick={handleShow}>
-                Dodaj ustawkę!
+                Nowa ustawka
+                <Plus className="ms-1" style={{ stroke: "white", strokeWidth: "2"}}/>
             </Button>
 
             <Modal

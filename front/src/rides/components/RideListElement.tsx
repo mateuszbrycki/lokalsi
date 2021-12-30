@@ -1,6 +1,6 @@
 import React from 'react'
 import {Ride} from "../../types";
-import {Marker, Popup} from "react-leaflet";
+import * as Icon from "react-bootstrap-icons";
 
 export interface RideMarkerProps {
     readonly ride: Ride;
@@ -15,14 +15,21 @@ const RideListElement: React.FC<RideMarkerProps & RideMarkerActionProps> = (prop
     const {ride} = props
     return <>
         <div>
-                <h4>{ride.name}</h4>
-                <div><b>Dzień:</b> {ride.day}</div>
-                <div><b>Godzina:</b> {ride.time}</div>
-                <div className="py-3">{ride.description}</div>
-            <div><a href={ride.url} >Grupa FB</a></div>
-
+            <h5 className="fw-bold">{ride.name}</h5>
+            <div className="rides-list-element-date-time"><Icon.Calendar className="me-2"/>{ride.day}, {ride.time}</div>
+            <div className="py-2 ps-2 rides-list-element-description">{ride.description}</div>
+            <div className="py-2 ps-2 rides-list-element-links">
+                <a href={ride.url} >
+                    <Icon.Facebook className="me-2"/>
+                </a>
+                <a href={ride.url} >
+                    <Icon.Globe className="me-2"/>
+                </a>
+                <a href={ride.url} >
+                    <Icon.Strava className="me-2"/>
+                </a>
+            </div>
         </div>
-        <hr className="w-75 ms-auto me-auto mt-3 mb-0"/>
     </>
 }
 

@@ -19,7 +19,7 @@ const RidesMapView: React.FC<RidesMapViewProps & RidesMapViewActionProps> = (pro
 
     const {centerPoint, zoom, rides} = props
     return <>
-        <MapContainer center={[centerPoint.latitude,centerPoint.longitude]} zoom={zoom} scrollWheelZoom={false} id="map">
+        <MapContainer center={[centerPoint.latitude,centerPoint.longitude]} zoom={zoom} scrollWheelZoom={false} id="map" className="w-100">
             <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

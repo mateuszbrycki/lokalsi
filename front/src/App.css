@@ -1,6 +1,13 @@
 body {
-    background-color: #073f5d !important;
+    background-color: #f7f7fa !important;
     color: #fff;
+    font-family: robo, sans-serif;
+}
+
+/* Navbar */
+
+.navbar {
+    background-color: #073f5d !important;
 }
 
 a.navbar-brand {
@@ -8,6 +15,7 @@ a.navbar-brand {
     font-size: 40px;
     font-family: koliko-bold,sans-serif;
     letter-spacing: 6px;
+    text-shadow: #063852;
 }
 
 a:hover.navbar-brand {
@@ -26,10 +34,59 @@ a:hover.nav-link {
     border-bottom: 2px solid #f0622f;
 }
 
+.navbar .btn-success {
+    background-color: #4c9db4 !important;
+    border-color: #3d7c8f !important;
+    font-family: robo,sans-serif;
+    border-radius: 0 !important;
+}
+
+.navbar .btn-success:hover {
+    background-color: #3d7c8f !important;
+}
+
+.navbar .btn-success:focus {
+    box-shadow: none !important;
+}
+
 #map, .all-rides-container {
     height: 600px;
+
+    font-family: roboto,sans-serif;
+}
+
+.all-rides-container {
+    border: 0.5px solid #efeff1;
+}
+
+/* Rides List */
+
+.rides-list-container {
+    background-color: #fff;
 }
 
 .rides-list-container ul{
     list-style-type: none;
+}
+
+.rides-list-element-date-time {
+    color: #7c7b7b;
+    font-weight: bold;
+    font-size: 0.8rem;
+}
+
+.rides-list-element-links {
+    color: #7c7b7b;
+}
+
+/* Rides Map Markers */
+
+.ride-marker-date-time {
+    color: #7c7b7b;
+    font-weight: bold;
+    font-size: 0.8rem;
+}
+
+.ride-marker-links {
+    color: #7c7b7b;
 }
