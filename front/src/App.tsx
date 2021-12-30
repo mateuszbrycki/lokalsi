@@ -8,14 +8,12 @@ function App() {
   return (
       <>
           <nav className="navbar navbar-expand-md">
-              <a className="navbar-brand ms-auto me-auto ms-sm-auto me-sm-auto" href="#">
+              <a className="navbar-brand mx-auto" href="#">
                   <span className="navbar-logo">lokalsi.cc</span>
               </a>
-              <div className="me-5 my-auto">
-                  <div className="w-100 text-center">
+                  <div className="me-sm-5 ms-sm-0 me-auto ms-auto">
                       <AddRideModal />
                   </div>
-              </div>
           </nav>
           <div className="container mt-5">
               <AllRidesView />

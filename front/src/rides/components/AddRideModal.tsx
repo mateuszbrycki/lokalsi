@@ -17,10 +17,10 @@ const AddRideModal: React.FC<AddRideModalProps & AddRideModalActionProps> = (pro
 
     return (
         <>
-            <Button variant="success" onClick={handleShow}>
-                Nowa ustawka
-                <Plus className="ms-1" style={{ stroke: "white", strokeWidth: "2"}}/>
-            </Button>
+                <Button variant="success" onClick={handleShow} className=" ">
+                    Nowa ustawka
+                    <Plus className="ms-1" style={{ stroke: "white", strokeWidth: "2"}}/>
+                </Button>
 
             <Modal
                 show={show}

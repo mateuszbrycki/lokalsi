@@ -14,8 +14,8 @@ const RideListElement: React.FC<RideMarkerProps & RideMarkerActionProps> = (prop
 
     const {ride} = props
     return <>
-        <div>
-            <h5 className="fw-bold">{ride.name}</h5>
+        <div className="rides-list-element">
+            <h5 className="fw-bold mt-2">{ride.name}</h5>
             <div className="rides-list-element-date-time"><Icon.Calendar className="me-2"/>{ride.day}, {ride.time}</div>
             <div className="py-2 ps-2 rides-list-element-description">{ride.description}</div>
             <div className="py-2 ps-2 rides-list-element-links">

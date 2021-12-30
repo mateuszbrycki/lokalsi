@@ -26,7 +26,7 @@ const AllRidesView: React.FC<AllRidesProps & AllRidesActionProps> = (props) => {
                         zoom={11}
                         rides={rides}/>
                 </div>
-                <div className="col-sm-4 overflow-auto h-100 p-0 bg-light">
+                <div className="col-sm-4 overflow-auto h-100 p-0">
                     <RidesList rides={rides}/>
                 </div>
 

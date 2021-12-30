@@ -13,7 +13,7 @@ body {
 a.navbar-brand {
     color: #fff;
     font-size: 40px;
-    font-family: koliko-bold,sans-serif;
+    font-family: koliko-bold, sans-serif;
     letter-spacing: 6px;
     text-shadow: #063852;
 }
@@ -37,7 +37,7 @@ a:hover.nav-link {
 .navbar .btn-success {
     background-color: #4c9db4 !important;
     border-color: #3d7c8f !important;
-    font-family: robo,sans-serif;
+    font-family: robo, sans-serif;
     border-radius: 0 !important;
 }
 
@@ -49,10 +49,35 @@ a:hover.nav-link {
     box-shadow: none !important;
 }
 
-#map, .all-rides-container {
-    height: 600px;
 
-    font-family: roboto,sans-serif;
+@media (max-width: 575px) {
+    .map-container {
+        height: 200px;
+    }
+
+    .all-rides-container {
+        height: auto;
+    }
+}
+
+@media (min-width: 576px) {
+    .map-container {
+        height: 600px;
+    }
+
+    .all-rides-container {
+        height: 600px;
+    }
+}
+
+#map {
+    height: inherit;
+}
+
+.all-rides-container {
+    /*height: 600px;*/
+    background-color: #fff;
+    font-family: roboto, sans-serif;
 }
 
 .all-rides-container {
@@ -65,7 +90,7 @@ a:hover.nav-link {
     background-color: #fff;
 }
 
-.rides-list-container ul{
+.rides-list-container ul {
     list-style-type: none;
 }
 
@@ -77,6 +102,10 @@ a:hover.nav-link {
 
 .rides-list-element-links {
     color: #7c7b7b;
+}
+
+.rides-list-container ul:last-child li:last-child hr:last-of-type {
+    display: none;
 }
 
 /* Rides Map Markers */

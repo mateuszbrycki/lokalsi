@@ -18,7 +18,7 @@ export interface RidesMapViewActionProps {
 const RidesMapView: React.FC<RidesMapViewProps & RidesMapViewActionProps> = (props) => {
 
     const {centerPoint, zoom, rides} = props
-    return <>
+    return <div className="map-container">
         <MapContainer center={[centerPoint.latitude,centerPoint.longitude]} zoom={zoom} scrollWheelZoom={false} id="map" className="w-100">
             <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -28,7 +28,7 @@ const RidesMapView: React.FC<RidesMapViewProps & RidesMapViewActionProps> = (pro
                 { rides.map(ride => <RideMarker ride={ride} />) }
             </MarkerClusterGroup>
         </MapContainer>
-    </>
+    </div>
 }
 
 export default RidesMapView
