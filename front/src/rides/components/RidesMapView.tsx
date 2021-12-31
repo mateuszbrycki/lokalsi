@@ -25,7 +25,7 @@ const RidesMapView: React.FC<RidesMapViewProps & RidesMapViewActionProps> = (pro
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
             <MarkerClusterGroup>
-                { rides.map(ride => <RideMarker ride={ride} />) }
+                { rides.map(ride => <RideMarker ride={ride} key={ride.id}/>) }
             </MarkerClusterGroup>
         </MapContainer>
     </div>

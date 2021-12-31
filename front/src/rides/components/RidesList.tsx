@@ -18,7 +18,7 @@ const RidesList: React.FC<RidesListProps & RidesListActionProps> = (props) => {
     return <div className="rides-list-container">
         <ul className="p-0 mb-0">
             {rides.map(ride =>
-                <li className="px-3 pt-1">
+                <li key={ride.id}>
                     <RideListElement ride={ride}/>
                     <hr className="w-75 ms-auto me-auto mt-2 mb-0"/>
                 </li>

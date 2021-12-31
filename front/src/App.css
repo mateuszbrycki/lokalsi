@@ -1,7 +1,8 @@
 body {
     background-color: #f7f7fa !important;
     color: #fff;
-    font-family: robo, sans-serif;
+    font-family: 'Roboto', sans-serif !important;
+    letter-spacing: 0px;
 }
 
 /* Navbar */
@@ -13,8 +14,7 @@ body {
 a.navbar-brand {
     color: #fff;
     font-size: 40px;
-    font-family: koliko-bold, sans-serif;
-    letter-spacing: 6px;
+    font-family: 'Poppins', sans-serif;
     text-shadow: #063852;
 }
 
@@ -37,7 +37,7 @@ a:hover.nav-link {
 .navbar .btn-success {
     background-color: #4c9db4 !important;
     border-color: #3d7c8f !important;
-    font-family: robo, sans-serif;
+    /*font-family: robo, sans-serif;*/
     border-radius: 0 !important;
 }
 
@@ -77,7 +77,7 @@ a:hover.nav-link {
 .all-rides-container {
     /*height: 600px;*/
     background-color: #fff;
-    font-family: roboto, sans-serif;
+    /*font-family: roboto, sans-serif;*/
 }
 
 .all-rides-container {
@@ -116,6 +116,9 @@ a:hover.nav-link {
     font-size: 0.8rem;
 }
 
-.ride-marker-links {
-    color: #7c7b7b;
+/* Ride Icons List */
+.ride-urls-icons-list li a {
+    color: #000 !important;
+    font-size: 1.2rem;
 }
+
