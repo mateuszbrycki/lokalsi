@@ -84,8 +84,8 @@ const Api: RideHttpApi = {
                     webpage: "#"
                 },
                 startingPoint: {
-                    latitude: 50.062602,
-                    longitude: 19.902552
+                    latitude: 50.062529,
+                    longitude: 19.902527
                 },
                 rideType: RideType.GRAVEL
             }

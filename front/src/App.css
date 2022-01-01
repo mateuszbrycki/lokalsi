@@ -34,22 +34,6 @@ a:hover.nav-link {
     border-bottom: 2px solid #f0622f;
 }
 
-.navbar .btn-success {
-    background-color: #4c9db4 !important;
-    border-color: #3d7c8f !important;
-    /*font-family: robo, sans-serif;*/
-    border-radius: 0 !important;
-}
-
-.navbar .btn-success:hover {
-    background-color: #3d7c8f !important;
-}
-
-.navbar .btn-success:focus {
-    box-shadow: none !important;
-}
-
-
 @media (max-width: 575px) {
     .map-container {
         height: 200px;
@@ -81,9 +65,7 @@ a:hover.nav-link {
 }
 
 .all-rides-container {
-    /*height: 600px;*/
     background-color: #fff;
-    /*font-family: roboto, sans-serif;*/
 }
 
 .all-rides-container {
@@ -123,8 +105,37 @@ a:hover.nav-link {
 }
 
 /* Ride Icons List */
+
 .ride-urls-icons-list li a {
     color: #000 !important;
     font-size: 1.2rem;
 }
 
+/* Add Ride Modal */
+
+.add-ride-button {
+    background-color: #4c9db4 !important;
+    border-color: #3d7c8f !important;
+    /*font-family: robo, sans-serif;*/
+    border-radius: 0 !important;
+}
+
+.add-ride-button:hover {
+    background-color: #3d7c8f !important;
+}
+
+.add-ride-button:focus {
+    box-shadow: none !important;
+}
+
+/* Footer */
+#footer h6 {
+    font-weight: bold;
+    margin-bottom: 1.5rem !important;
+    text-transform: uppercase !important;
+}
+
+.leaflet-div-icon {
+    background: transparent;
+    border: none;
+}

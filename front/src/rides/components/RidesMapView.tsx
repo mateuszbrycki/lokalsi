@@ -19,13 +19,14 @@ const RidesMapView: React.FC<RidesMapViewProps & RidesMapViewActionProps> = (pro
 
     const {centerPoint, zoom, rides} = props
     return <div className="map-container">
-        <MapContainer center={[centerPoint.latitude,centerPoint.longitude]} zoom={zoom} scrollWheelZoom={false} id="map" className="w-100">
+        <MapContainer center={[centerPoint.latitude, centerPoint.longitude]} zoom={zoom} scrollWheelZoom={false}
+                      id="map" className="w-100">
             <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
-            <MarkerClusterGroup>
-                { rides.map(ride => <RideMarker ride={ride} key={ride.id}/>) }
+            <MarkerClusterGroup showCoverageOnHover={false}>
+                {rides.map(ride => <RideMarker ride={ride} key={ride.id}/>)}
             </MarkerClusterGroup>
         </MapContainer>
     </div>
