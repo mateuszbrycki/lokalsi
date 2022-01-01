@@ -23,7 +23,7 @@ export interface RideUrls {
 
 export class RideType {
     public static readonly ROAD = new RideType('Road', '#3E885B');
-    public static readonly GRAVEL = new RideType('Gravel', '#CDD7D6');
+    public static readonly GRAVEL = new RideType('Gravel', '#6b706f');
     public static readonly MTB = new RideType('MTB/XC', '#916953');
 
     private constructor(public readonly name: string, public readonly color: string) {

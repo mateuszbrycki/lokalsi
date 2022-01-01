@@ -1,5 +1,6 @@
 import React from 'react'
 import * as Icon from "react-bootstrap-icons";
+import {Plus} from "react-bootstrap-icons";
 
 export interface FooterProps {
 }
@@ -20,13 +21,12 @@ const Footer: React.FC<FooterProps & FooterActionProps> = (props) => {
                                 lokalsi.cc
                             </h6>
                             <p>
-                                Zbieramy i aktualizujemy dane na temat ustawek kolarskich w Polsce. Liczymy, że nasza strona
-                                pomoże w rozrastaniu się kolarskich społeczności.
+                                Zbieramy i aktualizujemy dane na temat ustawek kolarskich w Polsce. Liczymy, że nasza
+                                strona pomoże w rozrastaniu się kolarskich społeczności.
                             </p>
                             <p>
-                                Mamy nadzieję, że niedługo uda nam się zebrać pokaźną listę wydarzeń, która pomoże nie tylko nowym
-                                pasjonatom kolarstwa, ale również tym, którzy podróżują po Polsce i chcieliby pojeździć z
-                                <div className="fw-bold"> Lokalsami.</div>
+                                Chcemy, aby każdy chętny miał możliwość zintegrowania się z lokalną kolarską
+                                społecznością - <div className="fw-bold d-inline"> lokalsami</div>.
                             </p>
 
                         </div>
@@ -35,12 +35,19 @@ const Footer: React.FC<FooterProps & FooterActionProps> = (props) => {
                                 Jak działamy?
                             </h6>
                             <p>
-                                Dane o ustakach zbieramy i aktualizujemy sami. Będziemy bardzo wdzięczni za podrzucanie nam
+                                Dane o ustawkach zbieramy i aktualizujemy sami. Będziemy bardzo wdzięczni za podrzucanie
+                                nam
                                 informacji o ustawkach, które żyją w Twoim regionie.
                             </p>
                             <p>
-                                Do tego celu przygotowaliśmy specjalny formularz (<span className="badge" style={{backgroundColor: '#4c9db4'}}>Nowa Ustawka</span>),
-                                za pomocą którego możesz podesłać nam niezbędne informacje. Będziemy wdzięczni za informacje o każdej ustawce!
+                                Do tego celu przygotowaliśmy specjalny formularz (<span className="badge"
+                                                                                        style={{backgroundColor: '#4c9db4'}}
+                                                                                        onClick={() => {
+                                                                                            document?.getElementById("add-ride-button")?.click();
+                                                                                        }}>Nowa ustawka<Plus
+                                className="ms-1"/></span>),
+                                za pomocą którego możesz podesłać nam niezbędne informacje. Będziemy wdzięczni za
+                                informacje o każdej ustawce!
                             </p>
                         </div>
 
@@ -49,8 +56,10 @@ const Footer: React.FC<FooterProps & FooterActionProps> = (props) => {
                                 Kontakt
                             </h6>
                             <p>
-                                Jeżeli znalazłeś na naszej stronie błędne informacje lub masz pomysł co moglibyśmy zmienić,
-                                aby korzystanie z <a href="https://lokalsi.cc/">lokalsi.cc</a> było łatwiejsze, to skontaktuj się z nami za pomocą
+                                Jeżeli znalazłeś na naszej stronie błędne informacje lub masz pomysł co moglibyśmy
+                                zmienić,
+                                aby korzystanie z <a href="https://lokalsi.cc/">lokalsi.cc</a> było łatwiejsze, to
+                                skontaktuj się z nami za pomocą
                                 poniższego adresu e-mail.
                             </p>
                             <p className="fw-bold">
@@ -62,8 +71,9 @@ const Footer: React.FC<FooterProps & FooterActionProps> = (props) => {
                 </div>
             </section>
 
-            <div className="text-center p-4" style={{ backgroundColor: 'rgba(0, 0, 0, 0.05)'}}>
-                Copyright © 2021 - 2022 <a className="text-reset fw-bold text-decoration-none" href="https://lokalsi.cc/">lokalsi.cc</a>
+            <div className="text-center p-4" style={{backgroundColor: 'rgba(0, 0, 0, 0.05)'}}>
+                Copyright © 2021 - 2022 <a className="text-reset fw-bold text-decoration-none"
+                                           href="https://lokalsi.cc/">lokalsi.cc</a>
             </div>
         </footer>
     )

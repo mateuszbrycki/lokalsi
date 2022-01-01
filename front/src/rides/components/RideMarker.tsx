@@ -19,10 +19,10 @@ const RideMarker: React.FC<RideMarkerProps & RideMarkerActionProps> = (props) =>
 
     const {ride} = props
 
-    const iconMarkup = renderToStaticMarkup(<Icon.PinFill style={{color: ride.rideType.color, fontSize: '1.2rem', stroke: "black", strokeWidth: "1"}} />);
+    const iconMarkup = renderToStaticMarkup(<Icon.GeoAltFill style={{color: ride.rideType.color, fontSize: '2rem'}} />);
     const customMarkerIcon = divIcon({
         html: iconMarkup,
-        iconAnchor: [8, 20],
+        iconAnchor: [15, 33],
         popupAnchor: [0,-20]
     });
     return <>
