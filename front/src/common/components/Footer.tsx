@@ -40,7 +40,7 @@ const Footer: React.FC<FooterProps & FooterActionProps> = (props) => {
                                 informacji o ustawkach, które żyją w Twoim regionie.
                             </p>
                             <p>
-                                Do tego celu przygotowaliśmy specjalny formularz (<span className="badge"
+                                Do tego celu przygotowaliśmy specjalny formularz (<span className="badge add-ride-badge"
                                                                                         style={{backgroundColor: '#4c9db4'}}
                                                                                         onClick={() => {
                                                                                             document?.getElementById("add-ride-button")?.click();

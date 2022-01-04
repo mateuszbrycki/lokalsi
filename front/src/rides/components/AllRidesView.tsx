@@ -20,10 +20,10 @@ const AllRidesView: React.FC<AllRidesProps & AllRidesActionProps> = (props) => {
                 <div className="col-sm-8 h-sm-25 p-0">
                     <RidesMapView
                         centerPoint={{
-                            latitude: 50.061060,
-                            longitude: 19.938625
+                            latitude: 52.125736,
+                            longitude: 19.080392
                         }}
-                        zoom={11}
+                        zoom={6}
                         rides={rides}/>
                 </div>
                 <div className="col-sm-4 overflow-auto h-100 p-0">

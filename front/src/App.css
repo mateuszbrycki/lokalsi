@@ -113,10 +113,13 @@ a:hover.nav-link {
 
 /* Add Ride Modal */
 
+.btn {
+    border-radius: 0 !important;
+}
+
 .add-ride-button {
     background-color: #4c9db4 !important;
     border-color: #3d7c8f !important;
-    /*font-family: robo, sans-serif;*/
     border-radius: 0 !important;
 }
 
@@ -138,4 +141,9 @@ a:hover.nav-link {
 .leaflet-div-icon {
     background: transparent;
     border: none;
+}
+
+#footer .add-ride-badge:hover {
+    cursor: pointer;
+    background-color: #3d7c8f !important;
 }
