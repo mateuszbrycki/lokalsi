@@ -41,7 +41,6 @@ const Footer: React.FC<FooterProps & FooterActionProps> = (props) => {
                             </p>
                             <p>
                                 Do tego celu przygotowaliśmy specjalny formularz (<span className="badge add-ride-badge"
-                                                                                        style={{backgroundColor: '#4c9db4'}}
                                                                                         onClick={() => {
                                                                                             document?.getElementById("add-ride-button")?.click();
                                                                                         }}>Nowa ustawka<Plus

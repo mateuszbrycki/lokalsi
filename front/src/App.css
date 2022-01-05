@@ -36,7 +36,7 @@ a:hover.nav-link {
 
 @media (max-width: 575px) {
     .map-container {
-        height: 200px;
+        height: 300px;
     }
 
     .all-rides-container {
@@ -96,6 +96,30 @@ a:hover.nav-link {
     display: none;
 }
 
+.rides-list-container .rides-list-element-show-on-map {
+    background-color: #fff;
+    border: 1px solid #4c9db4;
+    color: inherit !important;
+    font-size: 0.8rem !important;
+}
+
+.rides-list-container .rides-list-element-show-on-map:hover {
+    background-color: #4c9db4;
+    border: 1px solid #4c9db4;
+    color: #fff !important;
+}
+
+.rides-list-container .rides-list-element-show-on-map:focus {
+    background-color: #4c9db4;
+    border: 1px solid #4c9db4;
+    color: #fff !important;
+}
+
+.btn:focus {
+    box-shadow: none !important;
+}
+
+
 /* Rides Map Markers */
 
 .ride-marker-date-time {
@@ -141,6 +165,12 @@ a:hover.nav-link {
 .leaflet-div-icon {
     background: transparent;
     border: none;
+}
+
+#footer .add-ride-badge {
+    cursor: pointer;
+    background-color: #4c9db4 !important;
+    border-radius: 0 !important;
 }
 
 #footer .add-ride-badge:hover {

@@ -16,7 +16,6 @@ export interface RidesMapViewActionProps {
 
 
 const RidesMapView: React.FC<RidesMapViewProps & RidesMapViewActionProps> = (props) => {
-
     const {centerPoint, zoom, rides} = props
     return <div className="map-container">
         <MapContainer center={[centerPoint.latitude, centerPoint.longitude]} zoom={zoom} scrollWheelZoom={false}
