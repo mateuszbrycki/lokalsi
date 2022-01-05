@@ -88,6 +88,12 @@ a:hover.nav-link {
     font-size: 0.8rem;
 }
 
+.rides-list-element-city {
+    color: #7c7b7b;
+    font-weight: bold;
+    font-size: 0.8rem;
+}
+
 .rides-list-element-links {
     color: #7c7b7b;
 }

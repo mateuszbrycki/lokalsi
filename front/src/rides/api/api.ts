@@ -7,7 +7,7 @@ export interface RideHttpApi {
 
 const Api: RideHttpApi = {
     getRides: () =>
-         List.of(
+        List.of(
             {
                 id: "1",
                 name: "Pierwsza ustawka",
@@ -21,7 +21,8 @@ const Api: RideHttpApi = {
                     latitude: 50.059319,
                     longitude: 19.923351
                 },
-                rideType: RideType.ROAD
+                rideType: RideType.ROAD,
+                city: "Kraków"
             },
             {
                 id: "2",
@@ -37,7 +38,8 @@ const Api: RideHttpApi = {
                     latitude: 50.045210,
                     longitude: 19.922492
                 },
-                rideType: RideType.GRAVEL
+                rideType: RideType.GRAVEL,
+                city: "Kraków"
             },
             {
                 id: "3",
@@ -54,7 +56,8 @@ const Api: RideHttpApi = {
                     latitude: 50.019552,
                     longitude: 19.932342
                 },
-                rideType: RideType.MTB
+                rideType: RideType.MTB,
+                city: "Kraków"
             },
             {
                 id: "4",
@@ -70,7 +73,8 @@ const Api: RideHttpApi = {
                     latitude: 50.052917,
                     longitude: 20.049306
                 },
-                rideType: RideType.ROAD
+                rideType: RideType.ROAD,
+                city: "Kraków"
             },
             {
                 id: "5",
@@ -87,9 +91,9 @@ const Api: RideHttpApi = {
                     latitude: 50.062529,
                     longitude: 19.902527
                 },
-                rideType: RideType.GRAVEL
+                rideType: RideType.GRAVEL,
+                city: "Kraków"
             }
-
         )
 }
 

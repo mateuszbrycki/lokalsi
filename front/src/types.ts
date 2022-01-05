@@ -7,6 +7,7 @@ export interface Ride {
     readonly url: RideUrls;
     readonly startingPoint: MapPoint;
     readonly rideType: RideType;
+    readonly city: string;
 }
 
 export interface MapPoint {
