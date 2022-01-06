@@ -9,7 +9,6 @@ export interface NavbarActionProps {
 
 
 const Navbar: React.FC<NavbarProps & NavbarActionProps> = (props) => {
-
     return (
         <nav className="navbar navbar-expand-md">
             <a className="navbar-brand mx-auto" href="#">

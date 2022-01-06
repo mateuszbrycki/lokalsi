@@ -1,3 +1,5 @@
+import {Map as LeafletMap} from "leaflet";
+
 export interface Ride {
     readonly id: string;
     readonly name: string;
@@ -30,3 +32,5 @@ export class RideType {
     private constructor(public readonly name: string, public readonly color: string) {
     }
 }
+
+export interface Map extends LeafletMap {}

@@ -1,5 +1,5 @@
 import React from 'react'
-import {Ride} from "../../types";
+import {MapPoint, Ride} from "../../types";
 import * as Icon from "react-bootstrap-icons";
 import RideUrlsList from "./RideUrlsList";
 import RideBadge from "./RideBadge";
@@ -10,12 +10,17 @@ export interface RideMarkerProps {
 }
 
 export interface RideMarkerActionProps {
+    readonly showOnMap: (startingPoint: MapPoint) => void
 }
 
 
 const RideListElement: React.FC<RideMarkerProps & RideMarkerActionProps> = (props) => {
 
-    const {ride} = props
+    const {ride, showOnMap} = props
+
+    const onClick = () => {
+        showOnMap(ride.startingPoint)
+    }
 
     return <>
         <div key={ride.id} className="rides-list-element px-3 pt-1">
@@ -37,7 +42,7 @@ const RideListElement: React.FC<RideMarkerProps & RideMarkerActionProps> = (prop
                     <RideUrlsList rideUrls={ride.url}/>
                 </div>
                 <div className="ms-auto fs-7">
-                    <Button className="rides-list-element-show-on-map">Pokaż na mapie</Button>
+                    <Button className="rides-list-element-show-on-map" onClick={onClick}>Pokaż na mapie</Button>
                 </div>
             </div>
         </div>
