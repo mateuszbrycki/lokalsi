@@ -13,8 +13,6 @@ function* onLoadRides(api: RideHttpApi): IterableIterator<unknown> {
     })
 
     yield takeEvery((a: Action): a is ShowRideOnMap => a.type === Types.ShowRideOnMap, function* (a: ShowRideOnMap) {
-        const map: Map = yield select(getMap)
-        map.flyTo([a.payload.startingPoint.latitude, a.payload.startingPoint.longitude])
         yield put(MapFlyToAction(a.payload.startingPoint))
     })
 
