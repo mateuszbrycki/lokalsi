@@ -248,7 +248,7 @@ const Api: RideHttpApi = {
                 description: "Jeździmy w zróżnicowanym terenie, głównie po \"południowej\" stronie Krakowa, ze względu na naszą lokalizację.\n" +
                     "Zapraszamy do wspólnej jazdy",
                 url: {
-                    strava: "https://www.facebook.com/groups/403048707156938"
+                    facebook: "https://www.facebook.com/groups/403048707156938"
                 },
                 startingPoint: {
                     latitude: 49.988630,
@@ -265,7 +265,7 @@ const Api: RideHttpApi = {
                 description: "Jeździmy w zróżnicowanym terenie, głównie po \"południowej\" stronie Krakowa, ze względu na naszą lokalizację.\n" +
                     "Zapraszamy do wspólnej jazdy",
                 url: {
-                    strava: "https://www.facebook.com/groups/403048707156938"
+                    facebook: "https://www.facebook.com/groups/403048707156938"
                 },
                 startingPoint: {
                     latitude: 49.988630,
@@ -276,12 +276,12 @@ const Api: RideHttpApi = {
             },
             {
                 id: "19",
-                name: "Gichy kącik",
+                name: "Cichy kącik",
                 time: "10:10",
                 day: "Sobota",
                 description: "Grupa krakowskich kolarzy. Regularne spotkania na treningi szosowe w weekendy.",
                 url: {
-                    strava: "https://www.facebook.com/groups/cichykacik/"
+                    facebook: "https://www.facebook.com/groups/cichykacik/"
                 },
                 startingPoint: {
                     latitude: 50.062519,
@@ -313,7 +313,7 @@ const Api: RideHttpApi = {
                 day: "Sobota",
                 description: "Znudziła Ci się samotna jazda na szosie? - Tu możesz spróbować swoich sił jazdy w peletonie.",
                 url: {
-                    strava: "https://fb.com/Coffee-Ride-1759901340903034/"
+                    facebook: "https://fb.com/Coffee-Ride-1759901340903034/"
                 },
                 startingPoint: {
                     latitude: 50.032902,

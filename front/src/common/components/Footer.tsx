@@ -21,8 +21,8 @@ const Footer: React.FC<FooterProps & FooterActionProps> = (props) => {
                                 lokalsi.cc
                             </h6>
                             <p>
-                                Zbieramy i aktualizujemy dane na temat ustawek kolarskich w Polsce. Liczymy, że nasza
-                                strona pomoże w rozrastaniu się kolarskich społeczności.
+                                Zbieramy i aktualizujemy dane na temat ustawek kolarskich w Polsce.
+                                Liczymy, że nasza strona pomoże w rozrastaniu się kolarskiej społeczności.
                             </p>
                             <p>
                                 Chcemy, aby każdy chętny miał możliwość zintegrowania się z lokalną kolarską
@@ -35,18 +35,16 @@ const Footer: React.FC<FooterProps & FooterActionProps> = (props) => {
                                 Jak działamy?
                             </h6>
                             <p>
-                                Dane o ustawkach zbieramy i aktualizujemy sami. Będziemy bardzo wdzięczni za podrzucanie
-                                nam
-                                informacji o ustawkach, które żyją w Twoim regionie.
+                                Wszystkie dane zbieramy i aktualizujemy ręcznie.
+                                Mamy nadzieję, że liczba ustawek prezentowanych na stronie będzie się stale zwiększać.
                             </p>
                             <p>
+                                Jeżeli Twoje ulubiona ustawka nie jest widoczna na mapie, to bylibyśmy wdzięczni za podesłanie nam jej szczegółów.
                                 Do tego celu przygotowaliśmy specjalny formularz (<span className="badge add-ride-badge"
                                                                                         onClick={() => {
                                                                                             document?.getElementById("add-ride-button")?.click();
                                                                                         }}>Nowa ustawka<Plus
-                                className="ms-1"/></span>),
-                                za pomocą którego możesz podesłać nam niezbędne informacje. Będziemy wdzięczni za
-                                informacje o każdej ustawce!
+                                className="ms-1"/></span>). Dziękujemy!
                             </p>
                         </div>
 
