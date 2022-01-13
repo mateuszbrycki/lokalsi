@@ -40,7 +40,7 @@ const Footer: React.FC<FooterProps & FooterActionProps> = (props) => {
                             </p>
                             <p>
                                 Jeżeli Twoje ulubiona ustawka nie jest widoczna na mapie, to bylibyśmy wdzięczni za podesłanie nam jej szczegółów.
-                                Do tego celu przygotowaliśmy specjalny formularz (<span className="badge add-ride-badge"
+                                W tym celu przygotowaliśmy specjalny formularz (<span className="badge add-ride-badge"
                                                                                         onClick={() => {
                                                                                             document?.getElementById("add-ride-button")?.click();
                                                                                         }}>Nowa ustawka<Plus
