@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import AllRidesContainer from "./rides/containers/AllRidesContainer";
 import Footer from "./common/components/Footer";
 import Navbar from "./common/components/Navbar";
+import CookiesPopup from "./common/components/Cookies";
 
 export interface AppActionsProps {
 }
@@ -21,6 +22,7 @@ const App: React.FunctionComponent<AppProps & AppActionsProps> = (props) => {
                 <AllRidesContainer/>
             </div>
             <Footer/>
+            <CookiesPopup />
         </>
     );
 }

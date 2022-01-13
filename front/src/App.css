@@ -183,3 +183,28 @@ a:hover.nav-link {
     cursor: pointer;
     background-color: #3d7c8f !important;
 }
+
+/* Cookies */
+.cookie-consent {
+    background-color: #f7f7fa !important;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    height: 45px;
+    line-height: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 14px;
+    z-index: 1000;
+    cursor: pointer;
+    border-radius: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+.allow-button {
+    color: #fff;
+    border: 1px solid #2e6544;
+    background-color: #3E885B
+}
