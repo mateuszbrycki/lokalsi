@@ -1,8 +1,8 @@
 # pull official base image
 FROM node:17.3.0-alpine as build-step
 
-ARG BUILD_TIME
-ENV BUILD_TIME=$BUILD_TIME
+ARG build_time
+ENV BUILD_TIME=$build_time
 
 # set working directory
 WORKDIR /app
