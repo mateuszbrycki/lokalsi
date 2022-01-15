@@ -22,5 +22,5 @@ RUN npm run build
 
 # Stage 2
 FROM nginx:1.17.1-alpine
-RUN sed -i "s/BUILD_TIME/${BUILD_TIME}/g" /app/build/sitemap.xml
 COPY --from=build-step /app/build /usr/share/nginx/html
+RUN sed -i "s/BUILD_TIME/${BUILD_TIME}/g" /usr/share/nginx/html/sitemap.xml
