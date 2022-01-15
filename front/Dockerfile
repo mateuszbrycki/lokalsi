@@ -1,6 +1,9 @@
 # pull official base image
 FROM node:17.3.0-alpine as build-step
 
+ARG BUILD_TIME
+ENV BUILD_TIME=$BUILD_TIME
+
 # set working directory
 WORKDIR /app
 
@@ -19,4 +22,5 @@ RUN npm run build
 
 # Stage 2
 FROM nginx:1.17.1-alpine
+RUN sed -i "s/BUILD_TIME/${BUILD_TIME}/g" /app/build/sitemap.xml
 COPY --from=build-step /app/build /usr/share/nginx/html

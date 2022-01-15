@@ -28,8 +28,7 @@ const RideMarker: React.FC<RideMarkerProps & RideMarkerActionProps> = (props) =>
     return <>
         <Marker position={[ride.startingPoint.latitude, ride.startingPoint.longitude]} icon={customMarkerIcon}>
             <Popup>
-                <h5 className="fw-bold mt-2">{ride.name}</h5>
-
+                <h2 className="ride-name fw-bold mt-2">{ride.name}</h2>
                 <div className="d-flex py-2 ps-2 pe-2">
                     <RideBadge rideType={ride.rideType} className="me-1 mb-2 fs-6"/>
                     <div><p className="fw-bold p-0 m-0 ride-marker-date-time mt-1 ms-2"><Icon.Calendar

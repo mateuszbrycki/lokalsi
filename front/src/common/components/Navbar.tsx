@@ -10,14 +10,19 @@ export interface NavbarActionProps {
 
 const Navbar: React.FC<NavbarProps & NavbarActionProps> = (props) => {
     return (
-        <nav className="navbar navbar-expand-md">
-            <a className="navbar-brand mx-auto" href="#">
-                <span className="navbar-logo">lokalsi.cc</span>
-            </a>
-            <div className="me-sm-5 ms-sm-0 me-auto ms-auto">
-                <AddRideModal />
-            </div>
-        </nav>
+        <header>
+            <nav className="navbar navbar-expand-md">
+
+                <a className="navbar-brand mx-auto" href="#">
+                    <h1 className="navbar-logo">lokalsi.cc</h1>
+                </a>
+
+                <div className="me-sm-5 ms-sm-0 me-auto ms-auto">
+                    <AddRideModal/>
+                </div>
+
+            </nav>
+        </header>
     )
 }
 

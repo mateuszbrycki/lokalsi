@@ -15,7 +15,7 @@ const RidesList: React.FC<RidesListProps & RidesListActionProps> = (props) => {
 
     const {rides, showOnMap} = props
 
-    return <div className="rides-list-container">
+    return <article className="rides-list-container">
         <ul className="p-0 mb-0">
             {rides.map(ride =>
                 <li key={ride.id}>
@@ -24,7 +24,7 @@ const RidesList: React.FC<RidesListProps & RidesListActionProps> = (props) => {
                 </li>
             )}
         </ul>
-    </div>
+    </article>
 }
 
 export default RidesList
