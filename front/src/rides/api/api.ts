@@ -94,7 +94,7 @@ const Api: RideHttpApi = {
                 name: "Ekspressoride bikeshow.cc",
                 time: "9:30",
                 day: "Poniedziałek",
-                description: "Ustawka rowerowa dla prywaciarzy do Niepołomic.",
+                description: "Ustawka rowerowa dla prywaciarzy. Kierunek Niepołomice.",
                 url: {
                     facebook: "https://www.facebook.com/groups/1606940372774784"
                 },
@@ -110,7 +110,7 @@ const Api: RideHttpApi = {
                 name: "Ekspressoride bikeshow.cc",
                 time: "9:30",
                 day: "Piątek",
-                description: "Ustawka rowerowa dla prywaciarzy do Czernichowa.",
+                description: "Ustawka rowerowa dla prywaciarzy. Kierunek Czernichów.",
                 url: {
                     facebook: "https://www.facebook.com/groups/1606940372774784"
                 },
@@ -322,6 +322,118 @@ const Api: RideHttpApi = {
                 rideType: RideType.ROAD,
                 city: "Niepołomice"
             },
+            {
+                id: "22",
+                name: "Grupetto Zielona Góra Ride",
+                time: "10:00",
+                day: "Sobota",
+                description: "Każdy, kto chce pojeździć w grupie, jest mile widziany!",
+                url: {
+                    facebook: "https://www.facebook.com/Grupetto-Zielona-G%C3%B3ra-822020794664238"
+                },
+                startingPoint: {
+                    latitude: 51.938334,
+                    longitude: 15.514192
+                },
+                rideType: RideType.ROAD,
+                city: "Zielona Góra"
+            },
+            {
+                id: "23",
+                name: "Palma Ride",
+                time: "17:15",
+                day: "Wtorek",
+                description: "Treningowa ustawka z Grupetto Zielona Góra.",
+                url: {
+                    facebook: "https://www.facebook.com/Grupetto-Zielona-G%C3%B3ra-822020794664238"
+                },
+                startingPoint: {
+                    latitude: 51.938334,
+                    longitude: 15.514192
+                },
+                rideType: RideType.ROAD,
+                city: "Zielona Góra"
+            },
+            {
+                id: "24",
+                name: "Palma Ride",
+                time: "17:15",
+                day: "Czwartek",
+                description: "Treningowa ustawka z Grupetto Zielona Góra.",
+                url: {
+                    facebook: "https://www.facebook.com/Grupetto-Zielona-G%C3%B3ra-822020794664238"
+                },
+                startingPoint: {
+                    latitude: 51.938334,
+                    longitude: 15.514192
+                },
+                rideType: RideType.ROAD,
+                city: "Zielona Góra"
+            },
+            {
+                id: "25",
+                name: "Niedzielna100 Poznań Winogrady",
+                time: "10:00",
+                day: "Niedziela",
+                description: "Dla fanów szosowych dwóch kółek, którzy lubią kręcić kilometry w super towarzystwie, pić dobrą kawę, jeść ciasto i cieszyć się jazdą.",
+                url: {
+                    facebook: "https://www.facebook.com/Niedzielna100Winogrady"
+                },
+                startingPoint: {
+                    latitude: 52.432057,
+                    longitude: 16.952341
+                },
+                rideType: RideType.ROAD,
+                city: "Poznań"
+            },
+            {
+                id: "26",
+                name: "GraveLove Poznań",
+                time: "10:00",
+                day: "Niedziela",
+                description: "Celem organizowanych utawek kolarskich GraveLove Niedziele oraz innych wydarzeń rowerowych pod szyldem GraveLove Poznań jest popularyzacja Poznańskego kolarstwa przełajowego i gravelowego, zwiększenie liczby osób jeżdżących na rowerach \"szutrowych\", integracja Poznańskego środowiska kolarskiego oraz prezentowanie i promowanie szutrowej odmany koalrstwa.",
+                url: {
+                    facebook: "https://www.facebook.com/GraveLove-Pozna%C5%84-106410877548498/"
+                },
+                startingPoint: {
+                    latitude: 52.432057,
+                    longitude: 16.952341
+                },
+                rideType: RideType.GRAVEL,
+                city: "Poznań"
+            },
+            {
+                id: "27",
+                name: "Trening Szosowy Zgrupka Team",
+                time: "09:00",
+                day: "Sobota",
+                description: "Ustawki MTB ,kolarskie, zakładki triathlonowe, wypady rekreacyjne i wydarzenia promujące kolarstwo. Społeczność fanów kolarstwa i triathlonu.",
+                url: {
+                    facebook: "https://www.facebook.com/Zgrupka/"
+                },
+                startingPoint: {
+                    latitude: 52.379108,
+                    longitude: 16.943422
+                },
+                rideType: RideType.ROAD,
+                city: "Poznań"
+            },
+            {
+                id: "28",
+                name: "Szosa ONLY FOR GIRLS ",
+                time: "09:00",
+                day: "Sobota",
+                description: "Szosa dla Dziewczyn- TYLKO DLA DZIEWCZYN! Panowie będą odsyłani do domu. Będzie przerwa na kawe( o ile pogoda pozwoli). Obowiązkowy kask i oświetlenie tył.",
+                url: {
+                    facebook: "https://www.facebook.com/babskiekrecenie/"
+                },
+                startingPoint: {
+                    latitude: 54.382605,
+                    longitude: 18.598718
+                },
+                rideType: RideType.ROAD,
+                city: "Gdańsk"
+            }
         )
 }
 
