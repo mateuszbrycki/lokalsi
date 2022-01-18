@@ -420,7 +420,7 @@ const Api: RideHttpApi = {
             },
             {
                 id: "28",
-                name: "Szosa ONLY FOR GIRLS ",
+                name: "Szosa ONLY FOR GIRLS",
                 time: "09:00",
                 day: "Sobota",
                 description: "Szosa dla Dziewczyn- TYLKO DLA DZIEWCZYN! Panowie będą odsyłani do domu. Będzie przerwa na kawe( o ile pogoda pozwoli). Obowiązkowy kask i oświetlenie tył.",
@@ -433,6 +433,305 @@ const Api: RideHttpApi = {
                 },
                 rideType: RideType.ROAD,
                 city: "Gdańsk"
+            },
+            {
+                id: "29",
+                name: "Szosowe Czwartki Koszalin",
+                time: "17:00",
+                day: "Czwartek",
+                description: "My jesteśmy zapaleńcami, którzy „zimują” na sali i na wiosnę zaczynają trenować na dworze. Naszym ulubionym sportem jest kolarstwo szosowe. Nie zawsze mamy czas na wspólną jazdę, ale czwartek stał się takim dniem, gdy większość zostawia wszystko i jedzie. Stąd proponujemy wspólne czwartkowe treningi na szosie. Startujemy w każdy czwartek o godz. 17:00 spod Góry Chełmskiej (róg Słupskiej i Rolnej), a trasa to ok. 60-65 km.",
+                url: {
+                    facebook: "https://www.facebook.com/Koszalincc/",
+                    strava: "https://www.strava.com/clubs/koszalin"
+                },
+                startingPoint: {
+                    latitude: 54.200571,
+                    longitude: 16.212645,
+                },
+                rideType: RideType.ROAD,
+                city: "Koszalin"
+            },
+            {
+                id: "30",
+                name: "Sobotnia Grupa Kolarska",
+                time: "10:00",
+                day: "Sobota",
+                description: "Trasa od 60 do 90 km\n" +
+                    "3 grupy w zależności od stopnia zaawansowania:\n" +
+                    "1 grupa 30-33 km/h\n" +
+                    "2 grupa 27-30 km/h\n" +
+                    "3 grupa 25-27 km/h",
+                url: {
+                    facebook: "https://www.facebook.com/groups/425124495065210/",
+                },
+                startingPoint: {
+                    latitude: 50.196884,
+                    longitude: 18.980590,
+                },
+                rideType: RideType.ROAD,
+                city: "Katowice"
+            },
+            {
+                id: "31",
+                name: "Niedzielna Grupa Gravelowa",
+                time: "10:00",
+                day: "Niedziela",
+                description: "Kto ma ochotę na wspólną przejażdżkę, to zapraszam serdecznie w niedzielę :):):)",
+                url: {
+                    facebook: "https://www.facebook.com/babazkorba",
+                },
+                startingPoint: {
+                    latitude: 50.344000,
+                    longitude: 19.198043,
+                },
+                rideType: RideType.GRAVEL,
+                city: "Dąbrowa Górnicza"
+            },
+            {
+                id: "32",
+                name: "Daniel's Lab MTB",
+                time: "11:00",
+                day: "Niedziela",
+                description: "Trening składa się z rozgrzewki, która prowadzona jest we wspólnym tempie (standardowo jest to dojazd do Góry Bocianek), zasadniczej części treningu, kiedy każdy z uczestników jedzie zgodnie z własnym programem i tempem (pętle o długości ok 7 -14 km w okolicach Góry Bukowej i Trzebiesławic) i zakończenia, kiedy grupa ponownie zbija się w „kupę” i w spokojnym tempie wraca do Molo Pogoria III.",
+                url: {
+                    facebook: "https://www.facebook.com/danielslab.sosnowiec",
+                },
+                startingPoint: {
+                    latitude: 50.344000,
+                    longitude: 19.198043,
+                },
+                rideType: RideType.MTB,
+                city: "Dąbrowa Górnicza"
+            },
+            {
+                id: "33",
+                name: "KFC Ride",
+                time: "09:00",
+                day: "Niedziela",
+                description: "Jedziemy spokojnie jedną grupą.\n" +
+                    "Tempo oczywiście 35-37km/h, kto nie daje rady ten nie daje zmian i odpoczywa jadąc na kole.\n" +
+                    "Zaczynamy spod KFC Stara Miłosna 9:00 zbiórka, 9:15-odjazd.",
+                url: {
+                    facebook: "https://www.facebook.com/JazdaNaKole",
+                },
+                startingPoint: {
+                    latitude: 52.222669,
+                    longitude: 21.243678
+                },
+                rideType: RideType.ROAD,
+                city: "Warszawa"
+            },
+            {
+                id: "34",
+                name: "KTC Kielce",
+                time: "10:00",
+                day: "Niedziela",
+                description: "Ustawka organizowana przez KTC Kielce",
+                url: {
+                    facebook: "https://www.facebook.com/ktckielce/",
+                },
+                startingPoint: {
+                    latitude: 50.877062,
+                    longitude: 20.637830
+                },
+                rideType: RideType.ROAD,
+                city: "Kielce"
+            },
+            {
+                id: "35",
+                name: "Infrasettimanale Classico Katowice",
+                time: "17:00",
+                day: "Środa",
+                description: "IC Katowice to otwarte treningi kolarskie, odbywające się cyklicznie w Katowicach. Zostały zapoczątkowane kilka lat temu przez lokalnych pasjonatów kolarstwa, zyskując z czasem kolejnych uczestników, aż do obecnej, naprawdę wielkiej popularności - która z pewnością jeszcze wzrośnie. Coraz częściej na starcie katowickiego IC staje na rowerach szosowych ponad setka kolarzy.",
+                url: {
+                    webpage: "http://www.ic.katowice.pl//",
+                    facebook: "https://www.facebook.com/Infrasettimanale-Classico-198617890184905/"
+                },
+                startingPoint: {
+                    latitude: 50.26106,
+                    longitude: 19.01828
+                },
+                rideType: RideType.ROAD,
+                city: "Katowice"
+            },
+            {
+                id: "36",
+                name: "Coffee Ride z Cidry na Szosie",
+                time: "18:00",
+                day: "Środa",
+                description: "Zapraszamy jak co środę na spokojną wspólną przejażdżkę po naszych okolicach:)",
+                url: {
+                    facebook: "https://www.facebook.com/cidrylotajom"
+                },
+                startingPoint: {
+                    latitude: 50.400686,
+                    longitude: 18.902896
+                },
+                rideType: RideType.ROAD,
+                city: "Radzionków"
+            },
+            {
+                id: "37",
+                name: "Rondo Babka",
+                time: "09:00",
+                // TODO dodać sobotę, więcej info na stronie
+                day: "Niedziela",
+                description: "Na tzw. \"Babkę\" przyjeżdża od kilku, do nawet 80-90 osób. Frekwencja uzależniona jest od pogody, pory roku itp. We wszystkie dni świąteczne (zaznaczone w kaledarzu na czerwono) spotykamy sie tak jak w weekendy.",
+                url: {
+                    facebook: "https://www.facebook.com/RondoBabkaTeam/",
+                    webpage: "http://www.rondobabka.info/"
+                },
+                startingPoint: {
+                    latitude: 52.255108,
+                    longitude: 20.982775
+                },
+                rideType: RideType.ROAD,
+                city: "Warszawa"
+            },
+            {
+                id: "38",
+                name: "Śląskie Kręcenie",
+                time: "17:40",
+                day: "Środa",
+                description: "Śląskie Kręcenie, czyli wspólna jazda w grupie. Nie jest to wyścig ani żaden rodzaj rywalizacji. Na naszych spotkaniach powinna panować rodzinno-kolarska atmosfera. Zarówno uśmiech, jak i pozytywne nastawienie są bardzo mile widziane.",
+                url: {
+                    facebook: "https://www.facebook.com/slaskkolarsko"
+                },
+                startingPoint: {
+                    latitude: 50.045475,
+                    longitude: 18.694292
+                },
+                rideType: RideType.ROAD,
+                city: "Żory"
+            },
+            {
+                id: "39",
+                name: "Grupa Głębokie",
+                time: "10:00",
+                // TODO dodać niedzielę, wtorek oraz środę
+                day: "Sobota",
+                description: "Kultowe miejsce spotkań szosowych w Szczecinie.",
+                url: {
+                    facebook: "https://www.facebook.com/groups/1043429369134203/"
+                },
+                startingPoint: {
+                    latitude: 53.471835,
+                    longitude: 14.479681
+                },
+                rideType: RideType.ROAD,
+                city: "Szczecin"
+            },
+            {
+                id: "40",
+                name: "Łódź Retkinia (zwana Hyunda-iem)",
+                time: "11:15",
+                day: "Sobota",
+                description: "Długość rundy – 60,3km. Jeżdżona cały rok.",
+                url: {
+                    webpage: "https://cyklomaniacy.pl/treningi/retkinia/"
+                },
+                startingPoint: {
+                    latitude: 51.740828,
+                    longitude: 19.404762
+                },
+                rideType: RideType.ROAD,
+                city: "Łódź"
+            },
+            {
+                id: "41",
+                name: "Łódź Retkinia (zwana Hyunda-iem)",
+                time: "10:15",
+                day: "Niedziela",
+                description: "Długość rundy – 60,3km. Jeżdżona cały rok.",
+                url: {
+                    webpage: "https://cyklomaniacy.pl/treningi/retkinia/"
+                },
+                startingPoint: {
+                    latitude: 51.740828,
+                    longitude: 19.404762
+                },
+                rideType: RideType.ROAD,
+                city: "Łódź"
+            },
+            {
+                id: "42",
+                name: "Łódź KASZTANY",
+                time: "10:15",
+                day: "Sobota",
+                description: "Kasztany to zwyczajowa nazwa miejsca spotkań oraz grupy kolarzy amatorów na rogu ulicy Zgierskiej i Julianowskiej w Łodzi. Określenie wywodzi się z legendarnej Grupy Diesnera, a inspiracją dla nazwy były drzewa kasztanowca, pod którymi się spotykamy (stąd też nasz logotyp). Grupa ma charakter sportowy i szybka jazda jest w cenie. Nie przejmuj się, jeżeli obawiasz się, że możesz nie dać rady. Gwarantujemy nie tylko “krew – pot – i łzy”, ale też niepowtarzalną atmosferę.",
+                url: {
+                    webpage: "https://cyklomaniacy.pl/treningi/kasztany/"
+                },
+                startingPoint: {
+                    latitude: 51.797294,
+                    longitude: 19.444905
+                },
+                rideType: RideType.ROAD,
+                city: "Łódź"
+            },
+            {
+                id: "42",
+                name: "Łódź Apteka",
+                time: "10:15",
+                day: "Niedziela",
+                description: "Po kilku pierwszych kilometrach skręcamy w lewo do miejscowości Dobra, gdzie dzielimy się na dwie dywizje. Mocniejsza grupa jedzie w lewo, spokojniejsza prosto.",
+                url: {
+                    webpage: "https://cyklomaniacy.pl/treningi/apteka/"
+                },
+                startingPoint: {
+                    latitude: 51.800250,
+                    longitude: 19.489184
+                },
+                rideType: RideType.ROAD,
+                city: "Łódź"
+            },
+            {
+                id: "43",
+                name: "Łódź Rzgowska",
+                time: "10:15",
+                day: "Niedziela",
+                description: "Zbiórki na treningi – RZGOWSKA.\n",
+                url: {
+                    webpage: "https://cyklomaniacy.pl/treningi/rzgowska-2/"
+                },
+                startingPoint: {
+                    latitude: 51.727256,
+                    longitude: 19.478890
+                },
+                rideType: RideType.ROAD,
+                city: "Łódź"
+            },
+            {
+                id: "45",
+                name: "Łódź JAROSZKI",
+                time: "16:15",
+                day: "Środa",
+                description: "Zbiórki na treningi – JAROSZKI.",
+                url: {
+                    webpage: "https://cyklomaniacy.pl/treningi/jaroszki/"
+                },
+                startingPoint: {
+                    latitude: 51.711222,
+                    longitude: 19.543621
+                },
+                rideType: RideType.ROAD,
+                city: "Łódź"
+            },
+            {
+                id: "46",
+                name: "ALEKSANDRÓW",
+                time: "10:00",
+                day: "Niedziela",
+                description: "Trasa ma od 65km do 85km. Zmieniamy rundy w zależności od pogody, pory roku, wiatru, ilości osób, chęci. Po około 15km dołącza do nas grupa z Ozorkowa – ci ubrani na zielono którzy także od czasu do czasu pojawiają się na niedzielnej trasie spod Apteki.",
+                url: {
+                    webpage: "https://cyklomaniacy.pl/treningi/aleksandrow/"
+                },
+                startingPoint: {
+                    latitude: 51.835668,
+                    longitude: 19.258343
+                },
+                rideType: RideType.ROAD,
+                city: "Aleksandrów Łódzki"
             }
         )
 }
