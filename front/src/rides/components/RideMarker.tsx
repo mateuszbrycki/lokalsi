@@ -6,6 +6,7 @@ import RideUrlsList from "./RideUrlsList";
 import RideBadge from "./RideBadge";
 import {renderToStaticMarkup} from "react-dom/server";
 import {divIcon} from "leaflet";
+import {DateTimeFormatter} from "@js-joda/core";
 
 export interface RideMarkerProps {
     readonly ride: Ride;
@@ -32,7 +33,7 @@ const RideMarker: React.FC<RideMarkerProps & RideMarkerActionProps> = (props) =>
                 <div className="d-flex py-2 ps-2 pe-2">
                     <RideBadge rideType={ride.rideType} className="me-1 mb-2 fs-6"/>
                     <div><p className="fw-bold p-0 m-0 ride-marker-date-time mt-1 ms-2"><Icon.Calendar
-                        className="me-2"/>{ride.day}, {ride.time}</p></div>
+                        className="me-2"/>{ride.day.name}, {ride.time.format(DateTimeFormatter.ofPattern("hh:mm"))}</p></div>
                 </div>
                 <div className="py-2 ride-marker-description">{ride.description}</div>
                 <div className="py-2 ps-2 ride-marker-links">

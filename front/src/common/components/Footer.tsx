@@ -11,6 +11,11 @@ export interface FooterActionProps {
 
 const Footer: React.FC<FooterProps & FooterActionProps> = (props) => {
 
+    const fbPluginSize = {
+        width: 320,
+        height: 350
+    }
+
     return (
         <footer className="text-center text-lg-start bg-light text-muted border-top mt-5" id="footer">
             <section className="container text-center text-md-start mt-5">
@@ -25,7 +30,7 @@ const Footer: React.FC<FooterProps & FooterActionProps> = (props) => {
                         </p>
                         <p>
                             Chcemy, aby każdy chętny miał możliwość zintegrowania się z lokalną kolarską
-                            społecznością - <div className="fw-bold d-inline"> lokalsami</div>.
+                            społecznością - <span className="fw-bold d-inline"> lokalsami</span>.
                         </p>
 
                     </section>
@@ -62,6 +67,15 @@ const Footer: React.FC<FooterProps & FooterActionProps> = (props) => {
                             <Icon.Envelope className="me-2"/>
                             lokalsicc@gmail.com
                         </address>
+                    </section>
+                    <section className="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                        <iframe
+                            src={`https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FLokalsicc-105036815418252%2F&tabs=timeline&width=${fbPluginSize.width}&height=${fbPluginSize.height}&small_header=true&adapt_container_width=true&hide_cover=true&show_facepile=false&appId=1795776397407591`}
+                            width={fbPluginSize.width} height={fbPluginSize.height} style={{border: "none", overflow: "hidden"}} scrolling="no"
+                            frameBorder="0"
+                            allowFullScreen={true}
+                            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+
                     </section>
                 </div>
             </section>

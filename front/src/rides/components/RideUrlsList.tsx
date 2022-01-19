@@ -15,7 +15,7 @@ const RideUrlsList: React.FC<RideUrlsListProps & RideUrlsListActionProps> = (pro
     const {rideUrls} = props
 
     const getIconWithUrl = (url: string, icon: JSX.Element): JSX.Element => {
-        return <a href={url}>{icon}</a>
+        return <a target="_blank" href={url}>{icon}</a>
     }
 
     return (<ul className="ride-urls-icons-list list-inline">
