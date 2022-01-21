@@ -70,6 +70,11 @@ a:hover.nav-link {
     }
 }
 
+@media (min-width: 2200px) {
+    .container-fluid {
+        max-width: 60% !important;
+    }
+}
 
 #map {
     height: inherit;
