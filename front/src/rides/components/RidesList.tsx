@@ -1,6 +1,6 @@
 import React from 'react'
 import {List} from "immutable";
-import {MapPoint, Ride} from "../../types";
+import {MapPoint, Ride, RideId} from "../../types";
 import RideListElement from "./RideListElement";
 
 export interface RidesListProps {
@@ -8,7 +8,7 @@ export interface RidesListProps {
 }
 
 export interface RidesListActionProps {
-    readonly showOnMap: (startingPoint: MapPoint) => void
+    readonly showOnMap: (id: RideId, startingPoint: MapPoint) => void
 }
 
 const RidesList: React.FC<RidesListProps & RidesListActionProps> = (props) => {

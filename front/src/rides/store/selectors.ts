@@ -18,7 +18,13 @@ const getMap = createSelector(
     (state: RidesListState) => state.map
 )
 
+const getActivePopupId = createSelector(
+    getRidesListState,
+    (state: RidesListState) => state.activePopupId
+)
+
 export {
     getRides,
-    getMap
+    getMap,
+    getActivePopupId
 }

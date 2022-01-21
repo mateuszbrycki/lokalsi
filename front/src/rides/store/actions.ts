@@ -1,4 +1,4 @@
-import {Map, MapPoint, Ride} from "../../types";
+import {Map, MapPoint, Ride, RideId} from "../../types";
 import {List} from "immutable";
 
 enum Types {
@@ -23,6 +23,7 @@ export interface RidesLoaded {
 export interface ShowRideOnMap {
     readonly type: Types.ShowRideOnMap
     readonly payload: {
+        id: RideId
         startingPoint: MapPoint
     }
 }
@@ -30,6 +31,7 @@ export interface ShowRideOnMap {
 export interface MapFlyTo {
     readonly type: Types.MapFlyTo
     readonly payload: {
+        id: RideId
         point: MapPoint
     }
 }
@@ -52,16 +54,18 @@ const RidesLoadedAction = (rides: List<Ride>): RidesLoaded => ({
     }
 })
 
-const ShowOnMapAction = (startingPoint: MapPoint): ShowRideOnMap => ({
+const ShowOnMapAction = (id: RideId, startingPoint: MapPoint): ShowRideOnMap => ({
     type: Types.ShowRideOnMap,
     payload: {
+        id,
         startingPoint: startingPoint
     }
 })
 
-const MapFlyToAction = (point: MapPoint): MapFlyTo => ({
+const MapFlyToAction = (id: RideId, point: MapPoint): MapFlyTo => ({
     type: Types.MapFlyTo,
     payload: {
+        id,
         point
     }
 })

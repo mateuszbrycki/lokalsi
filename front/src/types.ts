@@ -1,8 +1,8 @@
-import {Map as LeafletMap} from "leaflet";
+import {Map as LeafletMap, Popup as LeafletPopup} from "leaflet";
 import {LocalTime} from "@js-joda/core";
 
 export interface Ride {
-    readonly id: string;
+    readonly id: RideId;
     readonly name: string;
     readonly time: LocalTime;
     readonly day: Day;
@@ -47,4 +47,7 @@ export class Day {
     }
 }
 
+export type RideId = string
+
 export interface Map extends LeafletMap {}
+export interface MapPopup extends LeafletPopup {}

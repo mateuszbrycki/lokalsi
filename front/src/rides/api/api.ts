@@ -133,7 +133,7 @@ const Api: RideHttpApi = {
                 },
                 startingPoint: {
                     latitude: 50.053309,
-                    longitude:19.901110
+                    longitude: 19.901110
                 },
                 rideType: RideType.MTB,
                 city: "Kraków"

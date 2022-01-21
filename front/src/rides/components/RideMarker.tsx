@@ -1,5 +1,5 @@
-import React from 'react'
-import {Ride} from "../../types";
+import React, {useEffect, useRef, useState} from 'react'
+import {Map, MapPopup, Ride} from "../../types";
 import {Marker, Popup} from "react-leaflet";
 import * as Icon from "react-bootstrap-icons";
 import RideUrlsList from "./RideUrlsList";
@@ -10,6 +10,8 @@ import {DateTimeFormatter} from "@js-joda/core";
 
 export interface RideMarkerProps {
     readonly ride: Ride;
+    readonly map: Map;
+    readonly isActive?: boolean;
 }
 
 export interface RideMarkerActionProps {
@@ -18,7 +20,16 @@ export interface RideMarkerActionProps {
 
 const RideMarker: React.FC<RideMarkerProps & RideMarkerActionProps> = (props) => {
 
-    const {ride} = props
+    const {ride, map, isActive} = props
+
+    const [refReady, setRefReady] = useState(false);
+    const popupRef = useRef<MapPopup | null>(null);
+
+    useEffect(() => {
+        if (refReady && isActive) {
+            popupRef.current?.openOn(map);
+        }
+    }, [isActive, refReady, map]);
 
     const iconMarkup = renderToStaticMarkup(<Icon.GeoAltFill style={{color: ride.rideType.color, fontSize: '2rem'}}/>);
     const customMarkerIcon = divIcon({
@@ -27,8 +38,11 @@ const RideMarker: React.FC<RideMarkerProps & RideMarkerActionProps> = (props) =>
         popupAnchor: [0, -20]
     });
     return <>
-        <Marker position={[ride.startingPoint.latitude, ride.startingPoint.longitude]} icon={customMarkerIcon}>
-            <Popup>
+        <Marker position={[ride.startingPoint.latitude, ride.startingPoint.longitude]} icon={customMarkerIcon} >
+            <Popup ref={(r: MapPopup) => {
+                popupRef.current = r;
+                setRefReady(true);
+            }}>
                 <h2 className="ride-name fw-bold mt-2">{ride.name}</h2>
                 <div className="d-flex py-2 ps-2 pe-2">
                     <RideBadge rideType={ride.rideType} className="me-1 mb-2 fs-6"/>

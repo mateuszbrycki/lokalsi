@@ -1,5 +1,5 @@
 import React from 'react'
-import {MapPoint, Ride} from "../../types";
+import {MapPoint, Ride, RideId} from "../../types";
 import * as Icon from "react-bootstrap-icons";
 import RideUrlsList from "./RideUrlsList";
 import RideBadge from "./RideBadge";
@@ -11,7 +11,7 @@ export interface RideMarkerProps {
 }
 
 export interface RideMarkerActionProps {
-    readonly showOnMap: (startingPoint: MapPoint) => void
+    readonly showOnMap: (id: RideId, startingPoint: MapPoint) => void
 }
 
 
@@ -20,7 +20,7 @@ const RideListElement: React.FC<RideMarkerProps & RideMarkerActionProps> = (prop
     const {ride, showOnMap} = props
 
     const onClick = () => {
-        showOnMap(ride.startingPoint)
+        showOnMap(ride.id, ride.startingPoint)
     }
 
     return <>

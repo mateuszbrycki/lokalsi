@@ -4,15 +4,16 @@ import RidesMapView from "./RidesMapView";
 
 import RidesList from "./RidesList";
 import {List} from "immutable";
-import {Map, MapPoint, Ride} from "../../types";
+import {Map, MapPoint, Ride, RideId} from "../../types";
 
 export interface AllRidesProps {
     readonly rides: List<Ride>;
     readonly map: any;
+    readonly activePopupId: RideId;
 }
 
 export interface AllRidesActionProps {
-    readonly showOnMap: (startingPoint: MapPoint) => void
+    readonly showOnMap: (id: RideId, startingPoint: MapPoint) => void
     readonly loadRides: () => void
     readonly onSetMapState: (map: Map) => void
 }
@@ -24,7 +25,7 @@ export interface WindowDimensions {
 
 const AllRidesView: React.FC<AllRidesProps & AllRidesActionProps> = (props) => {
 
-    const {rides, map, showOnMap, loadRides, onSetMapState} = props
+    const {rides, map, activePopupId, showOnMap, loadRides, onSetMapState} = props
 
     const mount = (): void => {
         loadRides()
@@ -68,11 +69,12 @@ const AllRidesView: React.FC<AllRidesProps & AllRidesActionProps> = (props) => {
                         rides={rides}
                         map={map}
                         setMapState={onSetMapState}
+                        activePopupId={activePopupId}
                     />
                 </div>
                 <div className="col-md-4 overflow-auto h-100 p-0">
-                    <RidesList rides={rides} showOnMap={startingPoint => {
-                        showOnMap(startingPoint)
+                    <RidesList rides={rides} showOnMap={(id, startingPoint) => {
+                        showOnMap(id, startingPoint)
                         window.scrollTo({
                             top: 0,
                             behavior: 'smooth'

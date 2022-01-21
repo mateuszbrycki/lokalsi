@@ -1,7 +1,7 @@
 import React from 'react'
 import {MapContainer, TileLayer} from "react-leaflet";
 import MarkerClusterGroup from "react-leaflet-markercluster";
-import {Map, MapPoint, Ride} from "../../types";
+import {Map, MapPoint, Ride, RideId} from "../../types";
 import {List} from "immutable"
 import RideMarker from "./RideMarker";
 
@@ -10,6 +10,7 @@ export interface RidesMapViewProps {
     readonly zoom: number;
     readonly rides: List<Ride>;
     readonly map: Map;
+    readonly activePopupId: RideId;
 }
 
 export interface RidesMapViewActionProps {
@@ -18,7 +19,7 @@ export interface RidesMapViewActionProps {
 
 
 const RidesMapView: React.FC<RidesMapViewProps & RidesMapViewActionProps> = (props) => {
-    const {centerPoint, zoom, rides, setMapState} = props
+    const {centerPoint, zoom, rides, map, setMapState, activePopupId} = props
 
     return <div className="map-container">
         <MapContainer center={[centerPoint.latitude, centerPoint.longitude]} zoom={zoom} scrollWheelZoom={false}
@@ -30,7 +31,7 @@ const RidesMapView: React.FC<RidesMapViewProps & RidesMapViewActionProps> = (pro
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
             <MarkerClusterGroup showCoverageOnHover={false}>
-                {rides.map(ride => <RideMarker ride={ride} key={ride.id}/>)}
+                {rides.map(ride => <RideMarker map={map} ride={ride} key={ride.id} isActive={ride.id === activePopupId}/>)}
             </MarkerClusterGroup>
         </MapContainer>
     </div>
