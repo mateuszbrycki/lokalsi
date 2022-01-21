@@ -314,7 +314,7 @@ const Api: RideHttpApi = {
                 day: Day.SATURDAY,
                 description: "Znudziła Ci się samotna jazda na szosie? - Tu możesz spróbować swoich sił jazdy w peletonie.",
                 url: {
-                    facebook: "https://fb.com/Coffee-Ride-1759901340903034/"
+                    facebook: "https://www.facebook.com/groups/120724641919671/"
                 },
                 startingPoint: {
                     latitude: 50.032902,
