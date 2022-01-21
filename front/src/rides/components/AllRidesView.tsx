@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState, useEffect } from 'react';
+import {useState, useEffect} from 'react';
 import RidesMapView from "./RidesMapView";
 
 import RidesList from "./RidesList";
@@ -32,14 +32,14 @@ const AllRidesView: React.FC<AllRidesProps & AllRidesActionProps> = (props) => {
     React.useEffect(mount, [])
 
     const getWindowDimensions = (): WindowDimensions => {
-        const { innerWidth: width, innerHeight: height } = window;
+        const {innerWidth: width, innerHeight: height} = window;
         return {
             width,
             height
         };
     }
 
-    const useWindowDimensions = () : WindowDimensions => {
+    const useWindowDimensions = (): WindowDimensions => {
         const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
 
         useEffect(() => {
@@ -56,21 +56,21 @@ const AllRidesView: React.FC<AllRidesProps & AllRidesActionProps> = (props) => {
 
 
     return <>
-        <main className="container all-rides-container">
-            <div className="row h-100">
-                <div className="col-sm-8 h-sm-25 p-0">
+        <main className="contianer-fluid all-rides-container">
+            <div className="row h-100 g-0">
+                <div className="col-md-8 h-sm-25 h-md-8 p-0">
                     <RidesMapView
                         centerPoint={{
                             latitude: 52.125736,
                             longitude: 19.080392
                         }}
-                        zoom={useWindowDimensions().width <= 575 ? 5 : 6}
+                        zoom={useWindowDimensions().width <= 768 ? 6 : 6}
                         rides={rides}
                         map={map}
                         setMapState={onSetMapState}
                     />
                 </div>
-                <div className="col-sm-4 overflow-auto h-100 p-0">
+                <div className="col-md-4 overflow-auto h-100 p-0">
                     <RidesList rides={rides} showOnMap={startingPoint => {
                         showOnMap(startingPoint)
                         window.scrollTo({

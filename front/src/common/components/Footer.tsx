@@ -17,7 +17,7 @@ const Footer: React.FC<FooterProps & FooterActionProps> = (props) => {
     }
 
     return (
-        <footer className="text-center text-lg-start bg-light text-muted border-top mt-5" id="footer">
+        <footer className="text-center text-lg-start bg-light text-muted border-top mt-1" id="footer">
             <section className="container text-center text-md-start mt-5">
                 <div className="row mt-3">
                     <section className="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">

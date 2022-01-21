@@ -17,7 +17,7 @@ const Navbar: React.FC<NavbarProps & NavbarActionProps> = (props) => {
                     <h1 className="navbar-logo">lokalsi.cc</h1>
                 </a>
 
-                <div className="me-sm-5 ms-sm-0 me-auto ms-auto">
+                <div className="me-sm-4 ms-sm-0 me-auto ms-auto">
                     <AddRideModal/>
                 </div>
 

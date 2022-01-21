@@ -18,11 +18,9 @@ const App: React.FunctionComponent<AppProps & AppActionsProps> = (props) => {
     return (
         <>
             <Navbar/>
-            <div className="container mt-5">
-                <AllRidesContainer/>
-            </div>
+            <AllRidesContainer/>
             <Footer/>
-            <CookiesPopup />
+            <CookiesPopup/>
         </>
     );
 }
