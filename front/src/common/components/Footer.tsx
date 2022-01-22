@@ -20,7 +20,7 @@ const Footer: React.FC<FooterProps & FooterActionProps> = (props) => {
         <footer className="text-center text-lg-start bg-light text-muted border-top mt-1" id="footer">
             <section className="container text-center text-md-start mt-5">
                 <div className="row mt-3">
-                    <section className="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                    <section className="col-12 col-lg-4 col-xxl-3 mx-auto mb-4">
                         <h2>
                             lokalsi.cc
                         </h2>
@@ -34,7 +34,7 @@ const Footer: React.FC<FooterProps & FooterActionProps> = (props) => {
                         </p>
 
                     </section>
-                    <section className="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                    <section className="col-12 col-lg-4 col-xxl-3 mx-auto mb-4">
                         <h2>
                             Jak działamy?
                         </h2>
@@ -52,7 +52,7 @@ const Footer: React.FC<FooterProps & FooterActionProps> = (props) => {
                             className="ms-1"/></span>). Dziękujemy!
                         </p>
                     </section>
-                    <section className="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                    <section className="col-12 col-lg-4 col-xxl-3 mx-auto mb-md-0 mb-4">
                         <h2>
                             Kontakt
                         </h2>
@@ -68,7 +68,7 @@ const Footer: React.FC<FooterProps & FooterActionProps> = (props) => {
                             lokalsicc@gmail.com
                         </address>
                     </section>
-                    <section className="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                    <section className="col-12 col-lg-4 col-xxl-3 mx-auto mb-md-0 mb-4">
                         <iframe
                             src={`https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FLokalsicc-105036815418252%2F&tabs=timeline&width=${fbPluginSize.width}&height=${fbPluginSize.height}&small_header=true&adapt_container_width=true&hide_cover=true&show_facepile=false&appId=1795776397407591`}
                             width={fbPluginSize.width} height={fbPluginSize.height} style={{border: "none", overflow: "hidden"}} scrolling="no"
