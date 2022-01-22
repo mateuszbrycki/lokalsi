@@ -24,7 +24,7 @@ const CookiesPopup: React.FC<any> = () => {
     return (
         <>
             {(!hasUserAcceptedCookies() || !showCookiesConsent) ?
-                <div className="cookie-consent border-top p-2"><span>Serwis <a href="https://lokalsi.cc">lokalsi.cc</a> wykorzystuje pliki cookies. Korzystając ze strony wyrażasz zgodę na ich użycie.
+                <div id="cookie-consent" className="border-top p-2"><span>Serwis <a href="https://lokalsi.cc">lokalsi.cc</a> wykorzystuje pliki cookies. Korzystając ze strony wyrażasz zgodę na ich użycie.
                 <span className="ml-1 fw-bold" onClick={handleShowModal}> Polityka prywatności</span>.</span>
                     <div className=" ms-2 d-flex align-items-center justify-content-center g-2">
                         <Button className="btn btn-success me-1" onClick={acceptCookies}>Akceptuj</Button>

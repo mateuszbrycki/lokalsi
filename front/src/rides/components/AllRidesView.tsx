@@ -59,7 +59,7 @@ const AllRidesView: React.FC<AllRidesProps & AllRidesActionProps> = (props) => {
 
 
     return <>
-        <main className="container-fluid all-rides-container">
+        <main id="all-rides-container" className="container-fluid ">
             <div className="row h-100 g-0">
                 <div className="col-md-8 h-sm-25 h-md-8 p-0">
                     <RidesMapView

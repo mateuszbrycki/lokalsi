@@ -9,6 +9,12 @@ body {
     border-radius: 5px !important;
 }
 
+
+.btn:focus {
+    box-shadow: none !important;
+}
+
+
 /* Navbar */
 
 .navbar {
@@ -39,11 +45,11 @@ a:hover.nav-link {
 }
 
 @media (max-width: 767px) {
-    .map-container {
+    #map-container {
         height: 500px;
     }
 
-    .all-rides-container {
+    #all-rides-container {
         height: auto;
     }
 
@@ -52,24 +58,33 @@ a:hover.nav-link {
         top: 0 !important;
         z-index: 1020 !important;
     }
+
+    #rides-filters {
+        z-index: 0 !important;
+    }
 }
 
 @media (min-width: 768px) {
-    .map-container {
+    #map-container {
         height: 600px;
     }
 
-    .all-rides-container {
+    #all-rides-container {
         height: 600px;
+    }
+
+
+    #rides-filters {
+        z-index: 1020 !important;
     }
 }
 
 @media (min-width: 992px) {
-    .map-container {
+    #map-container {
         height: 700px;
     }
 
-    .all-rides-container {
+    #all-rides-container {
         height: 700px;
     }
 }
@@ -84,79 +99,74 @@ a:hover.nav-link {
     height: inherit;
 }
 
-.all-rides-container {
+#all-rides-container {
     background-color: #fff;
 }
 
-.all-rides-container {
+#all-rides-container {
     border: 0.5px solid #efeff1;
 }
 
 /* Rides List */
 
-.rides-list-container {
+#rides-list-container {
     background-color: #fff;
 }
 
-.rides-list-container .ride-name {
+#rides-list-container .ride-name {
     font-size: 1.25rem;
 }
 
-.rides-list-container ul {
+#rides-list-container ul {
     list-style-type: none;
 }
 
-.rides-list-element-date-time {
+#rides-list-container .rides-list-element .rides-list-element-date-time {
     color: #7c7b7b;
     font-weight: bold;
     font-size: 0.8rem;
 }
 
-.rides-list-element-city {
+#rides-list-container .rides-list-element .rides-list-element-city {
     color: #7c7b7b;
     font-weight: bold;
     font-size: 0.8rem;
 }
 
-.rides-list-element-links {
+#rides-list-container .rides-list-element .rides-list-element-links {
     color: #7c7b7b;
 }
 
-.rides-list-container ul:last-child li:last-child hr:last-of-type {
+#rides-list-container ul:last-child li:last-child hr:last-of-type {
     display: none;
 }
 
-.rides-list-container .rides-list-element-show-on-map {
+#rides-list-container .rides-list-element-show-on-map {
     background-color: #fff;
     border: 1px solid #4c9db4;
     color: inherit !important;
     font-size: 0.8rem !important;
 }
 
-.rides-list-container .rides-list-element-show-on-map:hover {
+#rides-list-container .rides-list-element-show-on-map:hover {
     background-color: #4c9db4;
     border: 1px solid #4c9db4;
     color: #fff !important;
 }
 
-.rides-list-container .rides-list-element-show-on-map:focus {
+#rides-list-container .rides-list-element-show-on-map:focus {
     background-color: #4c9db4;
     border: 1px solid #4c9db4;
     color: #fff !important;
 }
-
-.btn:focus {
-    box-shadow: none !important;
-}
-
 
 /* Rides Map Markers */
 
-.map-container .ride-name {
+#map-container .ride-name {
     font-size: 1.25rem;
 }
 
-.ride-marker-date-time {
+#map-container .ride-marker-date-time {
     color: #7c7b7b;
     font-weight: bold;
     font-size: 0.8rem;
@@ -171,16 +181,16 @@ a:hover.nav-link {
 
 /* Add Ride Modal */
 
-.add-ride-button {
+#add-ride-button {
     background-color: #4c9db4 !important;
     border-color: #3d7c8f !important;
 }
 
-.add-ride-button:hover {
+#add-ride-button:hover {
     background-color: #3d7c8f !important;
 }
 
-.add-ride-button:focus {
+#add-ride-button:focus {
     box-shadow: none !important;
 }
 
@@ -209,7 +219,7 @@ a:hover.nav-link {
 }
 
 /* Cookies */
-.cookie-consent {
+#cookie-consent {
     background-color: #f7f7fa !important;
     position: fixed;
     bottom: 0px;
@@ -226,7 +236,7 @@ a:hover.nav-link {
     justify-content: center
 }
 
-.allow-button {
+#cookie-consent .allow-button {
     color: #fff;
     border: 1px solid #2e6544;
     background-color: #3E885B
@@ -238,7 +248,6 @@ a:hover.nav-link {
     border-bottom: 1px solid #dee2e6;
     position: sticky !important;
     top: 0 !important;
-    z-index: 1020 !important;
     background-color: inherit;
 }
 
