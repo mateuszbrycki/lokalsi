@@ -4,18 +4,20 @@ import RidesMapView from "./RidesMapView";
 
 import RidesList from "./RidesList";
 import {List} from "immutable";
-import {Map, MapPoint, Ride, RideId} from "../../types";
+import {CENTER_POINT, FilterQuery, Map, MapPoint, Ride, RideId, RidesFilterConfig} from "../../types";
 
 export interface AllRidesProps {
     readonly rides: List<Ride>;
     readonly map: any;
     readonly activePopupId: RideId;
+    readonly filterConfig: RidesFilterConfig;
 }
 
 export interface AllRidesActionProps {
     readonly showOnMap: (id: RideId, startingPoint: MapPoint) => void
     readonly loadRides: () => void
     readonly onSetMapState: (map: Map) => void
+    readonly onFiltersUpdated: (query: FilterQuery) => void
 }
 
 export interface WindowDimensions {
@@ -25,7 +27,7 @@ export interface WindowDimensions {
 
 const AllRidesView: React.FC<AllRidesProps & AllRidesActionProps> = (props) => {
 
-    const {rides, map, activePopupId, showOnMap, loadRides, onSetMapState} = props
+    const {rides, map, activePopupId, filterConfig, showOnMap, loadRides, onSetMapState, onFiltersUpdated} = props
 
     const mount = (): void => {
         loadRides()
@@ -62,8 +64,8 @@ const AllRidesView: React.FC<AllRidesProps & AllRidesActionProps> = (props) => {
                 <div className="col-md-8 h-sm-25 h-md-8 p-0">
                     <RidesMapView
                         centerPoint={{
-                            latitude: 52.125736,
-                            longitude: 19.080392
+                            latitude: CENTER_POINT.latitude,
+                            longitude: CENTER_POINT.longitude
                         }}
                         zoom={useWindowDimensions().width <= 768 ? 6 : 6}
                         rides={rides}
@@ -73,7 +75,7 @@ const AllRidesView: React.FC<AllRidesProps & AllRidesActionProps> = (props) => {
                     />
                 </div>
                 <div className="col-md-4 overflow-auto h-100 p-0">
-                    <RidesList rides={rides} showOnMap={(id, startingPoint) => {
+                    <RidesList onFiltersUpdated={onFiltersUpdated} rides={rides} filterConfig={filterConfig} showOnMap={(id, startingPoint) => {
                         showOnMap(id, startingPoint)
                         window.scrollTo({
                             top: 0,

@@ -5,6 +5,10 @@ body {
     letter-spacing: 0px;
 }
 
+.btn {
+    border-radius: 5px !important;
+}
+
 /* Navbar */
 
 .navbar {
@@ -167,14 +171,9 @@ a:hover.nav-link {
 
 /* Add Ride Modal */
 
-.btn {
-    border-radius: 0 !important;
-}
-
 .add-ride-button {
     background-color: #4c9db4 !important;
     border-color: #3d7c8f !important;
-    border-radius: 0 !important;
 }
 
 .add-ride-button:hover {
@@ -201,7 +200,7 @@ a:hover.nav-link {
 #footer .add-ride-badge {
     cursor: pointer;
     background-color: #4c9db4 !important;
-    border-radius: 0 !important;
+    border-radius: 5px !important;
 }
 
 #footer .add-ride-badge:hover {
@@ -232,3 +231,43 @@ a:hover.nav-link {
     border: 1px solid #2e6544;
     background-color: #3E885B
 }
+
+/* Filters */
+
+#rides-filters {
+    border-bottom: 1px solid #dee2e6;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 1020 !important;
+    background-color: inherit;
+}
+
+#rides-filters .ride-filters-ride-type ul {
+    list-style-type: none;
+}
+
+#rides-filters .ride-filters-ride-type li {
+
+}
+
+#rides-filters .ride-filters-ride-type-button {
+    border: 1px solid #bcc0c4;
+    background-color: inherit !important;
+    font-size: 0.9rem !important;
+}
+
+#rides-filters .active.ride-filters-ride-type-button,
+#rides-filters .ride-filters-ride-type-button:hover {
+    background-color: #eaeaea !important;
+    border: 1px solid #9d9d9d;
+}
+
+#rides-filters .rides-filters-reset {
+    font-size: 0.7rem !important;
+}
+
+#rides-filters .rides-filters-reset:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+

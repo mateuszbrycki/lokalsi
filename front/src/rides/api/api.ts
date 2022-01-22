@@ -1,9 +1,12 @@
 import {List} from "immutable";
-import {Day, Ride, RideType} from "../../types";
+import {Day, FilterQuery, Ride, RideType} from "../../types";
 import {LocalTime} from "@js-joda/core";
+import {getRides} from "../store/selectors";
+import {TIME_FORMATTER} from "../../common/time";
 
 export interface RideHttpApi {
     readonly getRides: () => List<Ride>
+    readonly getRidesWithFilter: (query: FilterQuery) => List<Ride>
 }
 
 const Api: RideHttpApi = {
@@ -734,7 +737,29 @@ const Api: RideHttpApi = {
                 rideType: RideType.ROAD,
                 city: "Aleksandrów Łódzki"
             }
-        )
+        ),
+
+    getRidesWithFilter: (query: FilterQuery) => {
+        let filteredRides: List<Ride> = Api.getRides()
+
+        if (!query.times.isEmpty()) {
+            filteredRides = filteredRides.filter(ride => query.times.contains(ride.time.format(TIME_FORMATTER)))
+        }
+
+        if (!query.days.isEmpty()) {
+            filteredRides = filteredRides.filter(ride => query.days.contains(ride.day.name))
+        }
+
+        if (!query.cities.isEmpty()) {
+            filteredRides = filteredRides.filter(ride => query.cities.contains(ride.city))
+        }
+
+        if (!query.rideTypes.isEmpty()) {
+            filteredRides = filteredRides.filter(ride => query.rideTypes.contains(ride.rideType))
+        }
+
+        return filteredRides
+    }
 }
 
 export {Api as RideApi}

@@ -1,5 +1,6 @@
 import {Map as LeafletMap, Popup as LeafletPopup} from "leaflet";
 import {LocalTime} from "@js-joda/core";
+import {Set} from "immutable";
 
 export interface Ride {
     readonly id: RideId;
@@ -47,7 +48,38 @@ export class Day {
     }
 }
 
+export interface MultiselectOption {
+    readonly id: string | number;
+    readonly name: string;
+}
+
+export interface MultiselectState {
+    readonly options: MultiselectOption[];
+}
+
+export interface FilterQuery {
+    readonly rideTypes: Set<RideType>;
+    readonly cities: Set<string>;
+    readonly times: Set<string>;
+    readonly days: Set<string>;
+}
+
+export interface RidesFilterConfig {
+    readonly rideTypes: Set<RideType>
+    readonly cities: Set<MultiselectOption>
+    readonly days: Set<MultiselectOption>
+    readonly times: Set<MultiselectOption>
+}
+
 export type RideId = string
 
-export interface Map extends LeafletMap {}
-export interface MapPopup extends LeafletPopup {}
+export interface Map extends LeafletMap {
+}
+
+export interface MapPopup extends LeafletPopup {
+}
+
+export const CENTER_POINT: MapPoint = {
+    latitude: 52.125736,
+    longitude: 19.080392
+}

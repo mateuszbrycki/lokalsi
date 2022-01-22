@@ -1,5 +1,5 @@
-import React, {ComponentType} from 'react'
-import {Ride, RideUrls} from "../../types";
+import React from 'react'
+import {RideUrls} from "../../types";
 import * as Icon from "react-bootstrap-icons";
 
 export interface RideUrlsListProps {

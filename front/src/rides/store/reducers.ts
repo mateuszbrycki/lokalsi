@@ -1,12 +1,14 @@
 import {initialRidesListState, RidesListState, RidesState} from "./state";
 import {Action, combineReducers, Reducer} from "redux";
-import {LoadRides, MapFlyTo, RidesLoaded, SetMapState, Types} from "./actions";
+import {FilterConfigLoaded, LoadRides, MapFlyTo, ResetMapState, RidesLoaded, SetMapState, Types} from "./actions";
 
 type RidesListActions =
     | LoadRides
     | RidesLoaded
     | SetMapState
+    | ResetMapState
     | MapFlyTo
+    | FilterConfigLoaded
 
 const ridesListReducer = (
     state: RidesListState | undefined = initialRidesListState,
@@ -24,10 +26,20 @@ const ridesListReducer = (
                 ...state,
                 map: action.payload.map
             }
+        case Types.ResetMapState:
+            return {
+                ...state,
+                activePopupId: ""
+            }
         case Types.MapFlyTo:
             return {
                 ...state,
                 activePopupId: action.payload.id
+            }
+        case Types.FilterConfigLoaded:
+            return {
+                ...state,
+                filterConfig: action.payload
             }
         default:
             return state

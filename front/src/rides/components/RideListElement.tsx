@@ -4,7 +4,7 @@ import * as Icon from "react-bootstrap-icons";
 import RideUrlsList from "./RideUrlsList";
 import RideBadge from "./RideBadge";
 import {Button, Col, Row} from "react-bootstrap";
-import {DateTimeFormatter} from "@js-joda/core";
+import {TIME_FORMATTER} from "../../common/time";
 
 export interface RideMarkerProps {
     readonly ride: Ride;
@@ -32,7 +32,7 @@ const RideListElement: React.FC<RideMarkerProps & RideMarkerActionProps> = (prop
                     <Icon.PinFill className="me-2"/> {ride.city}
                 </div>
                 <div className="rides-list-element-date-time ms-2  mt-1">
-                    <Icon.Calendar className="me-2"/>{ride.day.name}, {ride.time.format(DateTimeFormatter.ofPattern("H:mm"))}
+                    <Icon.Calendar className="me-2"/>{ride.day.name}, {ride.time.format(TIME_FORMATTER)}
                 </div>
             </div>
 
