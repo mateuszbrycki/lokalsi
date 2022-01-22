@@ -82,7 +82,7 @@ const RidesFilters: React.FC<RidesFiltersProps & RidesFiltersActionProps> = ({ri
 
     return <div id="rides-filters" className="mb-2 p-2">
         <Row className="h-100 g-0 row-cols-2">
-            <Col className="col-xl-6 col-sm-12 p-2">
+            <Col className="col-xl-6 col-12 p-2">
                 <Row className="ride-filters-ride-type g-0">
                     {config.rideTypes.map(rideType =>
                         <Col className="col-xxl-4 col-12 p-0 m-0" key={rideType.name}>{getRideButton(rideType)}</Col>
@@ -122,7 +122,7 @@ const RidesFilters: React.FC<RidesFiltersProps & RidesFiltersActionProps> = ({ri
                 />
             </Col>
 
-            <Col className="col-xl-6 col-sm-12  p-2">
+            <Col className="col-xl-6 col-12 p-2">
                 <Multiselect
                     options={config.days}
                     displayValue="name"

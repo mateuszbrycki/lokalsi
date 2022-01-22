@@ -76,7 +76,7 @@ a:hover.nav-link {
 
 @media (min-width: 2200px) {
     .container-fluid {
-        max-width: 60% !important;
+        max-width: 70% !important;
     }
 }
 
