@@ -1014,22 +1014,6 @@ const Api: RideHttpApi = {
             },
             {
                 id: "62",
-                name: "TRI Zakładka 40+4",
-                time: LocalTime.parse("09:00"),
-                day: Day.SATURDAY,
-                description: "Zapraszam Wszystkich chętnych na sobotnią Tri ustawkę - zakładkę nazwaną 40+4 (około 40km🚴🏻‍♂️+4km🏃‍♂️🔥)",
-                url: {
-                    facebook: "https://www.facebook.com/Bartosz-Dudek-Triathlon-262744154285758/"
-                },
-                startingPoint: {
-                    latitude: 50.310500,
-                    longitude: 19.044436
-                },
-                rideType: RideType.ROAD,
-                city: "Siemianowice Śląskie"
-            },
-            {
-                id: "63",
                 name: "Tempo 30",
                 time: LocalTime.parse("12:00"),
                 day: Day.SATURDAY,
@@ -1045,7 +1029,7 @@ const Api: RideHttpApi = {
                 city: "Tychy"
             },
             {
-                id: "64",
+                id: "63",
                 name: "Ustawki kolarskie - Grodziec",
                 time: LocalTime.parse("11:00"),
                 day: Day.SUNDAY,
@@ -1061,7 +1045,7 @@ const Api: RideHttpApi = {
                 city: "Będzin"
             },
             {
-                id: "65",
+                id: "64",
                 name: "Gliwice na Górę Św. Anny",
                 time: LocalTime.parse("10:00"),
                 day: Day.SUNDAY,
@@ -1076,7 +1060,7 @@ const Api: RideHttpApi = {
                 city: "Gliwice"
             },
             {
-                id: "66",
+                id: "65",
                 name: "Niedzielna ustawka z Fenix Tychy",
                 time: LocalTime.parse("11:00"),
                 day: Day.SUNDAY,
