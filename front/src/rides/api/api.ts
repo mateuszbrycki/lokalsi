@@ -1075,6 +1075,22 @@ const Api: RideHttpApi = {
                 rideType: RideType.ROAD,
                 city: "Tychy"
             },
+            {
+                id: "66",
+                name: "Ustawka XC_POZ",
+                time: LocalTime.parse("11:00"),
+                day: Day.THURSDAY,
+                description: "Dla wszystkich mających wolne, albo pracujących zdalnie 😃",
+                url: {
+                    facebook: "https://www.facebook.com/xcpoz/"
+                },
+                startingPoint: {
+                    latitude: 52.382133,
+                    longitude: 16.984897
+                },
+                rideType: RideType.MTB,
+                city: "Poznań"
+            }
         ),
 
     getRidesWithFilter: (query: FilterQuery) => {
