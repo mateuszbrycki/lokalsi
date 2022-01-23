@@ -142,7 +142,7 @@ const Api: RideHttpApi = {
                 city: "Kraków"
             },
             {
-                id: "11",
+                id: "9",
                 name: "Czwartki z Chodźże na Rower",
                 time: LocalTime.parse("17:30"),
                 day: Day.THURSDAY,
@@ -160,7 +160,7 @@ const Api: RideHttpApi = {
                 city: "Kraków"
             },
             {
-                id: "12",
+                id: "10",
                 name: "Czwartki z Chodźże na Rower",
                 time: LocalTime.parse("17:00"),
                 day: Day.THURSDAY,
@@ -176,7 +176,7 @@ const Api: RideHttpApi = {
                 city: "Kraków"
             },
             {
-                id: "13",
+                id: "11",
                 name: "Czwartki z Chodźże na Rower",
                 time: LocalTime.parse("17:00"),
                 day: Day.THURSDAY,
@@ -192,7 +192,7 @@ const Api: RideHttpApi = {
                 city: "Kraków"
             },
             {
-                id: "14",
+                id: "12",
                 name: "Wrześniowe wtorki z Cyklo Jurą w terenie",
                 time: LocalTime.parse("17:00"),
                 day: Day.TUESDAY,
@@ -208,7 +208,7 @@ const Api: RideHttpApi = {
                 city: "Zabierzów"
             },
             {
-                id: "15",
+                id: "13",
                 name: "Pokręcona Środa z CJZ",
                 time: LocalTime.parse("16:30"),
                 day: Day.WEDNESDAY,
@@ -227,7 +227,7 @@ const Api: RideHttpApi = {
                 city: "Zabierzów"
             },
             {
-                id: "16",
+                id: "14",
                 name: "Damska Szosa",
                 time: LocalTime.parse("16:30"),
                 day: Day.WEDNESDAY,
@@ -245,7 +245,7 @@ const Api: RideHttpApi = {
                 city: "Kraków"
             },
             {
-                id: "17",
+                id: "15",
                 name: "Ustawka kolarska z Bike RS",
                 time: LocalTime.parse("16:45"),
                 day: Day.THURSDAY,
@@ -262,7 +262,7 @@ const Api: RideHttpApi = {
                 city: "Kraków"
             },
             {
-                id: "18",
+                id: "16",
                 name: "Gravelowy wtorek z Bike RS",
                 time: LocalTime.parse("16:45"),
                 day: Day.THURSDAY,
@@ -279,7 +279,7 @@ const Api: RideHttpApi = {
                 city: "Kraków"
             },
             {
-                id: "19",
+                id: "17",
                 name: "Cichy kącik",
                 time: LocalTime.parse("10:10"),
                 day: Day.SATURDAY,
@@ -295,7 +295,7 @@ const Api: RideHttpApi = {
                 city: "Kraków"
             },
             {
-                id: "20",
+                id: "18",
                 name: "Coffee Ride",
                 time: LocalTime.parse("10:30"),
                 day: Day.SATURDAY,
@@ -311,11 +311,11 @@ const Api: RideHttpApi = {
                 city: "Kraków"
             },
             {
-                id: "21",
+                id: "19",
                 name: "NIEPOkręcę",
                 time: LocalTime.parse("10:30"),
                 day: Day.SATURDAY,
-                description: "Znudziła Ci się samotna jazda na szosie? - Tu możesz spróbować swoich sił jazdy w peletonie.",
+                description: "Znudziła Ci się samotna jazda na szosie? - Tu możesz spróbować swoich sił jazdy w peletonie. Od kwietnia do końca października zbiórka o 9.30.",
                 url: {
                     facebook: "https://www.facebook.com/groups/120724641919671/"
                 },
@@ -327,7 +327,7 @@ const Api: RideHttpApi = {
                 city: "Niepołomice"
             },
             {
-                id: "22",
+                id: "20",
                 name: "Grupetto Zielona Góra Ride",
                 time: LocalTime.parse("10:00"),
                 day: Day.SATURDAY,
@@ -343,7 +343,7 @@ const Api: RideHttpApi = {
                 city: "Zielona Góra"
             },
             {
-                id: "23",
+                id: "21",
                 name: "Palma Ride",
                 time: LocalTime.parse("17:15"),
                 day: Day.TUESDAY,
@@ -359,7 +359,7 @@ const Api: RideHttpApi = {
                 city: "Zielona Góra"
             },
             {
-                id: "24",
+                id: "22",
                 name: "Palma Ride",
                 time: LocalTime.parse("17:15"),
                 day: Day.THURSDAY,
@@ -375,7 +375,7 @@ const Api: RideHttpApi = {
                 city: "Zielona Góra"
             },
             {
-                id: "25",
+                id: "23",
                 name: "Niedzielna100 Poznań Winogrady",
                 time: LocalTime.parse("10:00"),
                 day: Day.SUNDAY,
@@ -391,7 +391,7 @@ const Api: RideHttpApi = {
                 city: "Poznań"
             },
             {
-                id: "26",
+                id: "24",
                 name: "GraveLove Poznań",
                 time: LocalTime.parse("10:00"),
                 day: Day.SUNDAY,
@@ -407,7 +407,7 @@ const Api: RideHttpApi = {
                 city: "Poznań"
             },
             {
-                id: "27",
+                id: "25",
                 name: "Trening Szosowy Zgrupka Team",
                 time: LocalTime.parse("09:00"),
                 day: Day.SATURDAY,
@@ -423,7 +423,7 @@ const Api: RideHttpApi = {
                 city: "Poznań"
             },
             {
-                id: "28",
+                id: "26",
                 name: "Szosa ONLY FOR GIRLS",
                 time: LocalTime.parse("09:00"),
                 day: Day.SATURDAY,
@@ -439,7 +439,7 @@ const Api: RideHttpApi = {
                 city: "Gdańsk"
             },
             {
-                id: "29",
+                id: "27",
                 name: "Szosowe Czwartki Koszalin",
                 time: LocalTime.parse("17:00"),
                 day: Day.THURSDAY,
@@ -456,7 +456,7 @@ const Api: RideHttpApi = {
                 city: "Koszalin"
             },
             {
-                id: "30",
+                id: "28",
                 name: "Sobotnia Grupa Kolarska",
                 time: LocalTime.parse("10:00"),
                 day: Day.SATURDAY,
@@ -476,7 +476,7 @@ const Api: RideHttpApi = {
                 city: "Katowice"
             },
             {
-                id: "31",
+                id: "29",
                 name: "Niedzielna Grupa Gravelowa",
                 time: LocalTime.parse("10:00"),
                 day: Day.SUNDAY,
@@ -492,7 +492,7 @@ const Api: RideHttpApi = {
                 city: "Dąbrowa Górnicza"
             },
             {
-                id: "32",
+                id: "30",
                 name: "Daniel's Lab MTB",
                 time: LocalTime.parse("11:00"),
                 day: Day.SUNDAY,
@@ -508,7 +508,7 @@ const Api: RideHttpApi = {
                 city: "Dąbrowa Górnicza"
             },
             {
-                id: "33",
+                id: "31",
                 name: "KFC Ride",
                 time: LocalTime.parse("09:00"),
                 day: Day.SUNDAY,
@@ -526,7 +526,7 @@ const Api: RideHttpApi = {
                 city: "Warszawa"
             },
             {
-                id: "34",
+                id: "32",
                 name: "KTC Kielce",
                 time: LocalTime.parse("10:00"),
                 day: Day.SUNDAY,
@@ -542,7 +542,7 @@ const Api: RideHttpApi = {
                 city: "Kielce"
             },
             {
-                id: "35",
+                id: "33",
                 name: "Infrasettimanale Classico Katowice",
                 time: LocalTime.parse("17:00"),
                 day: Day.WEDNESDAY,
@@ -559,7 +559,7 @@ const Api: RideHttpApi = {
                 city: "Katowice"
             },
             {
-                id: "36",
+                id: "34",
                 name: "Coffee Ride z Cidry na Szosie",
                 time: LocalTime.parse("18:00"),
                 day: Day.WEDNESDAY,
@@ -575,7 +575,7 @@ const Api: RideHttpApi = {
                 city: "Radzionków"
             },
             {
-                id: "37",
+                id: "35",
                 name: "Rondo Babka",
                 time: LocalTime.parse("09:00"),
                 // TODO dodać sobotę, więcej info na stronie
@@ -593,7 +593,7 @@ const Api: RideHttpApi = {
                 city: "Warszawa"
             },
             {
-                id: "38",
+                id: "36",
                 name: "Śląskie Kręcenie",
                 time: LocalTime.parse("17:40"),
                 day: Day.WEDNESDAY,
@@ -609,7 +609,7 @@ const Api: RideHttpApi = {
                 city: "Żory"
             },
             {
-                id: "39",
+                id: "37",
                 name: "Grupa Głębokie",
                 time: LocalTime.parse("10:00"),
                 // TODO dodać niedzielę, wtorek oraz środę
@@ -626,7 +626,7 @@ const Api: RideHttpApi = {
                 city: "Szczecin"
             },
             {
-                id: "40",
+                id: "38",
                 name: "Łódź Retkinia (zwana Hyunda-iem)",
                 time: LocalTime.parse("11:15"),
                 day: Day.SATURDAY,
@@ -642,7 +642,7 @@ const Api: RideHttpApi = {
                 city: "Łódź"
             },
             {
-                id: "41",
+                id: "39",
                 name: "Łódź Retkinia (zwana Hyunda-iem)",
                 time: LocalTime.parse("10:15"),
                 day: Day.SUNDAY,
@@ -658,7 +658,7 @@ const Api: RideHttpApi = {
                 city: "Łódź"
             },
             {
-                id: "42",
+                id: "40",
                 name: "Łódź KASZTANY",
                 time: LocalTime.parse("10:15"),
                 day: Day.SATURDAY,
@@ -674,7 +674,7 @@ const Api: RideHttpApi = {
                 city: "Łódź"
             },
             {
-                id: "43",
+                id: "41",
                 name: "Łódź Apteka",
                 time: LocalTime.parse("10:15"),
                 day: Day.SUNDAY,
@@ -690,7 +690,7 @@ const Api: RideHttpApi = {
                 city: "Łódź"
             },
             {
-                id: "44",
+                id: "42",
                 name: "Łódź Rzgowska",
                 time: LocalTime.parse("10:15"),
                 day: Day.SUNDAY,
@@ -706,7 +706,7 @@ const Api: RideHttpApi = {
                 city: "Łódź"
             },
             {
-                id: "45",
+                id: "43",
                 name: "Łódź JAROSZKI",
                 time: LocalTime.parse("16:15"),
                 day: Day.WEDNESDAY,
@@ -722,7 +722,7 @@ const Api: RideHttpApi = {
                 city: "Łódź"
             },
             {
-                id: "46",
+                id: "44",
                 name: "ALEKSANDRÓW",
                 time: LocalTime.parse("10:00"),
                 day: Day.SUNDAY,
@@ -736,7 +736,361 @@ const Api: RideHttpApi = {
                 },
                 rideType: RideType.ROAD,
                 city: "Aleksandrów Łódzki"
-            }
+            },
+            // 23-01-2022
+            {
+                id: "45",
+                name: "Infrasettimanale Classico Gliwice",
+                time: LocalTime.parse("17:30"),
+                day: Day.WEDNESDAY,
+                description: "Środowe treningi kolarskie w mocnym tempie, od kwietnia do października. Każdy jest mile widziany - doświadczeni zawodnicy i amatorzy oraz nowicjusze.",
+                url: {
+                    facebook: "https://www.facebook.com/ICgliwice/"
+                },
+                startingPoint: {
+                    latitude: 50.282416,
+                    longitude: 18.715206
+                },
+                rideType: RideType.ROAD,
+                city: "Gliwice"
+            },
+            {
+                id: "46",
+                name: "Infrasettimanale Classico Radom",
+                time: LocalTime.parse("18:00"),
+                day: Day.WEDNESDAY,
+                description: "Każdy uczestnik punktowanego treningu IC Radom bierze w nim udział na własną odpowiedzialność.\n" +
+                    "Każdy uczestnik treningu IC Radom powinien jechać zgodnie z przepisami ruchu drogowego.",
+                url: {
+                    facebook: "https://www.facebook.com/icrdm/"
+                },
+                startingPoint: {
+                    latitude: 51.403819,
+                    longitude: 21.153406
+                },
+                rideType: RideType.ROAD,
+                city: "Radom"
+            },
+            {
+                id: "47",
+                name: "Infrasettimanale Classico Zabranie",
+                time: LocalTime.parse("17:30"),
+                day: Day.WEDNESDAY,
+                description: "W każdą środę w KatowICach - Podlesiu. Bufet IC zawsze po treningu u zbiegu ulic Szarych Szeregów - Kałuży, czyli na PG3. Zapraszamy wszystkich KIBICÓW na START oraz Bufet IC :)",
+                url: {
+                    webpage: "https://www.localgymsandfitness.com/PL/Katowice/198617890184905/Infrasettimanale-Classico"
+                },
+                startingPoint: {
+                    latitude: 50.175302,
+                    longitude: 18.970729
+                },
+                rideType: RideType.ROAD,
+                city: "Katowice"
+            },
+            {
+                id: "48",
+                name: "Infrasettimanale Classico Nowy Sącz",
+                time: LocalTime.parse("17:00"),
+                day: Day.WEDNESDAY,
+                description: "Jeżdzimy stałą trasą, 3 premie i finisz. Trasa typowo klasyczna, więc każdy znajdzie tu dla siebie odpowiednie miejsce.",
+                url: {
+                    facebook: "https://www.facebook.com/ICnowysacz/"
+                },
+                startingPoint: {
+                    latitude: 49.624834,
+                    longitude: 20.705587
+                },
+                rideType: RideType.ROAD,
+                city: "Nowy Sącz"
+            },
+            {
+                id: "49",
+                name: "Infrasettimanale Classico Podhale",
+                time: LocalTime.parse("17:00"),
+                day: Day.WEDNESDAY,
+                description: "ŚRODOWY KLASYK - czyli otwarte treningi na szosie.",
+                url: {
+                    facebook: "https://www.facebook.com/IcPodhale/"
+                },
+                startingPoint: {
+                    latitude: 49.477386,
+                    longitude: 20.034820
+                },
+                rideType: RideType.ROAD,
+                city: "Nowy Targ"
+            },
+            {
+                id: "50",
+                name: "Infrasettimanale Classico SKO",
+                time: LocalTime.parse("17:00"),
+                day: Day.WEDNESDAY,
+                description: "To wspólne treningi na szosie z elementami ścigania, w których każdy bierze udział na własną odpowiedzialność, zobowiązując się do przestrzegania zasad ruchu drogowego, bezpieczeństwa i dobrego wychowania.",
+                url: {
+                    facebook: "https://www.facebook.com/ICskarzysko/"
+                },
+                startingPoint: {
+                    latitude: 51.119824,
+                    longitude: 20.861242
+                },
+                rideType: RideType.ROAD,
+                city: "Skarżysko-Kamienna"
+            },
+            {
+                id: "51",
+                name: "Bajabongo Bike Atelier",
+                time: LocalTime.parse("17:00"),
+                day: Day.MONDAY,
+                description: "Luźne tempo, 28 km/h. ",
+                url: {
+                    facebook: "https://www.facebook.com/Bajabongo-Bike-Atelier-387567745428188"
+                },
+                startingPoint: {
+                    latitude: 50.330215,
+                    longitude: 19.220292
+                },
+                rideType: RideType.ROAD,
+                city: "Dąbrowa Górnicza"
+            },
+            {
+                id: "52",
+                name: "Cortado ",
+                time: LocalTime.parse("16:45"),
+                day: Day.TUESDAY,
+                description: "Ustawka kolarska organizowana przez Endurance Team",
+                url: {
+                    facebook: "https://www.facebook.com/profile.php?id=100035350226519"
+                },
+                startingPoint: {
+                    latitude: 50.324575,
+                    longitude: 19.003347
+                },
+                rideType: RideType.ROAD,
+                city: "Siemianowice Śląskie"
+            },
+            {
+                id: "53",
+                name: "Klasyczny Wtorek z Dobre Koło",
+                time: LocalTime.parse("18:20"),
+                day: Day.TUESDAY,
+                description: "Nie ma osoby prowadzącej grupę, celem jest zrobienie dobrego treningu i poprawienie kondycji, a dodatkową motywacją będzie rywalizacja z innymi. Wszyscy startujemy razem, a grupy same uformują się w zależności od zaawansowania.",
+                url: {
+                    facebook: "https://www.facebook.com/dobrekolo"
+                },
+                startingPoint: {
+                    latitude: 50.322388,
+                    longitude: 19.127940
+                },
+                rideType: RideType.ROAD,
+                city: "Będzin"
+            },
+            {
+                id: "54",
+                name: "Czwartek z Dobre Koło",
+                time: LocalTime.parse("18:20"),
+                day: Day.THURSDAY,
+                description: "Ruszamy wspólnie na pętlę, którą kończymy w Dąbrowie Górniczej. Planowany dystans +/- 50km.",
+                url: {
+                    facebook: "https://www.facebook.com/dobrekolo"
+                },
+                startingPoint: {
+                    latitude: 50.314914,
+                    longitude: 19.198977
+                },
+                rideType: RideType.ROAD,
+                city: "Dąbrowa Górnicza"
+            },
+            {
+                id: "55",
+                name: "Babska Środa",
+                time: LocalTime.parse("17:30"),
+                day: Day.WEDNESDAY,
+                description: "Babska Środa to grupa kobiet, różniących się między sobą wiekiem, momentem w życiu, wyglądem, rodzajem wykonywanej pracy i wieloma innymi rzeczami ale wszystkie łączy pasja do kolarstwa, w różnych jego odmianach.",
+                url: {
+                    facebook: "https://www.facebook.com/baabskasroda/"
+                },
+                startingPoint: {
+                    latitude: 50.343752,
+                    longitude: 19.198653
+                },
+                rideType: RideType.ROAD,
+                city: "Dąbrowa Górnicza"
+            },
+            {
+                id: "56",
+                name: "WelBike Tour",
+                time: LocalTime.parse("18:00"),
+                day: Day.WEDNESDAY,
+                description: "Jak środa, to upalanie łydy w dosłownym znaczeniu.",
+                url: {
+                    facebook: "https://www.facebook.com/WelBike-Tour-117728646669774/"
+                },
+                startingPoint: {
+                    latitude: 50.380434,
+                    longitude: 19.135001
+                },
+                rideType: RideType.ROAD,
+                city: "Dąbrowa Górnicza"
+            },
+            {
+                id: "57",
+                name: "Czwartkowa ustawka z Kietą",
+                time: LocalTime.parse("17:00"),
+                day: Day.THURSDAY,
+                description: "Zapraszamy wszystkich na czwartkowy trening. Przy większej liczbie osób będziemy tworzyć dwie grupy (mocniejsza i słabsza). Tak aby każdy mógł dojechać w grupie do samego końca. Prosimy o zachowanie szczególnej ostrożności podczas jazdy! ",
+                url: {
+                    facebook: "https://www.facebook.com/KIETArowerowy"
+                },
+                startingPoint: {
+                    latitude: 50.107143,
+                    longitude: 18.979832
+                },
+                rideType: RideType.ROAD,
+                city: "Tychy"
+            },
+            {
+                id: "58",
+                name: "Czwartkowa Runda",
+                time: LocalTime.parse("18:00"),
+                day: Day.THURSDAY,
+                description: "Start w każdy czwartek, w ciągu całego roku. Kask obowiązkowy.",
+                url: {
+                    strava: "https://www.strava.com/clubs/220622"
+                },
+                startingPoint: {
+                    latitude: 50.190788,
+                    longitude: 19.162585
+                },
+                rideType: RideType.ROAD,
+                city: "Mysłowice"
+            },
+            {
+                id: "59",
+                name: "Gravelowy Czwartek",
+                time: LocalTime.parse("17:30"),
+                day: Day.THURSDAY,
+                description: "Serdecznie zapraszamy na cotygodniowe wyjazdy gravelowe z Roweroteką Gładysz. Trening połączony ze zwiedzaniem okolic Tarnowskie Góry a w szczególności okolicznych leśnych zakątków.\n" +
+                    "Tempo rekreacyjne, dobra kolarska atmosfera i finisz na tarnogórskim rynku.",
+                url: {
+                    facebook: "https://www.facebook.com/roweroteka/"
+                },
+                startingPoint: {
+                    latitude: 50.445533,
+                    longitude: 18.850568
+                },
+                rideType: RideType.GRAVEL,
+                city: "Tarnowskie Góry"
+            },
+            {
+                id: "60",
+                name: "Luźna Łyda Road",
+                time: LocalTime.parse("17:30"),
+                day: Day.FRIDAY,
+                description: "To co piątkowe treningii na rowerach szosowych. Jak sama nazwa wskazuje ustawki na rowerach szosowych, dla początkujących jak i zawodników chcących zrobić lekki rozjazd przed weekendowym ściganiem.",
+                url: {
+                    facebook: "https://www.facebook.com/puchalkasport/"
+                },
+                startingPoint: {
+                    latitude: 50.113468,
+                    longitude: 18.963200
+                },
+                rideType: RideType.ROAD,
+                city: "Tychy"
+            },
+            {
+                id: "61",
+                name: "TRI Zakładka 40+4",
+                time: LocalTime.parse("09:00"),
+                day: Day.SATURDAY,
+                description: "Zapraszam Wszystkich chętnych na sobotnią Tri ustawkę - zakładkę nazwaną 40+4 (około 40km🚴🏻‍♂️+4km🏃‍♂️🔥)",
+                url: {
+                    facebook: "https://www.facebook.com/Bartosz-Dudek-Triathlon-262744154285758/"
+                },
+                startingPoint: {
+                    latitude: 50.310500,
+                    longitude: 19.044436
+                },
+                rideType: RideType.ROAD,
+                city: "Siemianowice Śląskie"
+            },
+            {
+                id: "62",
+                name: "TRI Zakładka 40+4",
+                time: LocalTime.parse("09:00"),
+                day: Day.SATURDAY,
+                description: "Zapraszam Wszystkich chętnych na sobotnią Tri ustawkę - zakładkę nazwaną 40+4 (około 40km🚴🏻‍♂️+4km🏃‍♂️🔥)",
+                url: {
+                    facebook: "https://www.facebook.com/Bartosz-Dudek-Triathlon-262744154285758/"
+                },
+                startingPoint: {
+                    latitude: 50.310500,
+                    longitude: 19.044436
+                },
+                rideType: RideType.ROAD,
+                city: "Siemianowice Śląskie"
+            },
+            {
+                id: "63",
+                name: "Tempo 30",
+                time: LocalTime.parse("12:00"),
+                day: Day.SATURDAY,
+                description: "Sobotnia ustawka organizowana przez Fenix Tychy.",
+                url: {
+                    facebook: "https://www.facebook.com/fenixtychy/"
+                },
+                startingPoint: {
+                    latitude: 50.089760,
+                    longitude: 18.995632
+                },
+                rideType: RideType.ROAD,
+                city: "Tychy"
+            },
+            {
+                id: "64",
+                name: "Ustawki kolarskie - Grodziec",
+                time: LocalTime.parse("11:00"),
+                day: Day.SUNDAY,
+                description: "Tradycyjne wspólne niedzielne treningi na dwóch rundach - MEGA oraz STANDARD.",
+                url: {
+                    facebook: "https://www.facebook.com/ustawkikolarskiegrodziec"
+                },
+                startingPoint: {
+                    latitude: 50.347675,
+                    longitude: 19.097050
+                },
+                rideType: RideType.ROAD,
+                city: "Będzin"
+            },
+            {
+                id: "65",
+                name: "Gliwice na Górę Św. Anny",
+                time: LocalTime.parse("10:00"),
+                day: Day.SUNDAY,
+                description: "Wspólny wyjazd gliwickich kolarzy na Górę Świętej Anny",
+                url: {
+                },
+                startingPoint: {
+                    latitude: 50.324431,
+                    longitude: 18.661836
+                },
+                rideType: RideType.ROAD,
+                city: "Gliwice"
+            },
+            {
+                id: "66",
+                name: "Niedzielna ustawka z Fenix Tychy",
+                time: LocalTime.parse("11:00"),
+                day: Day.SUNDAY,
+                description: "Niedzielna ustawka z Fenix Tychy.",
+                url: {
+                    facebook: "https://www.facebook.com/fenixtychy/"
+                },
+                startingPoint: {
+                    latitude: 50.089760,
+                    longitude: 18.995632
+                },
+                rideType: RideType.ROAD,
+                city: "Tychy"
+            },
         ),
 
     getRidesWithFilter: (query: FilterQuery) => {
