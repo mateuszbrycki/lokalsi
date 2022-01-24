@@ -47,50 +47,49 @@ const Api: RideHttpApi = {
             {
                 id: "3",
                 name: "Damskie wtorki z Profidea dla Kobiet",
-                time: LocalTime.parse("17:30"),
+                time: LocalTime.parse("17:00"),
                 day: Day.TUESDAY,
-                description: "Zapraszam wszystkie panie, które KONTYNUUJĄ Z NAMI KOLEJNY SEZON ROWEROWY, na rowerze szosowym. Jedziemy przejażdżki typu Coffee Ride. Nie ścigamy się, tylko zwiedzamy nowe trasy, uczymy się techniki, jazdy w grupie i bezpiecznego poruszania po drogach.",
+                description: "\"Nieważne jak szybko, nieważne jak daleko, ale ważne, że RAZEM ❤️\". Grupa średniozaawansowana. Zapraszamy wszystkie panie, które kontynuują z nami przygodę na rowerze szosowym i gravelowym. Jedziemy przejażdżki typu Coffee Ride. Nie ścigamy się, tylko zwiedzamy nowe trasy, uczymy się techniki, jazdy w grupie i bezpiecznego poruszania po drogach. Rozkręć z nami kobiece kolarstwo",
                 url: {
                     facebook: "https://fb.com/ProfideadlaKobiet"
                 },
                 startingPoint: {
-                    latitude: 50.059196,
-                    longitude:19.923766
+                    latitude: 50.059474,
+                    longitude: 19.922686
                 },
                 rideType: RideType.ROAD,
                 city: "Kraków"
             },
             {
                 id: "4",
-                name: "Damskie Środy z Profidea dla Kobiet",
-                time: LocalTime.parse("17:30"),
-                day: Day.WEDNESDAY,
-                description: "Zapraszam wszystkie panie, które chcą ➡️ ROZPOCZĄĆ przygodę na rowerze szosowym. Jedziemy przejażdżki typu Coffee Ride. Nie ścigamy się, tylko zwiedzamy nowe trasy, uczymy się techniki, jazdy w grupie i bezpiecznego poruszania po drogach.",
+                name: "Damskie czwartki z Profidea dla Kobiet",
+                time: LocalTime.parse("17:00"),
+                day: Day.THURSDAY,
+                description: "Zapraszamy wszystkie panie, które rozpoczynają jazdę na rowerach szosowych i gravelowych. Jedziemy przejażdżki typu Coffee Ride. Nie ścigamy się, tylko zwiedzamy nowe trasy, uczymy się techniki, jazdy w grupie i bezpiecznego poruszania po drogach. \"Nieważne jak szybko, nieważne jak daleko, ważne, że RAZEM\".",
                 url: {
                     facebook: "https://fb.com/ProfideadlaKobiet"
                 },
                 startingPoint: {
-                    latitude: 50.059196,
-                    longitude:19.923766
+                    latitude: 50.059474,
+                    longitude: 19.922686
                 },
                 rideType: RideType.ROAD,
                 city: "Kraków"
             },
             {
                 id: "5",
-                name: "Trening MTB I GRAVEL z Profidea dla Kobiet",
-                time: LocalTime.parse("11:00"),
-                day: Day.SATURDAY,
-                description: "Dziewczyny wskakujemy na rowery Mtb, trekkingowe lub gravelowe.\n" +
-                    "Zbiórka - Błonia róg Focha i 3 Maja Kraków\n",
+                name: "Damskie środy z Profidea dla Kobiet",
+                time: LocalTime.parse("17:00"),
+                day: Day.WEDNESDAY,
+                description: "Grupa zaawansowana. Zapraszamy wszystkie panie na rowerach szosowych, które opanowały sztukę jazdy na kole i chcą spróbować sił w damskim peletonie. Rozkręć z nami kobiece kolarstwo.",
                 url: {
                     facebook: "https://fb.com/ProfideadlaKobiet"
                 },
                 startingPoint: {
-                    latitude: 50.059196,
-                    longitude:19.923766
+                    latitude: 50.059474,
+                    longitude: 19.922686
                 },
-                rideType: RideType.MTB,
+                rideType: RideType.ROAD,
                 city: "Kraków"
             },
             {
@@ -247,7 +246,7 @@ const Api: RideHttpApi = {
             {
                 id: "15",
                 name: "Ustawka kolarska z Bike RS",
-                time: LocalTime.parse("16:45"),
+                time: LocalTime.parse("17:00"),
                 day: Day.THURSDAY,
                 description: "Jeździmy w zróżnicowanym terenie, głównie po \"południowej\" stronie Krakowa, ze względu na naszą lokalizację.\n" +
                     "Zapraszamy do wspólnej jazdy",
@@ -264,8 +263,8 @@ const Api: RideHttpApi = {
             {
                 id: "16",
                 name: "Gravelowy wtorek z Bike RS",
-                time: LocalTime.parse("16:45"),
-                day: Day.THURSDAY,
+                time: LocalTime.parse("17:00"),
+                day: Day.TUESDAY,
                 description: "Jeździmy w zróżnicowanym terenie, głównie po \"południowej\" stronie Krakowa, ze względu na naszą lokalizację.\n" +
                     "Zapraszamy do wspólnej jazdy",
                 url: {
@@ -1090,6 +1089,22 @@ const Api: RideHttpApi = {
                 },
                 rideType: RideType.MTB,
                 city: "Poznań"
+            },
+            {
+                id: "67",
+                name: "Trening MTB",
+                time: LocalTime.parse("10:00"),
+                day: Day.SUNDAY,
+                description: "Zapraszamy na wspólną jazdę MTB! Na trasach sprawdzą się też rowery crossowe, gravelowe i przełajowe 🙂",
+                url: {
+                    facebook: "https://www.facebook.com/profile.php?id=100062972153575"
+                },
+                startingPoint: {
+                    latitude: 51.725304,
+                    longitude: 19.638193
+                },
+                rideType: RideType.MTB,
+                city: "Andrespol"
             }
         ),
 
