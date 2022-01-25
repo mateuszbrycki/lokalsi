@@ -1103,7 +1103,7 @@ const Api: RideHttpApi = {
                     latitude: 51.725304,
                     longitude: 19.638193
                 },
-                rideType: RideType.MTB,
+                rideType: RideType.ROAD,
                 city: "Andrespol"
             }
         ),
