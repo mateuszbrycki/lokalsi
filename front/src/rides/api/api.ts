@@ -529,7 +529,7 @@ const Api: RideHttpApi = {
                 name: "KTC Kielce",
                 time: LocalTime.parse("10:00"),
                 day: Day.SUNDAY,
-                description: "Ustawka organizowana przez KTC Kielce",
+                description: "Mocny trening z elementami wyścigowymi. Następnie spotkanie na pizza/piwo w pizzeria „Oliwa” przy zalewie w Cedzynie.\n",
                 url: {
                     facebook: "https://www.facebook.com/ktckielce/",
                 },
@@ -1092,7 +1092,7 @@ const Api: RideHttpApi = {
             },
             {
                 id: "67",
-                name: "Trening MTB",
+                name: "Pasjonaci Kolarstwa Andrespol",
                 time: LocalTime.parse("10:00"),
                 day: Day.SUNDAY,
                 description: "Zapraszamy na wspólną jazdę MTB! Na trasach sprawdzą się też rowery crossowe, gravelowe i przełajowe 🙂",
