@@ -547,7 +547,7 @@ const Api: RideHttpApi = {
                 day: Day.WEDNESDAY,
                 description: "IC Katowice to otwarte treningi kolarskie, odbywające się cyklicznie w Katowicach. Zostały zapoczątkowane kilka lat temu przez lokalnych pasjonatów kolarstwa, zyskując z czasem kolejnych uczestników, aż do obecnej, naprawdę wielkiej popularności - która z pewnością jeszcze wzrośnie. Coraz częściej na starcie katowickiego IC staje na rowerach szosowych ponad setka kolarzy.",
                 url: {
-                    webpage: "http://www.ic.katowice.pl//",
+                    webpage: "http://www.ic.katowice.pl/",
                     facebook: "https://www.facebook.com/Infrasettimanale-Classico-198617890184905/"
                 },
                 startingPoint: {
@@ -772,7 +772,7 @@ const Api: RideHttpApi = {
             },
             {
                 id: "47",
-                name: "Infrasettimanale Classico Zabranie",
+                name: "Infrasettimanale Classico Katowice Podlesie",
                 time: LocalTime.parse("17:30"),
                 day: Day.WEDNESDAY,
                 description: "W każdą środę w KatowICach - Podlesiu. Bufet IC zawsze po treningu u zbiegu ulic Szarych Szeregów - Kałuży, czyli na PG3. Zapraszamy wszystkich KIBICÓW na START oraz Bufet IC :)",
@@ -1095,7 +1095,7 @@ const Api: RideHttpApi = {
                 name: "Pasjonaci Kolarstwa Andrespol",
                 time: LocalTime.parse("10:00"),
                 day: Day.SUNDAY,
-                description: "Zapraszamy na wspólną jazdę MTB! Na trasach sprawdzą się też rowery crossowe, gravelowe i przełajowe 🙂",
+                description: "Zawodnicy, Amatorzy, kilka grup podzielonych według dystansu i średniej prędkości. Panie i Panowie. Zapraszamy!",
                 url: {
                     facebook: "https://www.facebook.com/profile.php?id=100062972153575"
                 },
@@ -1105,6 +1105,54 @@ const Api: RideHttpApi = {
                 },
                 rideType: RideType.ROAD,
                 city: "Andrespol"
+            },
+            {
+                id: "68",
+                name: "Infrasettimanale Classico Zabrnie",
+                time: LocalTime.parse("17:36"),
+                day: Day.WEDNESDAY,
+                description: "Kolarskie środy z nutką ścigania zrzeszające kolarzy z okolic Tarnobrzega, Gorzyc, Sandomierza, Stalowej Woli, Nowej Dęby i reszty galaktyki ;) Godzinna jest zmienna w zależności od okresu sezonu.",
+                url: {
+                    facebook: "https://www.facebook.com/ICZabrnie"
+                },
+                startingPoint: {
+                    latitude: 50.594198,
+                    longitude: 21.852245
+                },
+                rideType: RideType.ROAD,
+                city: "Zabrnie"
+            },
+            {
+                id: "69",
+                name: "Zorza Tarnobrzeg",
+                time: LocalTime.parse("10:00"),
+                day: Day.SUNDAY,
+                description: "Reaktywowana grupa, istniejąca w latach 70-tych na terenie Tarnobrzega i okolic.",
+                url: {
+                    facebook: "https://www.facebook.com/groups/zorza.tarnobrzeg"
+                },
+                startingPoint: {
+                    latitude: 50.574485,
+                    longitude: 21.672954
+                },
+                rideType: RideType.ROAD,
+                city: "Tarnobrzeg"
+            },
+            {
+                id: "70",
+                name: "Gravel/MTB z Wertykalem",
+                time: LocalTime.parse("11:00"),
+                day: Day.SATURDAY,
+                description: "Ustawka gravelowa i MTB. Około 2 godzinki, tempo umiarkowane. Prowadzone przez trenerów.",
+                url: {
+                    facebook: "https://facebook.com/Iron-Dragon-Coach-106746445179689/"
+                },
+                startingPoint: {
+                    latitude: 50.116942,
+                    longitude: 19.787086
+                },
+                rideType: RideType.GRAVEL,
+                city: "Zabierzów"
             }
         ),
 
