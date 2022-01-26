@@ -1153,6 +1153,23 @@ const Api: RideHttpApi = {
                 },
                 rideType: RideType.GRAVEL,
                 city: "Zabierzów"
+            },
+            {
+                id: "71",
+                name: "Szybka Północ",
+                time: LocalTime.parse("17:00"),
+                day: Day.WEDNESDAY,
+                description: "Ustawka tempo tempo +33km/h. Dla kobiet i dla mężczyzn, ale płeć nie ma tu znaczenia. Liczy się fun, ból w nogach, krew w płucach :D i nowe PRk. Jak się dobrze przyjrzeć, jest gdzie skrócić, gdyby deszczyk, gdyby bombka, gdyby tak się chciało :)" +
+                    " Obowiązkowe: kask, dętka/mleko/łaty + pompa :) Pamiętaj o: lampy przód-tył, bidon, żel/baton. Zapraszamy 💙",
+                url: {
+                    facebook: "https://www.facebook.com/groups/546663716667986"
+                },
+                startingPoint: {
+                    latitude: 51.204194,
+                    longitude: 17.100844
+                },
+                rideType: RideType.ROAD,
+                city: "Pasikurowice"
             }
         ),
 
