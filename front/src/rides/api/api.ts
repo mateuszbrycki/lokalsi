@@ -1170,6 +1170,38 @@ const Api: RideHttpApi = {
                 },
                 rideType: RideType.ROAD,
                 city: "Pasikurowice"
+            },
+            {
+                id: "72",
+                name: "MUS Mikołowska Ustawka Szosowa",
+                time: LocalTime.parse("17:00"),
+                day: Day.TUESDAY,
+                description: "2 grupy: mocna średnia 35/36 km/h oraz grupa dla wszystkich średnia 28/30.",
+                url: {
+                    facebook: "https://www.facebook.com/groups/152247042309634/"
+                },
+                startingPoint: {
+                    latitude: 50.169302,
+                    longitude: 18.904546
+                },
+                rideType: RideType.ROAD,
+                city: "Mikołów"
+            },
+            {
+                id: "73",
+                name: "MUS Mikołowska Ustawka Szosowa",
+                time: LocalTime.parse("17:00"),
+                day: Day.THURSDAY,
+                description: "2 grupy: mocna średnia 35/36 km/h oraz grupa dla wszystkich średnia 28/30.",
+                url: {
+                    facebook: "https://www.facebook.com/groups/152247042309634/"
+                },
+                startingPoint: {
+                    latitude: 50.169302,
+                    longitude: 18.904546
+                },
+                rideType: RideType.ROAD,
+                city: "Mikołów"
             }
         ),
 
