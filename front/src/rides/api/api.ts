@@ -1202,6 +1202,22 @@ const Api: RideHttpApi = {
                 },
                 rideType: RideType.ROAD,
                 city: "Mikołów"
+            },
+            {
+                id: "74",
+                name: "Ulanów",
+                time: LocalTime.parse("11:00"),
+                day: Day.SUNDAY,
+                description: "Trasa 60-100 km po jakościowo bardzo dobrych i mało ruchliwych trasach. Najczęściej w powiecie niżańskim i biłgorajskim. Amatorzy spotykają się od wielu lat, a niektórzy są już w wielu emerytalnym. Tempo grupy ok. 30km/h",
+                url: {
+                    facebook: "https://www.facebook.com/krzysztof.skwarek.7"
+                },
+                startingPoint: {
+                    latitude: 50.486734,
+                    longitude: 22.265907
+                },
+                rideType: RideType.ROAD,
+                city: "Ulanów"
             }
         ),
 
