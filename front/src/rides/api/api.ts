@@ -1218,6 +1218,38 @@ const Api: RideHttpApi = {
                 },
                 rideType: RideType.ROAD,
                 city: "Ulanów"
+            },
+            {
+                id: "75",
+                name: "Agenty z Południa",
+                time: LocalTime.parse("17:30"),
+                day: Day.TUESDAY,
+                description: "Agenty z Południa zapraszają na żwawą ustawkę po południowych stronach Krakowa. Informacje o spotkaniu zawsze na Facebooku.",
+                url: {
+                    facebook: "https://www.facebook.com/groups/265494830866431"
+                },
+                startingPoint: {
+                    latitude: 50.018721,
+                    longitude: 19.933782
+                },
+                rideType: RideType.ROAD,
+                city: "Kraków"
+            },
+            {
+                id: "76",
+                name: "Agenty z Południa",
+                time: LocalTime.parse("17:30"),
+                day: Day.THURSDAY,
+                description: "Agenty z Południa zapraszają na żwawą ustawkę po południowych stronach Krakowa. Informacje o spotkaniu zawsze na Facebooku.",
+                url: {
+                    facebook: "https://www.facebook.com/groups/265494830866431"
+                },
+                startingPoint: {
+                    latitude: 50.018721,
+                    longitude: 19.933782
+                },
+                rideType: RideType.ROAD,
+                city: "Kraków"
             }
         ),
 
