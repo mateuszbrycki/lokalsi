@@ -1250,6 +1250,38 @@ const Api: RideHttpApi = {
                 },
                 rideType: RideType.ROAD,
                 city: "Kraków"
+            },
+            {
+                id: "77",
+                name: "Nie lubię poniedziałków",
+                time: LocalTime.parse("17:30"),
+                day: Day.MONDAY,
+                description: "Nie lubię poniedziałków to cotygodniowe ustawki szosowe, które odbywają się od wiosny do jesieni i ruszamy na pętlę wokół komina. Długość pętli zależy od pory roku. Trasa do pobrania w formacie .gpx podawana jest przed każdą ustawką na FB. Informacja o ustawce podawana jest na profilu na facebook'u, na Stravie i na DecathlonGo.",
+                url: {
+                    facebook: "https://www.facebook.com/Rowerowa-Cz%C4%99stochowa-1559437560965521/"
+                },
+                startingPoint: {
+                    latitude: 50.811949, 
+                    longitude: 19.113129
+                },
+                rideType: RideType.ROAD,
+                city: "Częstochowa"
+            },
+            {
+                id: "78",
+                name: "Rowerowa Środa z Decathlon Częstochowa Poczesna",
+                time: LocalTime.parse("17:30"),
+                day: Day.WEDNESDAY,
+                description: "Rowerowe Środy jeżdżą cały rok ;) Kręcimy po lokalnych bezdrożach, głównie w kierunku Jury Krakowsko-Częstochowskiej. W zależności od pory roku i długości dnia, trasy są mniej lub bardziej techniczne. Spotykamy się w centrum miasta i ruszamy na manewry terenowe! :) Ślad trasy do pobrania w formacie .gpx udostępniany jest przed każdym wyjazdem na profil FB, Stravie i DecathlonGo.",
+                url: {
+                    facebook: "https://www.facebook.com/Rowerowa-Cz%C4%99stochowa-1559437560965521/"
+                },
+                startingPoint: {
+                    latitude: 50.811949, 
+                    longitude: 19.113129
+                },
+                rideType: RideType.MTB,
+                city: "Częstochowa"
             }
         ),
 
