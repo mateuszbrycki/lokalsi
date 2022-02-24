@@ -1290,7 +1290,7 @@ const Api: RideHttpApi = {
                 day: Day.TUESDAY,
                 description: "Wspolne treningi rowerowe ćwiczenie techniki w terenie.",
                 url: {
-                    facebook: "https://www.facebook.pl/mtbpokrakowsku"
+                    facebook: "https://www.facebook.com/mtbpokrakowsku"
                 },
                 startingPoint: {
                     latitude: 50.053309,
