@@ -1282,6 +1282,22 @@ const Api: RideHttpApi = {
                 },
                 rideType: RideType.MTB,
                 city: "Częstochowa"
+            },
+            {
+                id: "79",
+                name: "#wtorkowkazmtbpokrakowsku",
+                time: LocalTime.parse("17:00"),
+                day: Day.TUESDAY,
+                description: "Wspolne treningi rowerowe ćwiczenie techniki w terenie.",
+                url: {
+                    facebook: "www.facebook.pl/mtbpokrakowsku"
+                },
+                startingPoint: {
+                    latitude: 50.053309,
+                    longitude: 19.901110
+                },
+                rideType: RideType.MTB,
+                city: "Kraków"
             }
         ),
 
