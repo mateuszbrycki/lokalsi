@@ -36,4 +36,4 @@ jobs:
             - /caches/app.tar
       - run:
           name: Push Image
-          command: docker push europe-central2-docker.pkg.dev/$GCP_PROJECT_ID/lokalsi/lokalsi-front:$CIRCLE_SHA1 .
+          command: docker push europe-central2-docker.pkg.dev/$GCP_PROJECT_ID/lokalsi/lokalsi-front:$CIRCLE_SHA1
