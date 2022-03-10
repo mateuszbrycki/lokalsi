@@ -9,31 +9,31 @@ jobs:
           path: ~/lokalsi
       - setup_remote_docker:
           version: 20.10.11
-      - restore_cache:
-          keys:
-            - v1-{{ .Branch }}
-          paths:
-            - /caches/lokalsi-front.tar
-      - run:
-          name: Load Docker image layer cache
-          command: |
-            set +o pipefail
-            docker load -i /caches/lokalsi-front.tar | true
+      # - restore_cache:
+      #     keys:
+      #       - v1-{{ .Branch }}
+      #     paths:
+      #       - /caches/lokalsi-front.tar
+      # - run:
+      #     name: Load Docker image layer cache
+      #     command: |
+      #       set +o pipefail
+      #       docker load -i /caches/lokalsi-front.tar | true
       - run:
           name: Login Into Repository
           command: docker login -u _json_key -p "$(echo $GCP_SA_AUTH_KEY)" https://europe-central2-docker.pkg.dev
       - run:
           name: Build Image
           command: docker build -t europe-central2-docker.pkg.dev/$GCP_PROJECT_ID/lokalsi/lokalsi-front:$CIRCLE_SHA1 .
-      - run:
-          name: Save Docker image layer cache
-          command: |
-            mkdir -p /caches
-            docker save -o /caches/lokalsi-front.tar lokalsi-front
-      - save_cache:
-          key: v1-{{ .Branch }}-{{ epoch }}
-          paths:
-            - /caches/lokalsi-front.tar
+      # - run:
+      #     name: Save Docker image layer cache
+      #     command: |
+      #       mkdir -p /caches
+      #       docker save -o /caches/lokalsi-front.tar lokalsi-front
+      # - save_cache:
+      #     key: v1-{{ .Branch }}-{{ epoch }}
+      #     paths:
+      #       - /caches/lokalsi-front.tar
       - run:
           name: Push Image
           command: docker push europe-central2-docker.pkg.dev/$GCP_PROJECT_ID/lokalsi/lokalsi-front:$CIRCLE_SHA1
