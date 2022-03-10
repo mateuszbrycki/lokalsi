@@ -4,15 +4,14 @@ jobs:
     working_directory: ~/lokalsi/front
     docker:
       - image: docker:17.05.0-ce-git
-    environment:
-      - APP_VERSION: $CIRCLE_SHA1
-      - PROJECT_ID: lokalsi-336415
-      - DOCKER_TAG: europe-central2-docker.pkg.dev/${PROJECT_ID}/lokalsi/lokalsi-front:$APP_VERSION
     steps:
       - checkout:
           path: ~/lokalsi
       - setup_remote_docker:
           version: 20.10.11
       - run:
-          name: Build application Docker image
-          command: echo $APP_VERSION; echo $PROJECT_ID; echo $DOCKER_TAG
+          name: Login Into Repository
+          command: docker login -u _json_key --password-stdin https://eu.gcr.io < $GCP_SA_AUTH_KEY
+      - run:
+          name: Build Image
+          command: docker build -t europe-central2-docker.pkg.dev/$GCP_PROJECT_ID/lokalsi/lokalsi-front:$CIRCLE_SHA1 .
