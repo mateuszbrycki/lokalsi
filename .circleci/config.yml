@@ -13,12 +13,12 @@ jobs:
           keys:
             - v1-{{ .Branch }}
           paths:
-            - /caches/app.tar
+            - /caches/lokalsi-front.tar
       - run:
           name: Load Docker image layer cache
           command: |
             set +o pipefail
-            docker load -i /caches/app.tar | true
+            docker load -i /caches/lokalsi-front.tar | true
       - run:
           name: Login Into Repository
           command: docker login -u _json_key -p "$(echo $GCP_SA_AUTH_KEY)" https://europe-central2-docker.pkg.dev
@@ -29,11 +29,11 @@ jobs:
           name: Save Docker image layer cache
           command: |
             mkdir -p /caches
-            docker save -o /caches/app.tar app
+            docker save -o /caches/lokalsi-front.tar lokalsi-front
       - save_cache:
           key: v1-{{ .Branch }}-{{ epoch }}
           paths:
-            - /caches/app.tar
+            - /caches/lokalsi-front.tar
       - run:
           name: Push Image
           command: docker push europe-central2-docker.pkg.dev/$GCP_PROJECT_ID/lokalsi/lokalsi-front:$CIRCLE_SHA1
