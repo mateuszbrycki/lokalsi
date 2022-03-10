@@ -5,7 +5,7 @@ jobs:
     steps:
       - checkout:
           path: ~/lokalsi
-      - setup_remote_docker
+      - setup_remote_docker:
           version: docker:19.03.13
       - run:
           name: Build application Docker image
