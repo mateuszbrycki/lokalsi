@@ -11,10 +11,10 @@ jobs:
           version: 20.10.11
       - run:
           name: Login Into Repository
-          command: docker login -u _json_key -p "$(echo $GCP_SA_AUTH_KEY)" https://eu.gcr.io
+          command: docker login -u _json_key -p "$(echo $GCP_SA_AUTH_KEY)" https://europe-central2-docker.pkg.dev
       - run:
           name: Build Image
           command: docker build -t europe-central2-docker.pkg.dev/$GCP_PROJECT_ID/lokalsi/lokalsi-front:$CIRCLE_SHA1 .
       - run:
           name: Push Image
-          command: docker push europe-central2-docker.pkg.dev/$GCP_PROJECT_ID/lokalsi/lokalsi-front:$CIRCLE_SHA1
+          command: docker push europe-central2-docker.pkg.dev/$GCP_PROJECT_ID/lokalsi/lokalsi-front:$CIRCLE_SHA1 .
