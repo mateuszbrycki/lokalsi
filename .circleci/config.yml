@@ -15,4 +15,4 @@ jobs:
           version: 20.10.11
       - run:
           name: Build application Docker image
-          command: docker build -t $DOCKER_TAG .
+          command: echo $APP_VERSION; echo $PROJECT_ID; echo $DOCKER_TAG
