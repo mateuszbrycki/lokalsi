@@ -8,5 +8,8 @@ jobs:
       - checkout
       - setup_remote_docker
       - run:
+          name: Change Directory
+          command: cd front;
+      - run:
           name: Build application Docker image
-          command: docker build  -t lokalsi-front -f front/Dockerfile .
+          command: docker build  -t lokalsi-front .
