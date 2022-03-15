@@ -1298,6 +1298,22 @@ const Api: RideHttpApi = {
                 },
                 rideType: RideType.MTB,
                 city: "Kraków"
+            },
+            {
+                id: "80",
+                name: "Ustawka szosowa z Decathlon Gliwice",
+                time: LocalTime.parse("17:15"),
+                day: Day.THURSDAY,
+                description: "Zapraszamy na ustawkę szosową pod Decathlon Gliwice! Spotykamy się na parkingu przed sklepem i lecimy na rundę ok 50-60 km w stronę Mikołowa. Zapraszamy zarówno Panie i Panów. Tempo dostosujemy do możliwości grupy. Stawiamy na luźną rundę (25-30 km/h ..nikogo nie zostawimy). Można dołączyć na trasie. Jeśli będzie potrzeba, to dzielimy się na grupy. Zasady: Obowiązkowy kask. Obowiązują przepisy ruchu drogowego. Każdy uczestnik bierze udział na własną odpowiedzialność.",
+                url: {
+                    facebook: "https://pl-pl.facebook.com/DecathlonGliwice/"
+                },
+                startingPoint: {
+                    latitude: 50.305704,
+                    longitude: 18.650730
+                },
+                rideType: RideType.ROAD,
+                city: "Gliwice"
             }
         ),
 
