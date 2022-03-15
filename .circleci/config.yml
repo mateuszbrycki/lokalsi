@@ -1,39 +1,90 @@
-version: 2
+# version: 2
+# jobs:
+#   build:
+#     working_directory: ~/lokalsi/front
+#     docker:
+#       - image: docker:17.05.0-ce-git
+#     steps:
+#       - checkout:
+#           path: ~/lokalsi
+#       - setup_remote_docker:
+#           version: 20.10.11
+
+#       - run:
+#           name: Login Into Repository
+#           command: docker login -u _json_key -p "$(echo $GCP_SA_AUTH_KEY)" https://europe-central2-docker.pkg.dev
+#       - run:
+#           name: Build Image
+#           command: docker build -t europe-central2-docker.pkg.dev/$GCP_PROJECT_ID/lokalsi/lokalsi-front:$CIRCLE_SHA1 .
+#       - run:
+#           name: Push Image
+#           command: docker push europe-central2-docker.pkg.dev/$GCP_PROJECT_ID/lokalsi/lokalsi-front:$CIRCLE_SHA1
+
+
+version: 2.1
+orbs:
+  node: circleci/node@1.0.1
+  gcp-gke: circleci/gcp-gke@0.1.0
+  gcr: circleci/gcp-gcr@0.14.1
 jobs:
   build:
     working_directory: ~/lokalsi/front
-    docker:
-      - image: docker:17.05.0-ce-git
+    description: Install npm
+    # machine option runs your jobs in a dedicated, ephemeral VM that has the following specifications:
+    machine: true
     steps:
       - checkout:
-          path: ~/lokalsi
-      - setup_remote_docker:
-          version: 20.10.11
-      # - restore_cache:
-      #     keys:
-      #       - v1-{{ .Branch }}
-      #     paths:
-      #       - /caches/lokalsi-front.tar
-      # - run:
-      #     name: Load Docker image layer cache
-      #     command: |
-      #       set +o pipefail
-      #       docker load -i /caches/lokalsi-front.tar | true
-      - run:
-          name: Login Into Repository
-          command: docker login -u _json_key -p "$(echo $GCP_SA_AUTH_KEY)" https://europe-central2-docker.pkg.dev
-      - run:
-          name: Build Image
-          command: docker build -t europe-central2-docker.pkg.dev/$GCP_PROJECT_ID/lokalsi/lokalsi-front:$CIRCLE_SHA1 .
-      # - run:
-      #     name: Save Docker image layer cache
-      #     command: |
-      #       mkdir -p /caches
-      #       docker save -o /caches/lokalsi-front.tar lokalsi-front
-      # - save_cache:
-      #     key: v1-{{ .Branch }}-{{ epoch }}
-      #     paths:
-      #       - /caches/lokalsi-front.tar
-      - run:
-          name: Push Image
-          command: docker push europe-central2-docker.pkg.dev/$GCP_PROJECT_ID/lokalsi/lokalsi-front:$CIRCLE_SHA1
+        path: ~/lokalsi
+      # Install node
+      - node/install
+      # Install npm
+      - node/install-npm
+      # Download and cache dependencies
+      - node/with-cache:
+          steps:
+            - run:
+                name: Install application dependencies
+                command: npm install
+          # Save cache
+          cache-key: package.json
+          # Ignore non-checksum cache hits
+          use-strict-cache: true
+  build-push-image-docker:
+    working_directory: ~/lokalsi/front
+    description: Build and push image to Google Container Registry
+    machine: true
+    steps:
+      - checkout:
+        path: ~/lokalsi
+      - gcr/gcr-auth
+      - gcr/build-image:
+          image: lokalsi-front
+          registry-url: europe-central2-docker.pkg.dev
+          tag: europe-central2-docker.pkg.dev/$GCP_PROJECT_ID/lokalsi/lokalsi-front:$CIRCLE_SHA1
+      - gcr/push-image:
+          image: lokalsi-front
+          registry-url: europe-central2-docker.pkg.dev
+          tag: europe-central2-docker.pkg.dev/$GCP_PROJECT_ID/lokalsi/lokalsi-front:$CIRCLE_SHA1
+  # deploy:
+  #   description: Deploy application to Google Kubernetes Engine
+  #   machine: true
+  #   steps:
+  #     # Install `gcloud` and `kubectl` if not already installed.
+  #     - gcp-gke/install
+  #     # Initialize the `gcloud` CLI.
+  #     - gcp-gke/init
+  #     # Update a deployment Docker image.
+  #     - gcp-gke/rollout-image:
+  #         deployment: circle-ci-cluster
+  #         container: dominic-backend
+  #         image: gcr.io/circle-ci-demo/circle-gke:v2 # change version when updating
+workflows:
+  build_update_deploy:
+    jobs:
+      - build
+      - build-push-image-docker:
+          requires:
+            - build
+      # - deploy:
+      #     requires:
+      #       - build-push-image-docker
