@@ -1,92 +1,46 @@
-# version: 2
-# jobs:
-#   build:
-#     working_directory: ~/lokalsi/front
-#     docker:
-#       - image: docker:17.05.0-ce-git
-#     steps:
-#       - checkout:
-#           path: ~/lokalsi
-#       - setup_remote_docker:
-#           version: 20.10.11
-
-#       - run:
-#           name: Login Into Repository
-#           command: docker login -u _json_key -p "$(echo $GCLOUD_SERVICE_KEY)" https://europe-central2-docker.pkg.dev
-#       - run:
-#           name: Build Image
-#           command: docker build -t europe-central2-docker.pkg.dev/$GCP_PROJECT_ID/lokalsi/lokalsi-front:$CIRCLE_SHA1 .
-#       - run:
-#           name: Push Image
-#           command: docker push europe-central2-docker.pkg.dev/$GCP_PROJECT_ID/lokalsi/lokalsi-front:$CIRCLE_SHA1
-
-
 version: 2.1
 orbs:
   node: circleci/node@5.0.1
-  gcp-gke: circleci/gcp-gke@0.1.0
+  gcp-gke: circleci/gcp-gke@1.4.0
   gcp-gcr: circleci/gcp-gcr@0.14.1
 jobs:
-  build:
-    working_directory: ~/lokalsi
-    description: Install npm
-    # machine option runs your jobs in a dedicated, ephemeral VM that has the following specifications:
-    machine: true
+  build-and-push-docker-image:
+    working_directory: ~/lokalsi/front
+    docker:
+      - image: docker:17.05.0-ce-git
     steps:
-      - checkout
+      - checkout:
+          path: ~/lokalsi
+      - setup_remote_docker:
+          version: 20.10.11
       - run:
-          name: "Installing NVM v17.3.0"
-          command: |
-            source /opt/circleci/.nvm/nvm.sh
-            nvm install v17.3.0
-            nvm alias default v17.3.0
-            echo 'export NVM_DIR="/opt/circleci/.nvm"' >> $BASH_ENV
-            echo "[ -s \"$NVM_DIR/nvm.sh\" ] && . \"$NVM_DIR/nvm.sh\"" >> $BASH_ENV
-      - node/install:
-          node-version: '17.3.0'
-      - node/install-packages:
-          app-dir: ~/lokalsi/front
-          check-cache: always
-          with-cache: true
-  Build-Push-Image-Docker:
-    working_directory: ~/lokalsi
-    description: Build and push image to Google Container Registry
-    machine: true
-    steps:
-      - checkout
-      - run:
-          name: "Login into Docker Registry"
+          name: Login Into Repository
           command: docker login -u _json_key -p "$(echo $GCLOUD_SERVICE_KEY)" https://europe-central2-docker.pkg.dev
-      - gcp-gcr/build-image:
-          docker-context: ~/lokalsi/front
-          path: ~/lokalsi/front
-          image: lokalsi/lokalsi-front
-          registry-url: europe-central2-docker.pkg.dev
-          tag: ${CIRCLE_SHA1:0:7}
-      - gcp-gcr/push-image:
-          image: lokalsi/lokalsi-front
-          registry-url: europe-central2-docker.pkg.dev
-          tag: ${CIRCLE_SHA1:0:7}
-  # deploy:
-  #   description: Deploy application to Google Kubernetes Engine
-  #   machine: true
-  #   steps:
-  #     # Install `gcloud` and `kubectl` if not already installed.
-  #     - gcp-gke/install
-  #     # Initialize the `gcloud` CLI.
-  #     - gcp-gke/init
-  #     # Update a deployment Docker image.
-  #     - gcp-gke/rollout-image:
-  #         deployment: circle-ci-cluster
-  #         container: dominic-backend
-  #         image: gcr.io/circle-ci-demo/circle-gke:v2 # change version when updating
+      - run:
+          name: Build Image
+          command: docker build -t europe-central2-docker.pkg.dev/$GCP_PROJECT_ID/lokalsi/lokalsi-front:${CIRCLE_SHA1:0:7} .
+      - run:
+          name: Push Image
+          command: docker push europe-central2-docker.pkg.dev/$GCP_PROJECT_ID/lokalsi/lokalsi-front:${CIRCLE_SHA1:0:7}
+  deploy:
+    description: Deploy application to Google Kubernetes Engine
+    machine: true
+    steps:
+      # Install `gcloud` and `kubectl` if not already installed.
+      - gcp-gke/install
+      # Initialize the `gcloud` CLI.
+      - gcp-gke/init
+      # Update a deployment Docker image.
+      - gcp-gke/rollout-image:
+          deployment: lokalsi-front-deployment
+          container: lokalsi-front
+          namespace: lokalsi-front
+          cluster: lokalsi-cluster-1
+          image: europe-central2-docker.pkg.dev/$GCP_PROJECT_ID/lokalsi/lokalsi-front:${CIRCLE_SHA1:0:7} 
 workflows:
   build_update_deploy:
     jobs:
       - build
-      - Build-Push-Image-Docker:
+      - deploy:
           requires:
             - build
-      # - deploy:
-      #     requires:
-      #       - Build-Push-Image-Docker
