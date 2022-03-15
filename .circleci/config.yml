@@ -34,14 +34,11 @@ jobs:
             echo $GCLOUD_SERVICE_KEY > ${HOME}/gcloud-service-key.json
             gcloud auth activate-service-account --key-file=${HOME}/gcloud-service-key.json
             gcloud --quiet config set project ${GOOGLE_PROJECT_ID}
+            gcloud --quiet config set compute/region ${GOOGLE_COMPUTE_REGION}
             gcloud --quiet container clusters get-credentials lokalsi-cluster-1
-      # Update a deployment Docker image.
-      # - gcp-gke/rollout-image:
-      #     deployment: lokalsi-front-deployment
-      #     container: lokalsi-front
-      #     namespace: lokalsi-front
-      #     cluster: lokalsi-cluster-1
-      #     image: europe-central2-docker.pkg.dev/$GCP_PROJECT_ID/lokalsi/lokalsi-front:${CIRCLE_SHA1:0:7} 
+      - run:
+          name: "Update Container Version"
+          command: kubectl set image deployment lokalsi-front-deployment lokalsi-front=europe-central2-docker.pkg.dev/$GCP_PROJECT_ID/lokalsi/lokalsi-front:${CIRCLE_SHA1:0:7}
 workflows:
   build_update_deploy:
     jobs:
