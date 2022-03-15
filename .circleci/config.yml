@@ -49,7 +49,7 @@ jobs:
           cache-key: package.json
           # Ignore non-checksum cache hits
           use-strict-cache: true
-  build-push-image-docker:
+  Build-Push-Image-Docker:
     working_directory: ~/lokalsi/front
     description: Build and push image to Google Container Registry
     machine: true
@@ -82,9 +82,9 @@ workflows:
   build_update_deploy:
     jobs:
       - build
-      - build-push-image-docker:
+      - Build-Push-Image-Docker:
           requires:
             - build
       # - deploy:
       #     requires:
-      #       - build-push-image-docker
+      #       - Build-Push-Image-Docker
