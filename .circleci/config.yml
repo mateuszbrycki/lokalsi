@@ -33,8 +33,7 @@ jobs:
     # machine option runs your jobs in a dedicated, ephemeral VM that has the following specifications:
     machine: true
     steps:
-      - checkout:
-        path: ~/lokalsi
+      - checkout
       # Install node
       - node/install
       # Install npm
@@ -54,8 +53,7 @@ jobs:
     description: Build and push image to Google Container Registry
     machine: true
     steps:
-      - checkout:
-        path: ~/lokalsi
+      - checkout
       - gcr/gcr-auth
       - gcr/build-image:
           image: lokalsi-front
