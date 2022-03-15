@@ -28,13 +28,15 @@ orbs:
   gcr: circleci/gcp-gcr@0.14.1
 jobs:
   build:
-    working_directory: ~/lokalsi/front
+    working_directory: ~/lokalsi/
     description: Install npm
     # machine option runs your jobs in a dedicated, ephemeral VM that has the following specifications:
     machine: true
     steps:
       - checkout
-      - run: |
+      - run:
+        name: "Installing NVM v17.3.0"
+        command: |
           source /opt/circleci/.nvm/nvm.sh
           nvm install v17.3.0
           nvm alias default v17.3.0
@@ -45,6 +47,7 @@ jobs:
           node-version: '17.3.0'
       # Install npm
       - node/install-packages:
+          working_directory: ~/lokalsi/front
           check-cache: always
           with-cache: true
   Build-Push-Image-Docker:
