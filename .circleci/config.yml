@@ -57,13 +57,13 @@ jobs:
     steps:
       - gcr/gcr-auth
       - gcr/build-image:
-          image: lokalsi-front
+          image: lokalsi/lokalsi-front
           registry-url: europe-central2-docker.pkg.dev
-          tag: europe-central2-docker.pkg.dev/$GCP_PROJECT_ID/lokalsi/lokalsi-front:$CIRCLE_SHA1
+          tag: $CIRCLE_SHA1
       - gcr/push-image:
-          image: lokalsi-front
+          image: lokalsi/lokalsi-front
           registry-url: europe-central2-docker.pkg.dev
-          tag: europe-central2-docker.pkg.dev/$GCP_PROJECT_ID/lokalsi/lokalsi-front:$CIRCLE_SHA1
+          tag: $CIRCLE_SHA1
   # deploy:
   #   description: Deploy application to Google Kubernetes Engine
   #   machine: true
