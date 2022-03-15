@@ -54,7 +54,8 @@ jobs:
     machine: true
     steps:
       - checkout
-      - gcr/gcr-auth
+      - gcr/gcr-auth:
+          registry-url: europe-central2-docker.pkg.dev
       - gcr/build-image:
           docker-context: ~/lokalsi/front
           path: ~/lokalsi/front
