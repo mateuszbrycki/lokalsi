@@ -41,7 +41,8 @@ jobs:
           echo 'export NVM_DIR="/opt/circleci/.nvm"' >> $BASH_ENV
           echo "[ -s \"$NVM_DIR/nvm.sh\" ] && . \"$NVM_DIR/nvm.sh\"" >> $BASH_ENV
       # Install node
-      - node/install
+      - node/install:
+          node-version: '17.3.0'
       # Install npm
       - node/install-packages:
           check-cache: always
