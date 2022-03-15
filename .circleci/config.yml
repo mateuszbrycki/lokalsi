@@ -40,7 +40,7 @@ jobs:
 workflows:
   build_update_deploy:
     jobs:
-      - build
+      - build-and-push-docker-image
       - deploy:
           requires:
-            - build
+            - build-and-push-docker-image
