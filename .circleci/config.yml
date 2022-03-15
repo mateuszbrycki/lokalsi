@@ -12,7 +12,7 @@
 
 #       - run:
 #           name: Login Into Repository
-#           command: docker login -u _json_key -p "$(echo $GCP_SA_AUTH_KEY)" https://europe-central2-docker.pkg.dev
+#           command: docker login -u _json_key -p "$(echo $GCLOUD_SERVICE_KEY)" https://europe-central2-docker.pkg.dev
 #       - run:
 #           name: Build Image
 #           command: docker build -t europe-central2-docker.pkg.dev/$GCP_PROJECT_ID/lokalsi/lokalsi-front:$CIRCLE_SHA1 .
@@ -25,7 +25,7 @@ version: 2.1
 orbs:
   node: circleci/node@5.0.1
   gcp-gke: circleci/gcp-gke@0.1.0
-  gcr: circleci/gcp-gcr@0.14.1
+  gcp-gcr: circleci/gcp-gcr@0.14.1
 jobs:
   build:
     working_directory: ~/lokalsi
@@ -54,15 +54,16 @@ jobs:
     machine: true
     steps:
       - checkout
-      - gcr/gcr-auth:
-          registry-url: "https://europe-central2-docker.pkg.dev"
-      - gcr/build-image:
+      - run:
+          name: "Login into Docker Registry"
+          command: docker login -u _json_key -p "$(echo $GCLOUD_SERVICE_KEY)" https://europe-central2-docker.pkg.dev
+      - gcp-gcr/build-image:
           docker-context: ~/lokalsi/front
           path: ~/lokalsi/front
           image: lokalsi/lokalsi-front
           registry-url: europe-central2-docker.pkg.dev
           tag: ${CIRCLE_SHA1:0:7}
-      - gcr/push-image:
+      - gcp-gcr/push-image:
           image: lokalsi/lokalsi-front
           registry-url: europe-central2-docker.pkg.dev
           tag: ${CIRCLE_SHA1:0:7}
