@@ -35,7 +35,8 @@ jobs:
     steps:
       - checkout
       # Install node
-      - node/install
+      - node/install:
+          node-version: '17.3.0'
       # Install npm
       - node/install-npm
       # Download and cache dependencies
