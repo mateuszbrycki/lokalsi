@@ -35,8 +35,7 @@ jobs:
     steps:
       - checkout
       # Install node
-      - node/install:
-          node-version: '17.3.0'
+      - node/install
       # Install npm
       - node/install-packages:
           check-cache: always
