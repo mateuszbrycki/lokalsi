@@ -42,25 +42,26 @@ jobs:
             nvm alias default v17.3.0
             echo 'export NVM_DIR="/opt/circleci/.nvm"' >> $BASH_ENV
             echo "[ -s \"$NVM_DIR/nvm.sh\" ] && . \"$NVM_DIR/nvm.sh\"" >> $BASH_ENV
-      # Install node
       - node/install:
           node-version: '17.3.0'
-      # Install npm
       - node/install-packages:
           app-dir: ~/lokalsi/front
           check-cache: always
           with-cache: true
   Build-Push-Image-Docker:
-    working_directory: ~/lokalsi/front
+    working_directory: ~/lokalsi
     description: Build and push image to Google Container Registry
     machine: true
     steps:
+      - checkout
       - gcr/gcr-auth
       - gcr/build-image:
+          docker-context: ~/lokalsi/front
           image: lokalsi/lokalsi-front
           registry-url: europe-central2-docker.pkg.dev
           tag: $CIRCLE_SHA1
       - gcr/push-image:
+          docker-context: ~/lokalsi/front
           image: lokalsi/lokalsi-front
           registry-url: europe-central2-docker.pkg.dev
           tag: $CIRCLE_SHA1
