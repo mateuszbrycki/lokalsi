@@ -50,7 +50,7 @@ jobs:
           with-cache: true
   Build-Push-Image-Docker:
     working_directory: ~/lokalsi
-    docker-context: ~/lokalsi/front
+    context: ~/lokalsi/front
     description: Build and push image to Google Container Registry
     machine: true
     steps:
