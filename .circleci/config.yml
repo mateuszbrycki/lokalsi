@@ -38,7 +38,7 @@ jobs:
             gcloud --quiet container clusters get-credentials lokalsi-cluster-1
       - run:
           name: "Update Container Version"
-          command: kubectl set image deployment lokalsi-front-deployment lokalsi-front=europe-central2-docker.pkg.dev/$GCP_PROJECT_ID/lokalsi/lokalsi-front:${CIRCLE_SHA1:0:7}
+          command: kubectl set image deployment lokalsi-front-deployment -n lokalsi-front lokalsi-front=europe-central2-docker.pkg.dev/$GCP_PROJECT_ID/lokalsi/lokalsi-front:${CIRCLE_SHA1:0:7}
 workflows:
   build_update_deploy:
     jobs:
