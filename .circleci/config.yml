@@ -34,6 +34,12 @@ jobs:
     machine: true
     steps:
       - checkout
+      - run: |
+        source /opt/circleci/.nvm/nvm.sh
+        nvm install v17.3.0
+        nvm alias default v17.3.0
+        echo 'export NVM_DIR="/opt/circleci/.nvm"' >> $BASH_ENV
+        echo "[ -s \"$NVM_DIR/nvm.sh\" ] && . \"$NVM_DIR/nvm.sh\"" >> $BASH_ENV
       # Install node
       - node/install
       # Install npm
