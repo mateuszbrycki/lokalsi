@@ -56,12 +56,11 @@ jobs:
       - checkout
       - gcr/gcr-auth
       - gcr/build-image:
-          context: ~/lokalsi/front
+          docker-context: ~/lokalsi/front
           image: lokalsi/lokalsi-front
           registry-url: europe-central2-docker.pkg.dev
           tag: $CIRCLE_SHA1
       - gcr/push-image:
-          context: ~/lokalsi/front
           image: lokalsi/lokalsi-front
           registry-url: europe-central2-docker.pkg.dev
           tag: $CIRCLE_SHA1
