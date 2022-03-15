@@ -50,17 +50,18 @@ jobs:
           with-cache: true
   Build-Push-Image-Docker:
     working_directory: ~/lokalsi
-    context: ~/lokalsi/front
     description: Build and push image to Google Container Registry
     machine: true
     steps:
       - checkout
       - gcr/gcr-auth
       - gcr/build-image:
+          context: ~/lokalsi/front
           image: lokalsi/lokalsi-front
           registry-url: europe-central2-docker.pkg.dev
           tag: $CIRCLE_SHA1
       - gcr/push-image:
+          context: ~/lokalsi/front
           image: lokalsi/lokalsi-front
           registry-url: europe-central2-docker.pkg.dev
           tag: $CIRCLE_SHA1
