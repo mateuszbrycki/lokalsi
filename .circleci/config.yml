@@ -47,8 +47,6 @@ jobs:
     description: "Authenticate to GKE Cluster"
     environment:
       - GKE_CLUSTER_NAME: 'lokalsi-cluster-1'
-      - K8S_DEPLOYMENT_NAME: 'lokalsi-front-deployment'
-      - K8S_NAMESPACE_NAME: 'lokalsi-front'
     steps:
       - run:
           name: "Setup Google Cloud SDK"
@@ -67,6 +65,9 @@ jobs:
     docker:
       - image: google/cloud-sdk:377.0.0
     description: "Deploy application to GKE Cluster"
+    environment:
+      - K8S_DEPLOYMENT_NAME: 'lokalsi-front-deployment'
+      - K8S_NAMESPACE_NAME: 'lokalsi-front'
     steps:
       - attach_workspace: 
           at: ~/.kube
