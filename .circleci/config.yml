@@ -6,6 +6,7 @@ jobs:
       - image: node:17.3.0-alpine
     environment:
       - NODE_ENV: 'production'
+      - CI: 'false'
     steps:
       - checkout:
           path: ~/lokalsi
