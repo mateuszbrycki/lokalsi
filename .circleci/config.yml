@@ -1,3 +1,16 @@
+workflows:
+  build-and-deploy:
+    jobs:
+      - build-webapp
+      - build-and-push-docker-image:
+          requires:
+            - build-webapp
+      - auth-to-cluster:
+          requires:
+            - build-and-push-docker-image
+      - deploy-to-cluster:
+          requires:
+            - auth-to-cluster
 version: 2.1
 jobs:
   build-webapp:
@@ -10,6 +23,11 @@ jobs:
     steps:
       - checkout:
           path: ~/lokalsi
+      - restore_cache:
+         keys:
+            - v1-node-modules-cache-{{ arch }}-{{ .Branch }}-{{ checksum "package-lock.json" }}
+            - v1-node-modules-cache-{ arch }}-{{ .Branch }}-
+            - v1-node-modules-cache-{{ arch }}-
       - run:
           name: "Install Dependencies"
           command: |
@@ -18,6 +36,10 @@ jobs:
       - run:
           name: "Build"
           command: npm run build
+      - save_cache:
+          paths:
+            - ~/lokalsi/front/node_modules
+          key: v1-node-modules-cache-{{ arch }}-{{ .Branch }}-{{ checksum "package-lock.json" }}
       - persist_to_workspace:
           root: . 
           paths: 
@@ -47,6 +69,8 @@ jobs:
     description: "Authenticate to GKE Cluster"
     environment:
       - GKE_CLUSTER_NAME: 'lokalsi-cluster-1'
+      - KUBECONFIG: '/tmp/kube-config'
+      - CLOUDSDK_CONFIG: '/tmp/gcloud-config'
     steps:
       - run:
           name: "Setup Google Cloud SDK"
@@ -58,9 +82,10 @@ jobs:
             gcloud --quiet config set compute/region ${GOOGLE_COMPUTE_REGION}
             gcloud --quiet container clusters get-credentials ${GKE_CLUSTER_NAME}
       - persist_to_workspace:
-          root: ~/.kube 
+          root: /tmp/ 
           paths: 
-           - config
+           - kube-config
+           - gcloud-config
   deploy-to-cluster:
     docker:
       - image: google/cloud-sdk:377.0.0
@@ -68,22 +93,11 @@ jobs:
     environment:
       - K8S_DEPLOYMENT_NAME: 'lokalsi-front-deployment'
       - K8S_NAMESPACE_NAME: 'lokalsi-front'
+      - KUBECONFIG: '/tmp/kube-config'
+      - CLOUDSDK_CONFIG: '/tmp/gcloud-config'
     steps:
       - attach_workspace: 
-          at: ~/.kube
+          at: /tmp/
       - run:
           name: "Update Container Version"
           command: kubectl set image deployment ${K8S_DEPLOYMENT_NAME} -n ${K8S_NAMESPACE_NAME} lokalsi-front=europe-central2-docker.pkg.dev/$GCP_PROJECT_ID/lokalsi/lokalsi-front:${CIRCLE_SHA1:0:7}
-workflows:
-  build-and-deploy:
-    jobs:
-      - build-webapp
-      - build-and-push-docker-image:
-          requires:
-            - build-webapp
-      - auth-to-cluster:
-          requires:
-            - build-and-push-docker-image
-      - deploy-to-cluster:
-          requires:
-            - auth-to-cluster
