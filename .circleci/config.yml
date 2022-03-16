@@ -1,7 +1,28 @@
 version: 2.1
 jobs:
+  build-webapp:
+    working_directory: ~/lokalsi/front
+    docker:
+      - image: node:17.3.0-alpine
+    steps:
+      - checkout:
+          path: ~/lokalsi
+      - run:
+          name: "Install Dependencies"
+          command: |
+            npm ci --only=production
+            npm install react-scripts@5.0.0 -g --silent
+      - run:
+          name: "Build"
+          command: npm run build
+       - persist_to_workspace:
+          root: . 
+          paths: 
+           - build
   build-and-push-docker-image:
     working_directory: ~/lokalsi/front
+    attach_workspace: 
+      at: ~/lokalsi/front
     docker:
       - image: docker:17.05.0-ce-git
     steps:
