@@ -4,6 +4,8 @@ jobs:
     working_directory: ~/lokalsi/front
     docker:
       - image: node:17.3.0-alpine
+    environment:
+      - NODE_ENV: 'production'
     steps:
       - checkout:
           path: ~/lokalsi
