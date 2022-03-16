@@ -63,7 +63,10 @@ jobs:
 workflows:
   build-and-deploy:
     jobs:
-      - build-and-push-docker-image
+      - build-webapp
+      - build-and-push-docker-image:
+          requires:
+            - build-webapp
       - deploy-to-cluster:
           requires:
             - build-and-push-docker-image
