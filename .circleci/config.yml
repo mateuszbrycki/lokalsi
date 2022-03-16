@@ -58,9 +58,9 @@ jobs:
             gcloud --quiet config set compute/region ${GOOGLE_COMPUTE_REGION}
             gcloud --quiet container clusters get-credentials ${GKE_CLUSTER_NAME}
       - persist_to_workspace:
-          root: . 
+          root: ~/.kube 
           paths: 
-           - ~/.kube/config
+           - config
   deploy-to-cluster:
     docker:
       - image: google/cloud-sdk:377.0.0
