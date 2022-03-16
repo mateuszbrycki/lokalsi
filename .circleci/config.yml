@@ -82,7 +82,7 @@ workflows:
           requires:
             - build-webapp
       - auth-to-cluster:
-          required:
+          requires:
             - build-and-push-docker-image
       - deploy-to-cluster:
           requires:
