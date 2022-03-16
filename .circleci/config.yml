@@ -22,13 +22,12 @@ jobs:
           root: . 
           paths: 
            - build
+           - Dockerfile
   build-and-push-docker-image:
     working_directory: ~/lokalsi/front
     docker:
       - image: docker:17.05.0-ce-git
     steps:
-      - checkout:
-          path: ~/lokalsi
       - attach_workspace: 
           at: .
       - setup_remote_docker:
@@ -42,10 +41,10 @@ jobs:
       - run:
           name: Push Image
           command: docker push europe-central2-docker.pkg.dev/$GCP_PROJECT_ID/lokalsi/lokalsi-front:${CIRCLE_SHA1:0:7}
-  deploy-to-cluster:
+  auth-to-cluster:
     docker:
-      - image: google/cloud-sdk
-    description: "Deploy application to Google Kubernetes Engine"
+      - image: google/cloud-sdk:377.0.0
+    description: "Authenticate to GKE Cluster"
     environment:
       - GKE_CLUSTER_NAME: 'lokalsi-cluster-1'
       - K8S_DEPLOYMENT_NAME: 'lokalsi-front-deployment'
@@ -60,6 +59,17 @@ jobs:
             gcloud --quiet config set project ${GOOGLE_PROJECT_ID}
             gcloud --quiet config set compute/region ${GOOGLE_COMPUTE_REGION}
             gcloud --quiet container clusters get-credentials ${GKE_CLUSTER_NAME}
+      - persist_to_workspace:
+          root: . 
+          paths: 
+           - ~/.kube/config
+  deploy-to-cluster:
+    docker:
+      - image: google/cloud-sdk:377.0.0
+    description: "Deploy application to GKE Cluster"
+    steps:
+      - attach_workspace: 
+          at: ~/.kube
       - run:
           name: "Update Container Version"
           command: kubectl set image deployment ${K8S_DEPLOYMENT_NAME} -n ${K8S_NAMESPACE_NAME} lokalsi-front=europe-central2-docker.pkg.dev/$GCP_PROJECT_ID/lokalsi/lokalsi-front:${CIRCLE_SHA1:0:7}
@@ -70,6 +80,9 @@ workflows:
       - build-and-push-docker-image:
           requires:
             - build-webapp
+      - auth-to-cluster:
+          required:
+            - build-and-push-docker-image
       - deploy-to-cluster:
           requires:
-            - build-and-push-docker-image
+            - auth-to-cluster
