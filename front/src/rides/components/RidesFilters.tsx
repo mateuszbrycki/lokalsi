@@ -1,9 +1,8 @@
 import React, {useEffect, useRef, useState} from 'react'
-import {List, Set} from "immutable";
+import {Set} from "immutable";
 import {
     FilterQuery,
     MultiselectOption,
-    Ride,
     RidesFilterConfig,
     RideType
 } from "../../types";
