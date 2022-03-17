@@ -104,4 +104,4 @@ jobs:
             apt-get install -y helm 
       - run:
           name: "Update Container Version"
-          command: helm upgrade lokalsi-front /tmp/_k8s --set application.version=${CIRCLE_SHA1:0:7} 
+          command: helm upgrade --install lokalsi-front /tmp/_k8s --set application.version=${CIRCLE_SHA1:0:7} 
