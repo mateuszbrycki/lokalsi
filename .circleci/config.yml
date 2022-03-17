@@ -87,8 +87,7 @@ jobs:
            - gcloud-config
   deploy-to-cluster:
     docker:
-      - image: alpine/helm:3.8.1
-    working_directory: ~/lokalsi/front
+      - image: google/cloud-sdk:377.0.0
     description: "Deploy application to GKE Cluster"
     environment:
       - KUBECONFIG: '/tmp/kube-config'
@@ -96,6 +95,13 @@ jobs:
     steps:
       - attach_workspace: 
           at: /tmp/
+      - run:
+          name: "Install Helm"
+          command: | 
+            curl https://baltocdn.com/helm/signing.asc | apt-key add - && \
+            echo "deb https://baltocdn.com/helm/stable/debian/ all main" | tee /etc/apt/sources.list.d/helm-stable-debian.list && \
+            apt-get update -y && \
+            apt-get install -y helm 
       - run:
           name: "Update Container Version"
           command: helm upgrade lokalsi-front /tmp/_k8s --set application.version=${CIRCLE_SHA1:0:7} 
