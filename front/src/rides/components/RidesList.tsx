@@ -40,7 +40,7 @@ const RidesList: React.FC<RidesListProps & RidesListActionProps> = (props) => {
     })
 
     return <div id="rides-list-container">
-        <RidesFilters config={filterConfig} onFiltersUpdated={onFiltersUpdated} rides={rides}/>
+        <RidesFilters config={filterConfig} onFiltersUpdated={onFiltersUpdated} />
 
         {rides.size > 0 ?
             <ul className="p-0 mb-0">

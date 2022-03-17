@@ -13,7 +13,7 @@ const Navbar: React.FC<NavbarProps & NavbarActionProps> = (props) => {
         <header>
             <nav className="navbar navbar-expand-md">
 
-                <a className="navbar-brand mx-auto" href="#">
+                <a className="navbar-brand mx-auto" href="https://lokalsi.cc">
                     <h1 className="navbar-logo">lokalsi.cc</h1>
                 </a>
 

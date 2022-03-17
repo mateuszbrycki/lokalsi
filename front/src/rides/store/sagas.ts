@@ -23,15 +23,15 @@ function* onLoadRides(api: RideHttpApi): IterableIterator<unknown> {
         const rideTypes = rides.map(ride => ride.rideType).toSet()
 
         const cities = rides.map(ride => ride.city).toSet().sort().map(city => {
-            return {name: city, id: city}
+            return {name: city, id: city, key: city}
         })
 
         const times = rides.map(ride => ride.time).toSet().sort((timeA, timeB) => timeA.compareTo(timeB)).map(time => time.format(TIME_FORMATTER)).map(time => {
-            return {name: time, id: time}
+            return {name: time, id: time, key: time}
         })
 
         const days = rides.map(ride => ride.day).toSet().sort((dayA, dayB) => dayA.number > dayB.number ? 1 : -1).map(day => {
-            return {name: day.name, id: day.number}
+            return {name: day.name, id: day.number, key: day.name}
         })
 
         yield put(FilterConfigLoadedAction(rideTypes, cities, times, days))

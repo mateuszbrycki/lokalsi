@@ -3,8 +3,7 @@ import {State} from "../../store/state";
 import {getActivePopupId, getFilterConfig, getMap, getRides} from '../store/selectors'
 import {LoadRidesAction, RidesFilterUpdatedAction, SetMapStateAction, ShowOnMapAction} from "../store/actions";
 import AllRidesView, {AllRidesActionProps, AllRidesProps} from "../components/AllRidesView";
-import {FilterQuery, MapPoint, RideType} from "../../types";
-import {Set} from "immutable";
+import {FilterQuery, MapPoint} from "../../types";
 
 const mapStateToProps: MapStateToProps<AllRidesProps, {}, State> = (state: State) => ({
     rides: getRides(state),
@@ -21,7 +20,7 @@ const mapDispatchToProps: MapDispatchToProps<AllRidesActionProps, {}> = (dispatc
 })
 
 const AllRidesContainer = connect(
-    mapStateToProps,
+mapStateToProps,
     mapDispatchToProps
 )(AllRidesView)
 

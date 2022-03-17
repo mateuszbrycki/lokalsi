@@ -51,6 +51,7 @@ export class Day {
 export interface MultiselectOption {
     readonly id: string | number;
     readonly name: string;
+    readonly key: string;
 }
 
 export interface MultiselectState {

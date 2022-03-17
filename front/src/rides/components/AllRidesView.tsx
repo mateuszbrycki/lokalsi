@@ -32,7 +32,7 @@ const AllRidesView: React.FC<AllRidesProps & AllRidesActionProps> = (props) => {
     const mount = (): void => {
         loadRides()
     }
-    React.useEffect(mount, [])
+    React.useEffect(mount, [loadRides])
 
     const getWindowDimensions = (): WindowDimensions => {
         const {innerWidth: width, innerHeight: height} = window;

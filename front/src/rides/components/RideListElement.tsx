@@ -3,7 +3,7 @@ import {MapPoint, Ride, RideId} from "../../types";
 import * as Icon from "react-bootstrap-icons";
 import RideUrlsList from "./RideUrlsList";
 import RideBadge from "./RideBadge";
-import {Button, Col, Row} from "react-bootstrap";
+import {Button} from "react-bootstrap";
 import {TIME_FORMATTER} from "../../common/time";
 
 export interface RideMarkerProps {

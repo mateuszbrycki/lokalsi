@@ -1,7 +1,6 @@
 import {List} from "immutable";
 import {Day, FilterQuery, Ride, RideType} from "../../types";
 import {LocalTime} from "@js-joda/core";
-import {getRides} from "../store/selectors";
 import {TIME_FORMATTER} from "../../common/time";
 
 export interface RideHttpApi {

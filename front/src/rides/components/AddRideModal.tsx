@@ -34,7 +34,7 @@ const AddRideModal: React.FC<AddRideModalProps & AddRideModalActionProps> = (pro
                 <Modal.Body>
                     <iframe
                         src="https://docs.google.com/forms/d/e/1FAIpQLScxxRtu0CD7ypsb6ZfY0PU6GAb34vOo-T1s9MC_H3gmQvzq1g/viewform?embedded=true"
-                        className="w-100" height="600px" frameBorder="0">Ładuję…
+                        className="w-100" height="600px" frameBorder="0" title="add-ride-form">Ładuję…
                     </iframe>
                 </Modal.Body>
                 <Modal.Footer>

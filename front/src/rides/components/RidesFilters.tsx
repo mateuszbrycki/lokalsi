@@ -7,13 +7,12 @@ import {
     RidesFilterConfig,
     RideType
 } from "../../types";
-import {Button, ButtonGroup, Col, Row} from "react-bootstrap";
+import {Button, Col, Row} from "react-bootstrap";
 import RideBadge from "./RideBadge";
 import {Multiselect} from "multiselect-react-dropdown";
 import * as Icon from "react-bootstrap-icons";
 
 export interface RidesFiltersProps {
-    readonly rides: List<Ride>;
     readonly config: RidesFilterConfig;
 }
 
@@ -21,7 +20,7 @@ export interface RidesFiltersActionProps {
     readonly onFiltersUpdated: (query: FilterQuery) => void
 }
 
-const RidesFilters: React.FC<RidesFiltersProps & RidesFiltersActionProps> = ({rides, config, onFiltersUpdated}) => {
+const RidesFilters: React.FC<RidesFiltersProps & RidesFiltersActionProps> = ({config, onFiltersUpdated}) => {
 
     const [selectedRideTypes, setSelectedRideTypes] = useState<Set<RideType>>(Set())
     const [selectedCities, setSelectedCities] = useState<Set<MultiselectOption>>(Set())
@@ -48,11 +47,6 @@ const RidesFilters: React.FC<RidesFiltersProps & RidesFiltersActionProps> = ({ri
     }
 
     useEffect(() => {
-        triggerFiltersUpdatedAction()
-    }, [selectedRideTypes, selectedCities, selectedDays, selectedTimes])
-
-
-    const triggerFiltersUpdatedAction: () => void = () => {
         onFiltersUpdated(
             {
                 rideTypes: selectedRideTypes,
@@ -61,7 +55,8 @@ const RidesFilters: React.FC<RidesFiltersProps & RidesFiltersActionProps> = ({ri
                 days: selectedDays.map(dayOption => dayOption.name).toSet()
             }
         )
-    }
+    }, [selectedRideTypes, selectedCities, selectedDays, selectedTimes, onFiltersUpdated])
+
 
     const getRideButton: (rideType: RideType) => React.ReactNode = rideType =>
         <Button className={`w-100 ride-filters-ride-type-button ${isActive(rideType)}`}
