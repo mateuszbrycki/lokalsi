@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: lokalsi-front-ingress
+  {{- include "lokalsifront.namespace" . | nindent 2 }}
+  annotations:
+    kubernetes.io/ingress.class: "gce"
+    kubernetes.io/ingress.global-static-ip-name: lokalsi-front-ingress-static-ip
+    networking.gke.io/managed-certificates: lokalsi-front-managedcertificate
+    networking.gke.io/v1beta1.FrontendConfig: lokalsi-front-frontendconfig
+spec:
+  defaultBackend:
+    service:
+      name: lokalsi-front-service
+      port:
+        number: 80

@@ -5,8 +5,12 @@ deployment:
   name: 'lokalsi-front-deployment'
   namespace: 'lokalsi-front'
 
+service:
+  name: lokalsi-front-service
+  port: 80
+
 resourcequota:
-  name: 'lokalsi-front-resourcequota'
+  name: 'lokalsi-front'
   namespace: 'lokalsi-front'
 
 image:

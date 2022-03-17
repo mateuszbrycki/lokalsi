@@ -1,0 +1,9 @@
+apiVersion: networking.gke.io/v1
+kind: ManagedCertificate
+metadata:
+  name: lokalsi-front-managedcertificate
+  {{- include "lokalsifront.namespace" . | nindent 2 }}
+spec:
+  domains:
+    - lokalsi.cc
+    - www.lokalsi.cc
