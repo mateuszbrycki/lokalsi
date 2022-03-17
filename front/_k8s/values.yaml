@@ -10,8 +10,17 @@ service:
   port: 80
 
 resourcequota:
-  name: 'lokalsi-front'
+  name: 'lokalsi-front-resourcequota'
   namespace: 'lokalsi-front'
+
+frontendconfig:
+  name: 'lokalsi-front-frontendconfig'
+
+ingress:
+  name: lokalsi-front-ingress
+
+managedcertificate:
+  name: lokalsi-front-managedcertificate
 
 image:
   repository:

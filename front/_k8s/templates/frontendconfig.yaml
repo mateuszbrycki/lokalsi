@@ -1,7 +1,7 @@
 apiVersion: networking.gke.io/v1beta1
 kind: FrontendConfig
 metadata:
-  name: lokalsi-front-frontendconfig
+  name: {{ .Values.frontendconfig.name }}
   {{- include "lokalsifront.namespace" . | nindent 2 }}
 spec:
   redirectToHttps:
