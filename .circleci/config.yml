@@ -86,11 +86,9 @@ jobs:
            - gcloud-config
   deploy-to-cluster:
     docker:
-      - image: google/cloud-sdk:377.0.0
+      - image: alpine/helm:3.8.1
     description: "Deploy application to GKE Cluster"
     environment:
-      - K8S_DEPLOYMENT_NAME: 'lokalsi-front-deployment'
-      - K8S_NAMESPACE_NAME: 'lokalsi-front'
       - KUBECONFIG: '/tmp/kube-config'
       - CLOUDSDK_CONFIG: '/tmp/gcloud-config'
     steps:
@@ -98,4 +96,4 @@ jobs:
           at: /tmp/
       - run:
           name: "Update Container Version"
-          command: kubectl set image deployment ${K8S_DEPLOYMENT_NAME} -n ${K8S_NAMESPACE_NAME} lokalsi-front=europe-central2-docker.pkg.dev/$GCP_PROJECT_ID/lokalsi/lokalsi-front:${CIRCLE_SHA1:0:7}
+          command: helm upgrade lokalsi-fron . --set application.version=${CIRCLE_SHA1:0:7} 
