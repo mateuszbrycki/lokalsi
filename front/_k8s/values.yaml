@@ -1,5 +1,6 @@
 application:
   name: 'lokalsi-front'
+  staticip: lokalsi-front-ingress-static-ip
 
 deployment:
   name: 'lokalsi-front-deployment'

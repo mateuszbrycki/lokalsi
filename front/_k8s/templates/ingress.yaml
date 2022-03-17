@@ -5,7 +5,7 @@ metadata:
   {{- include "lokalsifront.namespace" . | nindent 2 }}
   annotations:
     kubernetes.io/ingress.class: "gce"
-    kubernetes.io/ingress.global-static-ip-name: lokalsi-front-ingress-static-ip
+    kubernetes.io/ingress.global-static-ip-name: {{ .Values.application.staticip }}
     networking.gke.io/managed-certificates: {{ .Values.managedcertificate.name }}
     networking.gke.io/v1beta1.FrontendConfig: {{ .Values.frontendconfig.name }}
 spec:
