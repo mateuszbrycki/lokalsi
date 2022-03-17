@@ -1,8 +1,0 @@
-apiVersion: networking.gke.io/v1beta1
-kind: FrontendConfig
-metadata:
-  name: lokalsi-front-frontendconfig
-  namespace: lokalsi-front
-spec:
-  redirectToHttps:
-    enabled: true
