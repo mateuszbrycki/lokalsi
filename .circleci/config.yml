@@ -43,6 +43,7 @@ jobs:
           paths: 
            - build
            - Dockerfile
+           - _k8s
   build-and-push-docker-image:
     working_directory: ~/lokalsi/front
     docker:
@@ -87,6 +88,7 @@ jobs:
   deploy-to-cluster:
     docker:
       - image: alpine/helm:3.8.1
+    working_directory: ~/lokalsi/front
     description: "Deploy application to GKE Cluster"
     environment:
       - KUBECONFIG: '/tmp/kube-config'
@@ -96,4 +98,4 @@ jobs:
           at: /tmp/
       - run:
           name: "Update Container Version"
-          command: helm upgrade lokalsi-fron . --set application.version=${CIRCLE_SHA1:0:7} 
+          command: helm upgrade lokalsi-front /tmp/_k8s --set application.version=${CIRCLE_SHA1:0:7} 
