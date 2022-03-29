@@ -5,7 +5,7 @@ metadata:
   {{- include "lokalsifront.namespace" . | nindent 2 }}
 spec:
   hard:
-    requests.cpu: "2"
-    requests.memory: 4Gi
-    limits.cpu: "4"
-    limits.memory: 8Gi
+    requests.cpu: "1"
+    requests.memory: 1Gi
+    limits.cpu: "1"
+    limits.memory: 1Gi
