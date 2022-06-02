@@ -6,12 +6,19 @@ body {
 }
 
 .btn {
-    border-radius: 5px !important;
+    border-radius: 0px !important;
 }
-
 
 .btn:focus {
     box-shadow: none !important;
+}
+
+.searchWrapper {
+    border-radius: 0px !important;
+}
+
+.badge {
+    border-radius: 0px !important;
 }
 
 
@@ -210,7 +217,7 @@ a:hover.nav-link {
 #footer .add-ride-badge {
     cursor: pointer;
     background-color: #4c9db4 !important;
-    border-radius: 5px !important;
+    border-radius: 0px !important;
 }
 
 #footer .add-ride-badge:hover {

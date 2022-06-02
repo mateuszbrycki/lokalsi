@@ -58,7 +58,7 @@ const RidesFilters: React.FC<RidesFiltersProps & RidesFiltersActionProps> = ({co
 
 
     const getRideButton: (rideType: RideType) => React.ReactNode = rideType =>
-        <Button className={`w-100 ride-filters-ride-type-button ${isActive(rideType)}`}
+        <Button className={`h-100 w-100 ride-filters-ride-type-button ${isActive(rideType)}`}
                 onClick={() => onRideTypeButtonClicked(rideType)}>
             <RideBadge rideType={rideType}/>
         </Button>

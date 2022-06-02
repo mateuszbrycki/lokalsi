@@ -42,7 +42,7 @@ const RideListElement: React.FC<RideMarkerProps & RideMarkerActionProps> = (prop
                     <RideUrlsList rideUrls={ride.url}/>
                 </div>
                 <div className="ms-auto fs-7">
-                    <Button className="rides-list-element-show-on-map" onClick={onClick}>Pokaż na mapie</Button>
+                    <Button className="rides-list-element-show-on-map" onClick={onClick}><Icon.GeoAltFill style={{fontSize: '1rem', marginRight: '0.3rem'}}/>Miejsce startu</Button>
                 </div>
             </div>
         </article>

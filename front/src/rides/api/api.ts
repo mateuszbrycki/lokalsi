@@ -311,7 +311,7 @@ const Api: RideHttpApi = {
             {
                 id: "19",
                 name: "NIEPOkręcę",
-                time: LocalTime.parse("10:30"),
+                time: LocalTime.parse("09:30"),
                 day: Day.SATURDAY,
                 description: "Znudziła Ci się samotna jazda na szosie? - Tu możesz spróbować swoich sił jazdy w peletonie. Od kwietnia do końca października zbiórka o 9.30.",
                 url: {
@@ -739,7 +739,7 @@ const Api: RideHttpApi = {
             {
                 id: "45",
                 name: "Infrasettimanale Classico Gliwice",
-                time: LocalTime.parse("17:30"),
+                time: LocalTime.parse("18:00"),
                 day: Day.WEDNESDAY,
                 description: "Środowe treningi kolarskie w mocnym tempie, od kwietnia do października. Każdy jest mile widziany - doświadczeni zawodnicy i amatorzy oraz nowicjusze.",
                 url: {
@@ -1029,7 +1029,7 @@ const Api: RideHttpApi = {
             {
                 id: "63",
                 name: "Ustawki kolarskie - Grodziec",
-                time: LocalTime.parse("11:00"),
+                time: LocalTime.parse("10:00"),
                 day: Day.SUNDAY,
                 description: "Tradycyjne wspólne niedzielne treningi na dwóch rundach - MEGA oraz STANDARD.",
                 url: {
@@ -1313,6 +1313,372 @@ const Api: RideHttpApi = {
                 },
                 rideType: RideType.ROAD,
                 city: "Gliwice"
+            },
+            {
+                id: "81",
+                name: "Rondo Chwaszczyno",
+                time: LocalTime.parse("09:00"),
+                day: Day.SATURDAY,
+                description: "Treningi kolarstwa szosowego. Obowiązkowy kask. Udział na własną odpowiedzialność!",
+                url: {
+                    facebook: "https://www.facebook.com/rondoC3C/"
+                },
+                startingPoint: {
+                    latitude: 54.443567,
+                    longitude: 18.418957
+                },
+                rideType: RideType.ROAD,
+                city: "Chwaszczyno"
+            },
+            {
+                id: "82",
+                name: "Coffee Wanoga",
+                time: LocalTime.parse("08:30"),
+                day: Day.SUNDAY,
+                description: "Gravelowy coffee-ride przez TPK i bliskie Kaszuby. Kawa po drodze, staramy się czekac na każdego.",
+                url: {
+                    facebook: "https://www.facebook.com/PodcastRezerwatPrzygody"
+                },
+                startingPoint: {
+                    latitude: 54.387180,
+                    longitude: 18.563426
+                },
+                rideType: RideType.GRAVEL,
+                city: "Gdańsk"
+            },
+            {
+                id: "83",
+                name: "Gdańsk Południe na START",
+                time: LocalTime.parse("09:00"),
+                day: Day.SUNDAY,
+                description: "Projekt „Gdańsk Południe na START” to bezpłatne i otwarte treningi w południowych dzielnicach Gdańska dla WSZYSTKICH i dla KAŻDEGO.",
+                url: {
+                    facebook: "https://www.facebook.com/gdanskpoludnienastart"
+                },
+                startingPoint: {
+                    latitude: 54.317912,
+                    longitude: 18.581969
+                },
+                rideType: RideType.ROAD,
+                city: "Gdańsk"
+            },
+            {
+                id: "84",
+                name: "KTC Kołobrzeg",
+                time: LocalTime.parse("10:00"),
+                day: Day.SUNDAY,
+                description: "Ustawki organizowane przez Kołobrzeskie Towarzystwo Cyklistów",
+                url: {
+                    facebook: "https://www.facebook.com/KTC-Ko%C5%82obrzeg-176712809186263/",
+                    webpage: "http://ktc.kolobrzeg.pl/"
+                },
+                startingPoint: {
+                    latitude: 54.160050,
+                    longitude: 15.565681
+                },
+                rideType: RideType.MTB,
+                city: "Kołobrzeg"
+            },
+            {
+                id: "85",
+                name: "KTC Kołobrzeg",
+                time: LocalTime.parse("10:00"),
+                day: Day.SATURDAY,
+                description: "Ustawki organizowane przez Kołobrzeskie Towarzystwo Cyklistów",
+                url: {
+                    facebook: "https://www.facebook.com/KTC-Ko%C5%82obrzeg-176712809186263/",
+                    webpage: "http://ktc.kolobrzeg.pl/"
+                },
+                startingPoint: {
+                    latitude: 54.160050,
+                    longitude: 15.565681
+                },
+                rideType: RideType.MTB,
+                city: "Kołobrzeg"
+            },
+            {
+                id: "86",
+                name: "Elbląskie Ustawki Szosowe",
+                time: LocalTime.parse("09:00"),
+                day: Day.SATURDAY,
+                description: "Ustawki szosowe organizowane przez grupę elbląskich szosowców. Wspólne treningi w grupie, wyjazdy na wyścigi. Miejsce startu ustawki jest potwierdzane na grupie na FB najpóźniej w sobotę.",
+                url: {
+                    facebook: "https://www.facebook.com/groups/1541387222777761/",
+                    strava: "https://www.strava.com/clubs/171428"
+                },
+                startingPoint: {
+                    latitude: 54.188944,
+                    longitude: 19.405977
+                },
+                rideType: RideType.ROAD,
+                city: "Elbląg"
+            },
+            {
+                id: "87",
+                name: "Kaliski trening na szosie",
+                time: LocalTime.parse("10:00"),
+                day: Day.SUNDAY,
+                description: "Tradycyjnie od ponad 10lat treningi szosowe z czynnymi oraz byłymi kolarzami.",
+                url: {
+                    facebook: "https://facebook.com/Kaliski.trening.na.szosie"
+                },
+                startingPoint: {
+                    latitude: 51.698894,
+                    longitude: 18.136035
+                },
+                rideType: RideType.ROAD,
+                city: "Kalisz"
+            },
+            {
+                id: "88",
+                name: "Ustawki z PKK",
+                time: LocalTime.parse("17:00"),
+                day: Day.TUESDAY,
+                description: "Zapraszamy we wtorki i czwartki na ustawki z Płaszowskim Kołem Kolarskim (PKK). Najczęściej lecimy w południowo-wschodnie i północno-wschodnie rubieże Krakowa, ale trasy i kierunki zmieniamy często. W weekendy często epic fondo z kawką w tle. Tempo raczej żwawe, choć na górkach poczekamy. Jeździmy w parach z zachowaniem etykiety jazdy w grupie i sygnalizujemy zagrożenia na drodze. Każdy jedzie na własną odpowiedzialność. Szczegóły ustawek zawsze na grupie FB i Club Strava",
+                url: {
+                    facebook: "https://www.facebook.com/groups/1156628978052452",
+                    strava: "https://www.strava.com/clubs/pkk-p%C5%82aszowskie-ko%C5%82o-kolarskie-566304"
+                },
+                startingPoint: {
+                    latitude: 50.040034,
+                    longitude: 20.000473
+                },
+                rideType: RideType.ROAD,
+                city: "Kraków"
+            },
+            {
+                id: "89",
+                name: "Ustawki z PKK",
+                time: LocalTime.parse("17:00"),
+                day: Day.THURSDAY,
+                description: "Zapraszamy we wtorki i czwartki na ustawki z Płaszowskim Kołem Kolarskim (PKK). Najczęściej lecimy w południowo-wschodnie i północno-wschodnie rubieże Krakowa, ale trasy i kierunki zmieniamy często. W weekendy często epic fondo z kawką w tle. Tempo raczej żwawe, choć na górkach poczekamy. Jeździmy w parach z zachowaniem etykiety jazdy w grupie i sygnalizujemy zagrożenia na drodze. Każdy jedzie na własną odpowiedzialność. Szczegóły ustawek zawsze na grupie FB i Club Strava",
+                url: {
+                    facebook: "https://www.facebook.com/groups/1156628978052452",
+                    strava: "https://www.strava.com/clubs/pkk-p%C5%82aszowskie-ko%C5%82o-kolarskie-566304"
+                },
+                startingPoint: {
+                    latitude: 50.040034,
+                    longitude: 20.000473
+                },
+                rideType: RideType.ROAD,
+                city: "Kraków"
+            },
+            {
+                id: "90",
+                name: "Notojadzim CoffeeRide",
+                time: LocalTime.parse("10:00"),
+                day: Day.SUNDAY,
+                description: "Niedzielne coffeeride'y z wyznaczoną trasa i prowadzacym dla dwóch grup. Grupa A = trasa krótsza ok. 40-50km. Grupa B = trasa dłuższa ok. 60-70km. W połowie trasy lub na jej końcu pit-stop na łyk espresso. Tempo odpowiednie dla wybranej grupy z akcentami na zdobycie KOM'a",
+                url: {
+                    facebook: "https://facebook.com/notojadzim",
+                    webpage: "https://www.jadzimkujawy.pl/"
+                },
+                startingPoint: {
+                    latitude: 52.806513,
+                    longitude: 18.110321
+                },
+                rideType: RideType.ROAD,
+                city: "Inowrocław"
+            },
+            {
+                id: "91",
+                name: "Szosa dla Zielonych - ustawki kolarskie dla początkujących",
+                time: LocalTime.parse("10:00"),
+                day: Day.SATURDAY,
+                description: "W wydarzeniu, przed każdą ustawką będziemy komunikowali plan gry na jazdę wraz z trasą do pobrania. Wyjazdy w Góry Świętokrzyskie znajdziecie w oddzielnym wydarzeniu. Wpadnij jeżli nie masz z kim wyjść na rower, nie czujesz się pewnie w grupie, chcesz poprawić swoją technikę jazdy, nie wiesz o co chodzi z tą całą jazdą na kole lub po prostu szukasz rowerowych znajomości.",
+                url: {
+                    facebook: "https://www.facebook.com/KolarskaPrzestrzen"
+                },
+                startingPoint: {
+                    latitude: 52.164757, 
+                    longitude: 21.083515
+                },
+                rideType: RideType.ROAD,
+                city: "Warszawa"
+            },
+            {
+                id: "92",
+                name: "Laski na szosach",
+                time: LocalTime.parse("18:10"),
+                day: Day.TUESDAY,
+                description: "Ustawka odbywa się co dwa tygodnie! Ideą mojej babskiej jazdy jest zachęcenie kobiet do jazdy na szosie w grupie i totalnie bez spiny przejechanie się razem, pogaduchy, a na końcu ciastki 😁 Nie jedziemy na żadną średnią. Jest to jazda rekreacyjna z zachowaniem zasad jazdy w grupie. Prowadzę ja i jadę mega lekko. Około 30 km.",
+                url: {
+                    facebook: "https://www.facebook.com/Dziewczyna-z-korb%C4%85-269014110400306"
+                },
+                startingPoint: {
+                    latitude: 50.270651,
+                    longitude: 18.774489
+                },
+                rideType: RideType.ROAD,
+                city: "Zabrze"
+            },
+            {
+                id: "93",
+                name: "Szosowa Ustawka Pomnikowa",
+                time: LocalTime.parse("10:00"),
+                day: Day.SUNDAY,
+                description: "Najstarsza z przemyskich ustawek szosowych.",
+                url: {
+                    facebook: "https://www.facebook.com/groups/746455442134043"
+                },
+                startingPoint: {
+                    latitude: 49.785105,
+                    longitude: 22.766398
+                },
+                rideType: RideType.ROAD,
+                city: "Przemyśl"
+            },
+            {
+                id: "94",
+                name: "Giant Gliwice Road Tour",
+                time: LocalTime.parse("17:00"),
+                day: Day.TUESDAY,
+                description: "Przejazd dla wszystkich ze średnią w okolicach 30+km/h.",
+                url: {
+                    facebook: "https://www.facebook.com/giantgliwice/"
+                },
+                startingPoint: {
+                    latitude: 50.309371,
+                    longitude: 18.669526
+                },
+                rideType: RideType.ROAD,
+                city: "Gliwice"
+            },
+            {
+                id: "95",
+                name: "Babska Korba Warszawa",
+                time: LocalTime.parse("17:30"),
+                day: Day.THURSDAY,
+                description: "Regularne grupowe jazdy gravelem dla dziewczyn w Warszawie. Jest początek sezonu - ruszamy wolno i spokojnie, żeby rozruszać nogi po zimie! Spotykamy się w każdy czwartek o 17:30 w sklepie rowerowym Trirent na Racławickiej 99a, gdzie czekać na nas będzie kawa i pomoc przy przygotowaniu roweru do jazdy jeśli ktoś potrzebuje. 😇",
+                url: {
+                    facebook: "https://www.facebook.com/babskakorba",
+                    webpage: "https://www.picktime.com/babskakorba"
+                },
+                startingPoint: {
+                    latitude: 52.195201,
+                    longitude: 20.997931
+                },
+                rideType: RideType.GRAVEL,
+                city: "Warszawa"
+            },
+            {
+                id: "96",
+                name: "Babska Korba Gliwice",
+                time: LocalTime.parse("17:00"),
+                day: Day.TUESDAY,
+                description: "Zapraszamy na wspólną luźną jazdę po asfalcie:) Planujemy pętelkę na chillu ze średnią około 21km/h, żeby każdy mógł zacząć uczyć się jeździć w grupie, w parach lub zrobić sobie rege w fajnym towarzystwie. Wyposażenie obowiązkowe: kask, lampki. Rower: szosa, gravel. Tempo: dostosowane do wszystkich uczestniczek. Luźna jazda.",
+                url: {
+                    facebook: "https://www.facebook.com/babskakorba",
+                    webpage: "https://www.picktime.com/babskakorba"
+                },
+                startingPoint: {
+                    latitude: 50.289079,
+                    longitude: 18.650890
+                },
+                rideType: RideType.ROAD,
+                city: "Gliwice"
+            },
+            {
+                id: "97",
+                name: "Babska Korba Katowice",
+                time: LocalTime.parse("17:30"),
+                day: Day.THURSDAY,
+                description: "Cześć dziewczyny, Zapraszamy Was do wspólnego kręcenia na rowerze szosowym. Trasa jest na około 40km i obieramy kierunek Imielin. Udział w wydarzeniu tylko i wyłącznie w kasku i z kompletem lampek. Udział w wydarzeniu na własną odpowiedzialność.",
+                url: {
+                    facebook: "https://www.facebook.com/babskakorba",
+                    webpage: "https://www.picktime.com/babskakorba"
+                },
+                startingPoint: {
+                    latitude: 50.254230, 
+                    longitude: 19.047000
+                },
+                rideType: RideType.ROAD,
+                city: "Katowice"
+            },
+            {
+                id: "98",
+                name: "Babska Korba Trójmiasto",
+                time: LocalTime.parse("10:00"),
+                day: Day.SUNDAY,
+                description: "Dziewczyny! Zapraszamy na wspólną luźną jazdę na rowerach gravelowych, trekkingowych oraz MTB. Ruszamy na przejażdkę do Trójmiejskiego Parku Krajobrazowego. Tempo luźniutkie - nikogo nie zostawimy z tyłu.",
+                url: {
+                    facebook: "https://www.facebook.com/babskakorba",
+                    webpage: "https://www.picktime.com/babskakorba"
+                },
+                startingPoint: {
+                    latitude: 54.401695,
+                    longitude: 18.572973
+                },
+                rideType: RideType.GRAVEL,
+                city: "Gdańsk"
+            },
+            {
+                id: "99",
+                name: "Babska Korba Bielsko-Biała",
+                time: LocalTime.parse("17:30"),
+                day: Day.MONDAY,
+                description: "Regularne grupowe jazdy szosowe dla dziewczyn w Bielsku-Białej. 🦄  Spotykamy się w każdy poniedziałek o 17:30 w sklepie rowerowym Twomark na Cieszyńskiej 429 (samochody zostawiamy pod Biedronką naprzeciwko), gdzie czekać na nas będzie pomoc przy przygotowaniu roweru do jazdy jeśli ktoś potrzebuje. 😇 Wyposażenie obowiązkowe: kask, lampki. Rower: szosa, gravel.",
+                url: {
+                    facebook: "https://www.facebook.com/babskakorba",
+                    webpage: "https://www.picktime.com/babskakorba"
+                },
+                startingPoint: {
+                    latitude: 49.807336,
+                    longitude: 18.978885
+                },
+                rideType: RideType.ROAD,
+                city: "Bielsko-Biała"
+            },
+            {
+                id: "100",
+                name: "Babska Korba Wrocław",
+                time: LocalTime.parse("17:30"),
+                day: Day.TUESDAY,
+                description: "Zapraszamy na szosowe jazdy grupowe ze stypendystką oraz prowadzącą (2w1) Babskiej Korby - Anią Małecką! 🦄 Jazda przeznaczona jest dla wszystkich dziewczyn, które szukają grupki do wspólnej jazdy. Po płaskim jedziemy spokojnie, podjazdy każdy pokonuje we własnym tempie, a na zjazdach zostawiamy między sobą bezpieczne odległości, aby następnie połączyć się z powrotem w grupę. Obowiązkowe wyposażenie: kask i lampki.",
+                url: {
+                    facebook: "https://www.facebook.com/babskakorba",
+                    webpage: "https://www.picktime.com/babskakorba"
+                },
+                startingPoint: {
+                    latitude: 51.127289, 
+                    longitude: 16.979407
+                },
+                rideType: RideType.ROAD,
+                city: "Wrocław"
+            },
+            {
+                id: "101",
+                name: "Babska Korba Olsztyn",
+                time: LocalTime.parse("17:00"),
+                day: Day.TUESDAY,
+                description: "Do pokonania będziemy mieć ok. 40 kilometrów. Jazdy w środy będą zawsze na rowerach szosowych lub gravelowych. Wyposażenie obowiązkowe: kask, lampki, rower szosowy lub gravel. Przyda się również: biodon z piciem, przekąska, coś cieplejszego do ubrania.",
+                url: {
+                    facebook: "https://www.facebook.com/babskakorba",
+                    webpage: "https://www.picktime.com/babskakorba"
+                },
+                startingPoint: {
+                    latitude: 53.731640,
+                    longitude: 20.493239
+                },
+                rideType: RideType.ROAD,
+                city: "Olsztyn"
+            },
+            {
+                id: "102",
+                name: "Babska Korba Olsztyn",
+                time: LocalTime.parse("10:00"),
+                day: Day.SUNDAY,
+                description: "Do pokonania będziemy mieć ok. 80 kilometrów. Jazdy w niedzielę będą odbywać się czasami na szosie i gravelu, a czasami na MTB. Prosimy o śledzenie postów prowadzącej na wydarzeniu. Wyposażenie obowiązkowe: kask, lampki, rower szosowy lub gravel. Przyda się również: biodon z piciem, przekąska, coś cieplejszego do ubrania.",
+                url: {
+                    facebook: "https://www.facebook.com/babskakorba",
+                    webpage: "https://www.picktime.com/babskakorba"
+                },
+                startingPoint: {
+                    latitude: 53.779583,
+                    longitude: 20.464655
+                },
+                rideType: RideType.ROAD,
+                city: "Olsztyn"
             }
         ),
 

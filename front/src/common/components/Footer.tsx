@@ -26,11 +26,10 @@ const Footer: React.FC<FooterProps & FooterActionProps> = (props) => {
                         </h2>
                         <p>
                             Zbieramy i aktualizujemy dane na temat ustawek kolarskich w Polsce.
-                            Liczymy, że nasza strona pomoże w rozrastaniu się kolarskiej społeczności.
+                            Liczymy, że nasza strona pomoże w rozrastaniu się środowisk sympatków każdej formy kolarstwa.
                         </p>
                         <p>
-                            Chcemy, aby każdy chętny miał możliwość zintegrowania się z lokalną kolarską
-                            społecznością - <span className="fw-bold d-inline"> lokalsami</span>.
+                            Chcemy, aby każdy mógł stać się częścią lokalnej kolarskiej społeczności - <span className="fw-bold d-inline"> lokalsów</span>.
                         </p>
 
                     </section>
@@ -39,8 +38,8 @@ const Footer: React.FC<FooterProps & FooterActionProps> = (props) => {
                             Jak działamy?
                         </h2>
                         <p>
-                            Wszystkie dane zbieramy i aktualizujemy ręcznie.
-                            Mamy nadzieję, że liczba ustawek prezentowanych na stronie będzie się stale zwiększać.
+                            Własnoręcznie zbieramy i aktualizujemy wszystkie dane.
+                            Mamy nadzieję, że liczba ustawek prezentowanych na stronie będzie się stale powiększać.
                         </p>
                         <p>
                             Jeżeli Twoje ulubiona ustawka nie jest widoczna na mapie, to bylibyśmy wdzięczni za

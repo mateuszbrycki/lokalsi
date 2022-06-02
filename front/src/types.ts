@@ -30,6 +30,7 @@ export class RideType {
     public static readonly ROAD = new RideType('Road', '#3E885B');
     public static readonly GRAVEL = new RideType('Gravel', '#6b706f');
     public static readonly MTB = new RideType('MTB/XC', '#916953');
+    public static readonly FOR_LADIES = new RideType('For Ladies', '#916953');
 
     private constructor(public readonly name: string, public readonly color: string) {
     }

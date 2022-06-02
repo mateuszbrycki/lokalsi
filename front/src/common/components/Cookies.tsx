@@ -9,7 +9,7 @@ const CookiesPopup: React.FC<any> = () => {
     const cookies = new Cookies();
 
     const hasUserAcceptedCookies = () => cookies.get(COOKIE_NAME) === 'true'
-    const setCookieValue = (value: boolean) => cookies.set(COOKIE_NAME, value, {path: '/'})
+    const setCookieValue = (value: boolean) => cookies.set(COOKIE_NAME, value, {path: '/', maxAge: 31556926 }) //1 year
     const acceptCookies = () => {
         setCookieValue(true)
         setShowCookiesConsent(true)

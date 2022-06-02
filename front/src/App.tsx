@@ -5,6 +5,7 @@ import AllRidesContainer from "./rides/containers/AllRidesContainer";
 import Footer from "./common/components/Footer";
 import Navbar from "./common/components/Navbar";
 import CookiesPopup from "./common/components/Cookies";
+import FanpageModal from "./common/components/FanpageModal";
 
 export interface AppActionsProps {
 }
@@ -21,6 +22,7 @@ const App: React.FunctionComponent<AppProps & AppActionsProps> = (props) => {
             <AllRidesContainer/>
             <Footer/>
             <CookiesPopup/>
+            <FanpageModal />
         </>
     );
 }
