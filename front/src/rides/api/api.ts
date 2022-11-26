@@ -1,4 +1,4 @@
-import {List} from "immutable";
+import {List, Set} from "immutable";
 import {Day, FilterQuery, Ride, RideType} from "../../types";
 import {LocalTime} from "@js-joda/core";
 import {TIME_FORMATTER} from "../../common/time";
@@ -24,7 +24,7 @@ const Api: RideHttpApi = {
                     latitude: 50.057093,
                     longitude: 19.910316
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD),
                 city: "Kraków"
             },
             {
@@ -40,7 +40,7 @@ const Api: RideHttpApi = {
                     latitude: 50.062523,
                     longitude:19.902603
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD, RideType.FOR_LADIES),
                 city: "Kraków"
             },
             {
@@ -56,7 +56,7 @@ const Api: RideHttpApi = {
                     latitude: 50.059474,
                     longitude: 19.922686
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD, RideType.FOR_LADIES),
                 city: "Kraków"
             },
             {
@@ -72,7 +72,7 @@ const Api: RideHttpApi = {
                     latitude: 50.059474,
                     longitude: 19.922686
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD, RideType.FOR_LADIES),
                 city: "Kraków"
             },
             {
@@ -88,7 +88,7 @@ const Api: RideHttpApi = {
                     latitude: 50.059474,
                     longitude: 19.922686
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD, RideType.FOR_LADIES),
                 city: "Kraków"
             },
             {
@@ -104,7 +104,7 @@ const Api: RideHttpApi = {
                     latitude: 50.053387,
                     longitude:20.049247
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD),
                 city: "Kraków"
             },
             {
@@ -120,7 +120,7 @@ const Api: RideHttpApi = {
                     latitude: 50.050136,
                     longitude: 19.930474
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD),
                 city: "Kraków"
             },
             {
@@ -136,7 +136,7 @@ const Api: RideHttpApi = {
                     latitude: 50.053309,
                     longitude: 19.901110
                 },
-                rideType: RideType.MTB,
+                rideTypes: Set.of(RideType.MTB),
                 city: "Kraków"
             },
             {
@@ -154,7 +154,7 @@ const Api: RideHttpApi = {
                     latitude: 50.053309,
                     longitude:19.901110
                 },
-                rideType: RideType.MTB,
+                rideTypes: Set.of(RideType.MTB),
                 city: "Kraków"
             },
             {
@@ -170,7 +170,7 @@ const Api: RideHttpApi = {
                     latitude: 50.076142,
                     longitude: 20.051179
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD),
                 city: "Kraków"
             },
             {
@@ -186,7 +186,7 @@ const Api: RideHttpApi = {
                     latitude: 50.058665,
                     longitude: 19.921278
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD),
                 city: "Kraków"
             },
             {
@@ -202,7 +202,7 @@ const Api: RideHttpApi = {
                     latitude: 50.116404,
                     longitude: 19.800578
                 },
-                rideType: RideType.MTB,
+                rideTypes: Set.of(RideType.MTB),
                 city: "Zabierzów"
             },
             {
@@ -221,7 +221,7 @@ const Api: RideHttpApi = {
                     latitude: 50.116404,
                     longitude: 19.800578
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD),
                 city: "Zabierzów"
             },
             {
@@ -239,7 +239,7 @@ const Api: RideHttpApi = {
                     latitude: 50.058665,
                     longitude: 19.921278
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD, RideType.FOR_LADIES),
                 city: "Kraków"
             },
             {
@@ -256,7 +256,7 @@ const Api: RideHttpApi = {
                     latitude: 49.988630,
                     longitude: 19.913532
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD),
                 city: "Kraków"
             },
             {
@@ -273,7 +273,7 @@ const Api: RideHttpApi = {
                     latitude: 49.988630,
                     longitude: 19.913532
                 },
-                rideType: RideType.GRAVEL,
+                rideTypes: Set.of(RideType.GRAVEL),
                 city: "Kraków"
             },
             {
@@ -289,7 +289,7 @@ const Api: RideHttpApi = {
                     latitude: 50.062519,
                     longitude: 19.902593
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD),
                 city: "Kraków"
             },
             {
@@ -305,7 +305,7 @@ const Api: RideHttpApi = {
                     latitude: 50.047979,
                     longitude: 19.902815
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD),
                 city: "Kraków"
             },
             {
@@ -321,7 +321,7 @@ const Api: RideHttpApi = {
                     latitude: 50.032902,
                     longitude: 20.217230
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD),
                 city: "Niepołomice"
             },
             {
@@ -337,7 +337,7 @@ const Api: RideHttpApi = {
                     latitude: 51.938334,
                     longitude: 15.514192
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD),
                 city: "Zielona Góra"
             },
             {
@@ -353,7 +353,7 @@ const Api: RideHttpApi = {
                     latitude: 51.938334,
                     longitude: 15.514192
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD),
                 city: "Zielona Góra"
             },
             {
@@ -369,7 +369,7 @@ const Api: RideHttpApi = {
                     latitude: 51.938334,
                     longitude: 15.514192
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD),
                 city: "Zielona Góra"
             },
             {
@@ -385,7 +385,7 @@ const Api: RideHttpApi = {
                     latitude: 52.432057,
                     longitude: 16.952341
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD),
                 city: "Poznań"
             },
             {
@@ -401,7 +401,7 @@ const Api: RideHttpApi = {
                     latitude: 52.432057,
                     longitude: 16.952341
                 },
-                rideType: RideType.GRAVEL,
+                rideTypes: Set.of(RideType.GRAVEL),
                 city: "Poznań"
             },
             {
@@ -417,7 +417,7 @@ const Api: RideHttpApi = {
                     latitude: 52.379108,
                     longitude: 16.943422
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD),
                 city: "Poznań"
             },
             {
@@ -433,7 +433,7 @@ const Api: RideHttpApi = {
                     latitude: 54.382605,
                     longitude: 18.598718
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD, RideType.FOR_LADIES),
                 city: "Gdańsk"
             },
             {
@@ -450,7 +450,7 @@ const Api: RideHttpApi = {
                     latitude: 54.200571,
                     longitude: 16.212645,
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD),
                 city: "Koszalin"
             },
             {
@@ -470,7 +470,7 @@ const Api: RideHttpApi = {
                     latitude: 50.196884,
                     longitude: 18.980590,
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD),
                 city: "Katowice"
             },
             {
@@ -486,7 +486,7 @@ const Api: RideHttpApi = {
                     latitude: 50.344000,
                     longitude: 19.198043,
                 },
-                rideType: RideType.GRAVEL,
+                rideTypes: Set.of(RideType.GRAVEL),
                 city: "Dąbrowa Górnicza"
             },
             {
@@ -502,7 +502,7 @@ const Api: RideHttpApi = {
                     latitude: 50.344000,
                     longitude: 19.198043,
                 },
-                rideType: RideType.MTB,
+                rideTypes: Set.of(RideType.MTB),
                 city: "Dąbrowa Górnicza"
             },
             {
@@ -520,7 +520,7 @@ const Api: RideHttpApi = {
                     latitude: 52.222669,
                     longitude: 21.243678
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD),
                 city: "Warszawa"
             },
             {
@@ -536,7 +536,7 @@ const Api: RideHttpApi = {
                     latitude: 50.877062,
                     longitude: 20.637830
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD),
                 city: "Kielce"
             },
             {
@@ -553,7 +553,7 @@ const Api: RideHttpApi = {
                     latitude: 50.26106,
                     longitude: 19.01828
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD),
                 city: "Katowice"
             },
             {
@@ -569,7 +569,7 @@ const Api: RideHttpApi = {
                     latitude: 50.400686,
                     longitude: 18.902896
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD),
                 city: "Radzionków"
             },
             {
@@ -587,7 +587,7 @@ const Api: RideHttpApi = {
                     latitude: 52.255108,
                     longitude: 20.982775
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD),
                 city: "Warszawa"
             },
             {
@@ -603,7 +603,7 @@ const Api: RideHttpApi = {
                     latitude: 50.045475,
                     longitude: 18.694292
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD),
                 city: "Żory"
             },
             {
@@ -620,7 +620,7 @@ const Api: RideHttpApi = {
                     latitude: 53.471835,
                     longitude: 14.479681
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD),
                 city: "Szczecin"
             },
             {
@@ -636,7 +636,7 @@ const Api: RideHttpApi = {
                     latitude: 51.740828,
                     longitude: 19.404762
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD),
                 city: "Łódź"
             },
             {
@@ -652,7 +652,7 @@ const Api: RideHttpApi = {
                     latitude: 51.740828,
                     longitude: 19.404762
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD),
                 city: "Łódź"
             },
             {
@@ -668,7 +668,7 @@ const Api: RideHttpApi = {
                     latitude: 51.797294,
                     longitude: 19.444905
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD),
                 city: "Łódź"
             },
             {
@@ -684,7 +684,7 @@ const Api: RideHttpApi = {
                     latitude: 51.800250,
                     longitude: 19.489184
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD),
                 city: "Łódź"
             },
             {
@@ -700,7 +700,7 @@ const Api: RideHttpApi = {
                     latitude: 51.727256,
                     longitude: 19.478890
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD),
                 city: "Łódź"
             },
             {
@@ -716,7 +716,7 @@ const Api: RideHttpApi = {
                     latitude: 51.711222,
                     longitude: 19.543621
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD),
                 city: "Łódź"
             },
             {
@@ -732,7 +732,7 @@ const Api: RideHttpApi = {
                     latitude: 51.835668,
                     longitude: 19.258343
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD),
                 city: "Aleksandrów Łódzki"
             },
             // 23-01-2022
@@ -749,7 +749,7 @@ const Api: RideHttpApi = {
                     latitude: 50.282416,
                     longitude: 18.715206
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD),
                 city: "Gliwice"
             },
             {
@@ -766,7 +766,7 @@ const Api: RideHttpApi = {
                     latitude: 51.403819,
                     longitude: 21.153406
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD),
                 city: "Radom"
             },
             {
@@ -782,7 +782,7 @@ const Api: RideHttpApi = {
                     latitude: 50.175302,
                     longitude: 18.970729
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD),
                 city: "Katowice"
             },
             {
@@ -798,7 +798,7 @@ const Api: RideHttpApi = {
                     latitude: 49.624834,
                     longitude: 20.705587
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD),
                 city: "Nowy Sącz"
             },
             {
@@ -814,7 +814,7 @@ const Api: RideHttpApi = {
                     latitude: 49.477386,
                     longitude: 20.034820
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD),
                 city: "Nowy Targ"
             },
             {
@@ -830,7 +830,7 @@ const Api: RideHttpApi = {
                     latitude: 51.119824,
                     longitude: 20.861242
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD),
                 city: "Skarżysko-Kamienna"
             },
             {
@@ -846,7 +846,7 @@ const Api: RideHttpApi = {
                     latitude: 50.330215,
                     longitude: 19.220292
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD),
                 city: "Dąbrowa Górnicza"
             },
             {
@@ -862,7 +862,7 @@ const Api: RideHttpApi = {
                     latitude: 50.324575,
                     longitude: 19.003347
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD),
                 city: "Siemianowice Śląskie"
             },
             {
@@ -878,7 +878,7 @@ const Api: RideHttpApi = {
                     latitude: 50.322388,
                     longitude: 19.127940
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD),
                 city: "Będzin"
             },
             {
@@ -894,7 +894,7 @@ const Api: RideHttpApi = {
                     latitude: 50.314914,
                     longitude: 19.198977
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD),
                 city: "Dąbrowa Górnicza"
             },
             {
@@ -910,7 +910,7 @@ const Api: RideHttpApi = {
                     latitude: 50.343752,
                     longitude: 19.198653
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD, RideType.FOR_LADIES),
                 city: "Dąbrowa Górnicza"
             },
             {
@@ -926,7 +926,7 @@ const Api: RideHttpApi = {
                     latitude: 50.380434,
                     longitude: 19.135001
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD),
                 city: "Dąbrowa Górnicza"
             },
             {
@@ -942,7 +942,7 @@ const Api: RideHttpApi = {
                     latitude: 50.107143,
                     longitude: 18.979832
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD),
                 city: "Tychy"
             },
             {
@@ -958,7 +958,7 @@ const Api: RideHttpApi = {
                     latitude: 50.190788,
                     longitude: 19.162585
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD),
                 city: "Mysłowice"
             },
             {
@@ -975,7 +975,7 @@ const Api: RideHttpApi = {
                     latitude: 50.445533,
                     longitude: 18.850568
                 },
-                rideType: RideType.GRAVEL,
+                rideTypes: Set.of(RideType.GRAVEL),
                 city: "Tarnowskie Góry"
             },
             {
@@ -991,7 +991,7 @@ const Api: RideHttpApi = {
                     latitude: 50.113468,
                     longitude: 18.963200
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD),
                 city: "Tychy"
             },
             {
@@ -1007,7 +1007,7 @@ const Api: RideHttpApi = {
                     latitude: 50.310500,
                     longitude: 19.044436
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD),
                 city: "Siemianowice Śląskie"
             },
             {
@@ -1023,7 +1023,7 @@ const Api: RideHttpApi = {
                     latitude: 50.089760,
                     longitude: 18.995632
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD),
                 city: "Tychy"
             },
             {
@@ -1039,7 +1039,7 @@ const Api: RideHttpApi = {
                     latitude: 50.347675,
                     longitude: 19.097050
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD),
                 city: "Będzin"
             },
             {
@@ -1054,7 +1054,7 @@ const Api: RideHttpApi = {
                     latitude: 50.324431,
                     longitude: 18.661836
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD),
                 city: "Gliwice"
             },
             {
@@ -1070,7 +1070,7 @@ const Api: RideHttpApi = {
                     latitude: 50.089760,
                     longitude: 18.995632
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD),
                 city: "Tychy"
             },
             {
@@ -1086,7 +1086,7 @@ const Api: RideHttpApi = {
                     latitude: 52.382133,
                     longitude: 16.984897
                 },
-                rideType: RideType.MTB,
+                rideTypes: Set.of(RideType.MTB),
                 city: "Poznań"
             },
             {
@@ -1102,7 +1102,7 @@ const Api: RideHttpApi = {
                     latitude: 51.725304,
                     longitude: 19.638193
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD),
                 city: "Andrespol"
             },
             {
@@ -1118,7 +1118,7 @@ const Api: RideHttpApi = {
                     latitude: 50.594198,
                     longitude: 21.852245
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD),
                 city: "Zabrnie"
             },
             {
@@ -1134,7 +1134,7 @@ const Api: RideHttpApi = {
                     latitude: 50.574485,
                     longitude: 21.672954
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD),
                 city: "Tarnobrzeg"
             },
             {
@@ -1150,7 +1150,7 @@ const Api: RideHttpApi = {
                     latitude: 50.116942,
                     longitude: 19.787086
                 },
-                rideType: RideType.GRAVEL,
+                rideTypes: Set.of(RideType.GRAVEL),
                 city: "Zabierzów"
             },
             {
@@ -1167,7 +1167,7 @@ const Api: RideHttpApi = {
                     latitude: 51.204194,
                     longitude: 17.100844
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD),
                 city: "Pasikurowice"
             },
             {
@@ -1183,7 +1183,7 @@ const Api: RideHttpApi = {
                     latitude: 50.169302,
                     longitude: 18.904546
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD),
                 city: "Mikołów"
             },
             {
@@ -1199,7 +1199,7 @@ const Api: RideHttpApi = {
                     latitude: 50.169302,
                     longitude: 18.904546
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD),
                 city: "Mikołów"
             },
             {
@@ -1215,7 +1215,7 @@ const Api: RideHttpApi = {
                     latitude: 50.486734,
                     longitude: 22.265907
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD),
                 city: "Ulanów"
             },
             {
@@ -1231,7 +1231,7 @@ const Api: RideHttpApi = {
                     latitude: 50.018721,
                     longitude: 19.933782
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD),
                 city: "Kraków"
             },
             {
@@ -1247,7 +1247,7 @@ const Api: RideHttpApi = {
                     latitude: 50.018721,
                     longitude: 19.933782
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD),
                 city: "Kraków"
             },
             {
@@ -1263,7 +1263,7 @@ const Api: RideHttpApi = {
                     latitude: 50.811949, 
                     longitude: 19.113129
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD),
                 city: "Częstochowa"
             },
             {
@@ -1279,7 +1279,7 @@ const Api: RideHttpApi = {
                     latitude: 50.811949, 
                     longitude: 19.113129
                 },
-                rideType: RideType.MTB,
+                rideTypes: Set.of(RideType.MTB),
                 city: "Częstochowa"
             },
             {
@@ -1295,7 +1295,7 @@ const Api: RideHttpApi = {
                     latitude: 50.053309,
                     longitude: 19.901110
                 },
-                rideType: RideType.MTB,
+                rideTypes: Set.of(RideType.MTB),
                 city: "Kraków"
             },
             {
@@ -1311,7 +1311,7 @@ const Api: RideHttpApi = {
                     latitude: 50.305704,
                     longitude: 18.650730
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD),
                 city: "Gliwice"
             },
             {
@@ -1327,7 +1327,7 @@ const Api: RideHttpApi = {
                     latitude: 54.443567,
                     longitude: 18.418957
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD),
                 city: "Chwaszczyno"
             },
             {
@@ -1343,7 +1343,7 @@ const Api: RideHttpApi = {
                     latitude: 54.387180,
                     longitude: 18.563426
                 },
-                rideType: RideType.GRAVEL,
+                rideTypes: Set.of(RideType.GRAVEL),
                 city: "Gdańsk"
             },
             {
@@ -1359,7 +1359,7 @@ const Api: RideHttpApi = {
                     latitude: 54.317912,
                     longitude: 18.581969
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD),
                 city: "Gdańsk"
             },
             {
@@ -1376,7 +1376,7 @@ const Api: RideHttpApi = {
                     latitude: 54.160050,
                     longitude: 15.565681
                 },
-                rideType: RideType.MTB,
+                rideTypes: Set.of(RideType.MTB),
                 city: "Kołobrzeg"
             },
             {
@@ -1393,7 +1393,7 @@ const Api: RideHttpApi = {
                     latitude: 54.160050,
                     longitude: 15.565681
                 },
-                rideType: RideType.MTB,
+                rideTypes: Set.of(RideType.MTB),
                 city: "Kołobrzeg"
             },
             {
@@ -1410,7 +1410,7 @@ const Api: RideHttpApi = {
                     latitude: 54.188944,
                     longitude: 19.405977
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD),
                 city: "Elbląg"
             },
             {
@@ -1426,7 +1426,7 @@ const Api: RideHttpApi = {
                     latitude: 51.698894,
                     longitude: 18.136035
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD),
                 city: "Kalisz"
             },
             {
@@ -1443,7 +1443,7 @@ const Api: RideHttpApi = {
                     latitude: 50.040034,
                     longitude: 20.000473
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD),
                 city: "Kraków"
             },
             {
@@ -1460,7 +1460,7 @@ const Api: RideHttpApi = {
                     latitude: 50.040034,
                     longitude: 20.000473
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD),
                 city: "Kraków"
             },
             {
@@ -1477,7 +1477,7 @@ const Api: RideHttpApi = {
                     latitude: 52.806513,
                     longitude: 18.110321
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD),
                 city: "Inowrocław"
             },
             {
@@ -1493,7 +1493,7 @@ const Api: RideHttpApi = {
                     latitude: 52.164757, 
                     longitude: 21.083515
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD),
                 city: "Warszawa"
             },
             {
@@ -1509,7 +1509,7 @@ const Api: RideHttpApi = {
                     latitude: 50.270651,
                     longitude: 18.774489
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD, RideType.FOR_LADIES),
                 city: "Zabrze"
             },
             {
@@ -1525,7 +1525,7 @@ const Api: RideHttpApi = {
                     latitude: 49.785105,
                     longitude: 22.766398
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD),
                 city: "Przemyśl"
             },
             {
@@ -1541,7 +1541,7 @@ const Api: RideHttpApi = {
                     latitude: 50.309371,
                     longitude: 18.669526
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD),
                 city: "Gliwice"
             },
             {
@@ -1558,7 +1558,7 @@ const Api: RideHttpApi = {
                     latitude: 52.195201,
                     longitude: 20.997931
                 },
-                rideType: RideType.GRAVEL,
+                rideTypes: Set.of(RideType.GRAVEL, RideType.FOR_LADIES),
                 city: "Warszawa"
             },
             {
@@ -1575,7 +1575,7 @@ const Api: RideHttpApi = {
                     latitude: 50.289079,
                     longitude: 18.650890
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD, RideType.FOR_LADIES),
                 city: "Gliwice"
             },
             {
@@ -1592,7 +1592,7 @@ const Api: RideHttpApi = {
                     latitude: 50.254230, 
                     longitude: 19.047000
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD, RideType.FOR_LADIES),
                 city: "Katowice"
             },
             {
@@ -1609,7 +1609,7 @@ const Api: RideHttpApi = {
                     latitude: 54.401695,
                     longitude: 18.572973
                 },
-                rideType: RideType.GRAVEL,
+                rideTypes: Set.of(RideType.GRAVEL, RideType.FOR_LADIES),
                 city: "Gdańsk"
             },
             {
@@ -1626,7 +1626,7 @@ const Api: RideHttpApi = {
                     latitude: 49.807336,
                     longitude: 18.978885
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD, RideType.FOR_LADIES),
                 city: "Bielsko-Biała"
             },
             {
@@ -1643,7 +1643,7 @@ const Api: RideHttpApi = {
                     latitude: 51.127289, 
                     longitude: 16.979407
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD, RideType.FOR_LADIES),
                 city: "Wrocław"
             },
             {
@@ -1660,7 +1660,7 @@ const Api: RideHttpApi = {
                     latitude: 53.731640,
                     longitude: 20.493239
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD, RideType.FOR_LADIES),
                 city: "Olsztyn"
             },
             {
@@ -1677,8 +1677,136 @@ const Api: RideHttpApi = {
                     latitude: 53.779583,
                     longitude: 20.464655
                 },
-                rideType: RideType.ROAD,
+                rideTypes: Set.of(RideType.ROAD, RideType.FOR_LADIES),
                 city: "Olsztyn"
+            },
+            {
+                id: "103",
+                name: "Szosa dla początkujących",
+                time: LocalTime.parse("11:00"),
+                day: Day.SUNDAY,
+                description: "Ustawka dla osób zaczynających jeździć na szosie. Łatwe trasy. Tempo bez spiny, nie śgigamy się. Jazda typowo rekreacyjna mająca na celu wymianę doświadczeń świeżaków. Zapraszamy wszystkich! Mile widziane osoby na wyższym poziomie które chcą podzielić się swoją wiedzą.",
+                url: {
+                    facebook: "https://www.facebook.com/groups/344335397845544"
+                },
+                startingPoint: {
+                    latitude: 50.053622, 
+                    longitude: 19.930392
+                },
+                rideTypes: Set.of(RideType.ROAD),
+                city: "Kraków"
+            },
+            {
+                id: "104",
+                name: "SzoSza Wtorek Ride",
+                time: LocalTime.parse("18:30"),
+                day: Day.TUESDAY,
+                description: "Celem ustawki jest sprawna wspólna przejażdżka połączona z szlifowaniem techniki jazdy w grupie oraz wykonywaniem zmian. Jedziemy wg założonego w grupie tempa w parach. Dzielimy się na grupy dostosowane do tempa zawodników. Trasa ok 55km. W połowie spotykamy się na krótko pod sklepem i ruszamy dalej.",
+                url: {
+                    facebook: "https://www.facebook.com/szosoweszalenstwo"
+                },
+                startingPoint: {
+                    latitude: 52.240591,
+                    longitude: 20.891284
+                },
+                rideTypes: Set.of(RideType.ROAD),
+                city: "Warszawa"
+            },
+            {
+                id: "105",
+                name: "Czwartkowe Przepalanie na pętli Aleksandrów",
+                time: LocalTime.parse("17:30"),
+                day: Day.THURSDAY,
+                description: "Cykliczny event Kolarskiej Grupy Białołęckiej na pętli Aleksandrów. Na ogół średnia prędkości 35km/h i więcej. Czasami event odwołany z uwagi na pogodę.",
+                url: {
+                    facebook: "https://www.facebook.com/groups/575097993418861"
+                },
+                startingPoint: {
+                    latitude: 52.341586,
+                    longitude: 21.059607
+                },
+                rideTypes: Set.of(RideType.ROAD),
+                city: "Warszawa"
+            },
+            {
+                id: "106",
+                name: "Zbiórka Kwiatkowskiego",
+                time: LocalTime.parse("17:15"),
+                day: Day.TUESDAY,
+                description: "Trasa płaska.",
+                url: {
+                    facebook: "https://www.facebook.com/Zbiorka"
+                },
+                startingPoint: {
+                    latitude: 50.017182,
+                    longitude: 22.003443
+                },
+                rideTypes: Set.of(RideType.ROAD),
+                city: "Rzeszów"
+            },
+            {
+                id: "107",
+                name: "Zbiórka Kwiatkowskiego",
+                time: LocalTime.parse("17:15"),
+                day: Day.THURSDAY,
+                description: "Trasa górska.",
+                url: {
+                    facebook: "https://www.facebook.com/Zbiorka"
+                },
+                startingPoint: {
+                    latitude: 50.017182,
+                    longitude: 22.003443
+                },
+                rideTypes: Set.of(RideType.ROAD),
+                city: "Rzeszów"
+            },
+            {
+                id: "108",
+                name: "Zbiórka Kwiatkowskiego",
+                time: LocalTime.parse("10:15"),
+                day: Day.SUNDAY,
+                description: "Niedzielne ściganie.",
+                url: {
+                    facebook: "https://www.facebook.com/Zbiorka"
+                },
+                startingPoint: {
+                    latitude: 50.017182,
+                    longitude: 22.003443
+                },
+                rideTypes: Set.of(RideType.ROAD),
+                city: "Rzeszów"
+            },
+            {
+                id: "109",
+                name: "Jeździmy na Ostro",
+                time: LocalTime.parse("08:45"),
+                day: Day.SUNDAY,
+                description: "Ustawki szosowe w prawie każdą niedzielę, dystans ok. 100km z przerwą na kawę i ciacho, tempo w tlenie (średnia ok. 32-35km/h)",
+                url: {
+                    facebook: "https://www.facebook.com/groups/652423435198850"
+                },
+                startingPoint: {
+                    latitude: 52.234155,
+                    longitude: 21.093200
+                },
+                rideTypes: Set.of(RideType.ROAD),
+                city: "Warszawa"
+            },
+            {
+                id: "110",
+                name: "Retro",
+                time: LocalTime.parse("17:00"),
+                day: Day.WEDNESDAY,
+                description: "Środowe treningi odbywają się co tydzień od kwietnia do końca września o 17.00. Start koło kobyły w Kobyłce. Dwie grupy zaawansowania, pierwsza jedzie 30-31 km/h, a druga ile da się radę rozpędzić :) Każdy znajdzie coś dla siebie.",
+                url: {
+                    facebook: "https://www.facebook.com/RetroStorkTeam"
+                },
+                startingPoint: {
+                    latitude: 52.20148128,
+                    longitude: 21.12398412
+                },
+                rideTypes: Set.of(RideType.ROAD),
+                city: "Warszawa"
             }
         ),
 
@@ -1698,7 +1826,9 @@ const Api: RideHttpApi = {
         }
 
         if (!query.rideTypes.isEmpty()) {
-            filteredRides = filteredRides.filter(ride => query.rideTypes.contains(ride.rideType))
+            filteredRides = filteredRides.filter(ride => 
+                query.rideTypes.map(queryRide => ride.rideTypes.contains(queryRide)).contains(true)
+            )
         }
 
         return filteredRides

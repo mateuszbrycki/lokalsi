@@ -6,8 +6,7 @@ import {
     RidesFilterConfig,
     RideType
 } from "../../types";
-import {Button, Col, Row} from "react-bootstrap";
-import RideBadge from "./RideBadge";
+import {Col, Row} from "react-bootstrap";
 import {Multiselect} from "multiselect-react-dropdown";
 import * as Icon from "react-bootstrap-icons";
 
@@ -26,24 +25,10 @@ const RidesFilters: React.FC<RidesFiltersProps & RidesFiltersActionProps> = ({co
     const [selectedTimes, setSelectedTimes] = useState<Set<MultiselectOption>>(Set())
     const [selectedDays, setSelectedDays] = useState<Set<MultiselectOption>>(Set())
 
+    const rideTypesMultiselectRef = useRef<Multiselect | null>(null);
     const citiesMultiselectRef = useRef<Multiselect | null>(null);
     const timesMultiselectRef = useRef<Multiselect | null>(null);
     const daysMultiselectRef = useRef<Multiselect | null>(null);
-
-
-    const onRideTypeButtonClicked: (value: RideType) => void = (value: RideType) => {
-        let newActiveButtons
-        if (selectedRideTypes.has(value)) {
-            newActiveButtons = selectedRideTypes.delete(value)
-        } else {
-            newActiveButtons = selectedRideTypes.add(value)
-        }
-        setSelectedRideTypes(newActiveButtons)
-    }
-
-    const isActive: (value: RideType) => string = (value: RideType) => {
-        return selectedRideTypes.has(value) ? 'active' : ''
-    }
 
     useEffect(() => {
         onFiltersUpdated(
@@ -56,19 +41,13 @@ const RidesFilters: React.FC<RidesFiltersProps & RidesFiltersActionProps> = ({co
         )
     }, [selectedRideTypes, selectedCities, selectedDays, selectedTimes, onFiltersUpdated])
 
-
-    const getRideButton: (rideType: RideType) => React.ReactNode = rideType =>
-        <Button className={`h-100 w-100 ride-filters-ride-type-button ${isActive(rideType)}`}
-                onClick={() => onRideTypeButtonClicked(rideType)}>
-            <RideBadge rideType={rideType}/>
-        </Button>
-
     const resetFilters = () => {
         setSelectedRideTypes(Set())
         setSelectedDays(Set())
         setSelectedTimes(Set())
         setSelectedCities(Set())
 
+        rideTypesMultiselectRef.current?.resetSelectedValues()
         citiesMultiselectRef.current?.resetSelectedValues()
         timesMultiselectRef.current?.resetSelectedValues()
         daysMultiselectRef.current?.resetSelectedValues()
@@ -77,11 +56,25 @@ const RidesFilters: React.FC<RidesFiltersProps & RidesFiltersActionProps> = ({co
     return <div id="rides-filters" className="mb-2 p-2">
         <Row className="h-100 g-0 row-cols-2">
             <Col className="col-xl-6 col-12 p-2">
-                <Row className="ride-filters-ride-type g-0">
+                {/* <Row className="ride-filters-ride-type g-0">
                     {config.rideTypes.map(rideType =>
                         <Col className="col-xxl-4 col-12 p-0 m-0" key={rideType.name}>{getRideButton(rideType)}</Col>
                     )}
-                </Row>
+                </Row> */}
+
+                <Multiselect
+                    options={config.rideTypes}
+                    displayValue="name"
+                    placeholder="Wybierz rodzaj ustawki"
+                    onSelect={(selectedList, selectedItem) => {
+                        setSelectedRideTypes(Set(selectedList))
+                    }}
+                    onRemove={(selectedList, selectedItem) => {
+                        setSelectedRideTypes(Set(selectedList))
+                    }}
+                    ref={rideTypesMultiselectRef}
+                />
+
             </Col>
 
             <Col className="col-xl-6 col-12 p-2">

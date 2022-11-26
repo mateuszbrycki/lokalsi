@@ -31,7 +31,7 @@ const RideMarker: React.FC<RideMarkerProps & RideMarkerActionProps> = (props) =>
         }
     }, [isActive, refReady, map]);
 
-    const iconMarkup = renderToStaticMarkup(<Icon.GeoAltFill style={{color: ride.rideType.color, fontSize: '2rem'}}/>);
+    const iconMarkup = renderToStaticMarkup(<Icon.GeoAltFill style={{color: ride.rideTypes.first()?.color, fontSize: '2rem'}}/>);
     const customMarkerIcon = divIcon({
         html: iconMarkup,
         iconAnchor: [15, 33],
@@ -45,7 +45,7 @@ const RideMarker: React.FC<RideMarkerProps & RideMarkerActionProps> = (props) =>
             }}>
                 <h2 className="ride-name fw-bold mt-2">{ride.name}</h2>
                 <div className="d-flex py-2 ps-2 pe-2">
-                    <RideBadge rideType={ride.rideType} className="me-1 mb-2 fs-6"/>
+                    <RideBadge rideTypes={ride.rideTypes} className="me-1 mb-2 fs-6"/>
                     <div><p className="fw-bold p-0 m-0 ride-marker-date-time mt-1 ms-2"><Icon.Calendar
                         className="me-2"/>{ride.day.name}, {ride.time.format(TIME_FORMATTER)}</p></div>
                 </div>

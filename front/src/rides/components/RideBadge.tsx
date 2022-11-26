@@ -1,8 +1,9 @@
 import React from "react";
+import {Set} from "immutable"
 import {RideType} from "../../types";
 
 export interface RideBadgeProps {
-    readonly rideType: RideType;
+    readonly rideTypes: Set<RideType>;
     readonly className?: string;
 }
 
@@ -12,19 +13,12 @@ export interface RideBadgeActionProps {
 
 const RideBadge: React.FC<RideBadgeProps & RideBadgeActionProps> = (props) => {
 
-    const {rideType, className} = props
-
-    const getTranslatedName = (rideType: RideType): string => {
-        if (rideType === RideType.ROAD) {
-            return "Szosa"
-        }
-
-        return rideType.name
-    }
+    const {rideTypes, className} = props
 
     return (
         <div className={className}>
-            <span className="badge" style={{backgroundColor: rideType.color}}>{getTranslatedName(rideType)}</span>
+            {rideTypes.map(rideType => <span className="badge" style={{backgroundColor: rideType.color}}>{rideType.name}</span>)}
+
         </div>
     )
 }

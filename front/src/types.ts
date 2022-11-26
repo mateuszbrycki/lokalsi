@@ -10,7 +10,7 @@ export interface Ride {
     readonly description: string;
     readonly url: RideUrls;
     readonly startingPoint: MapPoint;
-    readonly rideType: RideType;
+    readonly rideTypes: Set<RideType>;
     readonly city: string;
 }
 
@@ -27,10 +27,10 @@ export interface RideUrls {
 
 
 export class RideType {
-    public static readonly ROAD = new RideType('Road', '#3E885B');
+    public static readonly ROAD = new RideType('Szosa', '#3E885B');
     public static readonly GRAVEL = new RideType('Gravel', '#6b706f');
     public static readonly MTB = new RideType('MTB/XC', '#916953');
-    public static readonly FOR_LADIES = new RideType('For Ladies', '#916953');
+    public static readonly FOR_LADIES = new RideType('Dla kobiet', '#FFC0CB');
 
     private constructor(public readonly name: string, public readonly color: string) {
     }

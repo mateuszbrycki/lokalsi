@@ -20,7 +20,7 @@ function* onLoadRides(api: RideHttpApi): IterableIterator<unknown> {
         const rides: List<Ride> = yield api.getRides()
         yield put(RidesLoadedAction(rides))
 
-        const rideTypes = rides.map(ride => ride.rideType).toSet()
+        const rideTypes = rides.flatMap(ride => ride.rideTypes).toSet()
 
         const cities = rides.map(ride => ride.city).toSet().sort().map(city => {
             return {name: city, id: city, key: city}

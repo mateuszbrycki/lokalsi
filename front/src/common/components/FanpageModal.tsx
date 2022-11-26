@@ -1,24 +1,37 @@
 import React, {useState, useEffect} from 'react'
 import {Button, Modal} from "react-bootstrap";
+import Cookies from 'universal-cookie';
 
 export interface WindowDimensions {
     readonly width: number;
     readonly height: number;
 }
 
+const COOKIE_NAME = "user-closed-fanpage-modal";
+
 const FanpageModal: React.FC<any> = () => {
 
     const [showFanpageModal, setShowFanpageModal] = useState(false);
-
+    
     useEffect(() => {
-        const timer = setTimeout(() => {
-            setShowFanpageModal(true);
-        }, 6000);
-        return () => clearTimeout(timer);
+        if (!hasUserClosedModal()) {
+            const timer = setTimeout(() => {
+                setShowFanpageModal(true);
+            }, 6000);
+            return () => clearTimeout(timer);
+        }
+
+        return () => null;
       }, []);
+      
+    const cookies = new Cookies();
+    const hasUserClosedModal = () => cookies.get(COOKIE_NAME) === 'true'
+    const setCookieValue = (value: boolean) => cookies.set(COOKIE_NAME, value, {path: '/', maxAge: 31556926 }) //1 year
 
-
-    const handleCloseModal = () => setShowFanpageModal(false);
+    const handleCloseModal = () => {
+        setShowFanpageModal(false);
+        setCookieValue(true);
+    }
 
     const getWindowDimensions = (): WindowDimensions => {
         const {innerWidth: width, innerHeight: height} = window;

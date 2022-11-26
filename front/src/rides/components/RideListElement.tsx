@@ -27,7 +27,7 @@ const RideListElement: React.FC<RideMarkerProps & RideMarkerActionProps> = (prop
         <article key={ride.id} className="rides-list-element px-3 pt-1">
             <h2 className="ride-name fw-bold mt-2">{ride.name} </h2>
             <div className="d-flex py-2 ps-2 pe-2">
-                <RideBadge rideType={ride.rideType} className="me-1 mb-2 fs-7"/>
+                <RideBadge rideTypes={ride.rideTypes} className="me-1 mb-2 fs-7"/>
                 <div className="rides-list-element-city mb-2 mt-1 ms-2">
                     <Icon.PinFill className="me-2"/> {ride.city}
                 </div>
