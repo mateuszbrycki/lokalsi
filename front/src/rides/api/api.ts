@@ -1,6 +1,6 @@
 import {List, Set} from "immutable";
 import {Day, FilterQuery, Ride, RideType} from "../../types";
-import {LocalTime} from "@js-joda/core";
+import {LocalDate, LocalTime} from "@js-joda/core";
 import {TIME_FORMATTER} from "../../common/time";
 
 export interface RideHttpApi {
@@ -25,7 +25,8 @@ const Api: RideHttpApi = {
                     longitude: 19.910316
                 },
                 rideTypes: Set.of(RideType.ROAD),
-                city: "Kraków"
+                city: "Kraków",
+                lastVerified: LocalDate.parse("2023-02-23")
             },
             {
                 id: "2",
@@ -41,7 +42,7 @@ const Api: RideHttpApi = {
                     longitude:19.902603
                 },
                 rideTypes: Set.of(RideType.ROAD, RideType.FOR_LADIES),
-                city: "Kraków"
+                city: "Kraków",
             },
             {
                 id: "3",

@@ -1,5 +1,5 @@
 import {Map as LeafletMap, Popup as LeafletPopup} from "leaflet";
-import {LocalTime} from "@js-joda/core";
+import {LocalDate, LocalTime} from "@js-joda/core";
 import {Set} from "immutable";
 
 export interface Ride {
@@ -12,6 +12,7 @@ export interface Ride {
     readonly startingPoint: MapPoint;
     readonly rideTypes: Set<RideType>;
     readonly city: string;
+    readonly lastVerified?: LocalDate; // lastVerified: LocalDate.parse("2023-02-23")
 }
 
 export interface MapPoint {
