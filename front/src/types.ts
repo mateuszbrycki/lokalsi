@@ -1,6 +1,6 @@
 import {Map as LeafletMap, Popup as LeafletPopup} from "leaflet";
-import {LocalDate, LocalTime} from "@js-joda/core";
-import {Set} from "immutable";
+import {LocalDate, LocalDateTime, LocalTime, Month} from "@js-joda/core";
+import {Set, Map as ImmutableMap} from "immutable";
 
 export interface Ride {
     readonly id: RideId;
@@ -13,6 +13,53 @@ export interface Ride {
     readonly rideTypes: Set<RideType>;
     readonly city: string;
     readonly lastVerified?: LocalDate; // lastVerified: LocalDate.parse("2023-02-23")
+}
+
+export interface StartingMonthTimeEntry {
+    readonly startingMonth: Month;
+    readonly time: LocalTime;
+}
+
+export class StartingMonthTime {
+
+    private entries: ImmutableMap<Month, LocalTime>;
+
+    constructor(...entries: StartingMonthTimeEntry[]) {
+        this.entries = Set(entries)
+                    .sort(
+                        (valueA: StartingMonthTimeEntry, valueB: StartingMonthTimeEntry) => 
+                                valueA.startingMonth.compareTo(valueB.startingMonth))
+                    .toMap()
+                    .mapKeys(entry => entry.startingMonth)
+                    .map(entry => entry.time)
+    }
+
+    static of(time: string): StartingMonthTime {
+        return new StartingMonthTime(
+            { startingMonth: Month.JANUARY, time: LocalTime.parse(time)}
+        )
+    }
+
+    getTimeForCurrentMonth(): LocalTime {
+        const month: Month = LocalDateTime.now().month()
+        var time = this.entries.get(month);
+        if (time) {
+            return time;
+        }
+
+        
+        time = this.entries.first(LocalTime.parse("00:00"))
+        for (const key of Array.from(this.entries.keys())) {
+            if (month.compareTo(key) > 0) {
+                return time ? time : LocalTime.parse("00:00");
+            }
+            time = this.entries.get(key)
+        }
+
+        return time ? time : LocalTime.parse("00:00");
+
+    }
+
 }
 
 export interface MapPoint {

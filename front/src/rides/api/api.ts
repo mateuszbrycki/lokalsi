@@ -1,7 +1,8 @@
 import {List, Set} from "immutable";
-import {Day, FilterQuery, Ride, RideType} from "../../types";
-import {LocalDate, LocalTime} from "@js-joda/core";
+import {Day, FilterQuery, Ride, RideType, StartingMonthTime} from "../../types";
+import {LocalDate, LocalDateTime, LocalTime, Month} from "@js-joda/core";
 import {TIME_FORMATTER} from "../../common/time";
+import { ridesReducer } from "../store/reducers";
 
 export interface RideHttpApi {
     readonly getRides: () => List<Ride>
@@ -9,12 +10,16 @@ export interface RideHttpApi {
 }
 
 const Api: RideHttpApi = {
-    getRides: () =>
-        List.of(
+    getRides: () => {
+        let rides: List<Ride> = List.of(
             {
                 id: "1",
                 name: "72D Athlete Bike",
-                time: LocalTime.parse("17:30"),
+                // time: new StartingMonthTime(
+                //     {startingMonth: Month.FEBRUARY, time: LocalTime.parse("17:00")},
+                //     {startingMonth: Month.MARCH, time: LocalTime.parse("16:00")}
+                // )
+                time: StartingMonthTime.of("17:30"),
                 day: Day.MONDAY,
                 description: "7R Rowmix Team zapraszają na otwarte treningi kolarskie. Proponujemy wspólny trening dostosowany do trwającego sezonu startowego na rowerach górskich/szosowych na dwóch lub trzech poziomach zaawansowania, trwający ok 150 min. pod okiem i uchem trenera.",
                 url: {
@@ -31,7 +36,7 @@ const Api: RideHttpApi = {
             {
                 id: "2",
                 name: "IC Babski Blat",
-                time: LocalTime.parse("17:00"),
+                time: StartingMonthTime.of("17:00"),
                 day: Day.TUESDAY,
                 description: "Formuła IC. Czyli imitujemy prawdziwe ściganie. Dziewczyny z naszego teamu wytyczyły juz trasę, i nawet ją przejechały 😊. Stravovy segment o nazwie 'Babski blat' to wasza runda wyścigowa. Wygrywa ta, która poprostu przyjedzie na metę pierwsza 😃 Możecie atakować, naciągać, spawać, albo spokojnie czekać na ostatnie metry 😃.",
                 url: {
@@ -47,7 +52,7 @@ const Api: RideHttpApi = {
             {
                 id: "3",
                 name: "Damskie wtorki z Profidea dla Kobiet",
-                time: LocalTime.parse("17:00"),
+                time: StartingMonthTime.of("17:00"),
                 day: Day.TUESDAY,
                 description: "\"Nieważne jak szybko, nieważne jak daleko, ale ważne, że RAZEM ❤️\". Grupa średniozaawansowana. Zapraszamy wszystkie panie, które kontynuują z nami przygodę na rowerze szosowym i gravelowym. Jedziemy przejażdżki typu Coffee Ride. Nie ścigamy się, tylko zwiedzamy nowe trasy, uczymy się techniki, jazdy w grupie i bezpiecznego poruszania po drogach. Rozkręć z nami kobiece kolarstwo",
                 url: {
@@ -63,7 +68,7 @@ const Api: RideHttpApi = {
             {
                 id: "4",
                 name: "Damskie czwartki z Profidea dla Kobiet",
-                time: LocalTime.parse("17:00"),
+                time: StartingMonthTime.of("17:00"),
                 day: Day.THURSDAY,
                 description: "Zapraszamy wszystkie panie, które rozpoczynają jazdę na rowerach szosowych i gravelowych. Jedziemy przejażdżki typu Coffee Ride. Nie ścigamy się, tylko zwiedzamy nowe trasy, uczymy się techniki, jazdy w grupie i bezpiecznego poruszania po drogach. \"Nieważne jak szybko, nieważne jak daleko, ważne, że RAZEM\".",
                 url: {
@@ -79,7 +84,7 @@ const Api: RideHttpApi = {
             {
                 id: "5",
                 name: "Damskie środy z Profidea dla Kobiet",
-                time: LocalTime.parse("17:00"),
+                time: StartingMonthTime.of("17:00"),
                 day: Day.WEDNESDAY,
                 description: "Grupa zaawansowana. Zapraszamy wszystkie panie na rowerach szosowych, które opanowały sztukę jazdy na kole i chcą spróbować sił w damskim peletonie. Rozkręć z nami kobiece kolarstwo.",
                 url: {
@@ -95,7 +100,7 @@ const Api: RideHttpApi = {
             {
                 id: "6",
                 name: "Ekspressoride bikeshow.cc",
-                time: LocalTime.parse("09:30"),
+                time: StartingMonthTime.of("09:30"),
                 day: Day.MONDAY,
                 description: "Ustawka rowerowa dla prywaciarzy. Kierunek Niepołomice.",
                 url: {
@@ -111,7 +116,7 @@ const Api: RideHttpApi = {
             {
                 id: "7",
                 name: "Ekspressoride bikeshow.cc",
-                time: LocalTime.parse("09:30"),
+                time: StartingMonthTime.of("09:30"),
                 day: Day.FRIDAY,
                 description: "Ustawka rowerowa dla prywaciarzy. Kierunek Czernichów.",
                 url: {
@@ -127,7 +132,7 @@ const Api: RideHttpApi = {
             {
                 id: "8",
                 name: "Czwartki z Chodźże na Rower",
-                time: LocalTime.parse("17:20"),
+                time: StartingMonthTime.of("17:20"),
                 day: Day.THURSDAY,
                 description: "Grupa \"Co, ja nie podjadę? Potrzymaj mi bidon!\", czyli nietypowe podjazdy z #KrulLasu.",
                 url: {
@@ -143,7 +148,7 @@ const Api: RideHttpApi = {
             {
                 id: "9",
                 name: "Czwartki z Chodźże na Rower",
-                time: LocalTime.parse("17:30"),
+                time: StartingMonthTime.of("17:30"),
                 day: Day.THURSDAY,
                 description: "Mocne XC, czyli grupa Miłosza. Efektywne bez przestojów, stricte 2h co do minuty żwawej jazdy, przeważnie Sikornik i Wolskiego. W czwartki moga pojawiać się dłuższe, bo 3h przejazdy po okolicznych lasach albo w Dolinki.\n" +
                     "Szczegóły pod wydarzeniem.\n" +
@@ -161,7 +166,7 @@ const Api: RideHttpApi = {
             {
                 id: "10",
                 name: "Czwartki z Chodźże na Rower",
-                time: LocalTime.parse("17:00"),
+                time: StartingMonthTime.of("17:00"),
                 day: Day.THURSDAY,
                 description: "Hutasy i Mateusz w roli głownej. Dokładnych informacji szukajcie pod wydarzeniem i w naszej grupie.",
                 url: {
@@ -177,7 +182,7 @@ const Api: RideHttpApi = {
             {
                 id: "11",
                 name: "Czwartki z Chodźże na Rower",
-                time: LocalTime.parse("17:00"),
+                time: StartingMonthTime.of("17:00"),
                 day: Day.THURSDAY,
                 description: "Kuba i Grupetto łognitto 🔥🔥🔥 Szczegółów szukaj w grupie i pod wydarzeniem.",
                 url: {
@@ -193,7 +198,7 @@ const Api: RideHttpApi = {
             {
                 id: "12",
                 name: "Wrześniowe wtorki z Cyklo Jurą w terenie",
-                time: LocalTime.parse("17:00"),
+                time: StartingMonthTime.of("17:00"),
                 day: Day.TUESDAY,
                 description: "Stratujemy max 5 minut po wyznaczonym czasie z miejsca zbiórki.",
                 url: {
@@ -209,7 +214,7 @@ const Api: RideHttpApi = {
             {
                 id: "13",
                 name: "Pokręcona Środa z CJZ",
-                time: LocalTime.parse("16:30"),
+                time: StartingMonthTime.of("16:30"),
                 day: Day.WEDNESDAY,
                 description: "Zapraszamy szosowców na środowe przejażdżki z CJZ TEAM 🚲😎\n" +
                     "TRASA: ~65 km; ~700 m up\n" +
@@ -228,7 +233,7 @@ const Api: RideHttpApi = {
             {
                 id: "14",
                 name: "Damska Szosa",
-                time: LocalTime.parse("16:30"),
+                time: StartingMonthTime.of("16:30"),
                 day: Day.WEDNESDAY,
                 description: "Damska szosa w Krakowie 🚴🏻‍♀️\n" +
                     "Jeździmy w tygodniu i w weekendy, czasem szybko, czasem wolno, w różnych kierunkach, na ciastka, po QOMy, ale przede wszystkim w zgranej grupie dziewczyn na szosach.\n" +
@@ -246,7 +251,7 @@ const Api: RideHttpApi = {
             {
                 id: "15",
                 name: "Ustawka kolarska z Bike RS",
-                time: LocalTime.parse("17:00"),
+                time: StartingMonthTime.of("17:00"),
                 day: Day.THURSDAY,
                 description: "Jeździmy w zróżnicowanym terenie, głównie po \"południowej\" stronie Krakowa, ze względu na naszą lokalizację.\n" +
                     "Zapraszamy do wspólnej jazdy",
@@ -263,7 +268,7 @@ const Api: RideHttpApi = {
             {
                 id: "16",
                 name: "Gravelowy wtorek z Bike RS",
-                time: LocalTime.parse("17:00"),
+                time: StartingMonthTime.of("17:00"),
                 day: Day.TUESDAY,
                 description: "Jeździmy w zróżnicowanym terenie, głównie po \"południowej\" stronie Krakowa, ze względu na naszą lokalizację.\n" +
                     "Zapraszamy do wspólnej jazdy",
@@ -280,7 +285,7 @@ const Api: RideHttpApi = {
             {
                 id: "17",
                 name: "Cichy kącik",
-                time: LocalTime.parse("10:10"),
+                time: StartingMonthTime.of("10:10"),
                 day: Day.SATURDAY,
                 description: "Grupa krakowskich kolarzy. Regularne spotkania na treningi szosowe w weekendy.",
                 url: {
@@ -296,7 +301,7 @@ const Api: RideHttpApi = {
             {
                 id: "18",
                 name: "Coffee Ride",
-                time: LocalTime.parse("10:30"),
+                time: StartingMonthTime.of("10:30"),
                 day: Day.SATURDAY,
                 description: "Grupa sympatyków kolarstwa szosowego. Celem tej ustawki zawsze będzie \"mała czarna\" przy okazji\n",
                 url: {
@@ -312,7 +317,7 @@ const Api: RideHttpApi = {
             {
                 id: "19",
                 name: "NIEPOkręcę",
-                time: LocalTime.parse("09:30"),
+                time: StartingMonthTime.of("09:30"),
                 day: Day.SATURDAY,
                 description: "Znudziła Ci się samotna jazda na szosie? - Tu możesz spróbować swoich sił jazdy w peletonie. Od kwietnia do końca października zbiórka o 9.30.",
                 url: {
@@ -328,7 +333,7 @@ const Api: RideHttpApi = {
             {
                 id: "20",
                 name: "Grupetto Zielona Góra Ride",
-                time: LocalTime.parse("10:00"),
+                time: StartingMonthTime.of("10:00"),
                 day: Day.SATURDAY,
                 description: "Każdy, kto chce pojeździć w grupie, jest mile widziany!",
                 url: {
@@ -344,7 +349,7 @@ const Api: RideHttpApi = {
             {
                 id: "21",
                 name: "Palma Ride",
-                time: LocalTime.parse("17:15"),
+                time: StartingMonthTime.of("17:15"),
                 day: Day.TUESDAY,
                 description: "Treningowa ustawka z Grupetto Zielona Góra.",
                 url: {
@@ -360,7 +365,7 @@ const Api: RideHttpApi = {
             {
                 id: "22",
                 name: "Palma Ride",
-                time: LocalTime.parse("17:15"),
+                time: StartingMonthTime.of("17:15"),
                 day: Day.THURSDAY,
                 description: "Treningowa ustawka z Grupetto Zielona Góra.",
                 url: {
@@ -376,7 +381,7 @@ const Api: RideHttpApi = {
             {
                 id: "23",
                 name: "Niedzielna100 Poznań Winogrady",
-                time: LocalTime.parse("10:00"),
+                time: StartingMonthTime.of("10:00"),
                 day: Day.SUNDAY,
                 description: "Dla fanów szosowych dwóch kółek, którzy lubią kręcić kilometry w super towarzystwie, pić dobrą kawę, jeść ciasto i cieszyć się jazdą.",
                 url: {
@@ -392,7 +397,7 @@ const Api: RideHttpApi = {
             {
                 id: "24",
                 name: "GraveLove Poznań",
-                time: LocalTime.parse("10:00"),
+                time: StartingMonthTime.of("10:00"),
                 day: Day.SUNDAY,
                 description: "Celem organizowanych utawek kolarskich GraveLove Niedziele oraz innych wydarzeń rowerowych pod szyldem GraveLove Poznań jest popularyzacja Poznańskego kolarstwa przełajowego i gravelowego, zwiększenie liczby osób jeżdżących na rowerach \"szutrowych\", integracja Poznańskego środowiska kolarskiego oraz prezentowanie i promowanie szutrowej odmany koalrstwa.",
                 url: {
@@ -408,7 +413,7 @@ const Api: RideHttpApi = {
             {
                 id: "25",
                 name: "Trening Szosowy Zgrupka Team",
-                time: LocalTime.parse("09:00"),
+                time: StartingMonthTime.of("09:00"),
                 day: Day.SATURDAY,
                 description: "Ustawki MTB ,kolarskie, zakładki triathlonowe, wypady rekreacyjne i wydarzenia promujące kolarstwo. Społeczność fanów kolarstwa i triathlonu.",
                 url: {
@@ -424,7 +429,7 @@ const Api: RideHttpApi = {
             {
                 id: "26",
                 name: "Szosa ONLY FOR GIRLS",
-                time: LocalTime.parse("09:00"),
+                time: StartingMonthTime.of("09:00"),
                 day: Day.SATURDAY,
                 description: "Szosa dla Dziewczyn- TYLKO DLA DZIEWCZYN! Panowie będą odsyłani do domu. Będzie przerwa na kawe( o ile pogoda pozwoli). Obowiązkowy kask i oświetlenie tył.",
                 url: {
@@ -440,7 +445,7 @@ const Api: RideHttpApi = {
             {
                 id: "27",
                 name: "Szosowe Czwartki Koszalin",
-                time: LocalTime.parse("17:00"),
+                time: StartingMonthTime.of("17:00"),
                 day: Day.THURSDAY,
                 description: "My jesteśmy zapaleńcami, którzy „zimują” na sali i na wiosnę zaczynają trenować na dworze. Naszym ulubionym sportem jest kolarstwo szosowe. Nie zawsze mamy czas na wspólną jazdę, ale czwartek stał się takim dniem, gdy większość zostawia wszystko i jedzie. Stąd proponujemy wspólne czwartkowe treningi na szosie. Startujemy w każdy czwartek o godz. 17:00 spod Góry Chełmskiej (róg Słupskiej i Rolnej), a trasa to ok. 60-65 km.",
                 url: {
@@ -457,7 +462,7 @@ const Api: RideHttpApi = {
             {
                 id: "28",
                 name: "Sobotnia Grupa Kolarska",
-                time: LocalTime.parse("10:00"),
+                time: StartingMonthTime.of("10:00"),
                 day: Day.SATURDAY,
                 description: "Trasa od 60 do 90 km\n" +
                     "3 grupy w zależności od stopnia zaawansowania:\n" +
@@ -477,7 +482,7 @@ const Api: RideHttpApi = {
             {
                 id: "29",
                 name: "Niedzielna Grupa Gravelowa",
-                time: LocalTime.parse("10:00"),
+                time: StartingMonthTime.of("10:00"),
                 day: Day.SUNDAY,
                 description: "Kto ma ochotę na wspólną przejażdżkę, to zapraszam serdecznie w niedzielę :):):)",
                 url: {
@@ -493,7 +498,7 @@ const Api: RideHttpApi = {
             {
                 id: "30",
                 name: "Daniel's Lab MTB",
-                time: LocalTime.parse("11:00"),
+                time: StartingMonthTime.of("11:00"),
                 day: Day.SUNDAY,
                 description: "Trening składa się z rozgrzewki, która prowadzona jest we wspólnym tempie (standardowo jest to dojazd do Góry Bocianek), zasadniczej części treningu, kiedy każdy z uczestników jedzie zgodnie z własnym programem i tempem (pętle o długości ok 7 -14 km w okolicach Góry Bukowej i Trzebiesławic) i zakończenia, kiedy grupa ponownie zbija się w „kupę” i w spokojnym tempie wraca do Molo Pogoria III.",
                 url: {
@@ -509,7 +514,7 @@ const Api: RideHttpApi = {
             {
                 id: "31",
                 name: "KFC Ride",
-                time: LocalTime.parse("09:00"),
+                time: StartingMonthTime.of("09:00"),
                 day: Day.SUNDAY,
                 description: "Jedziemy spokojnie jedną grupą.\n" +
                     "Tempo oczywiście 35-37km/h, kto nie daje rady ten nie daje zmian i odpoczywa jadąc na kole.\n" +
@@ -527,7 +532,7 @@ const Api: RideHttpApi = {
             {
                 id: "32",
                 name: "KTC Kielce",
-                time: LocalTime.parse("10:00"),
+                time: StartingMonthTime.of("10:00"),
                 day: Day.SUNDAY,
                 description: "Mocny trening z elementami wyścigowymi. Następnie spotkanie na pizza/piwo w pizzeria „Oliwa” przy zalewie w Cedzynie.\n",
                 url: {
@@ -543,7 +548,7 @@ const Api: RideHttpApi = {
             {
                 id: "33",
                 name: "Infrasettimanale Classico Katowice",
-                time: LocalTime.parse("17:00"),
+                time: StartingMonthTime.of("17:00"),
                 day: Day.WEDNESDAY,
                 description: "IC Katowice to otwarte treningi kolarskie, odbywające się cyklicznie w Katowicach. Zostały zapoczątkowane kilka lat temu przez lokalnych pasjonatów kolarstwa, zyskując z czasem kolejnych uczestników, aż do obecnej, naprawdę wielkiej popularności - która z pewnością jeszcze wzrośnie. Coraz częściej na starcie katowickiego IC staje na rowerach szosowych ponad setka kolarzy.",
                 url: {
@@ -560,7 +565,7 @@ const Api: RideHttpApi = {
             {
                 id: "34",
                 name: "Coffee Ride z Cidry na Szosie",
-                time: LocalTime.parse("18:00"),
+                time: StartingMonthTime.of("18:00"),
                 day: Day.WEDNESDAY,
                 description: "Zapraszamy jak co środę na spokojną wspólną przejażdżkę po naszych okolicach:)",
                 url: {
@@ -576,7 +581,7 @@ const Api: RideHttpApi = {
             {
                 id: "35",
                 name: "Rondo Babka",
-                time: LocalTime.parse("09:00"),
+                time: StartingMonthTime.of("09:00"),
                 // TODO dodać sobotę, więcej info na stronie
                 day: Day.SUNDAY,
                 description: "Na tzw. \"Babkę\" przyjeżdża od kilku, do nawet 80-90 osób. Frekwencja uzależniona jest od pogody, pory roku itp. We wszystkie dni świąteczne (zaznaczone w kaledarzu na czerwono) spotykamy sie tak jak w weekendy.",
@@ -594,7 +599,7 @@ const Api: RideHttpApi = {
             {
                 id: "36",
                 name: "Śląskie Kręcenie",
-                time: LocalTime.parse("17:40"),
+                time: StartingMonthTime.of("17:40"),
                 day: Day.WEDNESDAY,
                 description: "Śląskie Kręcenie, czyli wspólna jazda w grupie. Nie jest to wyścig ani żaden rodzaj rywalizacji. Na naszych spotkaniach powinna panować rodzinno-kolarska atmosfera. Zarówno uśmiech, jak i pozytywne nastawienie są bardzo mile widziane.",
                 url: {
@@ -610,7 +615,7 @@ const Api: RideHttpApi = {
             {
                 id: "37",
                 name: "Grupa Głębokie",
-                time: LocalTime.parse("10:00"),
+                time: StartingMonthTime.of("10:00"),
                 // TODO dodać niedzielę, wtorek oraz środę
                 day: Day.SATURDAY,
                 description: "Kultowe miejsce spotkań szosowych w Szczecinie.",
@@ -627,7 +632,7 @@ const Api: RideHttpApi = {
             {
                 id: "38",
                 name: "Łódź Retkinia (zwana Hyunda-iem)",
-                time: LocalTime.parse("11:15"),
+                time: StartingMonthTime.of("11:15"),
                 day: Day.SATURDAY,
                 description: "Długość rundy – 60,3km. Jeżdżona cały rok.",
                 url: {
@@ -643,7 +648,7 @@ const Api: RideHttpApi = {
             {
                 id: "39",
                 name: "Łódź Retkinia (zwana Hyunda-iem)",
-                time: LocalTime.parse("10:15"),
+                time: StartingMonthTime.of("10:15"),
                 day: Day.SUNDAY,
                 description: "Długość rundy – 60,3km. Jeżdżona cały rok.",
                 url: {
@@ -659,7 +664,7 @@ const Api: RideHttpApi = {
             {
                 id: "40",
                 name: "Łódź KASZTANY",
-                time: LocalTime.parse("10:15"),
+                time: StartingMonthTime.of("10:15"),
                 day: Day.SATURDAY,
                 description: "Kasztany to zwyczajowa nazwa miejsca spotkań oraz grupy kolarzy amatorów na rogu ulicy Zgierskiej i Julianowskiej w Łodzi. Określenie wywodzi się z legendarnej Grupy Diesnera, a inspiracją dla nazwy były drzewa kasztanowca, pod którymi się spotykamy (stąd też nasz logotyp). Grupa ma charakter sportowy i szybka jazda jest w cenie. Nie przejmuj się, jeżeli obawiasz się, że możesz nie dać rady. Gwarantujemy nie tylko “krew – pot – i łzy”, ale też niepowtarzalną atmosferę.",
                 url: {
@@ -675,7 +680,7 @@ const Api: RideHttpApi = {
             {
                 id: "41",
                 name: "Łódź Apteka",
-                time: LocalTime.parse("10:15"),
+                time: StartingMonthTime.of("10:15"),
                 day: Day.SUNDAY,
                 description: "Po kilku pierwszych kilometrach skręcamy w lewo do miejscowości Dobra, gdzie dzielimy się na dwie dywizje. Mocniejsza grupa jedzie w lewo, spokojniejsza prosto.",
                 url: {
@@ -691,7 +696,7 @@ const Api: RideHttpApi = {
             {
                 id: "42",
                 name: "Łódź Rzgowska",
-                time: LocalTime.parse("10:15"),
+                time: StartingMonthTime.of("10:15"),
                 day: Day.SUNDAY,
                 description: "Zbiórki na treningi – RZGOWSKA.\n",
                 url: {
@@ -707,7 +712,7 @@ const Api: RideHttpApi = {
             {
                 id: "43",
                 name: "Łódź JAROSZKI",
-                time: LocalTime.parse("16:15"),
+                time: StartingMonthTime.of("16:15"),
                 day: Day.WEDNESDAY,
                 description: "Zbiórki na treningi – JAROSZKI.",
                 url: {
@@ -723,7 +728,7 @@ const Api: RideHttpApi = {
             {
                 id: "44",
                 name: "ALEKSANDRÓW",
-                time: LocalTime.parse("10:00"),
+                time: StartingMonthTime.of("10:00"),
                 day: Day.SUNDAY,
                 description: "Trasa ma od 65km do 85km. Zmieniamy rundy w zależności od pogody, pory roku, wiatru, ilości osób, chęci. Po około 15km dołącza do nas grupa z Ozorkowa – ci ubrani na zielono którzy także od czasu do czasu pojawiają się na niedzielnej trasie spod Apteki.",
                 url: {
@@ -740,7 +745,7 @@ const Api: RideHttpApi = {
             {
                 id: "45",
                 name: "Infrasettimanale Classico Gliwice",
-                time: LocalTime.parse("18:00"),
+                time: StartingMonthTime.of("18:00"),
                 day: Day.WEDNESDAY,
                 description: "Środowe treningi kolarskie w mocnym tempie, od kwietnia do października. Każdy jest mile widziany - doświadczeni zawodnicy i amatorzy oraz nowicjusze.",
                 url: {
@@ -756,7 +761,7 @@ const Api: RideHttpApi = {
             {
                 id: "46",
                 name: "Infrasettimanale Classico Radom",
-                time: LocalTime.parse("18:00"),
+                time: StartingMonthTime.of("18:00"),
                 day: Day.WEDNESDAY,
                 description: "Każdy uczestnik punktowanego treningu IC Radom bierze w nim udział na własną odpowiedzialność.\n" +
                     "Każdy uczestnik treningu IC Radom powinien jechać zgodnie z przepisami ruchu drogowego.",
@@ -773,7 +778,7 @@ const Api: RideHttpApi = {
             {
                 id: "47",
                 name: "Infrasettimanale Classico Katowice Podlesie",
-                time: LocalTime.parse("17:30"),
+                time: StartingMonthTime.of("17:30"),
                 day: Day.WEDNESDAY,
                 description: "W każdą środę w KatowICach - Podlesiu. Bufet IC zawsze po treningu u zbiegu ulic Szarych Szeregów - Kałuży, czyli na PG3. Zapraszamy wszystkich KIBICÓW na START oraz Bufet IC :)",
                 url: {
@@ -789,7 +794,7 @@ const Api: RideHttpApi = {
             {
                 id: "48",
                 name: "Infrasettimanale Classico Nowy Sącz",
-                time: LocalTime.parse("17:00"),
+                time: StartingMonthTime.of("17:00"),
                 day: Day.WEDNESDAY,
                 description: "Jeżdzimy stałą trasą, 3 premie i finisz. Trasa typowo klasyczna, więc każdy znajdzie tu dla siebie odpowiednie miejsce.",
                 url: {
@@ -805,7 +810,7 @@ const Api: RideHttpApi = {
             {
                 id: "49",
                 name: "Infrasettimanale Classico Podhale",
-                time: LocalTime.parse("17:00"),
+                time: StartingMonthTime.of("17:00"),
                 day: Day.WEDNESDAY,
                 description: "ŚRODOWY KLASYK - czyli otwarte treningi na szosie.",
                 url: {
@@ -821,7 +826,7 @@ const Api: RideHttpApi = {
             {
                 id: "50",
                 name: "Infrasettimanale Classico SKO",
-                time: LocalTime.parse("17:00"),
+                time: StartingMonthTime.of("17:00"),
                 day: Day.WEDNESDAY,
                 description: "To wspólne treningi na szosie z elementami ścigania, w których każdy bierze udział na własną odpowiedzialność, zobowiązując się do przestrzegania zasad ruchu drogowego, bezpieczeństwa i dobrego wychowania.",
                 url: {
@@ -837,7 +842,7 @@ const Api: RideHttpApi = {
             {
                 id: "51",
                 name: "Bajabongo Bike Atelier",
-                time: LocalTime.parse("17:00"),
+                time: StartingMonthTime.of("17:00"),
                 day: Day.MONDAY,
                 description: "Luźne tempo, 28 km/h. ",
                 url: {
@@ -853,7 +858,7 @@ const Api: RideHttpApi = {
             {
                 id: "52",
                 name: "Cortado ",
-                time: LocalTime.parse("16:45"),
+                time: StartingMonthTime.of("16:45"),
                 day: Day.TUESDAY,
                 description: "Ustawka kolarska organizowana przez Endurance Team",
                 url: {
@@ -869,7 +874,7 @@ const Api: RideHttpApi = {
             {
                 id: "53",
                 name: "Klasyczny Wtorek z Dobre Koło",
-                time: LocalTime.parse("18:20"),
+                time: StartingMonthTime.of("18:20"),
                 day: Day.TUESDAY,
                 description: "Nie ma osoby prowadzącej grupę, celem jest zrobienie dobrego treningu i poprawienie kondycji, a dodatkową motywacją będzie rywalizacja z innymi. Wszyscy startujemy razem, a grupy same uformują się w zależności od zaawansowania.",
                 url: {
@@ -885,7 +890,7 @@ const Api: RideHttpApi = {
             {
                 id: "54",
                 name: "Czwartek z Dobre Koło",
-                time: LocalTime.parse("18:20"),
+                time: StartingMonthTime.of("18:20"),
                 day: Day.THURSDAY,
                 description: "Ruszamy wspólnie na pętlę, którą kończymy w Dąbrowie Górniczej. Planowany dystans +/- 50km.",
                 url: {
@@ -901,7 +906,7 @@ const Api: RideHttpApi = {
             {
                 id: "55",
                 name: "Babska Środa",
-                time: LocalTime.parse("17:30"),
+                time: StartingMonthTime.of("17:30"),
                 day: Day.WEDNESDAY,
                 description: "Babska Środa to grupa kobiet, różniących się między sobą wiekiem, momentem w życiu, wyglądem, rodzajem wykonywanej pracy i wieloma innymi rzeczami ale wszystkie łączy pasja do kolarstwa, w różnych jego odmianach.",
                 url: {
@@ -917,7 +922,7 @@ const Api: RideHttpApi = {
             {
                 id: "56",
                 name: "WelBike Tour",
-                time: LocalTime.parse("18:00"),
+                time: StartingMonthTime.of("18:00"),
                 day: Day.WEDNESDAY,
                 description: "Jak środa, to upalanie łydy w dosłownym znaczeniu.",
                 url: {
@@ -933,7 +938,7 @@ const Api: RideHttpApi = {
             {
                 id: "57",
                 name: "Czwartkowa ustawka z Kietą",
-                time: LocalTime.parse("17:00"),
+                time: StartingMonthTime.of("17:00"),
                 day: Day.THURSDAY,
                 description: "Zapraszamy wszystkich na czwartkowy trening. Przy większej liczbie osób będziemy tworzyć dwie grupy (mocniejsza i słabsza). Tak aby każdy mógł dojechać w grupie do samego końca. Prosimy o zachowanie szczególnej ostrożności podczas jazdy! ",
                 url: {
@@ -949,7 +954,7 @@ const Api: RideHttpApi = {
             {
                 id: "58",
                 name: "Czwartkowa Runda",
-                time: LocalTime.parse("18:00"),
+                time: StartingMonthTime.of("18:00"),
                 day: Day.THURSDAY,
                 description: "Start w każdy czwartek, w ciągu całego roku. Kask obowiązkowy.",
                 url: {
@@ -965,7 +970,7 @@ const Api: RideHttpApi = {
             {
                 id: "59",
                 name: "Gravelowy Czwartek",
-                time: LocalTime.parse("17:30"),
+                time: StartingMonthTime.of("17:30"),
                 day: Day.THURSDAY,
                 description: "Serdecznie zapraszamy na cotygodniowe wyjazdy gravelowe z Roweroteką Gładysz. Trening połączony ze zwiedzaniem okolic Tarnowskie Góry a w szczególności okolicznych leśnych zakątków.\n" +
                     "Tempo rekreacyjne, dobra kolarska atmosfera i finisz na tarnogórskim rynku.",
@@ -982,7 +987,7 @@ const Api: RideHttpApi = {
             {
                 id: "60",
                 name: "Luźna Łyda Road",
-                time: LocalTime.parse("17:30"),
+                time: StartingMonthTime.of("17:30"),
                 day: Day.FRIDAY,
                 description: "To co piątkowe treningii na rowerach szosowych. Jak sama nazwa wskazuje ustawki na rowerach szosowych, dla początkujących jak i zawodników chcących zrobić lekki rozjazd przed weekendowym ściganiem.",
                 url: {
@@ -998,7 +1003,7 @@ const Api: RideHttpApi = {
             {
                 id: "61",
                 name: "TRI Zakładka 40+4",
-                time: LocalTime.parse("09:00"),
+                time: StartingMonthTime.of("09:00"),
                 day: Day.SATURDAY,
                 description: "Zapraszam Wszystkich chętnych na sobotnią Tri ustawkę - zakładkę nazwaną 40+4 (około 40km🚴🏻‍♂️+4km🏃‍♂️🔥)",
                 url: {
@@ -1014,7 +1019,7 @@ const Api: RideHttpApi = {
             {
                 id: "62",
                 name: "Tempo 30",
-                time: LocalTime.parse("12:00"),
+                time: StartingMonthTime.of("12:00"),
                 day: Day.SATURDAY,
                 description: "Sobotnia ustawka organizowana przez Fenix Tychy.",
                 url: {
@@ -1030,7 +1035,7 @@ const Api: RideHttpApi = {
             {
                 id: "63",
                 name: "Ustawki kolarskie - Grodziec",
-                time: LocalTime.parse("10:00"),
+                time: StartingMonthTime.of("10:00"),
                 day: Day.SUNDAY,
                 description: "Tradycyjne wspólne niedzielne treningi na dwóch rundach - MEGA oraz STANDARD.",
                 url: {
@@ -1046,7 +1051,7 @@ const Api: RideHttpApi = {
             {
                 id: "64",
                 name: "Gliwice na Górę Św. Anny",
-                time: LocalTime.parse("10:00"),
+                time: StartingMonthTime.of("10:00"),
                 day: Day.SUNDAY,
                 description: "Wspólny wyjazd gliwickich kolarzy na Górę Świętej Anny",
                 url: {
@@ -1061,7 +1066,7 @@ const Api: RideHttpApi = {
             {
                 id: "65",
                 name: "Niedzielna ustawka z Fenix Tychy",
-                time: LocalTime.parse("11:00"),
+                time: StartingMonthTime.of("11:00"),
                 day: Day.SUNDAY,
                 description: "Niedzielna ustawka z Fenix Tychy.",
                 url: {
@@ -1077,7 +1082,7 @@ const Api: RideHttpApi = {
             {
                 id: "66",
                 name: "Ustawka XC_POZ",
-                time: LocalTime.parse("11:00"),
+                time: StartingMonthTime.of("11:00"),
                 day: Day.THURSDAY,
                 description: "Dla wszystkich mających wolne, albo pracujących zdalnie 😃",
                 url: {
@@ -1093,7 +1098,7 @@ const Api: RideHttpApi = {
             {
                 id: "67",
                 name: "Pasjonaci Kolarstwa Andrespol",
-                time: LocalTime.parse("10:00"),
+                time: StartingMonthTime.of("10:00"),
                 day: Day.SUNDAY,
                 description: "Zawodnicy, Amatorzy, kilka grup podzielonych według dystansu i średniej prędkości. Panie i Panowie. Zapraszamy!",
                 url: {
@@ -1109,7 +1114,7 @@ const Api: RideHttpApi = {
             {
                 id: "68",
                 name: "Infrasettimanale Classico Zabrnie",
-                time: LocalTime.parse("17:36"),
+                time: StartingMonthTime.of("17:36"),
                 day: Day.WEDNESDAY,
                 description: "Kolarskie środy z nutką ścigania zrzeszające kolarzy z okolic Tarnobrzega, Gorzyc, Sandomierza, Stalowej Woli, Nowej Dęby i reszty galaktyki ;) Godzinna jest zmienna w zależności od okresu sezonu.",
                 url: {
@@ -1125,7 +1130,7 @@ const Api: RideHttpApi = {
             {
                 id: "69",
                 name: "Zorza Tarnobrzeg",
-                time: LocalTime.parse("10:00"),
+                time: StartingMonthTime.of("10:00"),
                 day: Day.SUNDAY,
                 description: "Reaktywowana grupa, istniejąca w latach 70-tych na terenie Tarnobrzega i okolic.",
                 url: {
@@ -1141,7 +1146,7 @@ const Api: RideHttpApi = {
             {
                 id: "70",
                 name: "Gravel/MTB z Wertykalem",
-                time: LocalTime.parse("11:00"),
+                time: StartingMonthTime.of("11:00"),
                 day: Day.SATURDAY,
                 description: "Ustawka gravelowa i MTB. Około 2 godzinki, tempo umiarkowane. Prowadzone przez trenerów.",
                 url: {
@@ -1157,7 +1162,7 @@ const Api: RideHttpApi = {
             {
                 id: "71",
                 name: "Szybka Północ",
-                time: LocalTime.parse("17:00"),
+                time: StartingMonthTime.of("17:00"),
                 day: Day.WEDNESDAY,
                 description: "Ustawka tempo tempo +33km/h. Dla kobiet i dla mężczyzn, ale płeć nie ma tu znaczenia. Liczy się fun, ból w nogach, krew w płucach :D i nowe PRk. Jak się dobrze przyjrzeć, jest gdzie skrócić, gdyby deszczyk, gdyby bombka, gdyby tak się chciało :)" +
                     " Obowiązkowe: kask, dętka/mleko/łaty + pompa :) Pamiętaj o: lampy przód-tył, bidon, żel/baton. Zapraszamy 💙",
@@ -1174,7 +1179,7 @@ const Api: RideHttpApi = {
             {
                 id: "72",
                 name: "MUS Mikołowska Ustawka Szosowa",
-                time: LocalTime.parse("17:00"),
+                time: StartingMonthTime.of("17:00"),
                 day: Day.TUESDAY,
                 description: "2 grupy: mocna średnia 35/36 km/h oraz grupa dla wszystkich średnia 28/30.",
                 url: {
@@ -1190,7 +1195,7 @@ const Api: RideHttpApi = {
             {
                 id: "73",
                 name: "MUS Mikołowska Ustawka Szosowa",
-                time: LocalTime.parse("17:00"),
+                time: StartingMonthTime.of("17:00"),
                 day: Day.THURSDAY,
                 description: "2 grupy: mocna średnia 35/36 km/h oraz grupa dla wszystkich średnia 28/30.",
                 url: {
@@ -1206,7 +1211,7 @@ const Api: RideHttpApi = {
             {
                 id: "74",
                 name: "Ulanów",
-                time: LocalTime.parse("11:00"),
+                time: StartingMonthTime.of("11:00"),
                 day: Day.SUNDAY,
                 description: "Trasa 60-100 km po jakościowo bardzo dobrych i mało ruchliwych trasach. Najczęściej w powiecie niżańskim i biłgorajskim. Amatorzy spotykają się od wielu lat, a niektórzy są już w wielu emerytalnym. Tempo grupy ok. 30km/h",
                 url: {
@@ -1222,7 +1227,7 @@ const Api: RideHttpApi = {
             {
                 id: "75",
                 name: "Agenty z Południa",
-                time: LocalTime.parse("17:30"),
+                time: StartingMonthTime.of("17:30"),
                 day: Day.TUESDAY,
                 description: "Agenty z Południa zapraszają na żwawą ustawkę po południowych stronach Krakowa. Informacje o spotkaniu zawsze na Facebooku.",
                 url: {
@@ -1238,7 +1243,7 @@ const Api: RideHttpApi = {
             {
                 id: "76",
                 name: "Agenty z Południa",
-                time: LocalTime.parse("17:30"),
+                time: StartingMonthTime.of("17:30"),
                 day: Day.THURSDAY,
                 description: "Agenty z Południa zapraszają na żwawą ustawkę po południowych stronach Krakowa. Informacje o spotkaniu zawsze na Facebooku.",
                 url: {
@@ -1254,7 +1259,7 @@ const Api: RideHttpApi = {
             {
                 id: "77",
                 name: "Nie lubię poniedziałków",
-                time: LocalTime.parse("17:30"),
+                time: StartingMonthTime.of("17:30"),
                 day: Day.MONDAY,
                 description: "Nie lubię poniedziałków to cotygodniowe ustawki szosowe, które odbywają się od wiosny do jesieni i ruszamy na pętlę wokół komina. Długość pętli zależy od pory roku. Trasa do pobrania w formacie .gpx podawana jest przed każdą ustawką na FB. Informacja o ustawce podawana jest na profilu na facebook'u, na Stravie i na DecathlonGo.",
                 url: {
@@ -1270,7 +1275,7 @@ const Api: RideHttpApi = {
             {
                 id: "78",
                 name: "Rowerowa Środa z Decathlon Częstochowa Poczesna",
-                time: LocalTime.parse("17:30"),
+                time: StartingMonthTime.of("17:30"),
                 day: Day.WEDNESDAY,
                 description: "Rowerowe Środy jeżdżą cały rok ;) Kręcimy po lokalnych bezdrożach, głównie w kierunku Jury Krakowsko-Częstochowskiej. W zależności od pory roku i długości dnia, trasy są mniej lub bardziej techniczne. Spotykamy się w centrum miasta i ruszamy na manewry terenowe! :) Ślad trasy do pobrania w formacie .gpx udostępniany jest przed każdym wyjazdem na profil FB, Stravie i DecathlonGo.",
                 url: {
@@ -1286,7 +1291,7 @@ const Api: RideHttpApi = {
             {
                 id: "79",
                 name: "#wtorkowkazmtbpokrakowsku",
-                time: LocalTime.parse("17:00"),
+                time: StartingMonthTime.of("17:00"),
                 day: Day.TUESDAY,
                 description: "Wspolne treningi rowerowe ćwiczenie techniki w terenie.",
                 url: {
@@ -1302,7 +1307,7 @@ const Api: RideHttpApi = {
             {
                 id: "80",
                 name: "Ustawka szosowa z Decathlon Gliwice",
-                time: LocalTime.parse("17:15"),
+                time: StartingMonthTime.of("17:15"),
                 day: Day.THURSDAY,
                 description: "Zapraszamy na ustawkę szosową pod Decathlon Gliwice! Spotykamy się na parkingu przed sklepem i lecimy na rundę ok 50-60 km w stronę Mikołowa. Zapraszamy zarówno Panie i Panów. Tempo dostosujemy do możliwości grupy. Stawiamy na luźną rundę (25-30 km/h ..nikogo nie zostawimy). Można dołączyć na trasie. Jeśli będzie potrzeba, to dzielimy się na grupy. Zasady: Obowiązkowy kask. Obowiązują przepisy ruchu drogowego. Każdy uczestnik bierze udział na własną odpowiedzialność.",
                 url: {
@@ -1318,7 +1323,7 @@ const Api: RideHttpApi = {
             {
                 id: "81",
                 name: "Rondo Chwaszczyno",
-                time: LocalTime.parse("09:00"),
+                time: StartingMonthTime.of("09:00"),
                 day: Day.SATURDAY,
                 description: "Treningi kolarstwa szosowego. Obowiązkowy kask. Udział na własną odpowiedzialność!",
                 url: {
@@ -1334,7 +1339,7 @@ const Api: RideHttpApi = {
             {
                 id: "82",
                 name: "Coffee Wanoga",
-                time: LocalTime.parse("08:30"),
+                time: StartingMonthTime.of("08:30"),
                 day: Day.SUNDAY,
                 description: "Gravelowy coffee-ride przez TPK i bliskie Kaszuby. Kawa po drodze, staramy się czekac na każdego.",
                 url: {
@@ -1350,7 +1355,7 @@ const Api: RideHttpApi = {
             {
                 id: "83",
                 name: "Gdańsk Południe na START",
-                time: LocalTime.parse("09:00"),
+                time: StartingMonthTime.of("09:00"),
                 day: Day.SUNDAY,
                 description: "Projekt „Gdańsk Południe na START” to bezpłatne i otwarte treningi w południowych dzielnicach Gdańska dla WSZYSTKICH i dla KAŻDEGO.",
                 url: {
@@ -1366,7 +1371,7 @@ const Api: RideHttpApi = {
             {
                 id: "84",
                 name: "KTC Kołobrzeg",
-                time: LocalTime.parse("10:00"),
+                time: StartingMonthTime.of("10:00"),
                 day: Day.SUNDAY,
                 description: "Ustawki organizowane przez Kołobrzeskie Towarzystwo Cyklistów",
                 url: {
@@ -1383,7 +1388,7 @@ const Api: RideHttpApi = {
             {
                 id: "85",
                 name: "KTC Kołobrzeg",
-                time: LocalTime.parse("10:00"),
+                time: StartingMonthTime.of("10:00"),
                 day: Day.SATURDAY,
                 description: "Ustawki organizowane przez Kołobrzeskie Towarzystwo Cyklistów",
                 url: {
@@ -1400,7 +1405,7 @@ const Api: RideHttpApi = {
             {
                 id: "86",
                 name: "Elbląskie Ustawki Szosowe",
-                time: LocalTime.parse("09:00"),
+                time: StartingMonthTime.of("09:00"),
                 day: Day.SATURDAY,
                 description: "Ustawki szosowe organizowane przez grupę elbląskich szosowców. Wspólne treningi w grupie, wyjazdy na wyścigi. Miejsce startu ustawki jest potwierdzane na grupie na FB najpóźniej w sobotę.",
                 url: {
@@ -1417,7 +1422,7 @@ const Api: RideHttpApi = {
             {
                 id: "87",
                 name: "Kaliski trening na szosie",
-                time: LocalTime.parse("10:00"),
+                time: StartingMonthTime.of("10:00"),
                 day: Day.SUNDAY,
                 description: "Tradycyjnie od ponad 10lat treningi szosowe z czynnymi oraz byłymi kolarzami.",
                 url: {
@@ -1433,7 +1438,7 @@ const Api: RideHttpApi = {
             {
                 id: "88",
                 name: "Ustawki z PKK",
-                time: LocalTime.parse("17:00"),
+                time: StartingMonthTime.of("17:00"),
                 day: Day.TUESDAY,
                 description: "Zapraszamy we wtorki i czwartki na ustawki z Płaszowskim Kołem Kolarskim (PKK). Najczęściej lecimy w południowo-wschodnie i północno-wschodnie rubieże Krakowa, ale trasy i kierunki zmieniamy często. W weekendy często epic fondo z kawką w tle. Tempo raczej żwawe, choć na górkach poczekamy. Jeździmy w parach z zachowaniem etykiety jazdy w grupie i sygnalizujemy zagrożenia na drodze. Każdy jedzie na własną odpowiedzialność. Szczegóły ustawek zawsze na grupie FB i Club Strava",
                 url: {
@@ -1450,7 +1455,7 @@ const Api: RideHttpApi = {
             {
                 id: "89",
                 name: "Ustawki z PKK",
-                time: LocalTime.parse("17:00"),
+                time: StartingMonthTime.of("17:00"),
                 day: Day.THURSDAY,
                 description: "Zapraszamy we wtorki i czwartki na ustawki z Płaszowskim Kołem Kolarskim (PKK). Najczęściej lecimy w południowo-wschodnie i północno-wschodnie rubieże Krakowa, ale trasy i kierunki zmieniamy często. W weekendy często epic fondo z kawką w tle. Tempo raczej żwawe, choć na górkach poczekamy. Jeździmy w parach z zachowaniem etykiety jazdy w grupie i sygnalizujemy zagrożenia na drodze. Każdy jedzie na własną odpowiedzialność. Szczegóły ustawek zawsze na grupie FB i Club Strava",
                 url: {
@@ -1467,7 +1472,7 @@ const Api: RideHttpApi = {
             {
                 id: "90",
                 name: "Notojadzim CoffeeRide",
-                time: LocalTime.parse("10:00"),
+                time: StartingMonthTime.of("10:00"),
                 day: Day.SUNDAY,
                 description: "Niedzielne coffeeride'y z wyznaczoną trasa i prowadzacym dla dwóch grup. Grupa A = trasa krótsza ok. 40-50km. Grupa B = trasa dłuższa ok. 60-70km. W połowie trasy lub na jej końcu pit-stop na łyk espresso. Tempo odpowiednie dla wybranej grupy z akcentami na zdobycie KOM'a",
                 url: {
@@ -1484,7 +1489,7 @@ const Api: RideHttpApi = {
             {
                 id: "91",
                 name: "Szosa dla Zielonych - ustawki kolarskie dla początkujących",
-                time: LocalTime.parse("10:00"),
+                time: StartingMonthTime.of("10:00"),
                 day: Day.SATURDAY,
                 description: "W wydarzeniu, przed każdą ustawką będziemy komunikowali plan gry na jazdę wraz z trasą do pobrania. Wyjazdy w Góry Świętokrzyskie znajdziecie w oddzielnym wydarzeniu. Wpadnij jeżli nie masz z kim wyjść na rower, nie czujesz się pewnie w grupie, chcesz poprawić swoją technikę jazdy, nie wiesz o co chodzi z tą całą jazdą na kole lub po prostu szukasz rowerowych znajomości.",
                 url: {
@@ -1500,7 +1505,7 @@ const Api: RideHttpApi = {
             {
                 id: "92",
                 name: "Laski na szosach",
-                time: LocalTime.parse("18:10"),
+                time: StartingMonthTime.of("18:10"),
                 day: Day.TUESDAY,
                 description: "Ustawka odbywa się co dwa tygodnie! Ideą mojej babskiej jazdy jest zachęcenie kobiet do jazdy na szosie w grupie i totalnie bez spiny przejechanie się razem, pogaduchy, a na końcu ciastki 😁 Nie jedziemy na żadną średnią. Jest to jazda rekreacyjna z zachowaniem zasad jazdy w grupie. Prowadzę ja i jadę mega lekko. Około 30 km.",
                 url: {
@@ -1516,7 +1521,7 @@ const Api: RideHttpApi = {
             {
                 id: "93",
                 name: "Szosowa Ustawka Pomnikowa",
-                time: LocalTime.parse("10:00"),
+                time: StartingMonthTime.of("10:00"),
                 day: Day.SUNDAY,
                 description: "Najstarsza z przemyskich ustawek szosowych.",
                 url: {
@@ -1532,7 +1537,7 @@ const Api: RideHttpApi = {
             {
                 id: "94",
                 name: "Giant Gliwice Road Tour",
-                time: LocalTime.parse("17:00"),
+                time: StartingMonthTime.of("17:00"),
                 day: Day.TUESDAY,
                 description: "Przejazd dla wszystkich ze średnią w okolicach 30+km/h.",
                 url: {
@@ -1548,7 +1553,7 @@ const Api: RideHttpApi = {
             {
                 id: "95",
                 name: "Babska Korba Warszawa",
-                time: LocalTime.parse("17:30"),
+                time: StartingMonthTime.of("17:30"),
                 day: Day.THURSDAY,
                 description: "Regularne grupowe jazdy gravelem dla dziewczyn w Warszawie. Jest początek sezonu - ruszamy wolno i spokojnie, żeby rozruszać nogi po zimie! Spotykamy się w każdy czwartek o 17:30 w sklepie rowerowym Trirent na Racławickiej 99a, gdzie czekać na nas będzie kawa i pomoc przy przygotowaniu roweru do jazdy jeśli ktoś potrzebuje. 😇",
                 url: {
@@ -1565,7 +1570,7 @@ const Api: RideHttpApi = {
             {
                 id: "96",
                 name: "Babska Korba Gliwice",
-                time: LocalTime.parse("17:00"),
+                time: StartingMonthTime.of("17:00"),
                 day: Day.TUESDAY,
                 description: "Zapraszamy na wspólną luźną jazdę po asfalcie:) Planujemy pętelkę na chillu ze średnią około 21km/h, żeby każdy mógł zacząć uczyć się jeździć w grupie, w parach lub zrobić sobie rege w fajnym towarzystwie. Wyposażenie obowiązkowe: kask, lampki. Rower: szosa, gravel. Tempo: dostosowane do wszystkich uczestniczek. Luźna jazda.",
                 url: {
@@ -1582,7 +1587,7 @@ const Api: RideHttpApi = {
             {
                 id: "97",
                 name: "Babska Korba Katowice",
-                time: LocalTime.parse("17:30"),
+                time: StartingMonthTime.of("17:30"),
                 day: Day.THURSDAY,
                 description: "Cześć dziewczyny, Zapraszamy Was do wspólnego kręcenia na rowerze szosowym. Trasa jest na około 40km i obieramy kierunek Imielin. Udział w wydarzeniu tylko i wyłącznie w kasku i z kompletem lampek. Udział w wydarzeniu na własną odpowiedzialność.",
                 url: {
@@ -1599,7 +1604,7 @@ const Api: RideHttpApi = {
             {
                 id: "98",
                 name: "Babska Korba Trójmiasto",
-                time: LocalTime.parse("10:00"),
+                time: StartingMonthTime.of("10:00"),
                 day: Day.SUNDAY,
                 description: "Dziewczyny! Zapraszamy na wspólną luźną jazdę na rowerach gravelowych, trekkingowych oraz MTB. Ruszamy na przejażdkę do Trójmiejskiego Parku Krajobrazowego. Tempo luźniutkie - nikogo nie zostawimy z tyłu.",
                 url: {
@@ -1616,7 +1621,7 @@ const Api: RideHttpApi = {
             {
                 id: "99",
                 name: "Babska Korba Bielsko-Biała",
-                time: LocalTime.parse("17:30"),
+                time: StartingMonthTime.of("17:30"),
                 day: Day.MONDAY,
                 description: "Regularne grupowe jazdy szosowe dla dziewczyn w Bielsku-Białej. 🦄  Spotykamy się w każdy poniedziałek o 17:30 w sklepie rowerowym Twomark na Cieszyńskiej 429 (samochody zostawiamy pod Biedronką naprzeciwko), gdzie czekać na nas będzie pomoc przy przygotowaniu roweru do jazdy jeśli ktoś potrzebuje. 😇 Wyposażenie obowiązkowe: kask, lampki. Rower: szosa, gravel.",
                 url: {
@@ -1633,7 +1638,7 @@ const Api: RideHttpApi = {
             {
                 id: "100",
                 name: "Babska Korba Wrocław",
-                time: LocalTime.parse("17:30"),
+                time: StartingMonthTime.of("17:30"),
                 day: Day.TUESDAY,
                 description: "Zapraszamy na szosowe jazdy grupowe ze stypendystką oraz prowadzącą (2w1) Babskiej Korby - Anią Małecką! 🦄 Jazda przeznaczona jest dla wszystkich dziewczyn, które szukają grupki do wspólnej jazdy. Po płaskim jedziemy spokojnie, podjazdy każdy pokonuje we własnym tempie, a na zjazdach zostawiamy między sobą bezpieczne odległości, aby następnie połączyć się z powrotem w grupę. Obowiązkowe wyposażenie: kask i lampki.",
                 url: {
@@ -1650,7 +1655,7 @@ const Api: RideHttpApi = {
             {
                 id: "101",
                 name: "Babska Korba Olsztyn",
-                time: LocalTime.parse("17:00"),
+                time: StartingMonthTime.of("17:00"),
                 day: Day.TUESDAY,
                 description: "Do pokonania będziemy mieć ok. 40 kilometrów. Jazdy w środy będą zawsze na rowerach szosowych lub gravelowych. Wyposażenie obowiązkowe: kask, lampki, rower szosowy lub gravel. Przyda się również: biodon z piciem, przekąska, coś cieplejszego do ubrania.",
                 url: {
@@ -1667,7 +1672,7 @@ const Api: RideHttpApi = {
             {
                 id: "102",
                 name: "Babska Korba Olsztyn",
-                time: LocalTime.parse("10:00"),
+                time: StartingMonthTime.of("10:00"),
                 day: Day.SUNDAY,
                 description: "Do pokonania będziemy mieć ok. 80 kilometrów. Jazdy w niedzielę będą odbywać się czasami na szosie i gravelu, a czasami na MTB. Prosimy o śledzenie postów prowadzącej na wydarzeniu. Wyposażenie obowiązkowe: kask, lampki, rower szosowy lub gravel. Przyda się również: biodon z piciem, przekąska, coś cieplejszego do ubrania.",
                 url: {
@@ -1684,7 +1689,7 @@ const Api: RideHttpApi = {
             {
                 id: "103",
                 name: "Szosa dla początkujących",
-                time: LocalTime.parse("11:00"),
+                time: StartingMonthTime.of("11:00"),
                 day: Day.SUNDAY,
                 description: "Ustawka dla osób zaczynających jeździć na szosie. Łatwe trasy. Tempo bez spiny, nie śgigamy się. Jazda typowo rekreacyjna mająca na celu wymianę doświadczeń świeżaków. Zapraszamy wszystkich! Mile widziane osoby na wyższym poziomie które chcą podzielić się swoją wiedzą.",
                 url: {
@@ -1700,7 +1705,7 @@ const Api: RideHttpApi = {
             {
                 id: "104",
                 name: "SzoSza Wtorek Ride",
-                time: LocalTime.parse("18:30"),
+                time: StartingMonthTime.of("18:30"),
                 day: Day.TUESDAY,
                 description: "Celem ustawki jest sprawna wspólna przejażdżka połączona z szlifowaniem techniki jazdy w grupie oraz wykonywaniem zmian. Jedziemy wg założonego w grupie tempa w parach. Dzielimy się na grupy dostosowane do tempa zawodników. Trasa ok 55km. W połowie spotykamy się na krótko pod sklepem i ruszamy dalej.",
                 url: {
@@ -1716,7 +1721,7 @@ const Api: RideHttpApi = {
             {
                 id: "105",
                 name: "Czwartkowe Przepalanie na pętli Aleksandrów",
-                time: LocalTime.parse("17:30"),
+                time: StartingMonthTime.of("17:30"),
                 day: Day.THURSDAY,
                 description: "Cykliczny event Kolarskiej Grupy Białołęckiej na pętli Aleksandrów. Na ogół średnia prędkości 35km/h i więcej. Czasami event odwołany z uwagi na pogodę.",
                 url: {
@@ -1732,7 +1737,7 @@ const Api: RideHttpApi = {
             {
                 id: "106",
                 name: "Zbiórka Kwiatkowskiego",
-                time: LocalTime.parse("17:15"),
+                time: StartingMonthTime.of("17:15"),
                 day: Day.TUESDAY,
                 description: "Trasa płaska.",
                 url: {
@@ -1748,7 +1753,7 @@ const Api: RideHttpApi = {
             {
                 id: "107",
                 name: "Zbiórka Kwiatkowskiego",
-                time: LocalTime.parse("17:15"),
+                time: StartingMonthTime.of("17:15"),
                 day: Day.THURSDAY,
                 description: "Trasa górska.",
                 url: {
@@ -1764,7 +1769,7 @@ const Api: RideHttpApi = {
             {
                 id: "108",
                 name: "Zbiórka Kwiatkowskiego",
-                time: LocalTime.parse("10:15"),
+                time: StartingMonthTime.of("10:15"),
                 day: Day.SUNDAY,
                 description: "Niedzielne ściganie.",
                 url: {
@@ -1780,7 +1785,7 @@ const Api: RideHttpApi = {
             {
                 id: "109",
                 name: "Jeździmy na Ostro",
-                time: LocalTime.parse("08:45"),
+                time: StartingMonthTime.of("08:45"),
                 day: Day.SUNDAY,
                 description: "Ustawki szosowe w prawie każdą niedzielę, dystans ok. 100km z przerwą na kawę i ciacho, tempo w tlenie (średnia ok. 32-35km/h)",
                 url: {
@@ -1796,7 +1801,7 @@ const Api: RideHttpApi = {
             {
                 id: "110",
                 name: "Retro",
-                time: LocalTime.parse("17:00"),
+                time: StartingMonthTime.of("17:00"),
                 day: Day.WEDNESDAY,
                 description: "Środowe treningi odbywają się co tydzień od kwietnia do końca września o 17.00. Start koło kobyły w Kobyłce. Dwie grupy zaawansowania, pierwsza jedzie 30-31 km/h, a druga ile da się radę rozpędzić :) Każdy znajdzie coś dla siebie.",
                 url: {
@@ -1809,7 +1814,12 @@ const Api: RideHttpApi = {
                 rideTypes: Set.of(RideType.ROAD),
                 city: "Warszawa"
             }
-        ),
+        )
+        .map(ride => { return {...ride, time: ride.time.getTimeForCurrentMonth()}})
+
+        return rides;
+    }
+        ,
 
     getRidesWithFilter: (query: FilterQuery) => {
         let filteredRides: List<Ride> = Api.getRides()
