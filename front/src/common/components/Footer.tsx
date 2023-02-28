@@ -42,7 +42,7 @@ const Footer: React.FC<FooterProps & FooterActionProps> = (props) => {
                             Mamy nadzieję, że liczba ustawek prezentowanych na stronie będzie się stale powiększać.
                         </p>
                         <p>
-                            Jeżeli Twoje ulubiona ustawka nie jest widoczna na mapie, to bylibyśmy wdzięczni za
+                            Jeżeli Twoje ulubiona ustawka nie jest widoczna na mapie, to będziemy wdzięczni za
                             podesłanie nam jej szczegółów.
                             W tym celu przygotowaliśmy specjalny formularz (<span className="badge add-ride-badge"
                                                                                   onClick={() => {
@@ -81,7 +81,7 @@ const Footer: React.FC<FooterProps & FooterActionProps> = (props) => {
             </section>
 
             <div className="text-center p-4" style={{backgroundColor: 'rgba(0, 0, 0, 0.05)'}}>
-                Copyright © 2021 - 2022 <a className="text-reset fw-bold text-decoration-none"
+                Copyright © 2021 - 2023 <a className="text-reset fw-bold text-decoration-none"
                                            href="https://lokalsi.cc/">lokalsi.cc</a>
             </div>
         </footer>

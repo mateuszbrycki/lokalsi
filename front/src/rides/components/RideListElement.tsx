@@ -5,6 +5,7 @@ import RideUrlsList from "./RideUrlsList";
 import RideBadge from "./RideBadge";
 import {Button} from "react-bootstrap";
 import {TIME_FORMATTER} from "../../common/time";
+import EditRideModal from './EditRideModal';
 
 export interface RideMarkerProps {
     readonly ride: Ride;
@@ -43,6 +44,11 @@ const RideListElement: React.FC<RideMarkerProps & RideMarkerActionProps> = (prop
                 </div>
                 <div className="ms-auto fs-7">
                     <Button className="rides-list-element-show-on-map" onClick={onClick}><Icon.GeoAltFill style={{fontSize: '1rem', marginRight: '0.3rem'}}/>Miejsce startu</Button>
+                </div>
+            </div>
+            <div className="d-flex ps-2 ms-auto me-0">
+                <div className="rides-list-element-city">
+                    <EditRideModal ride={ride}/>
                 </div>
             </div>
         </article>

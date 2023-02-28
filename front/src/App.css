@@ -287,3 +287,12 @@ a:hover.nav-link {
     text-decoration: underline;
 }
 
+.edit-ride-text {
+    font-size: 0.7rem !important;
+}
+
+.edit-ride-text:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
