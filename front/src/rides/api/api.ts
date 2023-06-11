@@ -1813,6 +1813,23 @@ const Api: RideHttpApi = {
                 },
                 rideTypes: Set.of(RideType.ROAD),
                 city: "Warszawa"
+            },
+
+            {
+                id: "111",
+                name: "NA BAJKU Girl Bike Gang",
+                time: StartingMonthTime.of("20:00"),
+                day: Day.THURSDAY,
+                description: "Krótka i przyjemna ustawka dla kobiet. Spotykamy się, żeby poznawać miasto z innej perspektywy. Gonimy za golden hour i zachodami słońca, wjeżdżamy tam, gdzie inni nie docierają. Szukamy \"Miejskich Smaczków\", a wszystkie przygody kolekcjonujemy i uwieczniamy na zdjęciach i filmikach. Do podglądania na IG: @nabajku",
+                url: {
+                    facebook: "https://www.facebook.com/groups/nabajku"
+                },
+                startingPoint: {
+                    latitude: 52.407457, 
+                    longitude: 16.911518
+                },
+                rideTypes: Set.of(RideType.FOR_LADIES, RideType.ROAD),
+                city: "Warszawa"
             }
         )
         .map(ride => { return {...ride, time: ride.time.getTimeForCurrentMonth()}})
