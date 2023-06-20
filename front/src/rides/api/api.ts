@@ -98,38 +98,6 @@ const Api: RideHttpApi = {
                 city: "Kraków"
             },
             {
-                id: "6",
-                name: "Ekspressoride bikeshow.cc",
-                time: StartingMonthTime.of("09:30"),
-                day: Day.MONDAY,
-                description: "Ustawka rowerowa dla prywaciarzy. Kierunek Niepołomice.",
-                url: {
-                    facebook: "https://www.facebook.com/groups/1606940372774784"
-                },
-                startingPoint: {
-                    latitude: 50.053387,
-                    longitude:20.049247
-                },
-                rideTypes: Set.of(RideType.ROAD),
-                city: "Kraków"
-            },
-            {
-                id: "7",
-                name: "Ekspressoride bikeshow.cc",
-                time: StartingMonthTime.of("09:30"),
-                day: Day.FRIDAY,
-                description: "Ustawka rowerowa dla prywaciarzy. Kierunek Czernichów.",
-                url: {
-                    facebook: "https://www.facebook.com/groups/1606940372774784"
-                },
-                startingPoint: {
-                    latitude: 50.050136,
-                    longitude: 19.930474
-                },
-                rideTypes: Set.of(RideType.ROAD),
-                city: "Kraków"
-            },
-            {
                 id: "8",
                 name: "Czwartki z Chodźże na Rower",
                 time: StartingMonthTime.of("17:20"),
@@ -1845,6 +1813,22 @@ const Api: RideHttpApi = {
                 },
                 rideTypes: Set.of(RideType.MTB),
                 city: "Janów Lubelski"
+            },
+            {
+                id: "113",
+                name: "IC Kraków",
+                time: StartingMonthTime.of("17:30"),
+                day: Day.WEDNESDAY,
+                description: "IC mocne szybkie ściganie zawsze na tej samej trasie.",
+                url: {
+                    facebook: "https://www.facebook.com/profile.php?id=100068611381911"
+                },
+                startingPoint: {
+                    latitude: 50.048030, 
+                    longitude: 19.791215 
+                },
+                rideTypes: Set.of(RideType.ROAD),
+                city: "Kraków"
             }
         )
         .map(ride => { return {...ride, time: ride.time.getTimeForCurrentMonth()}})
