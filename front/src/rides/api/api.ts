@@ -1814,7 +1814,6 @@ const Api: RideHttpApi = {
                 rideTypes: Set.of(RideType.ROAD),
                 city: "Warszawa"
             },
-
             {
                 id: "111",
                 name: "NA BAJKU Girl Bike Gang",
@@ -1830,6 +1829,22 @@ const Api: RideHttpApi = {
                 },
                 rideTypes: Set.of(RideType.FOR_LADIES, RideType.ROAD),
                 city: "Warszawa"
+            },
+            {
+                id: "112",
+                name: "XC Kruk",
+                time: StartingMonthTime.of("18:00"),
+                day: Day.FRIDAY,
+                description: "Kilka rund XC na wydmie zwanej Kruczkiem w Janowie Lubelskim. Tempo wyścigowe ale można jechać własnym zmniejszyć liczbę rund itp Wymagany rower MTB i kask. Czas startu może ulec zmianie.",
+                url: {
+                    facebook: "https://www.facebook.com/BikeClubLJA"
+                },
+                startingPoint: {
+                    latitude: 50.682657, 
+                    longitude: 22.384404 
+                },
+                rideTypes: Set.of(RideType.MTB),
+                city: "Janów Lubelski"
             }
         )
         .map(ride => { return {...ride, time: ride.time.getTimeForCurrentMonth()}})
