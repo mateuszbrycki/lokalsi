@@ -21,6 +21,8 @@ const RideUrlsList: React.FC<RideUrlsListProps & RideUrlsListActionProps> = (pro
     return (<ul className="ride-urls-icons-list list-inline">
         {rideUrls.strava ?
             <li key="ride-url-icon-strava" className="list-inline-item">{getIconWithUrl(rideUrls.strava, <Icon.Strava/>)}</li> : <></>}
+        {rideUrls.instagram ?
+            <li key="ride-url-icon-webpage" className="list-inline-item">{getIconWithUrl(rideUrls.instagram, <Icon.Instagram/>)}</li> : <></>}    
         {rideUrls.facebook ?
             <li key="ride-url-icon-facebook" className="list-inline-item">{getIconWithUrl(rideUrls.facebook, <Icon.Facebook/>)}</li> : <></>}
         {rideUrls.webpage ?

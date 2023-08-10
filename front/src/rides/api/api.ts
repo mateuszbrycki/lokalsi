@@ -1829,6 +1829,54 @@ const Api: RideHttpApi = {
                 },
                 rideTypes: Set.of(RideType.ROAD),
                 city: "Kraków"
+            },
+            {
+                id: "114",
+                name: "DecaBikes",
+                time: StartingMonthTime.of("17:00"),
+                day: Day.TUESDAY,
+                description: "Ustawka dla tych którzy chcą pojechać troszkę wolniej. Jeździmy w różne miejsca, z różnych miejsc w Krakowie, ale najczęściej spod Plazy.",
+                url: {
+                    facebook: "https://www.facebook.com/groups/517117108987477/"
+                },
+                startingPoint: {
+                    latitude: 50.065784, 
+                    longitude: 19.986960
+                },
+                rideTypes: Set.of(RideType.ROAD),
+                city: "Kraków"
+            },
+            {
+                id: "115",
+                name: "IC Tarnów",
+                time: StartingMonthTime.of("18:00"),
+                day: Day.THURSDAY,
+                description: "Trening w formacie wyścigu, trasa pagórkowata 55 lub 57 km z dwiema premiami i finiszem. Aktualne informacje dostępne w klubie IC Tarnów na stravie, fb oraz instagramie. Każdy uczestnik startuje na własne ryzyko oraz w zgodzie z przepisami ruchu drogowego.",
+                url: {
+                    facebook: "https://www.facebook.com/profile.php?id=100035615574242"
+                },
+                startingPoint: {
+                    latitude: 49.999718, 
+                    longitude: 21.075963
+                },
+                rideTypes: Set.of(RideType.ROAD),
+                city: "Tarnów"
+            },
+            {
+                id: "116",
+                name: "Bidon.cc Smoothie Ride",
+                time: StartingMonthTime.of("14:00"),
+                day: Day.SATURDAY,
+                description: "Cotygodniowy coffee ride na stałej trasie do Czchowa. Kawa przed startem, przerwa w Jaśkowym Sadzie. Tempo spokojne, 27-30 km/h.",
+                url: {
+                    instagram: "https://www.instagram.com/bidon_cc/"
+                },
+                startingPoint: {
+                    latitude: 50.018232, 
+                    longitude: 20.983439
+                },
+                rideTypes: Set.of(RideType.ROAD, RideType.GRAVEL),
+                city: "Tarnów"
             }
         )
         .map(ride => { return {...ride, time: ride.time.getTimeForCurrentMonth()}})

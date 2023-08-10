@@ -71,6 +71,7 @@ export interface RideUrls {
     readonly facebook?: string;
     readonly strava?: string;
     readonly webpage?: string;
+    readonly instagram?: string;
 }
 
 
