@@ -1554,19 +1554,18 @@ const Api: RideHttpApi = {
             },
             {
                 id: "97",
-                name: "Babska Korba Katowice",
+                name: "Damy Na Szosach",
                 time: StartingMonthTime.of("17:30"),
-                day: Day.THURSDAY,
-                description: "Cześć dziewczyny, Zapraszamy Was do wspólnego kręcenia na rowerze szosowym. Trasa jest na około 40km i obieramy kierunek Imielin. Udział w wydarzeniu tylko i wyłącznie w kasku i z kompletem lampek. Udział w wydarzeniu na własną odpowiedzialność.",
+                day: Day.WEDNESDAY,
+                description: "Spotkanie tylko dla kobiet. Zachęcanie do wspólnej jazdy w każdym wieku. Trasa około 40km. Bez ucieczek i zostawiania kogoś na trasie.",
                 url: {
-                    facebook: "https://www.facebook.com/babskakorba",
-                    webpage: "https://www.picktime.com/babskakorba"
+                    facebook: "https://www.facebook.com/damskietreninginaszosach"
                 },
                 startingPoint: {
-                    latitude: 50.254230, 
-                    longitude: 19.047000
+                    latitude: 50.23309178717671, 
+                    longitude: 19.02792401634725
                 },
-                rideTypes: Set.of(RideType.ROAD, RideType.FOR_LADIES),
+                rideTypes: Set.of(RideType.ROAD, RideType.GRAVEL, RideType.FOR_LADIES),
                 city: "Katowice"
             },
             {
@@ -1877,7 +1876,40 @@ const Api: RideHttpApi = {
                 },
                 rideTypes: Set.of(RideType.ROAD, RideType.GRAVEL),
                 city: "Tarnów"
+            },
+            {
+                id: "117",
+                name: "GRAVNING Koszalin",
+                time: StartingMonthTime.of("17:00"),
+                day: Day.THURSDAY,
+                description: "Okres jesieni, zimy i wczesnej wiosny, to najlepszy czas do grupowych spotkań na koszalińskich, leśnych szlakach rowerowych. Krótki dzień, często szara pogoda, to nie powody by rezygnować z kolarstwa w otwartej przestrzeni. Wsiadaj na rower i dołącz do naszego pociągu Gothica Trail Cycling. Gravel, Przełaj, Treking, MTB - każda zajawka mile widziana. Wystarczy pełny bidon, jasne lampki i dobry humor :) Tylko uważaj, bo to zaraźliwe i możesz zachorować na start w prawdziwym ultra Ziemi Gotów - GOTHICA TRAIL!",
+                url: {
+                    facebook: "https://www.facebook.com/gothicatrail/"
+                },
+                startingPoint: {
+                    latitude: 54.201242,  
+                    longitude: 16.211409
+                },
+                rideTypes: Set.of(RideType.GRAVEL, RideType.MTB),
+                city: "Koszalin"
+            },
+            {
+                id: "118",
+                name: "Niedamrady.cc",
+                time: StartingMonthTime.of("10:00"),
+                day: Day.SUNDAY,
+                description: "Celem ustawek “niedamrady.cc” jest propagowanie aktywnych form wypoczynku i rekreacji oraz zdrowego trybu życia, (prawie🍺). Popularyzacja kolarstwa i turystyki rowerowej oraz spędzania wolnego czasu blisko natury. Promocja terenów dolnego śląska oraz okolic Wrocławia.",
+                url: {
+                    instagram: "https://www.instagram.com/niedamrady.cc"
+                },
+                startingPoint: {
+                    latitude: 51.098887871414256,
+                    longitude: 17.00581241112442
+                },
+                rideTypes: Set.of(RideType.GRAVEL, RideType.ROAD),
+                city: "Wrocław"
             }
+
         )
         .map(ride => { return {...ride, time: ride.time.getTimeForCurrentMonth()}})
 
