@@ -824,22 +824,6 @@ const Api: RideHttpApi = {
                 city: "Dąbrowa Górnicza"
             },
             {
-                id: "52",
-                name: "Cortado ",
-                time: StartingMonthTime.of("16:45"),
-                day: Day.TUESDAY,
-                description: "Ustawka kolarska organizowana przez Endurance Team",
-                url: {
-                    facebook: "https://www.facebook.com/profile.php?id=100035350226519"
-                },
-                startingPoint: {
-                    latitude: 50.324575,
-                    longitude: 19.003347
-                },
-                rideTypes: Set.of(RideType.ROAD),
-                city: "Siemianowice Śląskie"
-            },
-            {
                 id: "53",
                 name: "Klasyczny Wtorek z Dobre Koło",
                 time: StartingMonthTime.of("18:20"),
@@ -1908,6 +1892,38 @@ const Api: RideHttpApi = {
                 },
                 rideTypes: Set.of(RideType.GRAVEL, RideType.ROAD),
                 city: "Wrocław"
+            },
+            {
+                id: "119",
+                name: "Cortado",
+                time: StartingMonthTime.of("17:00"),
+                day: Day.TUESDAY,
+                description: "Naszym celem jest spotkać się i w grupie zrobić dobry wspólny trening. Ruszamy w stronę Pyrzowic, objeżdżamy lotnisko i wszyscy kończymy na Górze Siewierskiej skąd grupą ruszamy razem do miejsca spotkania. Nie mamy grup, a tempo zależne jest od wielu czynników. Podstawowa zasada to „bez napinki”. Nikogo nie zostawiamy. Na trasie sa wyznaczone dwa segmenty gdzie można mocniej depnąć pod nazwę (cortado). Za segmentem spawamy i ruszamy dalej. Kolejny to Górka Siewierska, tam też można przepalić płuco, a na szczycie finish i rozjazd do mety.",
+                url: {
+                    facebook: "https://www.facebook.com/profile.php?id=100035350226519"
+                },
+                startingPoint: {
+                    latitude: 50.324575,
+                    longitude: 19.003347
+                },
+                rideTypes: Set.of(RideType.ROAD),
+                city: "Siemianowice Śląskie"
+            },
+            {
+                id: "120",
+                name: "GraveLove Środy",
+                time: StartingMonthTime.of("18:20"),
+                day: Day.WEDNESDAY,
+                description: "GraveLove Ustawki dla wszystkich (różne grupy: wyścigowa, pośrednia, romantyczna). Co tydzień inna trasa, after Pizzeria Giuseppe - piwko bezalko. Trasa ok. 35-45km.",
+                url: {
+                    facebook: "https://www.facebook.com/groups/graveloveopole"
+                },
+                startingPoint: {
+                    latitude: 50.682408,
+                    longitude: 17.947572
+                },
+                rideTypes: Set.of(RideType.GRAVEL),
+                city: "Opole"
             }
 
         )

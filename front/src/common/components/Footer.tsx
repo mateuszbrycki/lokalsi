@@ -81,7 +81,7 @@ const Footer: React.FC<FooterProps & FooterActionProps> = (props) => {
             </section>
 
             <div className="text-center p-4" style={{backgroundColor: 'rgba(0, 0, 0, 0.05)'}}>
-                Copyright © 2021 - 2023 <a className="text-reset fw-bold text-decoration-none"
+                Copyright © 2021 - 2024 <a className="text-reset fw-bold text-decoration-none"
                                            href="https://lokalsi.cc/">lokalsi.cc</a>
             </div>
         </footer>
