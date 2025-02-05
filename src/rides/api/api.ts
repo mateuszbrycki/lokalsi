@@ -1924,6 +1924,54 @@ const Api: RideHttpApi = {
                 },
                 rideTypes: Set.of(RideType.GRAVEL),
                 city: "Opole"
+            },
+            {
+                id: "121",
+                name: "NOS - Niedzielni Ostródzcy Szosowcy",
+                time: StartingMonthTime.of("10:00"),
+                day: Day.SUNDAY,
+                description: "Klub dla miłośników ostródzkiego weekendowego kolarstwa. Jeśli jesteś zapalonym kolarzem z Ostródy i okolic, to ustaw się z nami na weekend! Jeździmy po mazurskich asfaltach czysto rekreacyjnie i hobbystycznie. Oczywiście wyższe tempo też się zdarzy. Jeśli masz kolarkę i nie wiesz co z nią zrobić, to leć z nami gładkimi (nie zawsze ;)) szosami po mazurach. 3-4 godzinne trasy, na 50-100 km. Tak, żeby na drugi dzień w pracy było czuć w nogach, że weekend był nieprzespany ;)",
+                url: {
+                    facebook: "https://www.facebook.com/groups/741764063326416/"
+                },
+                startingPoint: {
+                    latitude: 53.702932884320134,
+                    longitude: 19.959465917859703
+                },
+                rideTypes: Set.of(RideType.GRAVEL, RideType.ROAD),
+                city: "Ostróda"
+            },
+            {
+                id: "122",
+                name: "wtorKING z FogtBikes",
+                time: StartingMonthTime.of("17:00"),
+                day: Day.TUESDAY,
+                description: "Zapraszamy na szosową ustawkę el classico! Trasa: 52 km. Obowiązkowo: OC i kask. W razie deszczu lub innej niesprzyjającej pogody wydarzenie może się nie odbyć!",
+                url: {
+                    strava: "https://www.strava.com/clubs/150632"
+                },
+                startingPoint: {
+                    latitude: 52.38970887668128, 
+                    longitude: 17.0687295395502
+                },
+                rideTypes: Set.of(RideType.ROAD),
+                city: "Zalasewo"
+            },
+            {
+                id: "123",
+                name: "Gravelowy czwarTREK z FogtBikes",
+                time: StartingMonthTime.of("18:00"),
+                day: Day.THURSDAY,
+                description: "Zapraszamy na wycieczko-trening. Rowery: MTB, gravel, CX. Trasa: 56 km. Polecamy zabrać ze sobą lampki! Obowiązkowo: OC i kask. W razie deszczu lub innej niesprzyjającej pogody wydarzenie może się nie odbyć!",
+                url: {
+                    strava: "https://www.strava.com/clubs/150632"
+                },
+                startingPoint: {
+                    latitude: 52.38970887668128, 
+                    longitude: 17.0687295395502
+                },
+                rideTypes: Set.of(RideType.GRAVEL, RideType.MTB, RideType.FOR_LADIES),
+                city: "Zalasewo"
             }
 
         )
