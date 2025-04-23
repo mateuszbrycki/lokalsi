@@ -1972,6 +1972,38 @@ const Api: RideHttpApi = {
                 },
                 rideTypes: Set.of(RideType.GRAVEL, RideType.MTB, RideType.FOR_LADIES),
                 city: "Zalasewo"
+            },
+            {
+                id: "124",
+                name: "Zbiórka",
+                time: StartingMonthTime.of("10:15"),
+                day: Day.SATURDAY,
+                description: "Cotygodniowa ustawka w każda sobotę i niedziele oraz wszystkie czerwone kartki w kalendarzu. Zapraszamy każdego chętnego na szosie .",
+                url: {
+                    strava: "https://strava.app.link/qwFxAWliFSb"
+                },
+                startingPoint: {
+                    latitude: 50.80749051061296, 
+                    longitude: 19.17113186243001
+                },
+                rideTypes: Set.of(RideType.ROAD),
+                city: "Częstochowa"
+            },
+            {
+                id: "125",
+                name: "Zbiórka",
+                time: StartingMonthTime.of("10:15"),
+                day: Day.SUNDAY,
+                description: "Cotygodniowa ustawka w każda sobotę i niedziele oraz wszystkie czerwone kartki w kalendarzu. Zapraszamy każdego chętnego na szosie .",
+                url: {
+                    strava: "https://strava.app.link/qwFxAWliFSb"
+                },
+                startingPoint: {
+                    latitude: 50.80749051061296, 
+                    longitude: 19.17113186243001
+                },
+                rideTypes: Set.of(RideType.ROAD),
+                city: "Częstochowa"
             }
 
         )
